@@ -1,0 +1,201 @@
+#homeGrid {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-rows: 33.33% 33.33% 33.33%;
+}
+
+.logo_home_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 85%;
+}
+
+.use_home_grid {
+  grid-column-start: 2;
+  grid-row: 1 / span 3;
+}
+
+.title_home {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-size: 5em;
+  color: #fff;
+}
+
+.desc_home {
+  font-family: sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-size: 1.3em;
+  margin-top: -3%;
+  color: #fff;
+}
+
+.image_home {
+  grid-column-start: 3;
+  grid-row: 2 / span2;
+  width: 100;
+}
+
+.animal_home {
+  grid-column-start: 1;
+  grid-row: 1/1;
+  width: 70%;
+  margin-left: 20%;
+}
+
+#logo_home {
+  width: 50%;
+  fill: white;
+  padding-right: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  overflow-x: hidden;
+}
+
+body a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body .header .name,
+body .header .elements {
+  display: inline-block;
+  color: white;
+  font-size: 24px;
+  margin-left: 10px;
+  line-height: 42px;
+  font-smoothing: antialiased;
+}
+
+body .header .name {
+  font-weight: bold;
+}
+
+body .header .elements {
+  float: right;
+}
+
+body .header.bg {
+  background: linear-gradient(180deg, #63c7d3 0%, #00acc1 100%);
+}
+
+body .hero {
+  overflow: hidden;
+  position: relative;
+  height: calc(60vh + 100px);
+  min-height: 200px;
+  background: #ffce54;
+  background: linear-gradient(180deg, #68d6e2b7 0%, #68ddec59 100%);
+}
+
+body .hero .w {
+  position: absolute;
+  top: 100%;
+  left: -25vw;
+  right: 0px;
+  background: url(https://i.koya.io/whitewave2.svg);
+  background-position: center;
+}
+
+body .hero .wave {
+  height: 200px;
+  transform: translateY(-40px);
+  --initialY: -40px;
+  --finalY: -70px;
+  animation: movingWave 7s infinite alternate;
+}
+
+body .hero .wave2 {
+  height: 240px;
+  transform: translateY(-80px);
+  --initialY: -80px;
+  --finalY: -70px;
+  animation: movingWaveReverse 8s infinite alternate;
+  background-size: 960px 240px;
+  opacity: 0.5;
+  left: -80vw;
+  right: -5vw;
+}
+
+body .hero .wave3 {
+  height: 220px;
+  transform: translateY(-120px);
+  --initialY: -120px;
+  --finalY: -130px;
+  animation: movingWave 7s infinite alternate;
+  background-size: 880px 220px;
+  opacity: 0.33;
+  left: -120vw;
+  right: -20vw;
+}
+
+body .hero .wave4 {
+  height: 280px;
+  transform: translateY(-160px);
+  background-size: 1120px 280px;
+  opacity: 0.1;
+  left: 0vw;
+  right: -40vw;
+}
+
+.flex {
+  /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.inner-header {
+  height: 50vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-top: 7%;
+  /*Ayuda a centrar un poco más*/
+}
+
+@keyframes movingWave {
+  0% {
+    transform: translate(20%, var(--initialY));
+  }
+
+  100% {
+    transform: translate(5%, var(--finalY));
+  }
+}
+
+@keyframes movingWaveReverse {
+  0% {
+    transform: translate(5%, var(--initialY));
+  }
+
+  100% {
+    transform: translate(20%, var(--finalY));
+  }
+}
+
+@keyframes opacidad_burbujas {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
