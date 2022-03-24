@@ -121,7 +121,7 @@ const LoginForm = () => {
                     )}
 
                    <Link to="/forgot">
-                      <small id="emailHelp" className="form-text text-primary">
+                      <small id="emailHelp" className="olvidado form-text text-primary">
                         ¿Olvidaste tu contraseña?
                       </small>
                     </Link>
