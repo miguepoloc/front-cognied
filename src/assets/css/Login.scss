@@ -1,4 +1,3 @@
-
 .wave {
   position: fixed;
   height: 100%;
@@ -69,7 +68,7 @@ form h2 {
 .input-feedback {
   width: -webkit-fill-available;
   color: red;
-  margin-top: .25rem;
+  margin-top: 0.25rem;
 }
 
 .input-div:after {
@@ -144,16 +143,17 @@ form h2 {
   color: #555;
 }
 
-a {
+.olvidado {
   display: block;
   text-align: right;
   text-decoration: none;
   color: #999;
   font-size: 0.9rem;
   transition: 0.3s;
+  font-family: "Poppins", sans-serif;
 }
 
-a:hover {
+.olvidado:hover {
   color: #037971;
 }
 
