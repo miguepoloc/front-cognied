@@ -7,6 +7,7 @@ const Login = lazy(() => import('./pages/Login'))
 const PageAuth = lazy(() => import('./pages/pageAuth'))
 const PageAdmin = lazy(() => import('./pages/pageAdmin'))
 const PageNotFound = lazy(() => import('./pages/pageNotFound'))
+const SignUp = lazy(() => import('./pages/SignUp'))
 
 const LoadingFallback = () => <div>Loading...</div>
 
@@ -36,10 +37,10 @@ const AdminRoute = ({ children, ...rest }) => {
         auth.isAuthenticated() && auth.isAdmin()
           ? (
             <div>{children}</div>
-          )
+            )
           : (
             <Redirect to="/" />
-          )
+            )
       }
     />
   )
@@ -56,6 +57,10 @@ const AppRoutes = () => (
 
         <Route path="/login">
           <Login />
+        </Route>
+
+        <Route path="/sign-up">
+          <SignUp />
         </Route>
 
         <AuthenticatedRoute path="/auth">
