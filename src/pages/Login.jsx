@@ -8,6 +8,7 @@ import '../assets/css/Login.scss'
 import Cel from '../assets/img/tortuga.svg'
 import Ola from '../assets/img/wave.png'
 import Logo from '../assets/img/logo9.svg'
+import { FaUser, FaLock } from 'react-icons/fa'
 
 const LoginForm = () => {
   const history = useHistory()
@@ -69,7 +70,7 @@ const LoginForm = () => {
 
                   <div className="input-div my-0">
                     <div className="i">
-                      <i className="fas fa-user"></i>
+                      <FaUser></FaUser>
                     </div>
                     <div>
                     <input
@@ -92,7 +93,7 @@ const LoginForm = () => {
                   )}
                   <div className="input-div my-0">
                     <div className="i">
-                      <i className="fas fa-user"></i>
+                      <FaLock></FaLock>
                     </div>
                     <div>
                     <input

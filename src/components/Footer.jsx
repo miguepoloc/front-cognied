@@ -1,5 +1,6 @@
 import React from 'react'
 import '../assets/css/Footer.scss'
+import { FaInstagram, FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 const Footer = ({ section }) => {
   return (
         <footer>
@@ -13,16 +14,16 @@ const Footer = ({ section }) => {
             <div className="footer-basic footer pb-5">
                 <div className="social">
                     <a href="#">
-                        <i className="fab fa-instagram"></i>
+                        <FaInstagram></FaInstagram>
                     </a>
                     <a href="#">
-                        <i className="fab fa-facebook-f"></i>
+                        <FaFacebook></FaFacebook>
                     </a>
                     <a href="#">
-                        <i className="fab fa-twitter"></i>
+                        <FaTwitter></FaTwitter>
                     </a>
                     <a href="#">
-                        <i className="fab fa-whatsapp"></i>
+                        <FaWhatsapp></FaWhatsapp>
                     </a>
                 </div>
                 <ul className="list-inline">

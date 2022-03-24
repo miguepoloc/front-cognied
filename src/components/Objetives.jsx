@@ -1,5 +1,6 @@
 import React from 'react'
 import '../assets/css/Objetives.scss'
+import { FaShareAlt, FaPencilAlt, FaLightbulb, FaCodeBranch } from 'react-icons/fa'
 
 const Objetives = ({ section }) => {
   return (
@@ -18,7 +19,7 @@ const Objetives = ({ section }) => {
                             <div className="service-post">
                                 <div className="service-content">
                                     <div className="service-icon">
-                                        <i className="fa fa-share-alt"></i>
+                                        <FaShareAlt></FaShareAlt>
                                     </div>
                                     <h3 className="service-title">
                                         Advertising
@@ -36,7 +37,7 @@ const Objetives = ({ section }) => {
                             <div className="service-post">
                                 <div className="service-content">
                                     <div className="service-icon">
-                                        <i className="fas fa-pencil-alt"></i>
+                                        <FaPencilAlt></FaPencilAlt>
                                     </div>
                                     <h3 className="service-title">
                                         Branding Design
@@ -54,7 +55,7 @@ const Objetives = ({ section }) => {
                             <div className="service-post">
                                 <div className="service-content">
                                     <div className="service-icon">
-                                        <i className="fas fa-lightbulb"></i>
+                                        <FaLightbulb></FaLightbulb>
                                     </div>
                                     <h3 className="service-title">
                                         Creative Marketing
@@ -72,7 +73,7 @@ const Objetives = ({ section }) => {
                             <div className="service-post">
                                 <div className="service-content">
                                     <div className="service-icon">
-                                        <i className="fas fa-code-branch"></i>
+                                        <FaCodeBranch></FaCodeBranch>
                                     </div>
                                     <h3 className="service-title">
                                         Creative Marketing

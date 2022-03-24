@@ -8,6 +8,7 @@ import '../assets/css/Login.scss'
 import Cel from '../assets/img/Brainy.svg'
 import Ola from '../assets/img/wave.png'
 import Logo from '../assets/img/logo9.svg'
+import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 
 const SignUpForm = () => {
   const history = useHistory()
@@ -34,7 +35,7 @@ const SignUpForm = () => {
               try {
                 const respuesta = await Axios({
                   method: 'post',
-                  url: `${process.env.REACT_APP_API_URL}/accounts/login`,
+                  url: `${process.env.REACT_APP_API_URL}/accounts/register`,
                   data: { user: { ...values } }
                 })
 
@@ -47,7 +48,7 @@ const SignUpForm = () => {
             }}
             validationSchema={Yup.object().shape({
               document: Yup.number().required('Documento requerido'),
-              email: Yup.number().required('Correo requerido'),
+              email: Yup.string().required('Correo requerido'),
               password: Yup.string().required(
                 'No se ha introducido una contraseña'
               )
@@ -71,7 +72,7 @@ const SignUpForm = () => {
 
                   <div className="input-div my-0">
                     <div className="i">
-                      <i className="fas fa-user"></i>
+                      <FaUser></FaUser>
                     </div>
                     <div>
                       <input
@@ -95,7 +96,7 @@ const SignUpForm = () => {
 
                   <div className="input-div my-0">
                     <div className="i">
-                    <i className="fa-solid fa-square-envelope"></i>
+                    <FaEnvelope></FaEnvelope>
                     </div>
                     <div>
                       <input
@@ -119,7 +120,7 @@ const SignUpForm = () => {
 
                   <div className="input-div my-0">
                     <div className="i">
-                      <i className="fas fa-user"></i>
+                      <FaLock></FaLock>
                     </div>
                     <div>
                       <input
