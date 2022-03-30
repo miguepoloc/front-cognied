@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react'
 import { Navbar, Container, Nav, Button } from 'react-bootstrap'
 import NavBarElement from './NavBarElement'
-import '../assets/css/NavBar.scss'
-import { AuthContext } from '../context/AuthContext'
+import '../../assets/css/NavBar.scss'
+import { AuthContext } from '../../context/AuthContext'
 import { useHistory } from 'react-router-dom'
 // import Scroll from "../assets/js/scrollTemp"
 
