@@ -9,7 +9,8 @@ module.exports = merge(BaseConfig(state='development'), {
     open: true,
     https: false
   },
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
+  watch: true
 });
 
 

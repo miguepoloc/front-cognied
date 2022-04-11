@@ -8,6 +8,7 @@ const PageAuth = lazy(() => import('./pages/pageAuth'))
 const PageAdmin = lazy(() => import('./pages/pageAdmin'))
 const PageNotFound = lazy(() => import('./pages/pageNotFound'))
 const SignUp = lazy(() => import('./pages/SignUp'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
 
 const LoadingFallback = () => <div>Loading...</div>
 
@@ -61,6 +62,10 @@ const AppRoutes = () => (
 
         <Route path="/sign-up">
           <SignUp />
+        </Route>
+
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
 
         <AuthenticatedRoute path="/auth">

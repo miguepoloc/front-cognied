@@ -7,13 +7,15 @@ import Footer from '../components/Footer'
 
 import AboutUs from '../components/AboutUs'
 import Scroll from '../helpers/helperScroll'
+import ContactUs from '../components/ContactUs'
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
   const secciones = {
     Home: { id: 'Home', txt: 'Inicio' },
+    AboutUs: { id: 'AboutUs', txt: 'Acerca de nosotros' }, // No planeo agregar el footer.
     Objetivos: { id: 'Objetivos', txt: 'Objetivos' },
-    AboutUs: { id: 'AboutUs', txt: 'Acerca de nosotros' } // No planeo agregar el footer.
+    ContactUs: { id: 'ContactUs', txt: 'Contacto' }
   }
 
   // Inicializacion del scroll.
@@ -29,8 +31,9 @@ function LandingPage () {
                 PrimeraSeccion={secciones.Home}
                 scroll={scroll}/>
             <Home section={secciones.Home} style="onlyLogo" />
-            <Objetives section={secciones.Objetivos} />
             <AboutUs section={secciones.AboutUs} />
+            <Objetives section={secciones.Objetivos} />
+            <ContactUs section={secciones.ContactUs} />
             <Footer />
             <ButtonToUp Scroll={scroll} seccionToUp = {secciones.Home.id}/>
         </>

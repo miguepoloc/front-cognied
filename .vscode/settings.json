@@ -7,5 +7,27 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "prettier.disableLanguages": ["js"]
+  "prettier.disableLanguages": [
+    "js"
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#ccf1f5",
+    "activityBar.activeBorder": "#e57ada",
+    "activityBar.background": "#ccf1f5",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#e57ada",
+    "activityBarBadge.foreground": "#15202b",
+    "sash.hoverBorder": "#ccf1f5",
+    "statusBar.background": "#a1e6ed",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#76dbe5",
+    "statusBarItem.remoteBackground": "#a1e6ed",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#a1e6ed",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#a1e6ed99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#a1e6ed"
 }

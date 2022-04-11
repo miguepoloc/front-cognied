@@ -71,9 +71,9 @@ const Home = ({ style, section }) => {
                             })()
                         }
                         {/* <div className="hero" id="particles-js"> */}
-                            <div className="w wave"></div>
-                            <div className="w wave2"></div>
-                            <div className="w wave3"></div>
+                        <div className="w wave"></div>
+                        <div className="w wave2"></div>
+                        <div className="w wave3"></div>
 
                         {/* </div> */}
                     </div>
