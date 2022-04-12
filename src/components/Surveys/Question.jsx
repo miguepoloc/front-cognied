@@ -18,9 +18,10 @@ const Question = ({ question, name, index,color }) => {
           {question.answers.map((answer) => {
             return (
               <Answer
-                name={`${name}-${index}`}
-                value={answer.value}
+                name={`${name}_${index}`}
+                value={answer.id_answer}
                 text={answer.answer}
+                key={`${answer.id_answer}`}
               />
             );
           })}
