@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useContext } from 'react'
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import { AuthContext } from './context/AuthContext'
 
 const LandingPage = lazy(() => import('./pages/LandingPage'))
@@ -13,7 +13,6 @@ const Dashboard = lazy(() => import('./pages/Dashboard'))
 const LoadingFallback = () => <div>Loading...</div>
 
 const AuthenticatedRoute = ({ children, ...rest }) => {
-  const history = useHistory()
   const auth = useContext(AuthContext)
   console.log(auth.isAuthenticated())
   return (
