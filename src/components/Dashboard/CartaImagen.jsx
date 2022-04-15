@@ -1,6 +1,6 @@
 import React from 'react'
-import WavesWhite from '../assets/img/shapes/waves-white.svg'
-import RocketWhite from '../assets/img/illustrations/rocket-white.png'
+import WavesWhite from '../../assets/img/shapes/waves-white.svg'
+import RocketWhite from '../../assets/img/illustrations/rocket-white.png'
 
 const CartaImagen = () => {
   return (

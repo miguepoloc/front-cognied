@@ -1,15 +1,15 @@
 import React from 'react'
 
-import Team1 from '../assets/img/team-1.jpg'
-import Team2 from '../assets/img/team-2.jpg'
-import Team3 from '../assets/img/team-3.jpg'
-import Team4 from '../assets/img/team-4.jpg'
-import Spotify from '../assets/img/small-logos/logo-spotify.svg'
-import LogoXD from '../assets/img/small-logos/logo-xd.svg'
-import LogoAtlassian from '../assets/img/small-logos/logo-atlassian.svg'
-import LogoSlack from '../assets/img/small-logos/logo-slack.svg'
-import LogoJira from '../assets/img/small-logos/logo-jira.svg'
-import LogoInvision from '../assets/img/small-logos/logo-invision.svg'
+import Team1 from '../../assets/img/team-1.jpg'
+import Team2 from '../../assets/img/team-2.jpg'
+import Team3 from '../../assets/img/team-3.jpg'
+import Team4 from '../../assets/img/team-4.jpg'
+import Spotify from '../../assets/img/small-logos/logo-spotify.svg'
+import LogoXD from '../../assets/img/small-logos/logo-xd.svg'
+import LogoAtlassian from '../../assets/img/small-logos/logo-atlassian.svg'
+import LogoSlack from '../../assets/img/small-logos/logo-slack.svg'
+import LogoJira from '../../assets/img/small-logos/logo-jira.svg'
+import LogoInvision from '../../assets/img/small-logos/logo-invision.svg'
 
 const CartaSeguimiento = () => {
   return (

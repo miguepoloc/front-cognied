@@ -1,8 +1,9 @@
 import React from 'react'
-import Team2 from '../assets/img/team-2.jpg'
-import Spotify from '../assets/img/small-logos/logo-spotify.svg'
+import Team2 from '../../assets/img/team-2.jpg'
+import Spotify from '../../assets/img/small-logos/logo-spotify.svg'
+import '../../assets/css/NavBarDashboard.scss'
+
 import { useHistory } from 'react-router-dom'
-import '../assets/css/NavBarDashboard.scss'
 
 const NavBarDashboard = ({ section }) => {
   const history = useHistory()

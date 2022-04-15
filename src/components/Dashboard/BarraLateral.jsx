@@ -1,6 +1,6 @@
 import React from 'react'
-import Logo from '../assets/img/logo_circulo.svg'
-import { useHistory, NavLink, useLocation } from 'react-router-dom'
+import Logo from '../../assets/img/logo_circulo.svg'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
 const BarraLateral = () => {

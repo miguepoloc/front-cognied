@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import '../assets/css/ButtonToUp.scss'
+import '../../assets/css/ButtonToUp.scss'
 import { Button, Modal } from 'react-bootstrap'
 
 const ButtonLibro = () => {
