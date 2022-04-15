@@ -2,7 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import Answer from "./Answer";
 
-const Question = ({ question, name, index,color }) => {
+const Question = ({
+  question,
+  name,
+  index,
+  color,
+  selectOption,
+}) => {
   return (
     <div className="mb-4  col-12  col-lg-6 col-xl-4">
       <div
@@ -15,13 +21,14 @@ const Question = ({ question, name, index,color }) => {
       </div>
       <div className="border shadow w-100 card-body float-left pt-0">
         <div className="float-left d-flex flex-column">
-          {question.answers.map((answer) => {
+          {question.answer.map((answer, i) => {
             return (
               <Answer
                 name={`${name}_${index}`}
-                value={answer.id_answer}
-                text={answer.answer}
+                answer = {answer}
+                id_question = {question.id_question}
                 key={`${answer.id_answer}`}
+                selectOption={selectOption}
               />
             );
           })}

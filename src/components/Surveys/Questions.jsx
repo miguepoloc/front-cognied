@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import Question from "./Question";
 
 
-const Questions = ({ questions, name, color }) => {
+const Questions = ({
+  questions,
+  name,
+  color,
+  selectOption,
+}) => {
   return (
     <div className="mx-4 my-4 ">
       <div className="row">
@@ -15,6 +20,7 @@ const Questions = ({ questions, name, color }) => {
               index={index}
               color={color}
               key={question.id_question}
+              selectOption={selectOption}
             />
           );
         })}

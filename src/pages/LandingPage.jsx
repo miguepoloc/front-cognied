@@ -8,7 +8,9 @@ import Footer from '../components/LandingPage/Footer'
 import AboutUs from '../components/LandingPage/AboutUs'
 import Scroll from '../helpers/helperScroll'
 import Survey from '../components/Surveys/Survey'
+import Surveys from '../components/Surveys/Surveys'
 function LandingPage () {
+
   const prueba = {
     questions: [
       {
@@ -101,9 +103,9 @@ function LandingPage () {
       <AboutUs section={secciones.AboutUs} />
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
-      <Survey />
+      <Surveys />
     </>
-  )
+  );
 }
 
 export default LandingPage

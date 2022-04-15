@@ -5,6 +5,7 @@ import { FetchProvider } from './context/FetchContext'
 import AppRoutes from './Routes'
 
 const App = () => (
+  
   <BrowserRouter>
     <AuthProvider>
       <FetchProvider>
