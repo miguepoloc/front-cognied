@@ -1,7 +1,10 @@
 import React from 'react'
 import Logo from '../assets/img/logo_circulo.svg'
+import { useHistory } from 'react-router-dom'
 
 const BarraLateral = () => {
+  const history = useHistory()
+
   return (
         <>
             <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
@@ -9,7 +12,7 @@ const BarraLateral = () => {
                 <div className="sidenav-header">
                     <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                         aria-hidden="true" id="iconSidenav"></i>
-                    <a className="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html "
+                    <a className="navbar-brand m-0 aclick" onClick={() => history.push('') }
                         target="_blank">
                         <img src={Logo} className="navbar-brand-img h-100" alt="main_logo" />
                         <span className="ms-1 font-weight-bold">DigitalMente</span>
@@ -65,7 +68,7 @@ const BarraLateral = () => {
                                         </g>
                                     </svg>
                                 </div>
-                                <span className="nav-link-text ms-1">Tables</span>
+                                <span className="nav-link-text ms-1">Modulo Emocional</span>
                             </a>
                         </li>
                         <li className="nav-item">
@@ -150,7 +153,7 @@ const BarraLateral = () => {
                             </a>
                         </li>
                         <li className="nav-item mt-3">
-                            <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+                            <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Módulos</h6>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link  " href="../pages/profile.html">
@@ -177,7 +180,7 @@ const BarraLateral = () => {
                                         </g>
                                     </svg>
                                 </div>
-                                <span className="nav-link-text ms-1">Profile</span>
+                                <span className="nav-link-text ms-1">Módulo Emocional</span>
                             </a>
                         </li>
                         <li className="nav-item">
@@ -202,7 +205,7 @@ const BarraLateral = () => {
                                         </g>
                                     </svg>
                                 </div>
-                                <span className="nav-link-text ms-1">Sign In</span>
+                                <span className="nav-link-text ms-1">Módulo Psicoeducativo</span>
                             </a>
                         </li>
                         <li className="nav-item">
@@ -233,7 +236,7 @@ const BarraLateral = () => {
                                         </g>
                                     </svg>
                                 </div>
-                                <span className="nav-link-text ms-1">Sign Up</span>
+                                <span className="nav-link-text ms-1">Otro módulo</span>
                             </a>
                         </li>
                     </ul>

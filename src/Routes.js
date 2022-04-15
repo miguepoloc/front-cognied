@@ -9,6 +9,7 @@ const PageAdmin = lazy(() => import('./pages/pageAdmin'))
 const PageNotFound = lazy(() => import('./pages/pageNotFound'))
 const SignUp = lazy(() => import('./pages/SignUp'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
+const ModuloEmocional = lazy(() => import('./pages/ModuloEmocional'))
 
 const LoadingFallback = () => <div>Loading...</div>
 
@@ -65,6 +66,10 @@ const AppRoutes = () => (
 
         <Route path="/dashboard">
           <Dashboard />
+        </Route>
+
+        <Route path="/moduloemocional">
+          <ModuloEmocional />
         </Route>
 
         <AuthenticatedRoute path="/auth">

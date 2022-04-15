@@ -1,8 +1,12 @@
 import React from 'react'
 import Team2 from '../assets/img/team-2.jpg'
 import Spotify from '../assets/img/small-logos/logo-spotify.svg'
+import { useHistory } from 'react-router-dom'
+import '../assets/css/NavBarDashboard.scss'
 
-const NavBarDashboard = () => {
+const NavBarDashboard = ({ section }) => {
+  const history = useHistory()
+
   return (
         <>
             <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
@@ -10,29 +14,18 @@ const NavBarDashboard = () => {
                 <div className="container-fluid py-1 px-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                            <li className="breadcrumb-item text-sm"><a className="opacity-5 text-dark" href="#">Pages</a></li>
-                            <li className="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+                            <li className="breadcrumb-item text-sm"><a className="opacity-5 text-dark aclick" onClick={() => history.push('')}>Inicio</a></li>
+                            <li className="breadcrumb-item text-sm"><a className="opacity-5 text-dark aclick" onClick={() => history.push('/dashboard')}>Dashboard</a></li>
+                            <li className="breadcrumb-item text-sm text-dark active" aria-current="page">{section}</li>
                         </ol>
-                        <h6 className="font-weight-bolder mb-0">Dashboard</h6>
+                        <h6 className="font-weight-bolder mb-0">{section}</h6>
                     </nav>
                     <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                         <div className="ms-md-auto pe-md-3 d-flex align-items-center">
                             <div className="input-group">
-                                <span className="input-group-text text-body"><i className="fas fa-search" aria-hidden="true"></i></span>
-                                <input type="text" className="form-control" placeholder="Type here..." />
                             </div>
                         </div>
                         <ul className="navbar-nav  justify-content-end">
-                            <li className="nav-item d-flex align-items-center">
-                                <a className="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"
-                                    href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard" rel="noreferrer">Online Builder</a>
-                            </li>
-                            <li className="nav-item d-flex align-items-center">
-                                <a href="#" className="nav-link text-body font-weight-bold px-0">
-                                    <i className="fa fa-user me-sm-1"></i>
-                                    <span className="d-sm-inline d-none">Sign In</span>
-                                </a>
-                            </li>
                             <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
                                 <a href="#" className="nav-link text-body p-0" id="iconNavbarSidenav">
                                     <div className="sidenav-toggler-inner">
@@ -126,6 +119,17 @@ const NavBarDashboard = () => {
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li className="nav-item d-flex align-items-center">
+                                <a href="#" className="nav-link text-body font-weight-bold px-0">
+                                    <span className="d-sm-inline d-none">Nombre persona&nbsp;&nbsp;&nbsp; </span>
+                                    {/* <i className="fa fa-user me-sm-1"></i> */}
+                                </a>
+                            </li>
+
+                            <li className="nav-item d-flex align-items-center">
+                                <a className="btn btn-outline-info btn-sm mb-0 me-3"
+                                    href="#" rel="noreferrer">Cerrar Sesión</a>
                             </li>
                         </ul>
                     </div>

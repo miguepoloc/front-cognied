@@ -1,20 +1,24 @@
-.buttonUp{
-  position:fixed;
-  bottom:10px;
-  right:10px;
+.buttonUp {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
   width: 70px;
   height: 70px;
   background-color: #fc8890;
-  border-radius:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  z-index: 12; /*Por la seccion de objetivos.*/
-  -webkit-box-shadow: 4px 4px 37px -12px rgba(0,0,0,0.5); 
-  box-shadow: 4px 4px 37px -12px rgba(0,0,0,0.5);
+  z-index: 12;
+  /*Por la seccion de objetivos.*/
+  -webkit-box-shadow: 4px 4px 37px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 37px -12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+
 }
-.buttonUp:hover > svg{
+
+.buttonUp:hover>svg {
   animation-duration: .8s;
   animation-name: slideUp;
   animation-iteration-count: infinite;
@@ -26,8 +30,9 @@
   }
 
   50% {
-     margin-top: 120%;
+    margin-top: 120%;
   }
+
   to {
     margin-bottom: 200%;
   }
