@@ -10,7 +10,7 @@ import FooterDashboard from '../components/FooterDashboard'
 import Capsula1 from '../assets/img/modulo_emocional/Capsula_1.png'
 import ButtonLibro from '../components/ButtonLibro'
 
-const Dashboard = () => {
+const ModuloEmocional = () => {
   return (
         <>
             <div className="g-sidenav-show  bg-gray-100">
@@ -20,7 +20,7 @@ const Dashboard = () => {
                     <NavBarDashboard section="Módulo Emocional" />
                     <div className="container-fluid py-4">
                         <div >
-                            <img src={Capsula1} alt="rocket" className='img-capsula' />
+                            <img src={Capsula1} alt="capsula1" className='img-capsula' />
                         </div>
                         <FooterDashboard />
                         <ButtonLibro />
@@ -33,4 +33,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default ModuloEmocional
