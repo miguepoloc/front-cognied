@@ -1,8 +1,6 @@
-const { Exception } = require('sass');
 const {Survey} = require('./Survey')
 class Surveys {
   constructor(arrSurvey, build = true) {
-    console.log(arrSurvey);
     this.arrSurvey = arrSurvey;
     this.jsonSurvey = [];
     build ? this.buildSurveys() : null;
@@ -10,14 +8,26 @@ class Surveys {
     this.IndiceMaximo = this.jsonSurvey.length - 1;
   }
 
-  selectOption(id_pregunta,id_answer){
-    try{
-      this.jsonSurvey[this.incIndiceActual].searchQuestion(id_pregunta).setSelected(id_answer)
-    }catch(e){
-      consol.err(e)
+  /**
+   * Asigna una respuesta a una pregunta.
+   * @param {number} id_pregunta 
+   * @param {number} id_answer 
+   */
+  selectOption(id_pregunta, id_answer) {
+    try {
+      this.jsonSurvey[this.indiceActual]
+        .searchQuestion(id_pregunta)
+        .setSelected(id_answer);
+    } catch (e) {
+      console.log(e);
     }
-    
   }
+
+  /**
+   * Cuando se crea una instancia con build = false esto permite agregarle un json
+   * y contruir el json de encuestas (jsonArray)
+   * @param {Array<json>} arrSurvey 
+   */
 
   setArrayAndBuild(arrSurvey) {
     this.arrSurvey = arrSurvey;
@@ -25,6 +35,10 @@ class Surveys {
     this.IndiceMaximo = this.jsonSurvey.length - 1;
   }
 
+  /**
+   * Retorna un clon del objeto.
+   * @returns {Survey}
+   */
   clone() {
     return Object.create(
       Object.getPrototypeOf(this),
@@ -32,22 +46,60 @@ class Surveys {
     );
   }
 
-  nextSurvey() {
-    return this.incIndiceActual()? this.clone(): this; //Si no puede avanzar más no clona el objeto.
+  /**
+   * Verifica si todas las preguntas de la encuesta actual han sido respondidas.
+   * @returns {boolean}
+   */
+
+  isAllQuestionsSelected() {
+    return this.jsonSurvey[this.indiceActual].questions.every(
+      (objQuestion) => objQuestion.getSelected() != null
+    );
   }
 
+  /**
+   * @returns Retorna un clon del objeto si puede pasar a la siguien encuesta, se retorna así mismo (this) si no.
+   */
+  nextSurvey() {
+    return this.incIndiceActual() ? this.clone() : this; //Si no puede avanzar más no clona el objeto.
+  }
+
+  markAllQuestionSelected(){
+    this.jsonSurvey[this.indiceActual].questions.map((objQuestion)=>{
+      if(objQuestion.getSelected())
+      document.getElementById(`answer_${objQuestion.getSelected()}`).click()
+    })
+  }
+
+  /**
+   * @returns Retorna un clon del objeto si puede ir a la encuesta anterior, se retorna así mismo (this) si no.
+   */
   prevSurvey() {
     return this.decIndiceActual() ? this.clone() : this; //Si no puede retroceder más no clona el objeto.
   }
 
-  incIndiceActual(){
+  /**
+   * valida si puede incrementar el indice actual
+   * @returns {boolean}
+   */
+  incIndiceActual() {
     //Todo: validar las respuestas de la encuesta actual antes de incrementar.
-    let valorEntrante = this.indiceActual;
-    this.indiceActual =  this.indiceActual + 1 <= this.IndiceMaximo? this.indiceActual+1:this.IndiceMaximo;
-    return valorEntrante != this.indiceActual //Si se incrementa retorna true.
+    if (this.isAllQuestionsSelected()) {
+      let valorEntrante = this.indiceActual;
+      this.indiceActual =
+        this.indiceActual + 1 <= this.IndiceMaximo
+          ? this.indiceActual + 1
+          : this.IndiceMaximo;
+      return valorEntrante != this.indiceActual; //Si se incrementa retorna true.
+    }
+    return false;
   }
-  
-  decIndiceActual(){
+
+  /**
+   * valida si puede decrementar el indice actual
+   * @returns {boolean}
+   */
+  decIndiceActual() {
     let valorEntrante = this.indiceActual;
     this.indiceActual = this.indiceActual - 1 >= 0 ? this.indiceActual - 1 : 0;
     return valorEntrante != this.indiceActual; //Si se decrementa retorna true.
@@ -57,11 +109,15 @@ class Surveys {
     return this.jsonSurvey;
   }
 
-  pushSurvey(newSurvey){
+  /**
+   * La funcion ordena las encuestas a medida que las agrega.
+   * @param {Survey} newSurvey
+   */
+  pushSurvey(newSurvey) {
     this.jsonSurvey.push(newSurvey); //Las agrego en orden...
     this.jsonSurvey.sort(function (a, b) {
       return a.id_survey - b.id_survey;
-    }); 
+    });
   }
 
   buildSurveys() {
@@ -73,9 +129,7 @@ class Surveys {
         console.count("Cree una nueva por primera vez.");
         //debugger
         this.pushSurvey(surveyRecent);
-      }
-
-      if (survey.id_survey == surveyRecent.id_survey) {
+      } else if (survey.id_survey == surveyRecent.id_survey) {
         surveyRecent.addQuestion(survey);
       } else {
         let objSurvey = this.searchSurvey(survey.id_survey);
@@ -92,6 +146,11 @@ class Surveys {
     });
   }
 
+  /**
+   * Busca una encuesta por su id.
+   * @param {number} id 
+   * @returns {Survey}
+   */
   searchSurvey(id) {
     let search = this.jsonSurvey.filter((survey) => survey.id_survey == id);
     return search.length ? search[0] : null;

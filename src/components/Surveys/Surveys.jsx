@@ -1,21 +1,26 @@
 import React, { useEffect, useState,useRef } from "react"
 import { Surveys as model_surveys } from "../../assets/js/model_survey/Surveys";
-//import estilo from "../../assets/css/Surveys.scss";
+import "../../assets/css/Surveys.scss";
 import Survey from "./Survey";
 const Surveys = () => {
-
+  console.count("me he actualizado")
     const [surveys, setSurveys] = useState(new model_surveys(null, false));
+    const [nextOrPrev, setNextOrPrev] = useState(false); //lo uso para cargar las preguntas si da back.
 
     const handeNextIndexButton = async (e) => {
       setSurveys(surveys.nextSurvey());
+      setNextOrPrev(!nextOrPrev);
     };
 
-     const handePrevIndexButton = () => {
+     const handePrevIndexButton = async () => {
+       let temp = surveys
        setSurveys(surveys.prevSurvey());
+        setNextOrPrev(!nextOrPrev); //Lo niego para que cambie el estado si o si. debo validar que 
      };
 
      const selectOption = (id_pregunta, id_answer) => {
        surveys.selectOption(id_pregunta, id_answer);
+       setSurveys(surveys)
      };
 
     /*Devuelve un array o un valor null*/
@@ -41,6 +46,14 @@ const Surveys = () => {
     useEffect(function() {
       getSurveys();
     }, []);
+    useEffect(
+      function () {
+        if (surveys.arrSurvey) surveys.markAllQuestionSelected();
+      },
+      [nextOrPrev]
+    );
+
+
   return (
     <>
       <section className="container">

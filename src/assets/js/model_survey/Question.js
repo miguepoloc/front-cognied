@@ -10,7 +10,9 @@ class Question{
   setSelected(id_answer){
     this.selected = id_answer
   }
-
+  getSelected(){
+    return this.selected
+  }
   addAnswer(json){
     this.answer.push({
       "id_answer":json.id_answer,

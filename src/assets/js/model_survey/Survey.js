@@ -12,9 +12,6 @@ class Survey{
     this.addQuestion(json); //el json trae una pregunta, entonces la apregamos. añado ese objeto al reciente.
   }
 
-  markAnswer(id_question, id_answer){
-    //TODO: buscar en las preguntas el id y asignarle como marcada la que la persona marcó
-  }
 
   updateQuestionRecent(objQuestion){
     this.questionRecent = objQuestion;

@@ -13,6 +13,7 @@ const Answer = ({ name,answer, id_question,selectOption }) => {
         name={name}
         value={answer.id_answer}
         onClick={handleClickAnswer}
+        id={`answer_${answer.id_answer}`}
       />
       {answer.answer}
     </label>
