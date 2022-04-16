@@ -1,3 +1,4 @@
+const { Question } = require('./Question');
 const {Survey} = require('./Survey')
 class Surveys {
   constructor(arrSurvey, build = true) {
@@ -155,6 +156,20 @@ class Surveys {
     let search = this.jsonSurvey.filter((survey) => survey.id_survey == id);
     return search.length ? search[0] : null;
   }
+
+  generateJsonToSend(id_usuario){
+    //Una vez todo se haya respondido
+    let json = {}
+    this.jsonSurvey.map((survey) =>{
+      json[survey.id_survey] = [];
+      survey.questions.map((question)=>{
+        json[survey.id_survey].push(question.getSelected());
+      })
+    }
+    )
+    return json
+  }
+
 }
 
 module.exports = {Surveys}

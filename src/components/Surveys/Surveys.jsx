@@ -10,6 +10,7 @@ const Surveys = () => {
     const handeNextIndexButton = async (e) => {
       setSurveys(surveys.nextSurvey());
       setNextOrPrev(!nextOrPrev);
+       console.log(surveys.generateJsonToSend("15"))
     };
 
      const handePrevIndexButton = async () => {
