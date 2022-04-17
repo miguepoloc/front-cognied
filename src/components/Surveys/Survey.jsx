@@ -4,6 +4,9 @@ import Questions from "./Questions";
 
 
 const Survey = ({ survey, selectOption}) => {
+  const root = document.documentElement;
+  root.style.setProperty("--colorCheck", survey.color); //Sirve para cambiar el color del check.
+
   return (
     <>
       <div className="callout mb-4" style={{ borderLeftColor: survey.color }}>

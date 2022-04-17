@@ -5,6 +5,11 @@ $colorInput:#17A2B8;
   $colorInput:#17A2B8;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
 .callout {
   padding: 20px;
   margin: 20px 0;
@@ -75,7 +80,7 @@ $colorInput:#17A2B8;
 }
 
 .option-input:checked {
-    background: $colorInput
+    background: var(--colorCheck);
 }
 
 .option-input:checked::before {
@@ -91,10 +96,10 @@ $colorInput:#17A2B8;
 }
 
 .option-input:checked::after {
-    -webkit-animation: click-wave 0.25s;
-    -moz-animation: click-wave 0.25s;
-    animation: click-wave 0.25s;
-    background: #17A2B8;
+    -webkit-animation: click-wave 0.3s;
+    -moz-animation: click-wave 0.3s;
+    animation: click-wave 0.3s;
+    background: var(--colorCheck);;
     content: '';
     display: block;
     position: relative;

@@ -11,8 +11,8 @@ class Surveys {
 
   /**
    * Asigna una respuesta a una pregunta.
-   * @param {number} id_pregunta 
-   * @param {number} id_answer 
+   * @param {number} id_pregunta
+   * @param {number} id_answer
    */
   selectOption(id_pregunta, id_answer) {
     try {
@@ -27,7 +27,7 @@ class Surveys {
   /**
    * Cuando se crea una instancia con build = false esto permite agregarle un json
    * y contruir el json de encuestas (jsonArray)
-   * @param {Array<json>} arrSurvey 
+   * @param {Array<json>} arrSurvey
    */
 
   setArrayAndBuild(arrSurvey) {
@@ -59,24 +59,24 @@ class Surveys {
   }
 
   /**
-   * @returns Retorna un clon del objeto si puede pasar a la siguien encuesta, se retorna así mismo (this) si no.
+   * @returns {Survey | null} Retorna un clon del objeto si puede pasar a la siguien encuesta, de lo contrario retorna null.
    */
   nextSurvey() {
-    return this.incIndiceActual() ? this.clone() : this; //Si no puede avanzar más no clona el objeto.
+    return this.incIndiceActual() ? this.clone() : null; //Si no puede avanzar más no clona el objeto.
   }
 
-  markAllQuestionSelected(){
-    this.jsonSurvey[this.indiceActual].questions.map((objQuestion)=>{
-      if(objQuestion.getSelected())
-      document.getElementById(`answer_${objQuestion.getSelected()}`).click()
-    })
+  markAllQuestionSelected() {
+    this.jsonSurvey[this.indiceActual].questions.map((objQuestion) => {
+      if (objQuestion.getSelected())
+        document.getElementById(`answer_${objQuestion.getSelected()}`).click();
+    });
   }
 
   /**
-   * @returns Retorna un clon del objeto si puede ir a la encuesta anterior, se retorna así mismo (this) si no.
+   * @returns {Survey | null} Retorna un clon del objeto si puede ir a la encuesta anterior, de lo contrario retorna null.
    */
   prevSurvey() {
-    return this.decIndiceActual() ? this.clone() : this; //Si no puede retroceder más no clona el objeto.
+    return this.decIndiceActual() ? this.clone() : null; //Si no puede retroceder más no clona el objeto.
   }
 
   /**
@@ -149,7 +149,7 @@ class Surveys {
 
   /**
    * Busca una encuesta por su id.
-   * @param {number} id 
+   * @param {number} id
    * @returns {Survey}
    */
   searchSurvey(id) {
@@ -157,19 +157,17 @@ class Surveys {
     return search.length ? search[0] : null;
   }
 
-  generateJsonToSend(id_usuario){
+  generateJsonToSend(id_usuario) {
     //Una vez todo se haya respondido
-    let json = {}
-    this.jsonSurvey.map((survey) =>{
+    let json = {};
+    this.jsonSurvey.map((survey) => {
       json[survey.id_survey] = [];
-      survey.questions.map((question)=>{
+      survey.questions.map((question) => {
         json[survey.id_survey].push(question.getSelected());
-      })
-    }
-    )
-    return json
+      });
+    });
+    return json;
   }
-
 }
 
 module.exports = {Surveys}

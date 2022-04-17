@@ -10,7 +10,7 @@ const Question = ({
   selectOption,
 }) => {
   return (
-    <div className="mb-4  col-12  col-lg-6 col-xl-4">
+    <div className="mb-4  col-12  col-lg-6">
       <div
         className="card-header  d-flex align-items-center"
         style={{ backgroundColor: color }}
