@@ -9,73 +9,8 @@ import AboutUs from '../components/LandingPage/AboutUs'
 import Scroll from '../helpers/helperScroll'
 import Survey from '../components/Surveys/Survey'
 import Surveys from '../components/Surveys/Surveys'
+import IdentificarEmociones from '../components/Act_1.1/identificarEmociones'
 function LandingPage () {
-
-  const prueba = {
-    questions: [
-      {
-        question: 'Me siento más nervioso y ansioso que de costumbre.',
-        id: 1,
-        answers: [
-          { answer: 'Siempre', value: 4 },
-          { answer: 'Casi siempre', value: 3 },
-          { answer: 'Algunas veces', value: 2 },
-          { answer: 'Nunca', value: 1 }
-        ]
-      },
-      {
-        question: 'Me da miedo sin razón alguna.',
-        id: 2,
-        answers: [
-          { answer: 'Siempre', value: 4 },
-          { answer: 'Casi siempre', value: 3 },
-          { answer: 'Algunas veces', value: 2 },
-          { answer: 'Nunca', value: 1 }
-        ]
-      },
-      {
-        question: 'Me enojo fácilmente o siento pánico.',
-        id: 3,
-        answers: [
-          { answer: 'Siempre', value: 4 },
-          { answer: 'Casi siempre', value: 3 },
-          { answer: 'Algunas veces', value: 2 },
-          { answer: 'Nunca', value: 1 }
-        ]
-      },
-      {
-        question: 'Siento que me estoy desmoronando.',
-        id: 4,
-        answers: [
-          { answer: 'Siempre', value: 4 },
-          { answer: 'Casi siempre', value: 3 },
-          { answer: 'Algunas veces', value: 2 },
-          { answer: 'Nunca', value: 1 }
-        ]
-      },
-      {
-        question: 'Mis brazos y piernas tiemblan.',
-        id: 5,
-        answers: [
-          { answer: 'Siempre', value: 4 },
-          { answer: 'Casi siempre', value: 3 },
-          { answer: 'Algunas veces', value: 2 },
-          { answer: 'Nunca', value: 1 }
-        ]
-      },
-      {
-        question:
-          'Me molestan los dolores de cabeza, cuello y dolor de espalda.',
-        id: 6,
-        answers: [
-          { answer: 'Siempre', value: 4 },
-          { answer: 'Casi siempre', value: 3 },
-          { answer: 'Algunas veces', value: 2 },
-          { answer: 'Nunca', value: 1 }
-        ]
-      }
-    ]
-  }
 
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
@@ -103,7 +38,8 @@ function LandingPage () {
       <AboutUs section={secciones.AboutUs} />
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
-      <Surveys />
+      {/* <Surveys /> */}
+      <IdentificarEmociones/>
     </>
   );
 }

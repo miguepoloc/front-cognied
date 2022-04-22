@@ -24,6 +24,21 @@ class Surveys {
     }
   }
 
+  selectAllOptionRandom() {
+    try {
+      this.jsonSurvey.map((survey) => {
+          survey.questions.map((question) => {
+            let repuestaAleatorea = Math.floor(
+              Math.random() * question.answer.length
+            );
+            question.setSelected(question.answer[repuestaAleatorea].id_answer);
+          });
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   /**
    * Cuando se crea una instancia con build = false esto permite agregarle un json
    * y contruir el json de encuestas (jsonArray)
@@ -58,6 +73,14 @@ class Surveys {
     );
   }
 
+  isAllSurveysAnswered(){
+    return this.jsonSurvey.every(survey=>{
+     return survey.questions.every(
+      (objQuestion) => objQuestion.getSelected() != null
+    ) 
+    });
+  }
+
   /**
    * @returns {Survey | null} Retorna un clon del objeto si puede pasar a la siguien encuesta, de lo contrario retorna null.
    */
@@ -65,6 +88,9 @@ class Surveys {
     return this.incIndiceActual() ? this.clone() : null; //Si no puede avanzar más no clona el objeto.
   }
 
+  /**
+   * Marca las respuestas que hayan sido respondidas en la encuesta actual.
+   */
   markAllQuestionSelected() {
     this.jsonSurvey[this.indiceActual].questions.map((objQuestion) => {
       if (objQuestion.getSelected())
@@ -159,6 +185,7 @@ class Surveys {
 
   generateJsonToSend(id_usuario) {
     //Una vez todo se haya respondido
+    //Id usuario
     let json = {};
     this.jsonSurvey.map((survey) => {
       json[survey.id_survey] = [];

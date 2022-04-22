@@ -9,6 +9,7 @@ const Question = ({
   color,
   selectOption,
 }) => {
+
   return (
     <div className="mb-4  col-12  col-lg-6">
       <div
@@ -24,11 +25,14 @@ const Question = ({
           {question.answer.map((answer, i) => {
             return (
               <Answer
-                name={`${name}_${index}`}
-                answer = {answer}
-                id_question = {question.id_question}
+                _name={`${name}_${index}`}
+                _text_answer={answer.answer}
+                _id={`answer_${answer.id_answer}`}
                 key={`${answer.id_answer}`}
-                selectOption={selectOption}
+                handleClickAnswer={()=>selectOption(
+                  question.id_question,
+                  answer.id_answer
+                )}
               />
             );
           })}

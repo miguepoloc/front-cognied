@@ -1,29 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Answer = ({ name,answer, id_question,selectOption }) => {
-  const handleClickAnswer = () => {
-    selectOption(id_question, answer.id_answer);
-  };
+const Answer = ({ _name,_text_answer, _id ,_value ,handleClickAnswer }) => {
+
   return (
     <label>
       <input
         type="radio"
         className="option-input radio "
-        name={name}
-        value={answer.id_answer}
+        name={_name}
+        // value={_value}
         onClick={handleClickAnswer}
-        id={`answer_${answer.id_answer}`}
+        id={_id}
       />
-      {answer.answer}
+      {_text_answer}
     </label>
   );
 };
-/*
+
 Answer.propTypes = {
-  name: PropTypes.string,
-  value: PropTypes.string,
-  text: PropTypes.string,
-};*/
+  _name:  PropTypes.string,
+  _id: PropTypes.string,
+  _value: PropTypes.number,
+  _text_answer: PropTypes.string,
+  handleClickAnswer: PropTypes.func,
+};
 
 export default Answer;
