@@ -1,5 +1,5 @@
 import React from 'react'
-import '../assets/css/Objetives.scss'
+import '../../assets/css/Objetives.scss'
 import { FaShareAlt, FaPencilAlt, FaLightbulb, FaCodeBranch } from 'react-icons/fa'
 
 const Objetives = ({ section }) => {

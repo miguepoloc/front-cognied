@@ -6,6 +6,7 @@ const AuthContext = createContext()
 const { Provider } = AuthContext
 
 const AuthProvider = ({ children }) => {
+  
   const history = useHistory()
 
   // Cookies Names

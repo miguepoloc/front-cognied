@@ -1,6 +1,6 @@
 import React from 'react'
-import DigitalmenteProyectoImg from '../assets/img/digitalmente.jpg'
-import '../assets/css/AboutUs.scss'
+import DigitalmenteProyectoImg from '../../assets/img/digitalmente.jpg'
+import '../../assets/css/AboutUs.scss'
 const AboutUs = ({ section }) => {
   return (
       <>
