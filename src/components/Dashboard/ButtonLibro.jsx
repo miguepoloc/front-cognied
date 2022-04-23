@@ -35,7 +35,10 @@ const ButtonLibro = () => {
         <Modal.Header closeButton>
           <Modal.Title>Referencia</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Calderón Rodríguez, M., González Mora, G., Salazar Segnini, P. y Washburn Madrigal, S. (2012). Aprendiendo sobre las emociones: manual de educación emocional. Coordinación Educativa y Cultural Centroamericana.</Modal.Body>
+        <Modal.Body>
+          Calderón Rodríguez, M., González Mora, G., Salazar Segnini, P. y Washburn Madrigal, S. (2012). Aprendiendo sobre las emociones: manual de educación emocional. Coordinación Educativa y Cultural Centroamericana.
+
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cerrar

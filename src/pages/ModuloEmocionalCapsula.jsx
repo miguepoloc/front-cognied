@@ -7,7 +7,6 @@ import '../assets/css/ModuloEmocional.scss'
 import BarraLateral from '../components/Dashboard/BarraLateral'
 import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import FooterDashboard from '../components/Dashboard/FooterDashboard'
-import Capsula1 from '../assets/img/modulo_emocional/Capsula_1.png'
 import ButtonLibro from '../components/Dashboard/ButtonLibro'
 
 const ModuloEmocionalCapsula = ({ capsula, nombrecapsula }) => {
