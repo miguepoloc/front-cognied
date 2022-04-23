@@ -60,7 +60,6 @@ const AppRoutes = () => (
   <>
     <Suspense fallback={<LoadingFallback />}>
       <Switch>
-
         <Route exact path="/">
           <LandingPage style="onlyLogo" />
         </Route>
@@ -123,6 +122,6 @@ const AppRoutes = () => (
       </Switch>
     </Suspense>
   </>
-)
+);
 
 export default AppRoutes

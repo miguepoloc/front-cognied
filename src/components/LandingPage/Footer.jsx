@@ -1,9 +1,9 @@
 import React from 'react'
-import '../assets/css/Footer.scss'
-import Escudo from '../assets/img/escudo_monocromatico.png'
-import Escudo2 from '../assets/img/Escudo_Unimag.svg'
-import Grupo from '../assets/img/logo_grupo.svg'
-import Logo from '../assets/img/Logo_Monocromatico.svg'
+import '../../assets/css/Footer.scss'
+import Escudo from '../../assets/img/escudo_monocromatico.png'
+import Escudo2 from '../../assets/img/Escudo_Unimag.svg'
+import Grupo from '../../assets/img/logo_grupo.svg'
+import Logo from '../../assets/img/Logo_Monocromatico.svg'
 
 import { FaInstagram, FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 const Footer = ({ section }) => {

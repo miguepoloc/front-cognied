@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
-import Home from '../components/Home'
-import NavBar from '../components/NavBar'
-import Objetives from '../components/Objetives'
-import ButtonToUp from '../components/ButtonToUp'
-import Footer from '../components/Footer'
+import Home from '../components/LandingPage/Home'
+import NavBar from '../components/LandingPage/NavBar'
+import Objetives from '../components/LandingPage/Objetives'
+import ButtonToUp from '../components/LandingPage/ButtonToUp'
+import Footer from '../components/LandingPage/Footer'
 
-import AboutUs from '../components/AboutUs'
+import AboutUs from '../components/LandingPage/AboutUs'
 import Scroll from '../helpers/helperScroll'
 import ContactUs from '../components/ContactUs'
+import Survey from '../components/Surveys/Survey'
+import Surveys from '../components/Surveys/Surveys'
+import IdentificarEmociones from '../components/Act_1.1/identificarEmociones'
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
@@ -25,18 +28,20 @@ function LandingPage () {
     scroll.eventScroll()
   })
   return (
-        <>
-            <NavBar
-                Secciones={secciones}
-                PrimeraSeccion={secciones.Home}
-                scroll={scroll}/>
-            <Home section={secciones.Home} style="onlyLogo" />
-            <AboutUs section={secciones.AboutUs} />
-            <Objetives section={secciones.Objetivos} />
-            <ContactUs section={secciones.ContactUs} />
-            <Footer />
-            <ButtonToUp Scroll={scroll} seccionToUp = {secciones.Home.id}/>
-        </>
+    <>
+      <NavBar
+        Secciones={secciones}
+        PrimeraSeccion={secciones.Home}
+        scroll={scroll} />
+      <Home section={secciones.Home} style="onlyLogo" />
+      <AboutUs section={secciones.AboutUs} />
+      <Objetives section={secciones.Objetivos} />
+      <ContactUs section={secciones.ContactUs} />
+      <Footer />
+      <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
+      {/* <Surveys /> */}
+      <IdentificarEmociones />
+    </>
   )
 }
 
