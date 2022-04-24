@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Team2 from '../../assets/img/team-2.jpg'
 import Spotify from '../../assets/img/small-logos/logo-spotify.svg'
 import '../../assets/css/NavBarDashboard.scss'
 
 import { useHistory } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext'
 
 const NavBarDashboard = ({ section }) => {
   const history = useHistory()
+  const auth = useContext(AuthContext)
 
   return (
         <>
@@ -123,6 +125,7 @@ const NavBarDashboard = ({ section }) => {
                             </li>
                             <li className="nav-item d-flex align-items-center">
                                 <a href="#" className="nav-link text-body font-weight-bold px-0">
+                                    {auth && <div>{auth?.authState?.userInfo?.document}</div>}
                                     <span className="d-sm-inline d-none">Nombre persona&nbsp;&nbsp;&nbsp; </span>
                                     {/* <i className="fa fa-user me-sm-1"></i> */}
                                 </a>

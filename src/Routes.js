@@ -108,6 +108,14 @@ const AppRoutes = () => (
           <ModuloEmocionalCapsula capsula={Capsula8} nombrecapsula={'Cápsula 8'} />
         </Route>
 
+        <Route exact path="/emocionalejer1">
+          <ModuloEmocionalCapsula capsula={Capsula8} nombrecapsula={'Ejercicio 1'} />
+        </Route>
+
+        <Route exact path="/emocionalejer2">
+          <ModuloEmocionalCapsula capsula={Capsula8} nombrecapsula={'Ejercicio 2'} />
+        </Route>
+
         <AuthenticatedRoute path="/auth">
           <PageAuth />
         </AuthenticatedRoute>
@@ -122,6 +130,6 @@ const AppRoutes = () => (
       </Switch>
     </Suspense>
   </>
-);
+)
 
 export default AppRoutes
