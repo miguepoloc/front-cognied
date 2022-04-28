@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../assets/css/Surveys.scss";
 import Answer from "../Surveys/Answer";
 import swal from "sweetalert2";
-import pato from "./img/pato.jpg"
+import ganso_lupa_celular from "../../assets/img/ganso/ganso_lupa_celular.png"
 
 const IdentificarEmociones = () => {
     window.Swal = swal;
@@ -126,7 +126,7 @@ const IdentificarEmociones = () => {
             <img
               style={{ width: "150px", height: "150px" }}
               className="card-img-left flex-auto d-none d-md-block "
-              src={pato}
+              src={ganso_lupa_celular}
             />
             <div className="card-body d-flex flex-column align-items-start justify-content-center">
               <h5 className="card-title">Actividad 1.1</h5>
@@ -161,7 +161,7 @@ const IdentificarEmociones = () => {
           </div>
         </div>
       </div>
-      <div className="row">
+      <div className="row"> 
         <div className="col-md-8">
           <div
             dangerouslySetInnerHTML={{
