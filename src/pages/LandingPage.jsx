@@ -36,11 +36,11 @@ function LandingPage () {
       <Home section={secciones.Home} style="onlyLogo" />
       <AboutUs section={secciones.AboutUs} />
       <Objetives section={secciones.Objetivos} />
-      <ContactUs section={secciones.ContactUs} />
+      {/* <ContactUs section={secciones.ContactUs} /> */}
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
       {/* <Surveys /> */}
-      <IdentificarEmocionesPart2 />
+       <IdentificarEmocionesPart2 /> 
     </>
   )
 }

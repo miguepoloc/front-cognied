@@ -25,7 +25,7 @@ const IdentificarEmociones = () => {
     activities: [
       {
         name: "Actividad 1",
-        correctAnswerIndex: 1,
+        correctAnswerIndex: 1, //Hace referencia al indice del vector opcions.
         correctAnswerText: "Asco",
         url: `aHR0cHM6Ly9jZG4ucGl4YWJheS5jb20vcGhvdG8vMjAxNy8wOC8yNS8yMS80NC9zaG9ja2VkLTI2ODE0ODhfOTYwXzcyMC5qcGdfKG5vX3ByZXZpZXdfNClfKG5vcD0xMik~`,
         text: `El asco comprende un rechazo o repugnancia hacia algo desagradable o repugnante. Es una respuesta emocional cuya función es prepararte ante el rechazo a situaciones (ya sea físicas, psicológicas u otras) que podrían ser dañinas, dirigiendo la acción hacia el alejamiento de lo que lo provoca. Principalmente potencia los hábitos saludables <hr/> <i>(Fernandez-Abascal et al., 2010)</i>.`,
