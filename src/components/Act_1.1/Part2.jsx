@@ -7,6 +7,7 @@ import "../../assets/css/Surveys.scss";
 import Answer from "../Surveys/Answer";
 import swal from "sweetalert2";
 import ganso_elegante from "../../assets/img/ganso/ganso_elegante.png"
+import ganso_stop from "../../assets/img/ganso/ganso_stop.png"
 import alegria from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Alegria.jpg"
 import asco from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Asco.jpg"
 import ira from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Ira.jpg"
@@ -15,7 +16,20 @@ import sorpresa from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/S
 import tristeza from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Tristeza.jpg"
 import Scroll from '../../helpers/helperScroll'
 
-const IdentificarEmocionesPart2 = () => {
+const initialOptions = {
+  select_sensaciones_0: -1,
+  select_sensaciones_1: -1,
+  select_sensaciones_2: -1,
+  select_pensamientos_0: -1,
+  select_pensamientos_1: -1,
+  select_pensamientos_2: -1,
+  select_acciones_0: -1,
+  select_acciones_1: -1,
+  select_acciones_2: -1
+};
+
+const Part2 = () => {
+  const color = "#4cbeff";
     window.Swal = swal;
   /*
     •	Sorpresa.
@@ -72,12 +86,12 @@ const IdentificarEmocionesPart2 = () => {
         {option:"Erizamiento de la piel.",isCorrect: false},
       ],
       pensamientos: [
-        {option:"Percepción de incertidumbre.",isCorrect: false},
+        {option:"Pensamientos de preocupación.",isCorrect: true},
         {option:"Percepción de daño.",isCorrect: true},
         {option:"Pensamientos optimistas.", isCorrect: false},
         {option:"Percepción de peligro.",isCorrect: true},
         {option:"Reflexión sobre la vida.",isCorrect: false},
-        {option:"Pensamientos de preocupación.",isCorrect: true}
+                                                                                  
       ],
       acciones: [
         {option:"Retirarse.",isCorrect: true},
@@ -103,7 +117,7 @@ const IdentificarEmocionesPart2 = () => {
         {option:"Aumento del tono muscular.",isCorrect: true},
       ],
       pensamientos: [
-        {option:"Percepción en torno a la aflicción.",isCorrect: true},
+        {option:"Pensamientos de aflicción.",isCorrect: true},
         {option:"Percepción de daño.",isCorrect: false},
         {option:"Percepción de peligro.", isCorrect: false},
         {option:"“¡Esto es lo peor!”",isCorrect: true},
@@ -203,91 +217,204 @@ const IdentificarEmocionesPart2 = () => {
     Scroll.scroll("ejercicio",true);
   }
 
-  const [selectOption, setSelectOption] = useState({
-    select_sensaciones_0:-1,
-    select_sensaciones_1:-1,
-    select_sensaciones_2:-1,
-    select_pensamientos_0:-1,
-    select_pensamientos_1:-1,
-    select_pensamientos_2:-1,
-    select_acciones_0:-1,
-    select_acciones_1:-1,
-    select_acciones_2:-1
+  const errorAlert = (seccion)=>{
+    Swal.fire({
+      title: "<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
+      imageUrl: ganso_stop, //Corregir xd
+      imageWidth: 250,
+      imageHeight: 200,
+      imageAlt: "¿Seguro que no olvidaste hacer algo?",
+      html: `<p>Parece que en la columna <i><b>${seccion}</b></i> no diste respuesta a alguna(s) opcion(es)</p>`,
+      showCloseButton: false,
+      showCancelButton: false,
+      showConfirmButton: true,
+      confirmButtonColor: color,
+      confirmButtonText: `Aceptar`,
+      focusConfirm: true,
+    });
+  }
 
-  });
+  const errorAnswer = (seccion)=>{
+    Swal.fire({
+      title: "<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
+      imageUrl: ganso_stop, //Corregir xd
+      imageWidth: 250,
+      imageHeight: 200,
+      imageAlt: "¿Seguro que no olvidaste hacer algo?",
+      html: `<p>¡Sigue intentando! Una o más de las opciones de la columna  <i><b>${seccion}</b></i> no corresponde tan precisamente a la emoción</p>`,
+      showCloseButton: false,
+      showCancelButton: false,
+      showConfirmButton: true,
+      confirmButtonColor: color,
+      confirmButtonText: `Aceptar`,
+      focusConfirm: true,
+    });
+  }
+
+  const errorRepeatedAnswer = (seccion)=>{
+    Swal.fire({
+      title: "<h5><b>Respuesta repetida</b></h5>",
+      imageUrl: ganso_stop, //Corregir xd
+      imageWidth: 250,
+      imageHeight: 200,
+      imageAlt: "¿Seguro que no olvidaste hacer algo?",
+      html: `<p>Seleccionaste la misma opcion en la columna  <i><b>${seccion}</b></i>. las respuestas deben ser diferentes.</p>`,
+      showCloseButton: false,
+      showCancelButton: false,
+      showConfirmButton: true,
+      confirmButtonColor: color,
+      confirmButtonText: `Aceptar`,
+      focusConfirm: true,
+    });
+  }
+
+
+  const correctAnswer = (msg)=>{
+    return Swal.fire({
+      title: "<h5><b>Correcto</b></h5>",
+      imageUrl: ganso_elegante, //Corregir xd
+      imageWidth: 250,
+      imageHeight: 200,
+      imageAlt: "¿Seguro que no olvidaste hacer algo?",
+      html: msg,
+      showCloseButton: false,
+      showCancelButton: false,
+      showConfirmButton: true,
+      confirmButtonColor: color,
+      confirmButtonText: `Aceptar`,
+      focusConfirm: true,
+    });
+  }
+
+  const [selectOption, setSelectOption] = useState(initialOptions);
+
+ const restartValuesOption = () => {
+    setSelectOption(() => { return (initialOptions); });
+  }
+
   const [activityIndex, setActivityIndex] = useState(0)
+
   const handleChange = (event) => {
     setSelectOption(()=>{return {...selectOption, [event.target.name] : event.target.value}})
   }
 
   const handleSubmit = () => {
-    let valueSensaciones0 = selectOption.select_sensaciones_0;
-    let valueSensaciones1 = selectOption.select_sensaciones_1;
-    let valueSensaciones2 = selectOption.select_sensaciones_2;
-    let valuePensamientos0 = selectOption.select_pensamientos_0;
-    let valuePensamientos1 = selectOption.select_pensamientos_1;
-    let valuePensamientos2 = selectOption.select_pensamientos_2;
-    let valueAcciones0 = selectOption.select_acciones_0;
-    let valueAcciones1 = selectOption.select_acciones_1;
-    let valueAcciones2 = selectOption.select_acciones_2;
+    let valueSensaciones = [selectOption.select_sensaciones_0,selectOption.select_sensaciones_1,selectOption.select_sensaciones_2];
+    let valuePensamientos = [selectOption.select_pensamientos_0,selectOption.select_pensamientos_1,selectOption.select_pensamientos_2];
+    let valueAcciones = [selectOption.select_acciones_0,selectOption.select_acciones_1,selectOption.select_acciones_2];
     let sensaciones = seccion2.ejercicios[activityIndex].sensaciones;
     let pensamientos = seccion2.ejercicios[activityIndex].pensamientos;
     let acciones = seccion2.ejercicios[activityIndex].acciones;
+    let SinAcciones = seccion2.ejercicios[activityIndex].SinAcciones;
+
+    /* 
+      utilidades 
+    */
+    const countElementInArray = (array, value) => {
+      var count = 0;
+      array.forEach((v) => (v === value && count++));
+      return count;
+    }
+
+    const areUniqueValue = (arr)=>{
+      for (const value of arr) {
+        if(countElementInArray(arr,value) > 1)
+        {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    const areValidValues = (arr)=>{
+      for (const value of arr) {
+        if(value == -1)
+        {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    const areCorrectAnswers = (arr,column)=>{
+      for (const value of arr) {
+        if(!seccion2.ejercicios[activityIndex][column][value].isCorrect)
+        {
+          return false;
+        }
+      }
+      return true;
+    }
+
     /*
       Valido que el usuario haya seleccionado una respuesta por select.
     */
-    if(valueSensaciones0 == -1 || valueSensaciones1 == -1 || valueSensaciones2 == -1){
-      console.log("No has seleccionado alguna opcion de sensaciones");
+    if(!areValidValues(valueSensaciones)){
+      errorAlert("sensaciones");
       return null;
     }
 
-    if(valuePensamientos0  == -1 || valuePensamientos1 == -1 || valuePensamientos2 == -1){
-      console.log("No has seleccionado alguna opcion de pensamientos");
+    if(!areValidValues(valuePensamientos)){
+      errorAlert("pensamientos");
+      return null;
+    }
+    //Si sinacciones es null, entonces valida el lado derecho.
+    if(!SinAcciones && !areValidValues(valueAcciones)){
+      errorAlert("acciones");
       return null;
     }
 
-    if(valueAcciones0  == -1 || valueAcciones1 == -1 || valueAcciones2 == -1){
-      console.log("No has seleccionado alguna opcion de Acciones");
-      return null;
-    }
+    /*
+      Valido que las respuestas tengan diferente indice
+    */
+      if(!areUniqueValue(valueSensaciones)){
+        errorRepeatedAnswer("sensaciones");
+        return null;
+      }
+  
+      if(!areUniqueValue(valuePensamientos)){
+        errorRepeatedAnswer("pensamientos");
+        return null;
+      }
+      //Si sinacciones es null, entonces valida el lado derecho.
+      if(!SinAcciones && !areUniqueValue(valueAcciones)){
+        errorRepeatedAnswer("acciones");
+        return null;
+      }
+    
 
     /* 
       Valido que el usuario haya seleccionado las respuestas correctas.
-    */
-    
-    if(!(sensaciones[valueSensaciones0].isCorrect && 
-      sensaciones[valueSensaciones1].isCorrect && 
-      sensaciones[valueSensaciones2].isCorrect)){
-        console.log("¡Sigue intentando! Una o más de las opciones de la columna sensaciones no corresponde tan precisamente a la emoción")
+    */ 
+    if(!areCorrectAnswers(valueSensaciones,"sensaciones")){
+        errorAnswer("sensaciones");
         return null;
       }
-    if(!(pensamientos[valuePensamientos0].isCorrect && 
-        pensamientos[valuePensamientos1].isCorrect && 
-        pensamientos[valuePensamientos2].isCorrect)){
-          console.log("¡Sigue intentando! Una o más de las opciones de la columna pensamientos no corresponde tan precisamente a la emoción")
+    if(!areCorrectAnswers(valuePensamientos,"pensamientos")){
+          errorAnswer("pensamientos");
           return null;
-        }
-    if(!(acciones[valueAcciones0].isCorrect && 
-          acciones[valueAcciones1].isCorrect && 
-          acciones[valueAcciones2].isCorrect)){
-            console.log("¡Sigue intentando! Una o más de las opciones de la columna acciones no corresponde tan precisamente a la emoción")
+    }
+    if(!SinAcciones && !areCorrectAnswers(valueAcciones,"acciones")){
+            errorAnswer("acciones");
             return null;
-          }
-    setSelectOption(()=>{return({
-      select_sensaciones_0:-1,
-      select_sensaciones_1:-1,
-      select_sensaciones_2:-1,
-      select_pensamientos_0:-1,
-      select_pensamientos_1:-1,
-      select_pensamientos_2:-1,
-      select_acciones_0:-1,
-      select_acciones_1:-1,
-      select_acciones_2:-1
-  
-    })})
-    setActivityIndex(activityIndex + 1);
-    moveToEjercicio();
+    }
+
+    correctAnswer(seccion2.ejercicios[activityIndex].successMsg).then(()=>{
+      if(activityIndex + 1 < seccion2.ejercicios.length){
+        restartValuesOption();
+        setActivityIndex(activityIndex + 1);
+        moveToEjercicio(); //sube el scroll. muy util en dispositivos moviles.
+      }else{
+        console.log("terminaste crack.")
+      }
+    }
+      
+    )
+    
+    
   }
+
+  const SinAcciones = seccion2.ejercicios[activityIndex].SinAcciones;
 
   return (
     <div className="container">
@@ -318,9 +445,9 @@ const IdentificarEmocionesPart2 = () => {
         <div className="col">
           <div
             className="callout mb-5  h-md-250 "
-            style={{ borderLeftColor: "#4cbeff" }}
+            style={{ borderLeftColor: color }}
           >
-            <h5 style={{ color: "#4cbeff" }}>
+            <h5 style={{ color: color }}>
             <FontAwesomeIcon icon={faBolt} /> Tip 
             </h5>
 
@@ -334,7 +461,7 @@ const IdentificarEmocionesPart2 = () => {
 
 
       <div className="row mb-4 text-center" id="ejercicio"> 
-          <p className="text-strong" style={{ color: "#4cbeff" }}> <FontAwesomeIcon icon={faPencil} /> Ejercicio {activityIndex +1} de {seccion2.ejercicios.length} </p> 
+          <p className="text-strong" style={{ color: color }}> <FontAwesomeIcon icon={faPencil} /> Ejercicio {activityIndex +1} de {seccion2.ejercicios.length} </p> 
           <div className="text-center">
             <img className=" justify-content-center align-self-center" src={seccion2.ejercicios[activityIndex].image} alt="" style={{ width: "50%"}}/>
           </div>
@@ -348,9 +475,9 @@ const IdentificarEmocionesPart2 = () => {
           </div>
       </div>
       
-      <div className="row my-4">
-        <div className="col-sm">
-          <h5 style={{ color: "#4cbeff" }} className="text-center">
+      <div className="row my-4 align-items-center">
+        <div className="col-sm-6 col-lg-4">
+          <h5 style={{ color: color }} className="text-center">
           <FontAwesomeIcon icon={faHandSparkles} /> Sensaciones
           </h5>
 
@@ -366,8 +493,8 @@ const IdentificarEmocionesPart2 = () => {
             ))}
 
         </div>
-        <div className="col-sm">
-          <h5 style={{ color: "#4cbeff" }}  className="text-center">
+        <div className="col-sm-6 col-lg-4">
+          <h5 style={{ color: color }}  className="text-center">
           <FontAwesomeIcon icon={faBrain} /> Pensamientos 
           </h5>
 
@@ -383,23 +510,28 @@ const IdentificarEmocionesPart2 = () => {
             ))}
 
         </div>
-        <div className="col-sm">
-          <h5 style={{ color: "#4cbeff" }} className="text-center">
-           <FontAwesomeIcon icon={faLocationCrosshairs} />Acciones
-          </h5>
+        <div className="col-sm-12 col-lg-4">
+          {SinAcciones? (<>
+          <p className="text-justify">{seccion2.ejercicios[activityIndex].SinAcciones}</p>
+          </>):(<> 
+            <h5 style={{ color: color }} className="text-center">
+            <FontAwesomeIcon icon={faLocationCrosshairs} />Acciones
+            </h5>
 
-          {[...Array(3)].map((element,indexSelect)=>(
-              <Form.Select className="mb-4 mt-3" name={`select_acciones_${indexSelect}`} onChange={handleChange}>
-                <option value="-1">Seleccciona una opcion</option>
-              {seccion2.ejercicios[activityIndex].acciones.map((sensacion,sensacionindex)=>(
-                <>
-                <option value = {sensacionindex} key={`${seccion2.ejercicios[activityIndex].name}-select_acciones_${indexSelect}-${sensacionindex}`}>{sensacion.option}</option>
-                </>
-              ))}  
-              </Form.Select> 
-            ))}
+            {[...Array(3)].map((element,indexSelect)=>(
+                <Form.Select className="mb-4 mt-3" name={`select_acciones_${indexSelect}`} onChange={handleChange}>
+                  <option value="-1">Seleccciona una opcion</option>
+                {seccion2.ejercicios[activityIndex].acciones.map((sensacion,sensacionindex)=>(
+                  <>
+                  <option value = {sensacionindex} key={`${seccion2.ejercicios[activityIndex].name}-select_acciones_${indexSelect}-${sensacionindex}`}>{sensacion.option}</option>
+                  </>
+                ))}  
+                </Form.Select> 
+              ))}</>)
+          }
+         
         </div>
-        <Button variant="info" size="lg" className="my-3" style={{color:"white",backgroundColor:"#4cbeff"}} onClick={handleSubmit} >
+        <Button variant="info" size="lg" className="my-3" style={{color:"white",backgroundColor:color}} onClick={handleSubmit} >
           Submit
         </Button>
         </div>
@@ -408,4 +540,4 @@ const IdentificarEmocionesPart2 = () => {
   );
 }
 
-export default IdentificarEmocionesPart2;
+export default Part2;

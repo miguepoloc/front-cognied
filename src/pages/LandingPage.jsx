@@ -10,7 +10,7 @@ import Scroll from '../helpers/helperScroll'
 import ContactUs from '../components/ContactUs'
 import Survey from '../components/Surveys/Survey'
 import Surveys from '../components/Surveys/Surveys'
-import IdentificarEmocionesPart2 from '../components/Act_1.1/IdentificarEmocionesPart2'
+import IdentificarEmocionesPart2 from '../components/Act_1.1/Part2'
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
