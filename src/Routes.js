@@ -10,7 +10,9 @@ import Capsula5 from './assets/img/modulo_emocional/Capsula_5.png'
 import Capsula6 from './assets/img/modulo_emocional/Capsula_6.png'
 import Capsula7 from './assets/img/modulo_emocional/Capsula_7.png'
 import Capsula8 from './assets/img/modulo_emocional/Capsula_8.png'
-
+// import ModuloEmocionalEjercicio from './pages/ModuloEmocionalEjercicio'
+// import RuletaEmociones from './components/Act_2.2/RuletaEmociones'
+// import Part1 from './components/Act_1.1/Part1'
 const LandingPage = lazy(() => import('./pages/LandingPage'))
 const Login = lazy(() => import('./pages/Login'))
 const PageAuth = lazy(() => import('./pages/pageAuth'))
@@ -108,9 +110,13 @@ const AppRoutes = () => (
           <ModuloEmocionalCapsula capsula={Capsula8} nombrecapsula={'Cápsula 8'} />
         </Route>
 
-        <Route exact path="/emocionalejer1">
-          <ModuloEmocionalCapsula capsula={Capsula8} nombrecapsula={'Ejercicio 1'} />
+        {/* <Route exact path="/moduloRegulacionEmocional_ejercicio_1.1">
+          <ModuloEmocionalEjercicio ejercicio={<Part1 />} nombrecapsula={'Ejercicio 1.1'} />
         </Route>
+
+        <Route exact path="/moduloRegulacionEmocional_ejercicio_2.1">
+          <ModuloEmocionalEjercicio ejercicio={<RuletaEmociones />} nombrecapsula={'Ejercicio 2.1'} />
+        </Route> */}
 
         <Route exact path="/emocionalejer2">
           <ModuloEmocionalCapsula capsula={Capsula8} nombrecapsula={'Ejercicio 2'} />

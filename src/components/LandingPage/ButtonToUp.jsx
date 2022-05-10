@@ -4,7 +4,7 @@ const ButtonToUp = ({ Scroll, seccionToUpId }) => {
   return (
         <div
             onClick={() => Scroll.scroll('Home')}
-            className="buttonUp"
+            className="buttonUp bottomRight"
             dangerouslySetInnerHTML={{
               __html: `
                   <svg

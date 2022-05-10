@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom'
 import RuletaEmociones from '../components/Act_2.2/RuletaEmociones'
 import { Button } from 'react-bootstrap'
 
-const ModuloEmocionalCapsula = ({ capsula, nombrecapsula }) => {
+const ModuloEmocionalEjercicio = ({ ejercicio, nombrecapsula }) => {
   // assigning location variable
   const location = useLocation()
 
@@ -31,8 +31,7 @@ const ModuloEmocionalCapsula = ({ capsula, nombrecapsula }) => {
                     <NavBarDashboard section={nombrecapsula} />
                     <div className="container-fluid py-4">
                         <div >
-                            {<img src={capsula} alt="capsula" className='img-capsula' /> }
-
+                            {ejercicio}
                         </div>
                         <Button variant="primary" size="lg" disabled>
                             Primary button
@@ -48,4 +47,4 @@ const ModuloEmocionalCapsula = ({ capsula, nombrecapsula }) => {
   )
 }
 
-export default ModuloEmocionalCapsula
+export default ModuloEmocionalEjercicio;

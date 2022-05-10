@@ -8,282 +8,36 @@ import Answer from "../Surveys/Answer";
 import swal from "sweetalert2";
 import ganso_elegante from "../../assets/img/ganso/ganso_elegante.png"
 import ganso_stop from "../../assets/img/ganso/ganso_stop.png"
-import alegria from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Alegria.jpg"
-import asco from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Asco.jpg"
-import ira from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Ira.jpg"
-import miedo from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Miedo.jpg"
-import sorpresa from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Sorpresa.jpg"
-import tristeza from "../../assets/img/modulo_emocional/Actividad_1.1/seccion2/Tristeza.jpg"
 import Scroll from '../../helpers/helperScroll'
-
-const initialOptions = {
-  select_sensaciones_0: -1,
-  select_sensaciones_1: -1,
-  select_sensaciones_2: -1,
-  select_pensamientos_0: -1,
-  select_pensamientos_1: -1,
-  select_pensamientos_2: -1,
-  select_acciones_0: -1,
-  select_acciones_1: -1,
-  select_acciones_2: -1
-};
+import ButtonLibro from "../Dashboard/ButtonLibro"
+import {Warning_Alert, Correct_Alert } from "../../helpers/helper_Swal_Alerts";
+import { seccion2,initialOptions,areUniqueValue,areValidValues,areCorrectAnswers } from "../../helpers/helper_Reg_Emoc_act_1";
 
 const Part2 = () => {
   const color = "#4cbeff";
-    window.Swal = swal;
-  /*
-    •	Sorpresa.
-    •	Asco
-    •	Miedo
-    •	Alegría
-    •	Tristeza
-    •	Ira
- */
-//{option:"",isCorrect: true},
-  const seccion2 = {
-    ejercicios:[{
-      name:"Ejercicio 1",
-      image:asco,
-      text:"Cuando experimentas asco, ¿cómo has sentido que lo expresas?",
-      //errorMsg:"¡Sigue intentando! Una o más de las opciones de la columna sensaciones no corresponde tan precisamente a la emoción",
-      successMsg:"¡Correcto! Si bien estas no son todas ni las únicas manifestaciones de esta emoción, son algunas de las que podrías identificar cuando se activa. Identificar, por ejemplo, como experimentamos en nuestro cuerpo las emociones es un paso esencial para la gestión emocional. ",
-      sensaciones: [
-        {option:"Erizamiento de la piel.",isCorrect: false},
-        {option:"Aumento de la frecuencia cardiaca.",isCorrect: true},
-        {option:"Prolongación de la pausa entre inspiraciones.",isCorrect: true},
-        {option:"Bajo tono muscular.",isCorrect: false},
-        {option:"Nauseas." ,isCorrect: true},
-        {option:"Interrupción puntual de la respiración.", isCorrect: false}
-      ],
-      pensamientos: [
-        {option:"Pensamientos de rechazo.",isCorrect: true},
-        {option:"Pensamientos optimistas.",isCorrect: false},
-        {option:"Percepción de que algo no es como debería ser.", isCorrect: true},
-        {option:"¡Importante!",isCorrect: false},
-        {option:"¡Ugh!",isCorrect: true}
-      ],
-      acciones: [
-        {option:"Correr.",isCorrect: false},
-        {option:"Salta.",isCorrect: false},
-        {option:"Distanciarse.",isCorrect: true},
-        {option:"Cantar.",isCorrect: false},
-        {option:"Inmovilización.",isCorrect: false},
-        {option:"Evitación.",isCorrect: true},
-        {option:"Retirar la atención.",isCorrect: true},
-      ]
-    },
-    {
-      name:"Ejercicio 2",
-      image:miedo,
-      text:"Cuando experimentas miedo, ¿cómo has sentido que lo expresas?",
-      //errorMsg:"¡Sigue intentando! Una o más de las opciones de la columna sensaciones no corresponde tan precisamente a la emoción",
-      successMsg:"¡Correcto! Si bien estas no son todas ni las únicas manifestaciones de esta emoción, son algunas de las que podrías identificar cuando se activa. Recuerda que, por ejemplo, las acciones tienden a ser respuestas impulsivas que debemos saber identificar para gestionar.",
-      sensaciones: [
-        {option:"Aumento de la tensión muscular.",isCorrect: true},
-        {option:"Aumento de la frecuencia respiratoria.",isCorrect: true},
-        {option:"Prolongación de la pausa entre inspiraciones.",isCorrect: false},
-        {option:"Aumento de la frecuencia cardiaca.",isCorrect: true},
-        {option:"Erizamiento de la piel.",isCorrect: false},
-      ],
-      pensamientos: [
-        {option:"Pensamientos de preocupación.",isCorrect: true},
-        {option:"Percepción de daño.",isCorrect: true},
-        {option:"Pensamientos optimistas.", isCorrect: false},
-        {option:"Percepción de peligro.",isCorrect: true},
-        {option:"Reflexión sobre la vida.",isCorrect: false},
-                                                                                  
-      ],
-      acciones: [
-        {option:"Retirarse.",isCorrect: true},
-        {option:"Acercarse.",isCorrect: false},
-        {option:"Atacar.",isCorrect: true},
-        {option:"Inmovilizarse.",isCorrect: true},
-        {option:"Correr.",isCorrect: false},
-        {option:"Buscar en los bolsillos.",isCorrect: false},
-      ]
-    },
-    {
-      name:"Ejercicio 3",
-      image:tristeza,
-      text:"Cuando experimentas tristeza, ¿cómo has sentido que lo expresas?",
-      //errorMsg:"¡Sigue intentando! Una o más de las opciones de la columna sensaciones no corresponde tan precisamente a la emoción",
-      successMsg:"¡Correcto! Si bien estas no son todas ni las únicas manifestaciones de esta emoción, son algunas de las que podrías identificar cuando se activa. Los pensamientos que tienden a surgir cuando se experimenta una emoción pueden ser distorsionados o exagerados con respecto a la situación. ¡Por eso es importante reconocerlos!",
-      sensaciones: [
-        {option:"Aumento de la presión sanguínea.",isCorrect: true},
-        {option:"Aumento de la frecuencia respiratoria.",isCorrect: false},
-        {option:"Aumento de la frecuencia cardiaca.",isCorrect: false},
-        {option:"Prolongación de la pausa entre inspiraciones.",isCorrect: false},
-        {option:"Aumento de las inhalaciones (respiración).",isCorrect: true},
-        {option:"Aumento del tono muscular.",isCorrect: true},
-      ],
-      pensamientos: [
-        {option:"Pensamientos de aflicción.",isCorrect: true},
-        {option:"Percepción de daño.",isCorrect: false},
-        {option:"Percepción de peligro.", isCorrect: false},
-        {option:"“¡Esto es lo peor!”",isCorrect: true},
-        {option:"Pensamientos de preocupación.",isCorrect: false},
-        {option:"Pensamiento enfocado en lo negativo.",isCorrect: true}
-      ],
-      acciones: [
-        {option:"Ritmo acelerado.",isCorrect: false},
-        {option:"Ritmo pausado en acciones.",isCorrect: true},
-        {option:"Retraimiento.",isCorrect: true},
-        {option:"Cocinar.",isCorrect: false},
-        {option:"Leer.",isCorrect: false},
-        {option:"Evitar interacción con otros.",isCorrect: true},
-      ]
-    },
-    {
-      name:"Ejercicio 4",
-      image:ira,
-      text:"Cuando experimentas ira, ¿cómo has sentido que lo expresas?",
-      //errorMsg:"¡Sigue intentando! Una o más de las opciones de la columna sensaciones no corresponde tan precisamente a la emoción",
-      successMsg:"¡Correcto! Si bien estas no son todas ni las únicas manifestaciones de esta emoción, son algunas de las que podrías identificar cuando se activa. ¿Te han dicho cuando estás muy molesto y has tomado una decisión que mejor lo pienses “con cabeza fría”? Precisamente, de aquí parte el saber identificar y aceptar nuestras emociones. Esto no significa que todos se lanzan a la acción de agredir o se irritan internamente, dado que depende de muchos factores tanto de la persona como de la situación y el ambiente para una reacción u otra.",
-      sensaciones: [
-        {option:"Aumento de la presión sanguínea.",isCorrect: false},
-        {option:"Aumento del ritmo respiratorio",isCorrect: true},
-        {option:"Prolongación de la pausa entre inspiraciones.",isCorrect: false},
-        {option:"Aumento del tono muscular.",isCorrect: true},
-        {option:"Aumento de la frecuencia cardiaca.",isCorrect: true},
-      ],
-      pensamientos: [
-        {option:"Percepción en torno a la aflicción.",isCorrect: false},
-        {option:"Pensamientos impulsivos.",isCorrect: true},
-        {option:"Acción antes que consideración de la situación.", isCorrect: true},
-        {option:"Poca reflexión sobre situaciones.",isCorrect: true},
-        {option:"“¡Esto es lo peor!”",isCorrect: false},
 
-      ],
-      acciones: [
-        {option:"Agredir verbalmente.",isCorrect: true},
-        {option:"Inmovilizarse.",isCorrect: false},
-        {option:"Acción violenta.",isCorrect: false},
-        {option:"Pegar a algo o alguien.",isCorrect: true},
-        {option:"Desgana.",isCorrect: false},
-        {option:"Irritarse internamente.",isCorrect: true},
-      ]
-    },
-    {
-      name:"Ejercicio 5",
-      image:alegria,
-      text:"Cuando experimentas alegría, ¿cómo has sentido que lo expresas?",
-      //errorMsg:"¡Sigue intentando! Una o más de las opciones de la columna sensaciones no corresponde tan precisamente a la emoción",
-      successMsg:"¡Correcto! Si bien estas no son todas ni las únicas manifestaciones de esta emoción, son algunas de las que podrías identificar cuando se activa. ¡Recuerda valorar todas las emociones y aceptarlas, son parte de tu vida y te permiten adaptarte a tu entorno!",
-      sensaciones: [
-        {option:"Aumento de la frecuencia cardiaca.",isCorrect: true},
-        {option:"Alto tono muscular.",isCorrect: false},
-        {option:"Interrupción puntual de la respiración.",isCorrect: false},
-        {option:"Erizamiento de la piel.",isCorrect: false},
-        {option:"Bajo tono muscular.",isCorrect: true},
-        {option:"Aumento de las inhalaciones (respiración).",isCorrect: true},
-      ],
-      pensamientos: [
-        {option:"“¿Qué pasó?”",isCorrect: false},
-        {option:"Pensamientos impulsivos.",isCorrect: true},
-        {option:"Acción antes que consideración de la situación.", isCorrect: true},
-        {option:"Poca reflexión sobre situaciones.",isCorrect: true},
-        {option:"“¡Esto es lo peor!”",isCorrect: false},
-
-      ],
-      SinAcciones: "La alegría facilita la interacción social, mejora el rendimiento cognitivo y la actitud frente a las situaciones, entre otros puntos. De aquí se pueden derivar muchas acciones dependiendo de tu personalidad, puede que estés más propenso a hablar con otras personas, o a prestar atención a lo que te comentan o a compartir algo determinado. La importancia de identificar las emociones nos permite observar su impacto (Fernández-Abascal et al., 2010)" 
-    },
-    {
-      name:"Ejercicio 6",
-      image:sorpresa,
-      text:"Cuando experimentas sorpresa, ¿cómo has sentido que lo expresas?",
-      //errorMsg:"¡Sigue intentando! Una o más de las opciones de la columna sensaciones no corresponde tan precisamente a la emoción",
-      successMsg:"¡Correcto! Si bien estas no son todas ni las únicas manifestaciones de esta emoción, son algunas de las que podrías identificar cuando se activa. ¡Ejercita la identificación de tus emociones como paso fundamental para tu gestión emocional!",
-      sensaciones: [
-        {option:"Temblor en los brazos.",isCorrect: false},
-        {option:"Disminución de la frecuencia cardiaca.",isCorrect: true},
-        {option:"Aumento de la frecuencia cardiaca.",isCorrect: false},
-        {option:"Interrupción puntual de la respiración.",isCorrect: true},
-        {option:"Erizamiento de la piel.",isCorrect: true},
-        {option:"Respiración normal.",isCorrect: false},
-      ],
-      pensamientos: [
-        {option:"“¿¡Qué!? ¿Qué pasó?”",isCorrect: true},
-        {option:"Pensamientos de incertidumbre.",isCorrect:true},
-        {option:"Pensamientos positivos.", isCorrect: false},
-        {option:"Pensamientos negativos.",isCorrect: false},
-        {option:"“¿Qué hora es?”",isCorrect: false},
-        {option:"Mente en blanco.",isCorrect: true},
-      ],
-      SinAcciones: "La sorpresa facilita que aparezcan acciones relacionadas a explorar, investigar. Es decir, en torno al interés o curiosidad por la situación. Siempre dependerá del tipo de factor al que te enfrentas, lo que hará que después determine uno u otro tipo de acción (Fernández-Abascal et al., 2010)" 
-    },
-  ]
-  }
   const moveToEjercicio = () => {
     Scroll.scroll("ejercicio",true);
   }
 
   const errorAlert = (seccion)=>{
-    Swal.fire({
-      title: "<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
-      imageUrl: ganso_stop, //Corregir xd
-      imageWidth: 250,
-      imageHeight: 200,
-      imageAlt: "¿Seguro que no olvidaste hacer algo?",
-      html: `<p>Parece que en la columna <i><b>${seccion}</b></i> no diste respuesta a alguna(s) opcion(es)</p>`,
-      showCloseButton: false,
-      showCancelButton: false,
-      showConfirmButton: true,
-      confirmButtonColor: color,
-      confirmButtonText: `Aceptar`,
-      focusConfirm: true,
-    });
+    return Warning_Alert("<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
+    `<p>Parece que en la columna <i><b>${seccion}</b></i> no diste respuesta a alguna(s) opcion(es)</p>`)
   }
 
   const errorAnswer = (seccion)=>{
-    Swal.fire({
-      title: "<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
-      imageUrl: ganso_stop, //Corregir xd
-      imageWidth: 250,
-      imageHeight: 200,
-      imageAlt: "¿Seguro que no olvidaste hacer algo?",
-      html: `<p>¡Sigue intentando! Una o más de las opciones de la columna  <i><b>${seccion}</b></i> no corresponde tan precisamente a la emoción</p>`,
-      showCloseButton: false,
-      showCancelButton: false,
-      showConfirmButton: true,
-      confirmButtonColor: color,
-      confirmButtonText: `Aceptar`,
-      focusConfirm: true,
-    });
+    return Warning_Alert("<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
+    `<p>¡Sigue intentando! Una o más de las opciones de la columna  <i><b>${seccion}</b></i> no corresponde tan precisamente a la emoción</p>`)
   }
 
   const errorRepeatedAnswer = (seccion)=>{
-    Swal.fire({
-      title: "<h5><b>Respuesta repetida</b></h5>",
-      imageUrl: ganso_stop, //Corregir xd
-      imageWidth: 250,
-      imageHeight: 200,
-      imageAlt: "¿Seguro que no olvidaste hacer algo?",
-      html: `<p>Seleccionaste la misma opcion en la columna  <i><b>${seccion}</b></i>. las respuestas deben ser diferentes.</p>`,
-      showCloseButton: false,
-      showCancelButton: false,
-      showConfirmButton: true,
-      confirmButtonColor: color,
-      confirmButtonText: `Aceptar`,
-      focusConfirm: true,
-    });
+    return Warning_Alert("<h5><b>Respuesta repetida</b></h5>",
+    `<p>Seleccionaste la misma opcion en la columna  <i><b>${seccion}</b></i>. las respuestas deben ser diferentes.</p>`)
   }
 
 
   const correctAnswer = (msg)=>{
-    return Swal.fire({
-      title: "<h5><b>Correcto</b></h5>",
-      imageUrl: ganso_elegante, //Corregir xd
-      imageWidth: 250,
-      imageHeight: 200,
-      imageAlt: "¿Seguro que no olvidaste hacer algo?",
-      html: msg,
-      showCloseButton: false,
-      showCancelButton: false,
-      showConfirmButton: true,
-      confirmButtonColor: color,
-      confirmButtonText: `Aceptar`,
-      focusConfirm: true,
-    });
+    return Correct_Alert(undefined, msg)
   }
 
   const [selectOption, setSelectOption] = useState(initialOptions);
@@ -302,50 +56,9 @@ const Part2 = () => {
     let valueSensaciones = [selectOption.select_sensaciones_0,selectOption.select_sensaciones_1,selectOption.select_sensaciones_2];
     let valuePensamientos = [selectOption.select_pensamientos_0,selectOption.select_pensamientos_1,selectOption.select_pensamientos_2];
     let valueAcciones = [selectOption.select_acciones_0,selectOption.select_acciones_1,selectOption.select_acciones_2];
-    let sensaciones = seccion2.ejercicios[activityIndex].sensaciones;
-    let pensamientos = seccion2.ejercicios[activityIndex].pensamientos;
-    let acciones = seccion2.ejercicios[activityIndex].acciones;
     let SinAcciones = seccion2.ejercicios[activityIndex].SinAcciones;
 
-    /* 
-      utilidades 
-    */
-    const countElementInArray = (array, value) => {
-      var count = 0;
-      array.forEach((v) => (v === value && count++));
-      return count;
-    }
-
-    const areUniqueValue = (arr)=>{
-      for (const value of arr) {
-        if(countElementInArray(arr,value) > 1)
-        {
-          return false;
-        }
-      }
-      return true;
-    }
-
-    const areValidValues = (arr)=>{
-      for (const value of arr) {
-        if(value == -1)
-        {
-          return false;
-        }
-      }
-      return true;
-    }
-
-    const areCorrectAnswers = (arr,column)=>{
-      for (const value of arr) {
-        if(!seccion2.ejercicios[activityIndex][column][value].isCorrect)
-        {
-          return false;
-        }
-      }
-      return true;
-    }
-
+    
     /*
       Valido que el usuario haya seleccionado una respuesta por select.
     */
@@ -386,19 +99,19 @@ const Part2 = () => {
     /* 
       Valido que el usuario haya seleccionado las respuestas correctas.
     */ 
-    if(!areCorrectAnswers(valueSensaciones,"sensaciones")){
+    if(!areCorrectAnswers(valueSensaciones,"sensaciones",activityIndex)){
         errorAnswer("sensaciones");
         return null;
       }
-    if(!areCorrectAnswers(valuePensamientos,"pensamientos")){
+    if(!areCorrectAnswers(valuePensamientos,"pensamientos",activityIndex)){
           errorAnswer("pensamientos");
           return null;
     }
-    if(!SinAcciones && !areCorrectAnswers(valueAcciones,"acciones")){
+    if(!SinAcciones && !areCorrectAnswers(valueAcciones,"acciones",activityIndex)){
             errorAnswer("acciones");
             return null;
     }
-
+    
     correctAnswer(seccion2.ejercicios[activityIndex].successMsg).then(()=>{
       if(activityIndex + 1 < seccion2.ejercicios.length){
         restartValuesOption();
@@ -418,6 +131,18 @@ const Part2 = () => {
 
   return (
     <div className="container">
+      <ButtonLibro title={"Glosario"} 
+        text={`
+        <ul class="mb-0">
+            <li class="my-1"><i>Aumento de las inhalaciones:</i> aumento de las aspiraciones al respirar. </li>
+            <li class="my-1"><i>Frecuencia cardiaca:</i> número de veces que se contrae el corazón en un minuto.</li>
+            <li class="my-1"><i>Frecuencia respiratoria:</i> número de veces en respiraciones.</li>
+            <li class="my-1"><i>Interrupción puntual:</i> Que se detiene en ese momento por un instante.</li>
+            <li class="my-1"><i>Presión sanguínea:</i> tensión de la sangre.</li>
+            <li class="my-1"><i>Tensión muscular:</i> rigidez en algún o varios grupos de músculos.</li>
+        </ul>
+            `} 
+      ></ButtonLibro> 
       <div className="row">
         <div className="col">
           <div className="card flex-md-row mb-2 box-shadow h-md-250 px-4  py-4 mt-3 ">
