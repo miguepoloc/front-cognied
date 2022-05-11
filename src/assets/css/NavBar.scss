@@ -31,27 +31,23 @@
     color: #fff;
     background-color: #fc8890;
     border-color: #fc8890;
-    border-radius: 20px;
+    border-radius: 5px;
     
 }
 
 
 .btn-naranja:hover {
-    color: #fff;
     background-color: #fb7982;
     border-color: #fb7982;
-    border-radius: 20px;
 }
 .btn-check:focus + .btn-naranja,
 .btn-naranja:focus.btn-naranja:focus {
-    color: #fff;
     background-color: #fa737c;
     border-color: #fa737c;
     box-shadow: 0 0 0 0.25rem #fa99a09a;
 }
 .btn-naranja.disabled,
 .btn-naranja:disabled {
-    color: #fff;
     background-color: #fc8890;
     border-color: #fc8890;
 }
