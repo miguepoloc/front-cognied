@@ -3,8 +3,7 @@ import { Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import ganso_elegante from "../../assets/img/ganso/ganso_elegante.png"
 import ganso_leyendo from "../../assets/img/ganso/ganso_leyendo.png"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faClipboardCheck, faGear, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { FaArrowRight, FaClipboardCheck, BsGearFill, FaPaperPlane } from 'react-icons}'
 export const Vocabulario = () => {
 
   const [validate, setValidate] = useState(false);
@@ -24,6 +23,7 @@ export const Vocabulario = () => {
   const handleModify = () => {
     setIsThereInformation(true);
     setUserClickModifyBtn(true);
+    setDefiniciones(getDefiniciones())
   }
 
   const handleBtnClickSend = () => {
@@ -34,11 +34,7 @@ export const Vocabulario = () => {
       setValidate(false);
   }
 
-  const getDefiniciones = async() =>{
-   
-  } 
-
-  useEffect(async ()=>{
+  const getDefiniciones = async () => {
     const url = 'https://5c9e-181-235-99-54.eu.ngrok.io/api/definiciones/'
     const response = await fetch(url)
       .then((datos) => datos.json())
@@ -50,11 +46,20 @@ export const Vocabulario = () => {
       })
     if (response) {
       console.log(response)
-      setDefiniciones(response)
+      return (response)
     } else {
+      return null
       console.log('No se pudieron traer los datos de las Definiciones...')
     }
-  },[])
+  }
+
+  useEffect(async () => {
+    definiciones = getDefiniciones()
+    if (definiciones !== null) {
+      setDefiniciones(definiciones)
+      setIsThereInformation(true)
+    }
+  }, [])
 
   return (
     <div className="container">
@@ -88,23 +93,23 @@ export const Vocabulario = () => {
             <div className='col-6' ><b><h5>Definición</h5></b></div>
             <div className='col-6' ><b><h5>¿Qué nombre le darías?</h5></b></div>
           </div>
-          {definiciones && definiciones.map(({id,definicion},i)=>{
-              <div className="row text-center my-3 align-items-center">
-                <div className='col-md-6 mb-1 mb-md-0' >{definicion}</div>
-                <div className='col-md-6 my-1 my-md-0' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-              </div>
-            })
+          {definiciones && definiciones.map(({ id, definicion }, i) => {
+            <div className="row text-center my-3 align-items-center">
+              <div className='col-md-6 mb-1 mb-md-0' >{definicion}</div>
+              <div className='col-md-6 my-1 my-md-0' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
+            </div>
+          })
           }
           <div className="w-100 d-flex mx-md-4 my-4 px-md-3 ">
 
             {userClickModifyBtn ? (<>
-            <div className="col-6 d-flex justify-content-start">
-              <Button className="btn btn-naranja" onClick={handleCancelModify} > <FontAwesomeIcon icon={faClipboardCheck} /> Dejar como estaba</Button>
-            </div>  
-            <div className="col-6 d-flex justify-content-end">
-                <Button type="submit" className="btn btn-naranja" onClick={handleBtnClickSend} >Enviar <FontAwesomeIcon icon={faPaperPlane} /></Button>
-            </div></>) : (
-            <div className='d-flex justify-content-center justify-content-md-end'>
+              <div className="col-6 d-flex justify-content-start">
+                <Button className="btn btn-naranja" onClick={handleCancelModify} > <FaClipboardCheck /> Dejar como estaba</Button>
+              </div>
+              <div className="col-6 d-flex justify-content-end">
+                <Button type="submit" className="btn btn-naranja" onClick={handleBtnClickSend} >Enviar <FaPaperPlane /></Button>
+              </div></>) : (
+              <div className='d-flex justify-content-center justify-content-md-end'>
                 <Button type="submit" className="btn btn-naranja" onClick={handleBtnClickSend} >Enviar</Button>
               </div>)}
           </div>
@@ -119,10 +124,10 @@ export const Vocabulario = () => {
             </div>
             <div className="w-100 d-flex mx-md-4 my-4 px-md-3 ">
               <div className="col-6 d-flex justify-content-start">
-                <Button className="btn btn-naranja" onClick={handleModify} > <FontAwesomeIcon icon={faGear} /> <b>Modificar</b> </Button>
+                <Button className="btn btn-naranja" onClick={handleModify} > <BsGearFill /> <b>Modificar</b> </Button>
               </div>
               <div className="col-6 d-flex justify-content-end">
-                <Button className="btn btn-naranja"><b>Siguiente Ejercicio</b> <FontAwesomeIcon icon={faArrowRight} /></Button>
+                <Button className="btn btn-naranja"><b>Siguiente Ejercicio</b> <FaArrowRight /></Button>
               </div>
             </div>
 

@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
+import { FaBookOpen } from 'react-icons'
 import '../../assets/css/ButtonToUp.scss'
 import { Button, Modal } from 'react-bootstrap'
 
-const ButtonLibro = ({text,title}) => {
+const ButtonLibro = ({ text, title }) => {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
   const styleCenter = {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   }
 
   return (
@@ -23,15 +22,15 @@ const ButtonLibro = ({text,title}) => {
         className="buttonUp topRight text-white"
         onClick={handleShow}
       >
-        <FontAwesomeIcon icon={faBookOpen } size="xl"/>
+        <FaBookOpen size="xl" />
       </div>
-      <Modal show={show}  size="lg" onHide={handleClose} aria-labelledby="contained-modal-title-vcenter"
-  centered>
+      <Modal show={show} size="lg" onHide={handleClose} aria-labelledby="contained-modal-title-vcenter"
+        centered>
         <Modal.Header style={styleCenter}>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={styleCenter} dangerouslySetInnerHTML={{__html: text}}>
-          
+        <Modal.Body style={styleCenter} dangerouslySetInnerHTML={{ __html: text }}>
+
 
         </Modal.Body>
         <Modal.Footer style={styleCenter}>
