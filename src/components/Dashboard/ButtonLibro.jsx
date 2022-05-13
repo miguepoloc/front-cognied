@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaBookOpen } from 'react-icons'
+import { FaBookOpen } from 'react-icons/fa'
 import '../../assets/css/ButtonToUp.scss'
 import { Button, Modal } from 'react-bootstrap'
 

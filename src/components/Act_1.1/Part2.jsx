@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
-import { FaHandSparkles, FaBolt, FaBrain, BiCurrentLocation, FaPencilAlt } from 'react-icons'
+import { FaHandSparkles, FaBolt, FaBrain, FaPencilAlt } from 'react-icons/fa'
+import { BiCurrentLocation } from 'react-icons/bi'
+
 import "../../assets/css/Surveys.scss";
 import Answer from "../Surveys/Answer";
 import swal from "sweetalert2";

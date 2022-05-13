@@ -3,7 +3,9 @@ import { Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import ganso_elegante from "../../assets/img/ganso/ganso_elegante.png"
 import ganso_leyendo from "../../assets/img/ganso/ganso_leyendo.png"
-import { FaArrowRight, FaClipboardCheck, BsGearFill, FaPaperPlane } from 'react-icons}'
+import { FaArrowRight, FaClipboardCheck, FaPaperPlane } from 'react-icons/fa'
+import { BsGearFill } from 'react-icons/bs'
+
 export const Vocabulario = () => {
 
   const [validate, setValidate] = useState(false);
