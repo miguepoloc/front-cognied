@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import ganso_elegante from "../../assets/img/ganso/ganso_elegante.png"
@@ -8,7 +8,7 @@ import { faArrowRight, faClipboardCheck, faGear, faPaperPlane } from '@fortaweso
 export const Vocabulario = () => {
 
   const [validate, setValidate] = useState(false);
-
+  const [definiciones, setDefiniciones] = useState(null);
   const [isThereInformation, setIsThereInformation] = useState(false);
   const [userClickModifyBtn, setUserClickModifyBtn] = useState(false);
 
@@ -33,6 +33,28 @@ export const Vocabulario = () => {
     if (validate)
       setValidate(false);
   }
+
+  const getDefiniciones = async() =>{
+   
+  } 
+
+  useEffect(async ()=>{
+    const url = 'https://5c9e-181-235-99-54.eu.ngrok.io/api/definiciones/'
+    const response = await fetch(url)
+      .then((datos) => datos.json())
+      .then((datos) => {
+        return datos
+      })
+      .catch((err) => {
+        return null
+      })
+    if (response) {
+      console.log(response)
+      setDefiniciones(response)
+    } else {
+      console.log('No se pudieron traer los datos de las Definiciones...')
+    }
+  },[])
 
   return (
     <div className="container">
@@ -66,50 +88,13 @@ export const Vocabulario = () => {
             <div className='col-6' ><b><h5>Definición</h5></b></div>
             <div className='col-6' ><b><h5>¿Qué nombre le darías?</h5></b></div>
           </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Falta de gana, interés o deseo.</div>
-            <div className='col-md-6 my-1 my-md-0' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Propensión a ver y juzgar las cosas en su aspecto más favorable.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Exaltación y fogosidad del ánimo, excitado por algo que lo admire o cautive.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Sentimiento de insatisfacción o fracaso.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Rechazar algo, no aceptarlo.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Sensación que proviene de un acontecimiento repentino e imprevisto.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Temor o miedo muy grandes.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Falta de seguridad.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Falta de serenidad.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Estado de ánimo de desorientación y perplejidad.</div>
-            <div className='col-md-6 my-1 my-md-0 ' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
-          <div className="row text-center my-3 align-items-center">
-            <div className='col-md-6 mb-1 mb-md-0' >Ira exaltada o elevada.</div>
-            <div className='col-md-6 my-1 my-md-0' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
-          </div>
+          {definiciones && definiciones.map(({id,definicion},i)=>{
+              <div className="row text-center my-3 align-items-center">
+                <div className='col-md-6 mb-1 mb-md-0' >{definicion}</div>
+                <div className='col-md-6 my-1 my-md-0' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
+              </div>
+            })
+          }
           <div className="w-100 d-flex mx-md-4 my-4 px-md-3 ">
 
             {userClickModifyBtn ? (<>
@@ -122,8 +107,6 @@ export const Vocabulario = () => {
             <div className='d-flex justify-content-center justify-content-md-end'>
                 <Button type="submit" className="btn btn-naranja" onClick={handleBtnClickSend} >Enviar</Button>
               </div>)}
-
-
           </div>
 
         </Form>

@@ -6,6 +6,9 @@ La idea es que los alerts para que sea facil hacerle cambio a las imagenes.
 import swal from "sweetalert2";
 import ganso_elegante from "../assets/img/ganso/250x200/ganso_elegante.png"
 import ganso_stop from "../assets/img/ganso/250x200/ganso_stop.png"
+import ganso_escribiendo from "../assets/img/ganso/250x200/ganso_escribiendo.png"
+import ganso_feliz from "../assets/img/ganso/250x200/ganso_alegria.png"
+import ganso_triste from "../assets/img/ganso/250x200/ganso_tristeza.png"
 
 const colorTheme = "#4cbeff";
 
@@ -34,7 +37,7 @@ export const Warning_Alert = (
 
 export const Correct_Alert = (
   title = "<strong>¡Correcto!</strong>",
-  htmlText = "¿Porque no intentas otra vez?",
+  htmlText = "",
   btnConfirmcolor = colorTheme
 ) => {
   return Swal.fire({
@@ -54,22 +57,87 @@ export const Correct_Alert = (
 }
 
 export const ErrorAlert = (
-  title = "<strong>¡Correcto!</strong>",
-  imageUrl = ganso_stop, 
-  htmlText = "¿Porque no intentas otra vez?"
+  title = "<strong>Uhm.. algo ha salido mal</strong>",
+  htmlText = "¿Porque no intentas otra vez?",
+  alt = "Algo ha salido mal",
+  btnConfirmcolor = colorTheme
 ) => {
   return Swal.fire({
-    title: "<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
+    title: title,
     imageUrl: ganso_stop, //Corregir xd
     imageWidth: 250,
     imageHeight: 200,
-    imageAlt: "¿Seguro que no olvidaste hacer algo?",
-    html: `<p>Parece que en la columna <i><b>${seccion}</b></i> no diste respuesta a alguna(s) opcion(es)</p>`,
+    imageAlt: alt,
+    html: htmlText,
     showCloseButton: false,
     showCancelButton: false,
     showConfirmButton: true,
-    confirmButtonColor: color,
+    confirmButtonColor: btnConfirmcolor,
     confirmButtonText: `Aceptar`,
     focusConfirm: true,
   });
 }
+
+export const SendAlert = (
+  title = "<strong>Enviando...</strong>",
+  htmlText = "",
+  alt = "Espera un momento",
+  btnConfirmcolor = colorTheme
+) => {
+  return Swal.fire({
+    title: title,
+    imageUrl: ganso_escribiendo, //Corregir xd
+    imageWidth: 250,
+    imageHeight: 200,
+    imageAlt: alt,
+    html: htmlText,
+    showCloseButton: false,
+    showCancelButton: false,
+    showConfirmButton: false,
+  });
+}
+
+export const SendOkAlert = (
+  title = "<strong>¡Se ha enviado con exito!</strong>",
+  htmlText = "",
+  alt = "Espera un momento",
+  btnConfirmcolor = colorTheme
+) => {
+  return Swal.fire({
+    title: title,
+    imageUrl: ganso_feliz,
+    imageWidth: 250,
+    imageHeight: 200,
+    imageAlt: alt,
+    html: htmlText,
+    showCloseButton: false,
+    showCancelButton: false,
+    showConfirmButton: true,
+    confirmButtonColor: btnConfirmcolor,
+    confirmButtonText: `Aceptar`,
+    focusConfirm: true,
+  });
+}
+
+export const SendBadAlert = (
+  title = "<strong>¡Ups!</strong>",
+  htmlText = "Parece que algo salió mal",
+  alt = "Espera un momento",
+  btnConfirmcolor = colorTheme
+) => {
+  return Swal.fire({
+    title: title,
+    imageUrl: ganso_triste,
+    imageWidth: 250,
+    imageHeight: 200,
+    imageAlt: alt,
+    html: htmlText,
+    showCloseButton: false,
+    showCancelButton: false,
+    showConfirmButton: true,
+    confirmButtonColor: btnConfirmcolor,
+    confirmButtonText: `Aceptar`,
+    focusConfirm: true,
+  });
+}
+
