@@ -39,33 +39,47 @@ export const Vocabulario = () => {
   const getDefiniciones = async () => {
     const url = 'https://5c9e-181-235-99-54.eu.ngrok.io/api/definiciones/'
     const response = await fetch(url)
-      .then((datos) => datos.json())
-      .then((datos) => {
-        return datos
-      })
-      .catch((err) => {
-        return null
-      })
-    if (response) {
-      console.log(response)
-      return (response)
+    const data = await response.json()
+    if (data) {
+      console.log(data)
+      return data
     } else {
-      return null
       console.log('No se pudieron traer los datos de las Definiciones...')
+      return null
     }
   }
 
   useEffect(async () => {
-    definiciones = getDefiniciones()
-    if (definiciones !== null) {
-      setDefiniciones(definiciones)
-      setIsThereInformation(true)
+    let definiciones_Arr = await getDefiniciones()
+    console.log(definiciones_Arr)
+    if (definiciones_Arr !== null) {
+      setDefiniciones(definiciones_Arr)
     }
   }, [])
 
   return (
     <div className="container">
-      {isThereInformation ? (<><div className="row">
+      {isThereInformation ? (
+        <>
+          <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
+            <div className="d-flex flex-column justify-content-center align-items-center" >
+              <img src={ganso_leyendo} width="307" height="307"></img>
+              <h5 className='my-4 text-center'>Uhm... Parece que ya he personalizado tu vocabulario anteriormente.</h5>
+            </div>
+            <div className="w-100 d-flex mx-md-4 my-4 px-md-3 ">
+              <div className="col-6 d-flex justify-content-start">
+                <Button className="btn btn-naranja" onClick={handleModify} > <BsGearFill /> <b>Modificar</b> </Button>
+              </div>
+              <div className="col-6 d-flex justify-content-end">
+                <Button className="btn btn-naranja"><b>Siguiente Ejercicio</b> <FaArrowRight /></Button>
+              </div>
+            </div>
+
+
+          </div>
+        </>
+
+      ) : (<><div className="row">
         <div className="col">
           <div className="card flex-md-row mb-2 box-shadow h-md-250 px-4  py-4 mt-3 ">
             <div className="d-flex align-middle">
@@ -95,12 +109,12 @@ export const Vocabulario = () => {
             <div className='col-6' ><b><h5>Definición</h5></b></div>
             <div className='col-6' ><b><h5>¿Qué nombre le darías?</h5></b></div>
           </div>
-          {definiciones && definiciones.map(({ id, definicion }, i) => {
+          {definiciones && definiciones.map(({ id, definicion }, i) =>
             <div className="row text-center my-3 align-items-center">
               <div className='col-md-6 mb-1 mb-md-0' >{definicion}</div>
               <div className='col-md-6 my-1 my-md-0' ><Form.Control className="bg-white text-center" type="text" placeholder="¿Qué nombre le darías?" required="required" onChange={handleOnChange} /></div>
             </div>
-          })
+          )
           }
           <div className="w-100 d-flex mx-md-4 my-4 px-md-3 ">
 
@@ -117,26 +131,7 @@ export const Vocabulario = () => {
           </div>
 
         </Form>
-      </>) : (
-        <>
-          <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
-            <div className="d-flex flex-column justify-content-center align-items-center" >
-              <img src={ganso_leyendo} width="307" height="307"></img>
-              <h5 className='my-4 text-center'>Uhm... Parece que ya he personalizado tu vocabulario anteriormente.</h5>
-            </div>
-            <div className="w-100 d-flex mx-md-4 my-4 px-md-3 ">
-              <div className="col-6 d-flex justify-content-start">
-                <Button className="btn btn-naranja" onClick={handleModify} > <BsGearFill /> <b>Modificar</b> </Button>
-              </div>
-              <div className="col-6 d-flex justify-content-end">
-                <Button className="btn btn-naranja"><b>Siguiente Ejercicio</b> <FaArrowRight /></Button>
-              </div>
-            </div>
-
-
-          </div>
-        </>
-      )}
+      </>)}
 
     </div>
   )
