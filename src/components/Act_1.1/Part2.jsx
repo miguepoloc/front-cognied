@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import { FaHandSparkles, FaBolt, FaBrain, FaPencilAlt } from 'react-icons/fa'
 import { BiCurrentLocation } from 'react-icons/bi'
-
 import "../../assets/css/Surveys.scss";
 import Answer from "../Surveys/Answer";
 import swal from "sweetalert2";
@@ -16,39 +15,8 @@ import { seccion2, initialOptions, areUniqueValue, areValidValues, areCorrectAns
 
 const Part2 = () => {
   const color = "#4cbeff";
-
-  const moveToEjercicio = () => {
-    Scroll.scroll("ejercicio", true);
-  }
-
-  const errorAlert = (seccion) => {
-    return Warning_Alert("<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
-      `<p>Parece que en la columna <i><b>${seccion}</b></i> no diste respuesta a alguna(s) opcion(es)</p>`)
-  }
-
-  const errorAnswer = (seccion) => {
-    return Warning_Alert("<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
-      `<p>¡Sigue intentando! Una o más de las opciones de la columna  <i><b>${seccion}</b></i> no corresponde tan precisamente a la emoción</p>`)
-  }
-
-  const errorRepeatedAnswer = (seccion) => {
-    return Warning_Alert("<h5><b>Respuesta repetida</b></h5>",
-      `<p>Seleccionaste la misma opcion en la columna  <i><b>${seccion}</b></i>. las respuestas deben ser diferentes.</p>`)
-  }
-
-
-  const correctAnswer = (msg) => {
-    return Correct_Alert(undefined, msg)
-  }
-
   const [selectOption, setSelectOption] = useState(initialOptions);
-
-  const restartValuesOption = () => {
-    setSelectOption(() => { return (initialOptions); });
-  }
-
   const [activityIndex, setActivityIndex] = useState(0)
-
   const handleChange = (event) => {
     setSelectOption(() => { return { ...selectOption, [event.target.name]: event.target.value } })
   }
@@ -127,6 +95,40 @@ const Part2 = () => {
 
 
   }
+  
+  const moveToEjercicio = () => {
+    Scroll.scroll("ejercicio", true);
+  }
+
+  const errorAlert = (seccion) => {
+    return Warning_Alert("<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
+      `<p>Parece que en la columna <i><b>${seccion}</b></i> no diste respuesta a alguna(s) opcion(es)</p>`)
+  }
+
+  const errorAnswer = (seccion) => {
+    return Warning_Alert("<h5><b>¿Seguro que no olvidaste hacer algo?</b></h5>",
+      `<p>¡Sigue intentando! Una o más de las opciones de la columna  <i><b>${seccion}</b></i> no corresponde tan precisamente a la emoción</p>`)
+  }
+
+  const errorRepeatedAnswer = (seccion) => {
+    return Warning_Alert("<h5><b>Respuesta repetida</b></h5>",
+      `<p>Seleccionaste la misma opcion en la columna  <i><b>${seccion}</b></i>. las respuestas deben ser diferentes.</p>`)
+  }
+
+
+  const correctAnswer = (msg) => {
+    return Correct_Alert(undefined, msg)
+  }
+
+  
+
+  const restartValuesOption = () => {
+    setSelectOption(() => { return (initialOptions); });
+  }
+
+  
+
+ 
 
   const SinAcciones = seccion2.ejercicios[activityIndex].SinAcciones;
 
