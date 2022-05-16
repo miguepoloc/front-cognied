@@ -10,8 +10,6 @@ module.exports = merge(BaseConfig(state='development'), {
     https: false
   },
   devtool: 'inline-source-map',
-  watch: true,
-  cache: false
 });
 
 

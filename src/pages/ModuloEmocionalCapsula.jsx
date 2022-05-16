@@ -111,13 +111,9 @@ const ModuloEmocionalCapsula = ({ capsula, nombrecapsula }) => {
                 <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
                     <NavBarDashboard section={nombrecapsula} />
                     <div className="container-fluid py-4">
-                        <div>
-                            {splitLocation[1].slice(0, 12) === 'emocionalcap'
-                              ? <img src={capsula} alt="capsula" className='img-capsula' />
-                              : <RuletaEmociones />
 
-                            }
-
+                        <div >
+                            {<img src={capsula} alt="capsula" className='img-capsula' /> }
                         </div>
                         <hr />
                         <Button
@@ -130,7 +126,7 @@ const ModuloEmocionalCapsula = ({ capsula, nombrecapsula }) => {
                         </Button>
 
                         <FooterDashboard />
-                        <ButtonLibro />
+                        <ButtonLibro text={'Calderón Rodríguez, M., González Mora, G., Salazar Segnini, P. y Washburn Madrigal, S. (2012). Aprendiendo sobre las emociones: manual de educación emocional. Coordinación Educativa y Cultural Centroamericana.'} title = {'Referencia'} />
 
                     </div>
                 </main>

@@ -187,6 +187,7 @@ class Surveys {
     //Una vez todo se haya respondido
     //Id usuario
     let json = {};
+    json["id_usuario"] = id_usuario;
     this.jsonSurvey.map((survey) => {
       json[survey.id_survey] = [];
       survey.questions.map((question) => {

@@ -4,13 +4,15 @@ import NavBar from '../components/LandingPage/NavBar'
 import Objetives from '../components/LandingPage/Objetives'
 import ButtonToUp from '../components/LandingPage/ButtonToUp'
 import Footer from '../components/LandingPage/Footer'
-
+import Part1 from '../components/Act_1.1/Part1'
 import AboutUs from '../components/LandingPage/AboutUs'
 import Scroll from '../helpers/helperScroll'
-import ContactUs from '../components/ContactUs'
-import Survey from '../components/Surveys/Survey'
+// import ContactUs from '../components/ContactUs'
+// import Survey from '../components/Surveys/Survey'
 import Surveys from '../components/Surveys/Surveys'
-import IdentificarEmociones from '../components/Act_1.1/identificarEmociones'
+import Part2 from '../components/Act_1.1/Part2'
+import { Vocabulario } from '../components/Act_2.2/Vocabulario'
+import RuletaEmociones from '../components/Act_2.2/RuletaEmociones'
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
@@ -36,11 +38,13 @@ function LandingPage () {
       <Home section={secciones.Home} style="onlyLogo" />
       <AboutUs section={secciones.AboutUs} />
       <Objetives section={secciones.Objetivos} />
-      <ContactUs section={secciones.ContactUs} />
+      {/* <ContactUs section={secciones.ContactUs} /> */}
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
       {/* <Surveys /> */}
-      <IdentificarEmociones />
+        {/* <Part2 />   */}
+       {/* <Vocabulario/>  */}
+       <RuletaEmociones/>
     </>
   )
 }

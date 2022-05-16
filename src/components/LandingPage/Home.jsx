@@ -8,59 +8,14 @@ const Home = ({ style, section }) => {
   return (
     <>
       <section id={section.id}>
-        <div className="hero">
+        <div className="hero justify-content-center  d-flex align-items-center ">
           <div id="particles-js" className="burbujas_home">
             {/* <canvas className="particles-js-canvas-el"></canvas> */}
           </div>
-          <div className="inner-header text-center  flex text-white logo_home_center">
+          <div className="w-75 w-md-50 w-lg-25">
             {
               // Esto es temporal mientras se decide cual es la mejor idea para el inicio.
-              (() => {
-                switch (style) {
-                  case 'onlyLogo':
-                    return (
-                      <div className="logo">
-                        <img src={Logo} id="logo_home" alt="" />
-                      </div>
-                    )
-                  case 'onlyText':
-                    return (
-                      <div className="use_home_grid">
-                        <h1 className="title_home">Digitalmente</h1>
-                        <p className="desc_home">Plataforma de salud mental</p>
-                      </div>
-                    )
-                  case 'oneCharacter':
-                    return (
-                      <div className="image_home">
-                        <img
-                          src="img/personajeHome.svg"
-                          id="logo_home"
-                          alt="Logotipo del proyecto"
-                        />
-                      </div>
-                    )
-                  case 'twoCharacters':
-                    return (
-                      <>
-                        <div className="image_home">
-                          <img
-                            src="img/personajeHome.svg"
-                            id="logo_home"
-                            alt="Personaje animado"
-                          />
-                        </div>
-                        <div className="use_home_grid">
-                          <img
-                            src="img/logo.svg"
-                            id="logo_home"
-                            alt="Personaje animado"
-                          />
-                        </div>
-                      </>
-                    )
-                }
-              })()
+              <img src={Logo} alt="" />
             }
             {/* <div className="hero" id="particles-js"> */}
             <div className="w wave"></div>

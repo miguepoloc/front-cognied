@@ -3,26 +3,17 @@ import { Surveys as model_surveys } from '../../assets/js/model_survey/Surveys'
 import '../../assets/css/Surveys.scss'
 import Survey from './Survey'
 import Scroll from '../../helpers/helperScroll'
-import swal from 'sweetalert2'
+import {ErrorAlert,SendAlert, SendOkAlert, SendBadAlert } from "../../helpers/helper_Swal_Alerts"
+
+const errorFaltaPorResponder = ()=>{
+  ErrorAlert("Ups...","Parece que alguna pregunta de esta encuesta ha quedado sin responder. por favor, asegurate de que <b> todas </b> las preguntas tengan respuesta")
+}
 
 const Surveys = () => {
-  window.Swal = swal
 
   const [surveys, setSurveys] = useState(new model_surveys(null, false))
   const [nextOrPrev, setNextOrPrev] = useState(false) // lo uso para cargar las preguntas si da back.
   const [isBtnSendDisabled, setIsBtnSendDisabled] = useState(false)
-
-  const swalError = () => {
-    Swal.fire({
-      title: 'Ups...',
-      icon: 'error',
-      html: 'Parece que alguna pregunta de esta encuesta ha quedado sin responder. por favor, asegurate de que <b> todas </b> las preguntas tengan respuesta ',
-      showCloseButton: true,
-      showCancelButton: false,
-      showConfirmButton: true,
-      focusConfirm: true
-    })
-  }
 
   const moveToStart = () => {
     // Scroll.scroll("startSurvey",true);
@@ -34,11 +25,11 @@ const Surveys = () => {
      */
   const handeButtonNavSurvey = async (isNext = true) => {
     /* bloque de prueba */
-    // surveys.selectAllOptionRandom();
+    surveys.selectAllOptionRandom();
     /* fin bloque de prueba */
 
     if (!surveys.isAllQuestionsSelected() && isNext) {
-      swalError()
+      errorFaltaPorResponder()
     }
 
     const newObjSurveys = isNext ? surveys.nextSurvey() : surveys.prevSurvey()
@@ -48,52 +39,97 @@ const Surveys = () => {
     }
   }
 
+  const createDataToSend = (answers,userId,index)=>{
+    let key = Object.keys(answers)[index];
+    
+    let row = {
+      "id_usuario": ""+userId,
+      "id_encuesta": key,
+      "respuestas": [...answers[key],1]
+    }
+    return row;
+  }
+
+  /**
+   * 
+   * @param {Number} userId
+   * @returns Boolean 
+   */
+ const SendSurveys = async (userId)=>{
+    const answers = surveys.generateJsonToSend();
+    const countSurveys = Object.keys(answers).length;
+    const url = "https://5c9e-181-235-99-54.eu.ngrok.io/api/usuario_encuesta/";
+
+    let promesas = [];
+    let requestOptions;
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+
+    for(let i = 0; i <1; i++){
+      requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(createDataToSend(answers,userId,i)) 
+      };
+      promesas.push(fetch("https://5c9e-181-235-99-54.eu.ngrok.io/api/usuario_encuesta/", requestOptions))
+    }
+    
+    return await wasSentWithoutError(promesas)
+  }
+
+  /**
+   * 
+   * @param {Array<Promise>} promesas 
+   * @returns Boolean
+   */
+  const wasSentWithoutError = async (promesas)=>{
+    const respuestas = await Promise.all(promesas)
+        .then(results => Promise.all(results.map(r => r.json())))
+        .catch(err => {return {"err":"Ha ocurrido un error con la conexion"}})
+    
+        if(respuestas.err){
+      return false;
+    }
+    console.log(respuestas)
+    const isAllPostOk = respuestas.some((element) => element.respuestas.errors.length); //Verifico que no hayan errores
+     if(isAllPostOk){
+       return false;
+     }
+    return true;
+  }
+
+
   const handleButtonSendSurvey = async () => {
+    const userId = Math.floor(Math.random() * (29 - 4) + 4);
+    
     /* Antes de hacer la peticion, rectifica que todas las preguntas
         de las encuestas tengan respuesta.
       */
     if (surveys.isAllSurveysAnswered()) {
       setIsBtnSendDisabled(() => true)
+      SendAlert(undefined,'Tus respuestas estan siendo enviadas y procesadas <b>Espera un momento</b>')
       // Debería esperar una respuesta de todo ok., si la respuesta es negativa el boton vuelve a quedar
-      Swal.fire({
-        title: '<strong>Enviando...</strong>',
-        imageUrl: 'https://c.tenor.com/u0TyVuvUCCsAAAAM/pato.gif',
-        imageWidth: 200,
-        imageHeight: 100,
-        imageAlt: 'Enviando... espere un momento',
-        html: 'Tus respuestas estan siendo enviadas y procesadas <b>Espera un momento</b> ',
-        showCloseButton: false,
-        showCancelButton: false,
-        showConfirmButton: false,
-        focusConfirm: false
-      })
-      // Simulo la demora en responder xd...
-      setTimeout(() => {
-        setIsBtnSendDisabled(false)
-        Swal.close()
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          html: '¡Enhorabuena! tus respuestas han sido procesadas <b>serás redireccionado en breve.</b> ',
-          showConfirmButton: false,
-          timer: 4000
-        })
-      }, 4000)
+      const send = await SendSurveys(userId);
+      if(send){
+        //Deberia Redireccionar a un lugar....
+        SendOkAlert(undefined,"¡Enhorabuena! tus respuestas han sido procesadas <b>serás redireccionado en breve.</b>");
+      }else{
+          SendBadAlert();
+      }
     } else {
-      swalError()
+      errorFaltaPorResponder();
     }
   }
 
   const selectOption = (id_pregunta, id_answer) => {
     surveys.selectOption(id_pregunta, id_answer)
     setSurveys(surveys)
-    console.log(surveys)
-    console.log(id_pregunta, id_answer)
   }
 
   /* Devuelve un array o un valor null */
   const getSurveys = async () => {
-    const url = 'http://127.0.0.1:8002/api/vista_pregunta_respuesta/'
+    const url = 'https://5c9e-181-235-99-54.eu.ngrok.io/api/vista_pregunta_respuesta/'
 
     const response = await fetch(url)
       .then((datos) => datos.json())
