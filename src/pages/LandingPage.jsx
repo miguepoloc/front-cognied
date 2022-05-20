@@ -41,10 +41,10 @@ function LandingPage () {
       {/* <ContactUs section={secciones.ContactUs} /> */}
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
-      {/* <Surveys /> */}
+      <Surveys />
         {/* <Part2 />   */}
        {/* <Vocabulario/>  */}
-       <RuletaEmociones/>
+       {/* <RuletaEmociones/> */}
     </>
   )
 }

@@ -2,9 +2,12 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Surveys as model_surveys } from '../../assets/js/model_survey/Surveys'
 import '../../assets/css/Surveys.scss'
 import Survey from './Survey'
+import ganso_pensando from "../../assets/img/ganso/ganso_pensando.png"
 import Scroll from '../../helpers/helperScroll'
 import {ErrorAlert,SendAlert, SendOkAlert, SendBadAlert } from "../../helpers/helper_Swal_Alerts"
 
+import { RotatingLines } from 'react-loader-spinner'
+import { async } from 'regenerator-runtime'
 const errorFaltaPorResponder = ()=>{
   ErrorAlert("Ups...","Parece que alguna pregunta de esta encuesta ha quedado sin responder. por favor, asegurate de que <b> todas </b> las preguntas tengan respuesta")
 }
@@ -12,6 +15,8 @@ const errorFaltaPorResponder = ()=>{
 const Surveys = () => {
 
   const [surveys, setSurveys] = useState(new model_surveys(null, false))
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
   const [nextOrPrev, setNextOrPrev] = useState(false) // lo uso para cargar las preguntas si da back.
   const [isBtnSendDisabled, setIsBtnSendDisabled] = useState(false)
 
@@ -129,30 +134,37 @@ const Surveys = () => {
 
   /* Devuelve un array o un valor null */
   const getSurveys = async () => {
-    const url = 'https://5c9e-181-235-99-54.eu.ngrok.io/api/vista_pregunta_respuesta/'
+    const url = 'http://127.0.0.1:8002/api/vista_pregunta_respuesta/'
 
     const response = await fetch(url)
       .then((datos) => datos.json())
       .then((datos) => {
-        return datos
+        return datos;
       })
       .catch((err) => {
-        return null
+        return null;
       })
-    if (response) {
-      setSurveys(new model_surveys(response))
-    } else {
-      console.log('No se pudieron traer los datos de las encuestas...')
-    }
+
+    return response;
   }
 
-  useEffect(function () {
-    getSurveys()
+  useEffect(async () =>{
+    const response = await getSurveys();
+    if(response){
+      await setSurveys(new model_surveys(response))
+      setLoading(false);
+    }
+    else{
+      setLoading(false);
+      setError(true);
+    }
   }, [])
+
   useEffect(
     function () {
       if (surveys.arrSurvey) {
         surveys.markAllQuestionSelected()
+        surveys.results();
         moveToStart()
       }
     },
@@ -162,59 +174,88 @@ const Surveys = () => {
   return (
     <>
       <section id="startSurvey" className="container">
-        {!surveys.arrSurvey
-          ? (
-              'cargando'
+        {
+          loading?(<div style={{height:"100vh"}} className="d-flex justify-content-center align-items-center">
+
+          <RotatingLines
+          width="100"
+          strokeColor="#6495ED"
+          strokeWidth="3"
+          animationDuration=".8"
+        />
+        </div>):(<>
+         { error?(
+          <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
+            <div className="d-flex flex-column justify-content-center align-items-center" >
+              <img src={ganso_pensando} width="307" height="307"></img>
+              <h5 className='my-4 text-center'>Uhm... Parece que ha ocurrido un error al obtener las pruebas diagnósticas.</h5>
+            </div>
+          </div>
+        ): (<>
+        {surveys.arrSurvey? (
+                      <>
+                      <Survey
+                        survey={surveys.jsonSurvey[surveys.indiceActual]}
+                        selectOption={selectOption}
+                      />
+                      
+                      <div className="d-flex justify-content-between mx-4">
+                        <div id="backSurvey">
+                          <button
+                            type="button"
+                            className="btn btn-outline-secondary"
+                            onClick={() => handeButtonNavSurvey(false)}
+                          >
+                            Anterior
+                          </button>
+                        </div>
+                        <div id="surveysPage" className="d-block p-2">
+                          <p>
+                            {surveys.indiceActual + 1} de {surveys.IndiceMaximo + 1}
+                          </p>
+                        </div>
+                        {surveys.indiceActual < surveys.IndiceMaximo
+                          ? (
+                          <div id="nextSurvey">
+                            <button
+                              type="button"
+                              className="btn btn-outline-primary"
+                              onClick={handeButtonNavSurvey}
+                            >
+                              Siguiente
+                            </button>
+                          </div>
+                            )
+                          : (
+                          <div id="SendSurvey">
+                            <button
+                              id="btnSendSurvey"
+                              type="button"
+                              className="btn btn-info text-white"
+                              onClick={handleButtonSendSurvey}
+                              disabled={isBtnSendDisabled}
+                            >
+                              Enviar
+                            </button>
+                          </div>
+                            )}
+                      </div>
+                    </>
+            
             )
           : (
-          <>
-            <Survey
-              survey={surveys.jsonSurvey[surveys.indiceActual]}
-              selectOption={selectOption}
-            />
-            <div className="d-flex justify-content-between mx-4">
-              <div id="backSurvey">
-                <button
-                  type="button"
-                  className="btn btn-outline-secondary"
-                  onClick={() => handeButtonNavSurvey(false)}
-                >
-                  Anterior
-                </button>
-              </div>
-              <div id="surveysPage" className="d-block p-2">
-                <p>
-                  {surveys.indiceActual + 1} de {surveys.IndiceMaximo + 1}
-                </p>
-              </div>
-              {surveys.indiceActual < surveys.IndiceMaximo
-                ? (
-                <div id="nextSurvey">
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary"
-                    onClick={handeButtonNavSurvey}
-                  >
-                    Siguiente
-                  </button>
-                </div>
-                  )
-                : (
-                <div id="SendSurvey">
-                  <button
-                    id="btnSendSurvey"
-                    type="button"
-                    className="btn btn-info text-white"
-                    onClick={handleButtonSendSurvey}
-                    disabled={isBtnSendDisabled}
-                  >
-                    Enviar
-                  </button>
-                </div>
-                  )}
+            <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
+            <div className="d-flex flex-column justify-content-center align-items-center" >
+              <img src={ganso_pensando} width="307" height="307"></img>
+              <h5 className='my-4 text-center'>Uhm... Parece que no tengo pruebas diagnósticas.</h5>
             </div>
-          </>
+          </div>
             )}
+        
+        </>)}
+        </>)
+        }
+        
       </section>
     </>
   )
