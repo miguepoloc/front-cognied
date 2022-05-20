@@ -42,12 +42,15 @@ function LandingPage() {
       {/* <ContactUs section={secciones.ContactUs} /> */}
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
-      {/* <Surveys /> */}
+
       <Act4_1 />
       <Part2 />
       <Part1 />
       {/* <Vocabulario/>  */}
       {/* <RuletaEmociones /> */}
+
+      <Surveys />
+
     </>
   )
 }
