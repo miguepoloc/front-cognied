@@ -43,13 +43,20 @@ function LandingPage () {
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
 
+      {/* <Surveys /> */}
+        {/* <Part2 />   */}
+       <Vocabulario/> 
+       {/* <RuletaEmociones/> */}
+
+
       <Act4 />
       {/* <Part2 /> */}
       {/* <Part1 /> */}
       {/* <Vocabulario/>  */}
-      {/* <RuletaEmociones /> */}
 
-      {/* <Surveys /> */}
+
+
+
 
     </>
   )
