@@ -3,17 +3,45 @@ import { Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import ganso_elegante from "../../assets/img/ganso/ganso_elegante.png"
 import ganso_leyendo from "../../assets/img/ganso/ganso_leyendo.png"
+import ganso_pensando from "../../assets/img/ganso/ganso_pensando.png"
 import { FaArrowRight, FaClipboardCheck, FaPaperPlane } from 'react-icons/fa'
 import { BsGearFill } from 'react-icons/bs'
 import {ErrorAlert,SendAlert, SendOkAlert, SendBadAlert } from "../../helpers/helper_Swal_Alerts"
+import { RotatingLines } from 'react-loader-spinner'
 
 export const Vocabulario = () => {
 
   const [validate, setValidate] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [definiciones, setDefiniciones] = useState(null);
   const [definicionesUsuario, setDefinicionesUsuario] = useState(null);
   const [isThereInformation, setIsThereInformation] = useState(null);
   const [userClickModifyBtn, setUserClickModifyBtn] = useState(false);
+
+  useEffect(async () => {
+    let idUser = 15;
+    let definicionesUsuario = await getDefinicionesUsuario(idUser);
+    let definiciones_Arr = await getDefiniciones()
+    
+    if(definiciones_Arr !== null && definicionesUsuario !== null){
+      setDefiniciones(definiciones_Arr)
+      
+      if(definicionesUsuario?.length > 0)
+      {
+        console.log(definicionesUsuario);
+        setDefinicionesUsuario(definicionesUsuario);
+        setIsThereInformation(true);
+        setError(true)
+      }
+    }else{
+      console.log("stoy entrando")
+        setError(true)
+    }
+
+    setLoading(false); 
+    
+  }, [])
 
   const handleSubmit = () => {
 
@@ -29,21 +57,22 @@ export const Vocabulario = () => {
     setUserClickModifyBtn(true);
   }
 
-  const SendVocabulario = async (method,jsonToSend)=>{
+  const SendOrUpdateVocabulario = async (isUpdate, jsonToSend)=>{
+    const urlUpdate = "https://63c3-2800-484-ad85-8eda-9ce7-fcea-7082-18b2.eu.ngrok.io/api/definiciones_usuario/bulk_update/"
+    const urlSend =  "https://63c3-2800-484-ad85-8eda-9ce7-fcea-7082-18b2.eu.ngrok.io/api/definiciones_usuario/";
     
-    const url = "https://417c-161-10-123-238.eu.ngrok.io/api/definiciones_usuario/";
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let requestOptions;
 
     if(jsonToSend){
       requestOptions = {
-        method: method,
+        method: "POST",
         headers: myHeaders,
         body: JSON.stringify(jsonToSend) 
       };
 
-      let response = await fetch(url, requestOptions)
+      let response = await fetch(isUpdate? urlUpdate: urlSend, requestOptions)
                             .then(response => response.json())
                             .catch(err => {return {"err":"Ha ocurrido un error con la conexion"}});
       if(response.err){
@@ -65,16 +94,18 @@ export const Vocabulario = () => {
     }
   }
 
-  const handleBtnClickSend = async(method="POST",e) => {
+
+
+  const handleBtnClickSendOrUpdate = async(isUpdate,e) => {
     e.preventDefault();
     let userId = 15;
-    const jsonToSend = createJsonToSend(method,userId);
+    const jsonToSend = createJsonToSend(userId);
 
     if(jsonToSend){
       console.log(jsonToSend);
       SendAlert(undefined,'Tus respuestas estan siendo enviadas y procesadas <b>Espera un momento</b>')
       try{
-        let reponse = await SendVocabulario(jsonToSend);
+        let reponse = await SendOrUpdateVocabulario(isUpdate,jsonToSend);
       if(reponse){
         SendOkAlert();
         }else{
@@ -102,7 +133,8 @@ export const Vocabulario = () => {
   }
 
   const getDefinicionesUsuario = async (idUser) => {
-    const url = 'https://417c-161-10-123-238.eu.ngrok.io/api/definiciones_usuario/?id_usuario='+idUser
+    const url = 'https://63c3-2800-484-ad85-8eda-9ce7-fcea-7082-18b2.eu.ngrok.io/api/definiciones_usuario/?id_usuario='+idUser
+   try{
     const response = await fetch(url)
     const data = await response.json()
     if (data) {
@@ -112,18 +144,28 @@ export const Vocabulario = () => {
       console.log('No se pudieron traer los datos de las Definiciones...')
       return null
     }
+   }catch(e){
+     return null;
+   }  
+
+    
   }
   const getDefiniciones = async () => {
-    const url = 'https://417c-161-10-123-238.eu.ngrok.io/api/definiciones/'
-    const response = await fetch(url)
-    const data = await response.json()
-    if (data) {
-      console.log(data)
-      return data
-    } else {
-      console.log('No se pudieron traer los datos de las Definiciones...')
+    const url = 'https://63c3-2800-484-ad85-8eda-9ce7-fcea-7082-18b2.eu.ngrok.io/api/definiciones/'
+    try{
+      const response = await fetch(url)
+      const data = await response.json()
+      if (data) {
+        console.log(data)
+        return data
+      } else {
+        console.log('No se pudieron traer los datos de las Definiciones...')
+        return null
+      }
+    }catch(e){
       return null
     }
+    
   }
 
   const createJsonToSend = (isUser)=>{
@@ -153,28 +195,32 @@ export const Vocabulario = () => {
     return json;
   }
 
-  useEffect(async () => {
-    let idUser = 15;
-    let definicionesUsuario = await getDefinicionesUsuario(idUser);
-    let definiciones_Arr = await getDefiniciones()
-      console.log(definiciones_Arr)
-      if (definiciones_Arr !== null) {
-        setDefiniciones(definiciones_Arr)
-      }
-    if(definicionesUsuario?.length > 0)
-    {
-      console.log(definicionesUsuario);
-      setDefinicionesUsuario(definicionesUsuario);
-      setIsThereInformation(true);
-    }else{
-      
-    }
-    
-  }, [])
+  
 
   return (
     <div className="container">
-      {isThereInformation? (
+       {
+          loading?(<div style={{height:"100vh"}} className="d-flex justify-content-center align-items-center">
+
+          <RotatingLines
+          width="100"
+          strokeColor="#6495ED"
+          strokeWidth="3"
+          animationDuration=".8"
+        />
+        </div>):(
+        <>
+         { error?(
+          <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
+            <div className="d-flex flex-column justify-content-center align-items-center" >
+              <img src={ganso_pensando} width="307" height="307"></img>
+              <h5 className='my-4 text-center'>Uhm... Parece que ha ocurrido un error al obtener datos.</h5>
+            </div>
+          </div>
+          
+        ): (<>
+        
+        {isThereInformation? (
         <>
           <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
             <div className="d-flex flex-column justify-content-center align-items-center" >
@@ -240,14 +286,20 @@ export const Vocabulario = () => {
                 <Button className="btn btn-naranja" onClick={handleCancelModify} > <FaClipboardCheck /> Dejar como estaba</Button>
               </div>
               <div className="col-6 d-flex justify-content-end">
-                <Button type="submit" className="btn btn-naranja" onClick={(event)=>handleBtnClickSend("PATCH",event)} >Enviar <FaPaperPlane /></Button>
+                <Button type="submit" className="btn btn-naranja" onClick={(event)=>handleBtnClickSendOrUpdate(true,event)} >Actualizar <FaPaperPlane /></Button>
               </div></>) : (
               <div className='d-flex justify-content-center justify-content-md-end'>
-                <Button type="submit" className="btn btn-naranja" onClick={handleBtnClickSend} >Enviar</Button>
+                <Button type="submit" className="btn btn-naranja" onClick={(event)=>handleBtnClickSendOrUpdate(false,event)} >Enviar</Button>
               </div>)}
           </div>
         </Form>
       </>)}
+        </>)
+      }
+      </>
+      )}
+
+      
 
     </div>
   )
