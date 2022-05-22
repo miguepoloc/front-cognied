@@ -9,6 +9,7 @@ import ganso_stop from '../assets/img/ganso/250x200/ganso_stop.png'
 import ganso_escribiendo from '../assets/img/ganso/250x200/ganso_escribiendo.png'
 import ganso_feliz from '../assets/img/ganso/250x200/ganso_alegria.png'
 import ganso_triste from '../assets/img/ganso/250x200/ganso_tristeza.png'
+import ganso_explicando from '../assets/img/ganso/ganso_explicando.png'
 
 const colorTheme = '#4cbeff'
 
@@ -131,6 +132,27 @@ export const SendBadAlert = (
     imageWidth: 250,
     imageHeight: 200,
     imageAlt: alt,
+    html: htmlText,
+    showCloseButton: false,
+    showCancelButton: false,
+    showConfirmButton: true,
+    confirmButtonColor: btnConfirmcolor,
+    confirmButtonText: 'Aceptar',
+    focusConfirm: true
+  })
+}
+
+export const RetroalimentacionAlert = (
+  title = '<strong>¡Importante!</strong>',
+  htmlText = '',
+  btnConfirmcolor = colorTheme
+) => {
+  return Swal.fire({
+    title: title,
+    imageUrl: ganso_explicando,
+    imageWidth: 250,
+    // imageHeight: 200,
+    imageAlt: '¡Importante!',
     html: htmlText,
     showCloseButton: false,
     showCancelButton: false,
