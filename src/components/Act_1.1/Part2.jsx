@@ -95,7 +95,7 @@ const Part2 = () => {
 
 
   }
-  
+
   const moveToEjercicio = () => {
     Scroll.scroll("ejercicio", true);
   }
@@ -120,15 +120,15 @@ const Part2 = () => {
     return Correct_Alert(undefined, msg)
   }
 
-  
+
 
   const restartValuesOption = () => {
     setSelectOption(() => { return (initialOptions); });
   }
 
-  
 
- 
+
+
 
   const SinAcciones = seccion2.ejercicios[activityIndex].SinAcciones;
 
@@ -211,13 +211,14 @@ const Part2 = () => {
 
           {[...Array(3)].map((element, indexSelect) => (
             <Form.Select className="mb-4 mt-3" name={`select_sensaciones_${indexSelect}`} onChange={handleChange}>
-              <option value="-1" >Seleccciona una opcion</option>
+              <option value="-1" disabled selected>Seleccciona una opcion</option>
               {seccion2.ejercicios[activityIndex].sensaciones.map((sensacion, sensacionindex) => (
                 <>
                   <option value={sensacionindex} key={`${seccion2.ejercicios[activityIndex].name}-select_acciones_${indexSelect}-${sensacionindex}`}>{sensacion.option}</option>
                 </>
               ))}
             </Form.Select>
+
           ))}
 
         </div>
