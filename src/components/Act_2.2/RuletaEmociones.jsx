@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import {FaBolt} from 'react-icons/fa'
-import { async } from 'regenerator-runtime'
 import '../../assets/css/Surveys.scss'
 import ganso_lupa_celular from "../../assets/img/ganso/ganso_lupa_celular.png"
-import Answer from '../Surveys/Answer'
+import { GET_emocion as getEmociones, GET_definiciones_usuario as getDefinicionesUsuario } from '../../helpers/helperApi'
 
 const RuletaEmociones = () => {
   const color = "#4cbeff";
   
  // useEffect(() =>{setColorSelect(color)},[])
   
-
   const [definicionesUsuario, setDefinicionesUsuario] = useState(null);
   const [emociones, setEmociones] = useState(null)
   const [emocionIndex, setEmocionIndex] = useState(-1)
@@ -20,9 +18,8 @@ const RuletaEmociones = () => {
     let idUser = 15;
     let definicionesResponse = await getDefinicionesUsuario(idUser);
     let emocionResponse = await getEmociones();
-    if(emocionResponse  !== null && definicionesResponse  !== null){
-      console.log(emocionResponse )
-      console.log(definicionesResponse)
+    if(emocionResponse !== null && definicionesResponse  !== null){
+      console.log(emocionResponse)
       setEmociones(emocionResponse );
       setDefinicionesUsuario(definicionesResponse);
     }else{
@@ -33,33 +30,7 @@ const RuletaEmociones = () => {
   const handleChange = (e)=>{
       console.log(e.target.value)
   }
-  const getEmociones = async () => {
-    const url = 'https://417c-161-10-123-238.eu.ngrok.io/api/emocion/'
-    const response = await fetch(url)
-    const data = await response.json()
-    if (data) {
-      console.log(data)
-      return data
-    } else {
-      console.log('No se pudieron traer los datos de las Definiciones...')
-      return null
-    }
-  }
 
-  const getDefinicionesUsuario = async (idUser) => {
-    const url = 'https://417c-161-10-123-238.eu.ngrok.io/api/definiciones_usuario/?id_usuario='+idUser
-    const response = await fetch(url)
-    const data = await response.json()
-    if (data) {
-      console.log(data)
-      return data
-    } else {
-      console.log('No se pudieron traer los datos de las Definiciones...')
-      return null
-    }
-  }
-
-  
 
   return (
     <div className="container">
@@ -80,7 +51,7 @@ const RuletaEmociones = () => {
             </div>
           </div>
         </div>
-        <div class="w-100"></div>
+        <div className="w-100"></div>
         <div className="col">
           <div
             className="callout mb-5  h-md-250 "
@@ -117,29 +88,30 @@ const RuletaEmociones = () => {
             <Form.Select className="mb-4" onChange={handleChange}>
                 <option value="-1" >Seleccciona una emocion</option>
                 {emociones?.map(({id,emocion})=>
-                  <option value={id} > {emocion} </option>
+                  <option value={id} key={`${id}-${emocion}`}> {emocion} </option>
                 )
                 }
               </Form.Select>
             </div>
           </div>
-          
+          <div className="row">
           <Form.Select className="mb-4" onChange={handleChange}>
                 <option value="-1" >Definicion 1</option>
+                
                 {definicionesUsuario?.map(({definicion_usuario},i)=>
 
-                  <option value={i} > {definicion_usuario} </option>
+                  <option value={i} key={`definicion_usuario1-${i}`}> {definicion_usuario} </option>
                 )
                 }
           </Form.Select>
           <Form.Select className="mb-4" onChange={handleChange}>
                 <option value="-1" >Definicion 2</option>
                 {definicionesUsuario?.map(({definicion_usuario},i)=>
-                  <option value={i} > {definicion_usuario} </option>
+                  <option value={i} key={`definicion_usuario2-${i}`} > {definicion_usuario} </option>
                 )
                 }
               </Form.Select>
-        
+          </div>
           
         </div>
       </div>

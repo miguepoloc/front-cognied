@@ -7,6 +7,10 @@ import ganso_pensando from "../../assets/img/ganso/ganso_pensando.png"
 import { FaArrowRight, FaClipboardCheck, FaPaperPlane } from 'react-icons/fa'
 import { BsGearFill } from 'react-icons/bs'
 import {ErrorAlert,SendAlert, SendOkAlert, SendBadAlert } from "../../helpers/helper_Swal_Alerts"
+import { GET_definiciones_usuario as getDefinicionesUsuario , 
+  GET_definiciones as getDefiniciones, 
+  POST_definiciones_usuario as postDefinicionesUsuario,
+  POST_definiciones_usuario_bulk_update as postDefinicionesUsuario_bulk_update } from '../../helpers/helperApi'
 import { RotatingLines } from 'react-loader-spinner'
 
 export const Vocabulario = () => {
@@ -32,10 +36,8 @@ export const Vocabulario = () => {
         console.log(definicionesUsuario);
         setDefinicionesUsuario(definicionesUsuario);
         setIsThereInformation(true);
-        setError(true)
       }
     }else{
-      console.log("stoy entrando")
         setError(true)
     }
 
@@ -58,35 +60,20 @@ export const Vocabulario = () => {
   }
 
   const SendOrUpdateVocabulario = async (isUpdate, jsonToSend)=>{
-    const urlUpdate = "https://63c3-2800-484-ad85-8eda-9ce7-fcea-7082-18b2.eu.ngrok.io/api/definiciones_usuario/bulk_update/"
-    const urlSend =  "https://63c3-2800-484-ad85-8eda-9ce7-fcea-7082-18b2.eu.ngrok.io/api/definiciones_usuario/";
-    
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    let requestOptions;
-
     if(jsonToSend){
-      requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: JSON.stringify(jsonToSend) 
-      };
+        let response =  isUpdate? await postDefinicionesUsuario_bulk_update(jsonToSend): await postDefinicionesUsuario(jsonToSend);
+        
+        if(response === null){
+          throw new Error(response.err)
+        }
+        
+        if(response.errors?.length != 0)
+        {
+          console.log(response)
+          return false
+        }
 
-      let response = await fetch(isUpdate? urlUpdate: urlSend, requestOptions)
-                            .then(response => response.json())
-                            .catch(err => {return {"err":"Ha ocurrido un error con la conexion"}});
-      if(response.err){
-        throw new Error(response.err)
-      }
-      
-      if(response.errors)
-      {
-        return false
-      }
-      else{
-        return true;
-      }
-
+          return true;
     }
     else{
       console.log("Hay campos vacios.")
@@ -98,6 +85,7 @@ export const Vocabulario = () => {
 
   const handleBtnClickSendOrUpdate = async(isUpdate,e) => {
     e.preventDefault();
+    
     let userId = 15;
     const jsonToSend = createJsonToSend(userId);
 
@@ -105,8 +93,9 @@ export const Vocabulario = () => {
       console.log(jsonToSend);
       SendAlert(undefined,'Tus respuestas estan siendo enviadas y procesadas <b>Espera un momento</b>')
       try{
-        let reponse = await SendOrUpdateVocabulario(isUpdate,jsonToSend);
-      if(reponse){
+        let response = await SendOrUpdateVocabulario(isUpdate,jsonToSend);
+        console.log(response)
+      if(response){
         SendOkAlert();
         }else{
           SendBadAlert(undefined,"Uhm... parece que ya he anotado tus respuestas anteriormente.");
@@ -130,42 +119,6 @@ export const Vocabulario = () => {
     }
     if (validate)
       setValidate(false);
-  }
-
-  const getDefinicionesUsuario = async (idUser) => {
-    const url = 'https://63c3-2800-484-ad85-8eda-9ce7-fcea-7082-18b2.eu.ngrok.io/api/definiciones_usuario/?id_usuario='+idUser
-   try{
-    const response = await fetch(url)
-    const data = await response.json()
-    if (data) {
-      console.log(data)
-      return data
-    } else {
-      console.log('No se pudieron traer los datos de las Definiciones...')
-      return null
-    }
-   }catch(e){
-     return null;
-   }  
-
-    
-  }
-  const getDefiniciones = async () => {
-    const url = 'https://63c3-2800-484-ad85-8eda-9ce7-fcea-7082-18b2.eu.ngrok.io/api/definiciones/'
-    try{
-      const response = await fetch(url)
-      const data = await response.json()
-      if (data) {
-        console.log(data)
-        return data
-      } else {
-        console.log('No se pudieron traer los datos de las Definiciones...')
-        return null
-      }
-    }catch(e){
-      return null
-    }
-    
   }
 
   const createJsonToSend = (isUser)=>{

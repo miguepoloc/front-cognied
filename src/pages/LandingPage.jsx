@@ -49,7 +49,7 @@ function LandingPage () {
        {/* <RuletaEmociones/> */}
 
 
-      <Act4 />
+      {/* <Act4 /> */}
       {/* <Part2 /> */}
       {/* <Part1 /> */}
       {/* <Vocabulario/>  */}

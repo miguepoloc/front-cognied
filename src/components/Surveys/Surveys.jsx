@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Surveys as model_surveys } from '../../assets/js/model_survey/Surveys'
+import { Surveys as model_surveys } from '../../helpers/model_survey/Surveys'
 import '../../assets/css/Surveys.scss'
 import Survey from './Survey'
 import ganso_pensando from "../../assets/img/ganso/ganso_pensando.png"
 import Scroll from '../../helpers/helperScroll'
 import {ErrorAlert,SendAlert, SendOkAlert, SendBadAlert } from "../../helpers/helper_Swal_Alerts"
-
+import {GET_vista_pregunta_respuesta as getSurveys,POST_usuario_encuesta as SendSurveys} from '../../helpers/helperApi'
 import { RotatingLines } from 'react-loader-spinner'
-import { async } from 'regenerator-runtime'
+
 const errorFaltaPorResponder = ()=>{
   ErrorAlert("Ups...","Parece que alguna pregunta de esta encuesta ha quedado sin responder. por favor, asegurate de que <b> todas </b> las preguntas tengan respuesta")
 }
@@ -19,6 +19,35 @@ const Surveys = () => {
   const [error, setError] = useState(false)
   const [nextOrPrev, setNextOrPrev] = useState(false) // lo uso para cargar las preguntas si da back.
   const [isBtnSendDisabled, setIsBtnSendDisabled] = useState(false)
+
+  useEffect(async () =>{
+    const response = await getSurveys();
+    console.log(response);
+    if(response){
+      try{
+        await setSurveys(new model_surveys(response))
+        setLoading(false);
+      }catch(e){
+        setLoading(false);
+        setError(true);
+      }
+    }
+    else{
+      setLoading(false);
+      setError(true);
+    }
+  }, [])
+
+  useEffect(
+    function () {
+      if (surveys.arrSurvey) {
+        surveys.markAllQuestionSelected()
+        surveys.results();
+        moveToStart()
+      }
+    },
+    [nextOrPrev]
+  )
 
   const moveToStart = () => {
     // Scroll.scroll("startSurvey",true);
@@ -44,66 +73,35 @@ const Surveys = () => {
     }
   }
 
-  const createDataToSend = (answers,userId,index)=>{
-    let key = Object.keys(answers)[index];
-    
-    let row = {
-      "id_usuario": ""+userId,
-      "id_encuesta": key,
-      "respuestas": [...answers[key],1]
+
+  const buildDataToSend = (userId)=>{
+    const sizeDataSurveys = surveys.getLengthJsonSurvey();
+    const dataSurveys = surveys.generateJsonToSend(userId);
+    let arrDataToSend = []
+    for(let i = 0; i < sizeDataSurveys; i++){
+      arrDataToSend.push(createDataToSend(dataSurveys,userId,i))
     }
-    return row;
+    return arrDataToSend;
+    
   }
 
-  /**
-   * 
-   * @param {Number} userId
-   * @returns Boolean 
-   */
- const SendSurveys = async (userId)=>{
-    const answers = surveys.generateJsonToSend();
-    const countSurveys = Object.keys(answers).length;
-    const url = "https://5c9e-181-235-99-54.eu.ngrok.io/api/usuario_encuesta/";
+   /**
+     * 
+     * @param {Array<JSON>} answers 
+     * @param {Number} userId 
+     * @param {Number} index 
+     * @returns JSON
+     */
+    const createDataToSend = (answers,userId,index)=>{
+      let key = Object.keys(answers)[index];
 
-    let promesas = [];
-    let requestOptions;
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    
-
-    for(let i = 0; i <1; i++){
-      requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: JSON.stringify(createDataToSend(answers,userId,i)) 
-      };
-      promesas.push(fetch("https://5c9e-181-235-99-54.eu.ngrok.io/api/usuario_encuesta/", requestOptions))
-    }
-    
-    return await wasSentWithoutError(promesas)
+      let row = {
+          "id_usuario": ""+userId,
+          "id_encuesta": key,
+          "respuestas": answers[key]
+      }
+      return row;
   }
-
-  /**
-   * 
-   * @param {Array<Promise>} promesas 
-   * @returns Boolean
-   */
-  const wasSentWithoutError = async (promesas)=>{
-    const respuestas = await Promise.all(promesas)
-        .then(results => Promise.all(results.map(r => r.json())))
-        .catch(err => {return {"err":"Ha ocurrido un error con la conexion"}})
-    
-        if(respuestas.err){
-      return false;
-    }
-    console.log(respuestas)
-    const isAllPostOk = respuestas.some((element) => element.respuestas.errors.length); //Verifico que no hayan errores
-     if(isAllPostOk){
-       return false;
-     }
-    return true;
-  }
-
 
   const handleButtonSendSurvey = async () => {
     const userId = Math.floor(Math.random() * (29 - 4) + 4);
@@ -115,11 +113,12 @@ const Surveys = () => {
       setIsBtnSendDisabled(() => true)
       SendAlert(undefined,'Tus respuestas estan siendo enviadas y procesadas <b>Espera un momento</b>')
       // Debería esperar una respuesta de todo ok., si la respuesta es negativa el boton vuelve a quedar
-      const send = await SendSurveys(userId);
+      const send = await SendSurveys(buildDataToSend(userId));
       if(send){
         //Deberia Redireccionar a un lugar....
         SendOkAlert(undefined,"¡Enhorabuena! tus respuestas han sido procesadas <b>serás redireccionado en breve.</b>");
       }else{
+        console.log(send)
           SendBadAlert();
       }
     } else {
@@ -132,44 +131,7 @@ const Surveys = () => {
     setSurveys(surveys)
   }
 
-  /* Devuelve un array o un valor null */
-  const getSurveys = async () => {
-    const url = 'http://127.0.0.1:8002/api/vista_pregunta_respuesta/'
-
-    const response = await fetch(url)
-      .then((datos) => datos.json())
-      .then((datos) => {
-        return datos;
-      })
-      .catch((err) => {
-        return null;
-      })
-
-    return response;
-  }
-
-  useEffect(async () =>{
-    const response = await getSurveys();
-    if(response){
-      await setSurveys(new model_surveys(response))
-      setLoading(false);
-    }
-    else{
-      setLoading(false);
-      setError(true);
-    }
-  }, [])
-
-  useEffect(
-    function () {
-      if (surveys.arrSurvey) {
-        surveys.markAllQuestionSelected()
-        surveys.results();
-        moveToStart()
-      }
-    },
-    [nextOrPrev]
-  )
+  
 
   return (
     <>

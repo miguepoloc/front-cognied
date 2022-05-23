@@ -4,10 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { FaHandSparkles, FaBolt, FaBrain, FaPencilAlt } from 'react-icons/fa'
 import { BiCurrentLocation } from 'react-icons/bi'
 import "../../assets/css/Surveys.scss";
-import Answer from "../Surveys/Answer";
-import swal from "sweetalert2";
 import ganso_elegante from "../../assets/img/ganso/ganso_elegante.png"
-import ganso_stop from "../../assets/img/ganso/ganso_stop.png"
 import Scroll from '../../helpers/helperScroll'
 import ButtonLibro from "../Dashboard/ButtonLibro"
 import { Warning_Alert, Correct_Alert } from "../../helpers/helper_Swal_Alerts";
