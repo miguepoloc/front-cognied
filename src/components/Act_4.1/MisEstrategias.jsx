@@ -1,14 +1,12 @@
+/* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react'
 import '../../assets/css/Act4.scss'
 // eslint-disable-next-line camelcase
 import ganso_lupa_celular from '../../assets/img/ganso/ganso_lupa_celular.png'
-import situacion1 from './img/Situacion1.png'
-// eslint-disable-next-line camelcase
-import { Warning_Alert, Correct_Alert, RetroalimentacionAlert } from '../../helpers/helper_Swal_Alerts'
-import { section4, setColorSelect } from '../../helpers/helper_Reg_Emoc_act_4'
+import { RetroalimentacionAlert } from '../../helpers/helper_Swal_Alerts'
+import { section4_1, setColorSelect } from '../../helpers/helper_Reg_Emoc_act_4'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Schema = Yup.object().shape({
   Texto1: Yup.string()
@@ -21,27 +19,14 @@ const Schema = Yup.object().shape({
     .required('Es necesario llenar esta información')
 })
 
-const Act4 = () => {
-  const cantidad = section4.activities.length
+const MisEstrategias = () => {
+  const cantidad = section4_1.activities.length
   console.log(cantidad)
   const color = '#4cbeff'
 
   useEffect(() => { setColorSelect(color) }, [])
 
   const [activityIndex, setActivityIndex] = useState(0)
-  const [Texto1, setTexto1] = useState('')
-  const [Texto2, setTexto2] = useState('')
-  const handleButtonOption = () => {
-    RetroalimentacionAlert(undefined, section4.activities[activityIndex].text).then(function () {
-      if (activityIndex + 1 < cantidad) {
-        setTexto1('')
-        setTexto2('')
-        setActivityIndex(activityIndex + 1)
-      } else {
-        console.log('Final')
-      }
-    })
-  }
 
   return (
 
@@ -52,7 +37,6 @@ const Act4 = () => {
                         <img
                             style={{ width: '150px', height: '150px' }}
                             className="card-img-left flex-auto d-block "
-                            // eslint-disable-next-line camelcase
                             src={ganso_lupa_celular}
                         />
                         <div className="card-body d-flex flex-column align-items-start justify-content-center">
@@ -73,7 +57,7 @@ const Act4 = () => {
                         style={{ borderLeftColor: color }}
                     >
                         <h5 style={{ color: color }}>
-                            {section4.activities[activityIndex].name}
+                            {section4_1.activities[activityIndex].name}
                         </h5>
 
                         <p>
@@ -90,12 +74,19 @@ const Act4 = () => {
             <div className="container">
                 <Formik
                     initialValues={{
-                      Texto1: Texto1,
-                      Texto2: Texto2
+                      Texto1: '',
+                      Texto2: ''
                     }}
                     validationSchema={Schema}
                     onSubmit={(values, { resetForm }) => {
                       console.log(values)
+                      RetroalimentacionAlert(undefined, section4_1.activities[activityIndex].text).then(function () {
+                        if (activityIndex + 1 < cantidad) {
+                          setActivityIndex(activityIndex + 1)
+                        } else {
+                          console.log('Final')
+                        }
+                      })
                       resetForm()
                     }}
                 >
@@ -109,7 +100,7 @@ const Act4 = () => {
                                     <img
                                         style={{ width: '100%' }}
                                         className="card-img-left flex-auto d-block mx-auto"
-                                        src={section4.activities[activityIndex].imagen}
+                                        src={section4_1.activities[activityIndex].imagen}
                                     />
                                 </div>
                                 <div className="col-sm mb-4">
@@ -166,8 +157,7 @@ const Act4 = () => {
                                     <button
                                         type="submit"
                                         className="text-white btn btn-info "
-                                        onClick={handleButtonOption}
-                                        disabled={!dirty || !isValid}
+                                        // disabled={!dirty || !isValid}
                                     >
                                         Siguiente
                                     </button>
@@ -183,4 +173,4 @@ const Act4 = () => {
   )
 }
 
-export default Act4
+export default MisEstrategias
