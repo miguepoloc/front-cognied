@@ -51,6 +51,8 @@ function LandingPage () {
        <ManejoSemaforo />
 
       <MisEstrategias />
+
+      {/* <Act4 /> */}
       {/* <Part2 /> */}
       {/* <Part1 /> */}
       {/* <Vocabulario/>  */}

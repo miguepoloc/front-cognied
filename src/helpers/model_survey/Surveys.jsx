@@ -9,6 +9,10 @@ class Surveys {
     this.IndiceMaximo = this.jsonSurvey.length - 1;
   }
 
+  getLengthJsonSurvey() {
+    return this.jsonSurvey.length
+  }
+
   /**
    * Asigna una respuesta a una pregunta.
    * @param {number} id_pregunta
@@ -350,6 +354,11 @@ class Surveys {
     return search.length ? search[0] : null;
   }
 
+  /**
+   * 
+   * @param {Number} id_usuario 
+   * @returns JSON
+   */
   generateJsonToSend(id_usuario) {
     //Una vez todo se haya respondido
     //Id usuario
