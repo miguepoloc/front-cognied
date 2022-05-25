@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 
 /*
 La idea es que los alerts para que sea facil hacerle cambio a las imagenes.
