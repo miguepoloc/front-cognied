@@ -12,7 +12,7 @@ export const URL_BASE = 'http://127.0.0.1:8002'
 const createRequest = async (url,myMethod,dataToSend = null) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    
+    //TODO: Colocar token del usuario.
     const requestOptions = {
         method: myMethod,
         headers: myHeaders,
@@ -39,10 +39,9 @@ const method = {
 
 const isResponseValid = (response)=>{
     if (!response?.err) {
-        console.log(response)
         return response
     } else {
-        console.log('No se pudieron traer los datos de las Definiciones...')
+        console.log('No se pudieron traer los datos de los datos...')
         return null
     }
 }
@@ -88,13 +87,12 @@ export const GET_vista_pregunta_respuesta = async () => {
 export const POST_usuario_encuesta = async (arrDataToSend)=>{
     const countSurveys = arrDataToSend.length;
     const url = `${URL_BASE}/api/usuario_encuesta/`;
-    console.log(arrDataToSend)
     let ArrPromesas = [];
 
     for(let i = 0; i < countSurveys; i++){
       ArrPromesas.push(createRequest(url,method.post,arrDataToSend[i]))
     }
-    console.log(ArrPromesas)
+
     return await wasSentWithoutError(ArrPromesas)
 }
   
