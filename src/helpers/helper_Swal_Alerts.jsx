@@ -4,16 +4,12 @@ La idea es que los alerts para que sea facil hacerle cambio a las imagenes.
 */
 
 import swal from 'sweetalert2'
-import ganso_elegante from '../assets/img/ganso/250x200/ganso_elegante.png'
-import ganso_stop from '../assets/img/ganso/250x200/ganso_stop.png'
-import ganso_escribiendo from '../assets/img/ganso/250x200/ganso_escribiendo.png'
-import ganso_feliz from '../assets/img/ganso/250x200/ganso_alegria.png'
-import ganso_triste from '../assets/img/ganso/250x200/ganso_tristeza.png'
-import ganso_explicando from '../assets/img/ganso/ganso_explicando.png'
+import { imgGanso } from './helper_imagen_ganso'
 
 const colorTheme = '#4cbeff'
 
 window.Swal = swal
+
 // Se utiliza en la parte 1 de la actividad 1 del módulo de david.
 export const Warning_Alert = (
   title = '',
@@ -22,7 +18,7 @@ export const Warning_Alert = (
 ) => {
   return Swal.fire({
     title: title,
-    imageUrl: ganso_stop,
+    imageUrl: imgGanso.stop_250x200,
     imageWidth: 250,
     imageHeight: 200,
     imageAlt: '¿Seguro que esa era la respuesta?',
@@ -43,7 +39,7 @@ export const Correct_Alert = (
 ) => {
   return Swal.fire({
     title: title,
-    imageUrl: ganso_elegante,
+    imageUrl: imgGanso.elegante_250x200,
     imageWidth: 250,
     imageHeight: 200,
     imageAlt: '¡Correcto!',
@@ -65,7 +61,7 @@ export const ErrorAlert = (
 ) => {
   return Swal.fire({
     title: title,
-    imageUrl: ganso_stop, // Corregir xd
+    imageUrl: imgGanso.stop_250x200, // Corregir xd
     imageWidth: 250,
     imageHeight: 200,
     imageAlt: alt,
@@ -87,7 +83,7 @@ export const SendAlert = (
 ) => {
   return Swal.fire({
     title: title,
-    imageUrl: ganso_escribiendo, // Corregir xd
+    imageUrl: imgGanso.escribiendo_250x200, // Corregir xd
     imageWidth: 250,
     imageHeight: 200,
     imageAlt: alt,
@@ -106,7 +102,7 @@ export const SendOkAlert = (
 ) => {
   return Swal.fire({
     title: title,
-    imageUrl: ganso_feliz,
+    imageUrl: imgGanso.feliz_250x200,
     imageWidth: 250,
     imageHeight: 200,
     imageAlt: alt,
@@ -128,7 +124,7 @@ export const SendBadAlert = (
 ) => {
   return Swal.fire({
     title: title,
-    imageUrl: ganso_triste,
+    imageUrl: imgGanso.triste_250x200,
     imageWidth: 250,
     imageHeight: 200,
     imageAlt: alt,
@@ -149,7 +145,7 @@ export const RetroalimentacionAlert = (
 ) => {
   return Swal.fire({
     title: title,
-    imageUrl: ganso_explicando,
+    imageUrl: imgGanso.explicando,
     imageWidth: 250,
     // imageHeight: 200,
     imageAlt: '¡Importante!',

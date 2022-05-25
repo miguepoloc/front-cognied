@@ -14,6 +14,7 @@ import Part2 from '../components/Act_1.1/Part2'
 import { Vocabulario } from '../components/Act_2.2/Vocabulario'
 import RuletaEmociones from '../components/Act_2.2/RuletaEmociones'
 import Act4 from '../components/Act_4.1/Act4'
+
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
@@ -45,8 +46,8 @@ function LandingPage () {
 
       {/* <Surveys /> */}
         {/* <Part2 />   */}
-       <Vocabulario/> 
-       {/* <RuletaEmociones/> */}
+       {/* <Vocabulario/>  */}
+       <RuletaEmociones/>
 
 
       {/* <Act4 /> */}

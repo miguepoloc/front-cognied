@@ -2,21 +2,23 @@ import React, { useEffect, useState } from 'react'
 import '../../assets/css/Surveys.scss'
 import Answer from '../Surveys/Answer'
 import ganso_lupa_celular from '../../assets/img/ganso/ganso_lupa_celular.png'
+import { imgGanso } from '../../helpers/helper_imagen_ganso'
+import { ActividadConTip } from '../Dashboard/ActividadConTip'
 import { Warning_Alert, Correct_Alert } from '../../helpers/helper_Swal_Alerts'
 import { section1, setColorSelect } from '../../helpers/helper_Reg_Emoc_act_1'
+import { ActividadConDesc } from '../Dashboard/ActividadConDesc'
+
 const Part1 = () => {
   const color = '#4cbeff'
 
   useEffect(() => { setColorSelect(color) }, [])
-
   const [optionIndex, setOptionIndex] = useState(-1)
   const [activityIndex, setActivityIndex] = useState(0)
   const handleButtonOption = () => {
     console.log(section1.activities[activityIndex].correctAnswerIndex)
     if (optionIndex >= 0) {
       if (
-        optionIndex ==
-              section1.activities[activityIndex].correctAnswerIndex
+        optionIndex == section1.activities[activityIndex].correctAnswerIndex
       ) {
         console.log(
           section1.activities[activityIndex].correctAnswerIndex
@@ -26,6 +28,7 @@ const Part1 = () => {
           if (activityIndex + 1 < section1.options.length) {
             setActivityIndex(activityIndex + 1)
           } else {
+            //TODO: redireccionar a algun lugar.
             console.log('Final.')
           }
         })
@@ -37,47 +40,22 @@ const Part1 = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col">
-          <div className="card flex-md-row mb-2 box-shadow h-md-250 px-4  py-4 mt-3 ">
-            <img
-              style={{ width: '150px', height: '150px' }}
-              className="card-img-left flex-auto d-block "
-              src={ganso_lupa_celular}
-            />
-            <div className="card-body d-flex flex-column align-items-start justify-content-center">
-              <h5 className="card-title">Actividad 1.1</h5>
-              <p className="card-text">
-                Para empezar a entrenar nuestra gestión emocional, es importante
-                empezar por el paso más básico: identificar una expresión
-                emocional. Dirás: ¿quién no sabe identificar una emoción? Pues
-                ocurre que muchas veces esto no ocurre tan fácilmente para
-                todos.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="w-100"></div>
-        <div className="col">
-          <div
-            className="callout mb-5  h-md-250 "
-            style={{ borderLeftColor: color }}
-          >
-            <h5 style={{ color: color }}>
-              {section1.activities[activityIndex].name}
-            </h5>
-
-            <p>
-              A continuación, tienes un rompecabezas de cada una de las
+      <ActividadConDesc
+              actividadTitle={"Actividad 1.1"} 
+              actividadSText={`Para empezar a entrenar nuestra gestión emocional, es importante
+              empezar por el paso más básico: identificar una expresión
+              emocional. Dirás: ¿quién no sabe identificar una emoción? Pues
+              ocurre que muchas veces esto no ocurre tan fácilmente para
+              todos.`} 
+              actividadSrc = {imgGanso.lupa_celular}
+              descTitle = {section1.activities[activityIndex].name}
+              descText = {`A continuación, tienes un rompecabezas de cada una de las
               emociones básicas. Cuando lo termines de armar, busca entre las
               opciones anexas y selecciona la emoción que creas que representa.
               Si logras identificar la emoción correcta, !----Nombre del
               ganso---! te dará unas pistas de esa emoción. ¡Préstale atención
-              porque lo necesitaras para más adelante!
-            </p>
-          </div>
-        </div>
-      </div>
+              porque lo necesitaras para más adelante!`}
+            />
       <div className="row">
         <div className="col-md-8">
           <div

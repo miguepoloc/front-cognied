@@ -227,12 +227,10 @@ class Surveys {
   }
 
   sumAllQuestions(encuesta){
-    console.log(encuesta)
     return encuesta.questions.reduce((accumulator,question)=>  accumulator + question.getObjSelected().value,0)
   }
 
   sumAnyQuestions(encuesta,ArrIdQuestionsToSum){
-    console.log(encuesta)
     return encuesta.questions
             .filter((question)=>  ArrIdQuestionsToSum.includes(question.getItemId()))
             .reduce((accumulator,question)=>  accumulator + question.getObjSelected().value, 0)
@@ -341,7 +339,6 @@ class Surveys {
         surveyRecent = objSurvey;
       }
     });
-    console.log(this.jsonSurvey);
   }
 
   /**
