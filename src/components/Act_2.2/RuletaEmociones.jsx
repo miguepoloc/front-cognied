@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { FaBolt } from 'react-icons/fa'
 import '../../assets/css/Surveys.scss'
-import ganso_lupa_celular from "../../assets/img/ganso/ganso_lupa_celular.png"
+
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
 
 import { GET_emocion as getEmociones, GET_definiciones_usuario as getDefinicionesUsuario } from '../../helpers/helperApi'
@@ -12,6 +11,8 @@ import { ErrorAlert, Correct_Alert } from "../../helpers/helper_Swal_Alerts"
 import { ErrorGanso } from '../ErrorGanso'
 import { Loading } from '../Loading'
 import { ActividadConTip } from '../Dashboard/ActividadConTip'
+
+import { IoMdCheckboxOutline } from "react-icons/io";
 const RuletaEmociones = () => {
   const color = "#4cbeff";
 
@@ -95,7 +96,12 @@ const RuletaEmociones = () => {
   const handleChange = (e) => {
     setAnswer({ ...answer, [e.target.name]: e.target.value });
   }
-
+  /*
+   
+    document.querySelector('#iframe_ruleta').addEventListener("load",function() {
+      document.querySelector('#iframe_ruleta').contents().querySelector("head")
+      .insertAdjacentHTML("beforeend",document.querySelector("<style type='text/css'>  .q-btn{display:none;}  </style>"));
+    });*/
 
   return (
     <div className="container">
@@ -105,64 +111,66 @@ const RuletaEmociones = () => {
             <ErrorGanso />
           ) : (<>
 
-            <ActividadConTip 
-              actividadTitle={"Actividad 2.2"} 
+            <ActividadConTip
+              actividadTitle={"Actividad 2.2"}
               actividadSText={`¡Le has dado nombre a las experiencias emocionales! Pero… ¿sabes en que familia emocional se ubican? Si recuerdas las funciones de las emociones, como te recomendó Nombre del ganso, no te será difícil la siguiente parte del ejercicio.En la ruleta que ves aquí están los nombres de las emociones básicas. Girala y te aparecerá una emoción. Dale click al botón azul que dice “Remove”. Luego, selecciona la emoción que te salió en “Coloca la emoción”.
-                               Ahora, aquí está la tarea, debes ir a las dos barras de abajo y seleccionar en cada una tú definición, sabiendo a que se refieren, que consideres que pertenece o se relacionan con esa emoción. Cada emoción está relacionada con por lo menos dos de las definiciones que has nombrado. Una vez lo selecciones, darle al botón de <b>“Enviar”</b> para comprobar tu respuesta.`} 
-              actividadSrc = {imgGanso.lupa_celular}
-              tipText = {"Cuando tengas la respuesta correcta de una emoción, vuelve a girar la rueda y repite el ejercicio hasta que no quede ya ninguna emoción en la ruleta. No te preocupes, despues de 5 segundos la opción seleccionada aleatoriamente se eliminará automaticamente."}
+                               Ahora, aquí está la tarea, debes ir a las dos barras de abajo y seleccionar en cada una tú definición, sabiendo a que se refieren, que consideres que pertenece o se relacionan con esa emoción. Cada emoción está relacionada con por lo menos dos de las definiciones que has nombrado. Una vez lo selecciones, darle al botón de <b>“Enviar”</b> para comprobar tu respuesta.`}
+              actividadSrc={imgGanso.lupa_celular}
+              tipText={"Cuando tengas la respuesta correcta de una emoción, vuelve a girar la rueda y repite el ejercicio hasta que no quede ya ninguna emoción en la ruleta. No te preocupes, despues de 5 segundos la opción seleccionada aleatoriamente se eliminará automaticamente."}
             />
 
             <div className="row">
               <div className="col-md-8">
                 <div>
                   <iframe
-                    src="https://wheelofnames.com/k6a-vug "
-                    width="100%" height="585px">
-                  </iframe>
-
+                    src="https://wheelofnames.com/nz4-k73"
+                    width="100%" height="585px" />
                 </div>
               </div>
-              <div className="col-md-4 ">
+              <div className="col-md-4 mb-4 d-flex flex-column justify-content-between">
                 <div className="row d-flex align-items-start justify-content-end">
                   <div className="col-xl-7">
                     <Form.Select className="mb-4" name="emocionId" onChange={handleChange}>
                       <option value="-1" >Seleccciona una emocion</option>
                       {emociones?.map(({ id, emocion }) =>
-                        <option value={id} key={`${id}-${emocion}`}> {emocion} </option>
+                        <option className='text-capitalize' value={id} key={`${id}-${emocion}`}> {emocion} </option>
                       )
                       }
                     </Form.Select>
                   </div>
                 </div>
-                <div className="row">
-                  <Form.Select className="mb-4" defaultValue={'-1'} name="definicion1Id" key={`definicion1_size_${definicionesUsuario.length}`} onChange={handleChange}>
-                    <option value="-1" disabled>Definicion 1</option>
+                <div className="col d-flex flex-column justify-content-around">
 
-                    {definicionesUsuario?.map(({ definicion_usuario, definicion }, i) => {
-                      return definicion != answer.definicion2Id ?
-                        <option value={definicion} key={`definicion_usuario1-${i}`}> {definicion_usuario} </option> : <></>
-                    }
-                    )
-                    }
-                  </Form.Select>
-                  <Form.Select className="mb-4" defaultValue={'-1'} name="definicion2Id" key={`definicion2_size_${definicionesUsuario.length}`} onChange={handleChange}>
-                    <option value="-1" disabled>Definicion 2</option>
-                    {definicionesUsuario?.map(({ definicion_usuario, definicion }, i) => {
-                      return definicion != answer.definicion1Id ?
-                        <option value={definicion} key={`definicion_usuario2-${i}`} > {definicion_usuario} </option> : <></>
-                    }
-                    )
-                    }
-                  </Form.Select>
+                    <Form.Select defaultValue={'-1'} className="mb-4 mb-md-0" name="definicion1Id" key={`definicion1_size_${definicionesUsuario.length}`} onChange={handleChange}>
+                      <option value="-1" disabled>Definicion 1</option>
+
+                      {definicionesUsuario?.map(({ definicion_usuario, definicion }, i) => {
+                        return definicion != answer.definicion2Id ?
+                          <option  value={definicion} key={`definicion_usuario1-${i}`}> {definicion_usuario} </option> : <></>
+                      }
+                      )
+                      }
+                    </Form.Select>
+               
+
+                    <Form.Select defaultValue={'-1'} className="mb-4" name="definicion2Id" key={`definicion2_size_${definicionesUsuario.length}`} onChange={handleChange}>
+                      <option value="-1" disabled>Definicion 2</option>
+                      {definicionesUsuario?.map(({ definicion_usuario, definicion }, i) => {
+                        return definicion != answer.definicion1Id ?
+                          <option value={definicion} key={`definicion_usuario2-${i}`} > {definicion_usuario} </option> : <></>
+                      }
+                      )
+                      }
+                    </Form.Select>
+                    
+        
                 </div>
-                <Button onClick={isAnswerCorrect}>Validar</Button>
+                <Button onClick={isAnswerCorrect} className="mt-4 d-flex align-items-center justify-content-center">Validar <IoMdCheckboxOutline className='ms-1'  style={{height:"1.2em", width:"1.2em"}}/></Button>
 
               </div>
             </div></>)}</>)}
-
-
     </div>
+
   );
 }
 
