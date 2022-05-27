@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 import Scroll from '../../helpers/helperScroll'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
 import { gansoPensandoAlert, SendAlert } from '../../helpers/helper_Swal_Alerts'
@@ -9,9 +10,19 @@ export const Resultados = ({ objResultados }) => {
     textAlign: "justify",
     textJustify: "inter-word"
   }
-
+const mensajeDeAlerta = ()=>{
+  let mensaje = "";
   if(objResultados.depresion.points >= 31 && objResultados.ansiedad.points >= 46 ){
-    gansoPensandoAlert(undefined,`<p style="text-align: justify;">¡Hola! Tus resultados parecen ser altos con respecto a ansiedad y depresión. ¿Deseas contactarte con algún apoyo psicológico? A través de nuestro proyecto hermano SaludMental-SGR Unimagdalena puedes acceder a orientación psicológica gratuita a través de su chat virtual. Están siempre dispuestos a apoyar cualquier necesidad. Pero esto solo es una recomendación y depende de tu decisión.
+    mensaje = "ansiedad y depresión";
+  }
+  else if(objResultados.depresion.points >= 31){
+    mensaje = "depresión";
+  }
+  else if(objResultados.ansiedad.points >= 46){
+    mensaje = "ansiedad";
+  }
+  if(mensaje != ""){
+    gansoPensandoAlert(undefined,`<p style="text-align: justify;">¡Hola! Tus resultados parecen ser altos con respecto a ${mensaje}. ¿Deseas contactarte con algún apoyo psicológico? A través de nuestro proyecto hermano SaludMental-SGR Unimagdalena puedes acceder a orientación psicológica gratuita a través de su chat virtual. Están siempre dispuestos a apoyar cualquier necesidad. Pero esto solo es una recomendación y depende de tu decisión.
     <br/>
     <br/>
     Si quieres acceder a este servicio gratuito, ve al botón del chat que aparece en la parte inferior derecha de la página del proyecto: <a href= "https://sgrsaludmental.unimagdalena.edu.co/" style='color:#FC8890;'>¡Click aquí!</a>
@@ -22,7 +33,9 @@ export const Resultados = ({ objResultados }) => {
     `,"#FC8890").then(()=>Scroll.scroll("resultados",true))
   }
   
-
+}
+   
+mensajeDeAlerta();
 
   return (
     <div className='container' id="resultados">

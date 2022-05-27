@@ -120,7 +120,7 @@ const Surveys = () => {
         //TODO: Redireccionar a un lugar....
         console.log(surveys.jsonSurvey)
         
-        SendOkAlert(undefined, "¡Enhorabuena! tus respuestas han sido procesadas y <b>¡He traido los resultados!</b>").then(()=>{setShowResults(surveys.results())})
+        SendOkAlert(undefined, "¡Enhorabuena! ¡Tus respuestas han sido procesadas y <b>he traído los resultados</b>!").then(()=>{setShowResults(surveys.results())})
         
       } else {
         console.log(send)
