@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../assets/css/Act4.scss'
 import ganso_lupa_celular from '../../assets/img/ganso/ganso_lupa_celular.png'
-import { RetroalimentacionAlert } from '../../helpers/helper_Swal_Alerts'
+import { ErrorAlert, RetroalimentacionAlert, Correct_Alert } from '../../helpers/helper_Swal_Alerts'
 import { section4_2, setColorSelect } from '../../helpers/helper_Reg_Emoc_act_4'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
@@ -30,7 +30,6 @@ const Schema = Yup.object().shape({
 
 const ManejoSemaforo = () => {
   const cantidad = section4_2.activities.length
-  console.log(cantidad)
   const color = '#4cbeff'
   const ObjetoColor = {
     rojo: '#ff6961',
@@ -76,7 +75,7 @@ const ManejoSemaforo = () => {
                         </h5>
 
                         <p>
-                            Una noche saliendo de clases, en medio de una conversación, discutes en malos términos con un amigo(a) que aprecias. No alcanzas a terminar el tema, porque al salir de la universidad, ves tu bus pasando y sabes que necesitas alcanzarlo. Ahora vas en el bus pensativo.
+                            {section4_2.activities[activityIndex].ejercicio}
                         </p>
                     </div>
                 </div>
@@ -95,15 +94,29 @@ const ManejoSemaforo = () => {
                     }}
                     validationSchema={Schema}
                     onSubmit={(values, { resetForm }) => {
+                      if (
+                        values.color1 === section4_2.activities[activityIndex].color1 &&
+                            values.color2 === section4_2.activities[activityIndex].color2 &&
+                            values.color3 === section4_2.activities[activityIndex].color3 &&
+                            section4_2.activities[activityIndex].situacion[values.situacion].isCorrect &&
+                            section4_2.activities[activityIndex].emocion[values.emocion].isCorrect
+                      ) {
+                        console.log('Está correcto')
+                        resetForm()
+                        Correct_Alert(section4_2.titleSuccess, section4_2.successMsg).then(function () {
+                          if (activityIndex + 1 < cantidad) {
+                            setActivityIndex(activityIndex + 1)
+                          } else {
+                            //   TODO REDIRECCIÓN
+                            console.log('Final')
+                          }
+                        })
+                      } else {
+                        ErrorAlert(section4_2.titleError, section4_2.errorMsg)
+                        console.log('Equivocado')
+                      }
+
                       console.log(values)
-                      RetroalimentacionAlert(undefined, section4_2.activities[activityIndex].text).then(function () {
-                        if (activityIndex + 1 < cantidad) {
-                          setActivityIndex(activityIndex + 1)
-                        } else {
-                          console.log('Final')
-                        }
-                      })
-                      resetForm()
                     }}
                 >
                     {({ errors, values, touched, handleChange }) => (
@@ -115,7 +128,8 @@ const ManejoSemaforo = () => {
                                         style={{ backgroundColor: ObjetoColor[values.color1] || colorgris, borderRadius: '10px', minHeight: '300px' }}
                                     >
                                         <h5 className="my-auto font-weight-normal centrado">
-                                            Empieza a considerar lo que ocurre. Sabe que ahora mismo se encuentra bastante indispuesto y no quiere hacer algo de lo que se arrepienta después. Aprovecha el viaje en el bus para escuchar su música favorita. No quiere pensar en lo ocurrido mientras se sienta así. Considera las experiencias vividas, la relación con esa persona y lo que ocurrió en ese momento
+                                            {section4_2.activities[activityIndex].opcion1}
+
                                         </h5>
 
                                     </div>
@@ -127,7 +141,7 @@ const ManejoSemaforo = () => {
                                         style={{ backgroundColor: ObjetoColor[values.color2] || colorgris, borderRadius: '10px', minHeight: '300px' }}
                                     >
                                         <h5 className="my-auto font-weight-normal centrado">
-                                            Nota que su respiración aumenta, su corazón empieza a palpitar muy rápida y sus brazos y manos se tensan. Empieza a pensar: “¿Quién se cree acaso?” “¿Qué le pasa?” “¡Ni sabe que m(&/%&$ esta hablando!”. Un deseo de empujar a la otra persona casi de forma instantánea lo invade sin otra consideración, pero se detiene un momento y reflexiona lo que está sintiendo.
+                                            {section4_2.activities[activityIndex].opcion2}
                                         </h5>
                                     </div>
                                 </div>
@@ -137,14 +151,14 @@ const ManejoSemaforo = () => {
                                         style={{ backgroundColor: ObjetoColor[values.color3] || colorgris, borderRadius: '10px', minHeight: '300px' }}
                                     >
                                         <h5 className="my-auto font-weight-normal centrado">
-                                            Llega a casa y se dispone a comer, descambiarse y recostarse un momento. Con la mente más clara, piensa en lo que ha pasado y entonces le escribe a su amigo.
+                                            {section4_2.activities[activityIndex].opcion3}
                                         </h5>
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-sm mb-4">
-                                    <Field name="color1" as="select" className="form-control" value={values.color1 || ''}
+                                    <Field name="color1" as="select" className="form-select" value={values.color1 || ''}
                                         onChange={handleChange}
                                     >
                                         <option value="" disabled>Selecciona un color</option>
@@ -163,7 +177,7 @@ const ManejoSemaforo = () => {
                                       : null}
                                 </div>
                                 <div className="col-sm mb-4">
-                                    <Field name="color2" as="select" className="form-control" value={values.color2 || ''}
+                                    <Field name="color2" as="select" className="form-select" value={values.color2 || ''}
                                         onChange={handleChange}>
                                         <option value="" disabled>Selecciona un color</option>
                                         <option value="rojo">Rojo</option>
@@ -184,7 +198,7 @@ const ManejoSemaforo = () => {
                                     <Field name="color3"
                                         as="select"
                                         value={values.color3 || ''}
-                                        className="form-control"
+                                        className="form-select"
                                         onChange={handleChange}
                                     >
                                         <option value="" disabled>Selecciona un color</option>
@@ -218,14 +232,14 @@ const ManejoSemaforo = () => {
                                     <Field
                                         name="situacion"
                                         as="select"
-                                        className="form-control"
+                                        className="form-select"
                                         value={values.situacion || ''}
                                         onChange={handleChange}>
                                         <option value="" key="Prueba" disabled>Selecciona una situacion</option>
 
                                         {section4_2.activities[activityIndex].situacion.map((situacion, situacionindex) => (
                                             <>
-                                                <option value={`situacion${situacionindex}`} key={`Situacion_${situacionindex}`}>{situacion.option}</option>
+                                                <option value={situacionindex} key={`Situacion_${situacionindex}`}>{situacion.option}</option>
                                             </>
                                         ))}
 
@@ -255,14 +269,14 @@ const ManejoSemaforo = () => {
                                     <Field
                                         name="emocion"
                                         as="select"
-                                        className="form-control"
+                                        className="form-select"
                                         value={values.emocion || ''}
                                         onChange={handleChange}>
                                         <option value="" key="Prueba" disabled>Selecciona una emocion</option>
 
                                         {section4_2.activities[activityIndex].emocion.map((emocion, emocionindex) => (
                                             <>
-                                                <option value={`emocion${emocionindex}`} key={`Emocion_${emocionindex}`}>{emocion.option}</option>
+                                                <option value={emocionindex} key={`Emocion_${emocionindex}`}>{emocion.option}</option>
                                             </>
                                         ))}
 
@@ -276,7 +290,6 @@ const ManejoSemaforo = () => {
                                             </div>
                                         )
                                       : null}
-                                    {values.emocion}
                                 </div>
 
                             </div>
@@ -298,11 +311,11 @@ const ManejoSemaforo = () => {
                                     </div>
                                     {errors.Texto1 && touched.Texto1
                                       ? (
-                                                    <div
-                                                        style={{ color: 'red' }}
-                                                    >
-                                                        {errors.Texto1}
-                                                    </div>
+                                            <div
+                                                style={{ color: 'red' }}
+                                            >
+                                                {errors.Texto1}
+                                            </div>
                                         )
                                       : null}
                                 </div>

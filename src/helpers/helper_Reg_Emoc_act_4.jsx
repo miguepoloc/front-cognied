@@ -49,6 +49,10 @@ export const section4_1 = {
 
 export const section4_2 = {
   name: 'Seccion4',
+  titleError: '¡Estás cerca!',
+  errorMsg: 'Revisa algunas de las opciones seleccionadas e intenta de nuevo.',
+  titleSuccess: '¡Excelente!',
+  successMsg: 'Recuerda que cada persona puede aplicar distintas estrategias a las diferentes situaciones que se le presentan. ¡Continua con el siguiente!',
   activities: [
     {
       name: 'Ejercicio 1',
@@ -72,9 +76,7 @@ export const section4_2 = {
         { option: 'Sorpresa', isCorrect: false },
         { option: 'Miedo', isCorrect: false },
         { option: 'Asco', isCorrect: false }
-      ],
-      errorMsg: '¡Estas cerca! Revisa algunas de las opciones seleccionadas e intenta de nuevo.',
-      successMsg: '“¡Excelente! Recuerda que cada persona puede aplicar distintas estrategias a las diferentes situaciones que se le presentan. ¡Continua con el siguiente!'
+      ]
     },
     {
       name: 'Ejercicio 2',
@@ -98,9 +100,7 @@ export const section4_2 = {
         { option: 'Sorpresa', isCorrect: false },
         { option: 'Miedo', isCorrect: true },
         { option: 'Asco', isCorrect: false }
-      ],
-      errorMsg: '¡Estas cerca! Revisa algunas de las opciones seleccionadas e intenta de nuevo.',
-      successMsg: '“¡Excelente! Recuerda que cada persona puede aplicar distintas estrategias a las diferentes situaciones que se le presentan. ¡Continua con el siguiente!'
+      ]
     },
     {
       name: 'Ejercicio 3',
@@ -124,9 +124,7 @@ export const section4_2 = {
         { option: 'Sorpresa', isCorrect: false },
         { option: 'Miedo', isCorrect: false },
         { option: 'Asco', isCorrect: false }
-      ],
-      errorMsg: '¡Estas cerca! Revisa algunas de las opciones seleccionadas e intenta de nuevo.',
-      successMsg: '“¡Excelente! Recuerda que cada persona puede aplicar distintas estrategias a las diferentes situaciones que se le presentan. ¡Continua con el siguiente!'
+      ]
     },
     {
       name: 'Ejercicio 4',
@@ -150,9 +148,7 @@ export const section4_2 = {
         { option: 'Sorpresa', isCorrect: false },
         { option: 'Miedo', isCorrect: false },
         { option: 'Asco', isCorrect: false }
-      ],
-      errorMsg: '¡Estas cerca! Revisa algunas de las opciones seleccionadas e intenta de nuevo.',
-      successMsg: '“¡Excelente! Recuerda que cada persona puede aplicar distintas estrategias a las diferentes situaciones que se le presentan. ¡Continua con el siguiente!'
+      ]
     }
   ]
 }
