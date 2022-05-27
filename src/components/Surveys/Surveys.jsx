@@ -8,6 +8,7 @@ import { ErrorAlert, SendAlert, SendOkAlert, SendBadAlert } from "../../helpers/
 import { GET_vista_pregunta_respuesta as getSurveys, POST_usuario_encuesta as SendSurveys } from '../../helpers/helperApi'
 import { ErrorGanso } from '../ErrorGanso'
 import { Loading } from '../Loading'
+import { Resultados } from './Resultados'
 
 const errorFaltaPorResponder = () => {
   ErrorAlert("Ups...", "Parece que alguna pregunta de esta encuesta ha quedado sin responder. por favor, asegurate de que <b> todas </b> las preguntas tengan respuesta")
@@ -20,6 +21,7 @@ const Surveys = () => {
   const [error, setError] = useState(false)
   const [nextOrPrev, setNextOrPrev] = useState(false) // lo uso para cargar las preguntas si da back.
   const [isBtnSendDisabled, setIsBtnSendDisabled] = useState(false)
+  const [showResults, setShowResults] = useState(null)
 
   useEffect(async () => {
     const response = await getSurveys();
@@ -43,7 +45,6 @@ const Surveys = () => {
     function () {
       if (surveys.arrSurvey) {
         surveys.markAllQuestionSelected()
-        surveys.results();
         moveToStart()
       }
     },
@@ -117,7 +118,10 @@ const Surveys = () => {
       const send = await SendSurveys(buildDataToSend(userId));
       if (send) {
         //TODO: Redireccionar a un lugar....
-        SendOkAlert(undefined, "¡Enhorabuena! tus respuestas han sido procesadas <b>serás redireccionado en breve.</b>");
+        console.log(surveys.jsonSurvey)
+        
+        SendOkAlert(undefined, "¡Enhorabuena! tus respuestas han sido procesadas y <b>¡He traido los resultados!</b>").then(()=>{setShowResults(surveys.results())})
+        
       } else {
         console.log(send)
         SendBadAlert();
@@ -144,65 +148,68 @@ const Surveys = () => {
             {error ? (
               <ErrorGanso text={"Uhm... Parece que ha ocurrido un error al obtener las pruebas diagnósticas."} />
             ) : (<>
-              {surveys.arrSurvey ? (
-                <>
-                  <Survey
-                    survey={surveys.jsonSurvey[surveys.indiceActual]}
-                    selectOption={selectOption}
-                  />
 
-                  <div className="d-flex justify-content-between mx-4">
-                    <div id="backSurvey">
-                      <button
-                        type="button"
-                        className="btn btn-outline-secondary"
-                        onClick={() => handeButtonNavSurvey(false)}
-                      >
-                        Anterior
-                      </button>
-                    </div>
-                    <div id="surveysPage" className="d-block p-2">
-                      <p>
-                        {surveys.indiceActual + 1} de {surveys.IndiceMaximo + 1}
-                      </p>
-                    </div>
-                    {surveys.indiceActual < surveys.IndiceMaximo
-                      ? (
-                        <div id="nextSurvey">
+              {
+                showResults !== null ?  (<Resultados objResultados={showResults} />)  :
+                  surveys.arrSurvey ? (
+                    <>
+                      <Survey
+                        survey={surveys.jsonSurvey[surveys.indiceActual]}
+                        selectOption={selectOption}
+                      />
+
+                      <div className="d-flex justify-content-between mx-4">
+                        <div id="backSurvey">
                           <button
                             type="button"
-                            className="btn btn-outline-primary"
-                            onClick={handeButtonNavSurvey}
+                            className="btn btn-outline-secondary"
+                            onClick={() => handeButtonNavSurvey(false)}
                           >
-                            Siguiente
+                            Anterior
                           </button>
                         </div>
-                      )
-                      : (
-                        <div id="SendSurvey">
-                          <button
-                            id="btnSendSurvey"
-                            type="button"
-                            className="btn btn-info text-white"
-                            onClick={handleButtonSendSurvey}
-                            disabled={isBtnSendDisabled}
-                          >
-                            Enviar
-                          </button>
+                        <div id="surveysPage" className="d-block p-2">
+                          <p>
+                            {surveys.indiceActual + 1} de {surveys.IndiceMaximo + 1}
+                          </p>
                         </div>
-                      )}
-                  </div>
-                </>
+                        {surveys.indiceActual < surveys.IndiceMaximo
+                          ? (
+                            <div id="nextSurvey">
+                              <button
+                                type="button"
+                                className="btn btn-outline-primary"
+                                onClick={handeButtonNavSurvey}
+                              >
+                                Siguiente
+                              </button>
+                            </div>
+                          )
+                          : (
+                            <div id="SendSurvey">
+                              <button
+                                id="btnSendSurvey"
+                                type="button"
+                                className="btn btn-info text-white"
+                                onClick={handleButtonSendSurvey}
+                                disabled={isBtnSendDisabled}
+                              >
+                                Enviar
+                              </button>
+                            </div>
+                          )}
+                      </div>
+                    </>
 
-              )
-                : (
-                  <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
-                    <div className="d-flex flex-column justify-content-center align-items-center" >
-                      <img src={ganso_pensando} width="307" height="307"></img>
-                      <h5 className='my-4 text-center'>Uhm... Parece que no tengo pruebas diagnósticas.</h5>
-                    </div>
-                  </div>
-                )}
+                  )
+                    : (
+                      <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
+                        <div className="d-flex flex-column justify-content-center align-items-center" >
+                          <img src={ganso_pensando} width="307" height="307"></img>
+                          <h5 className='my-4 text-center'>Uhm... Parece que no tengo pruebas diagnósticas.</h5>
+                        </div>
+                      </div>
+                    )}
 
             </>)}
           </>)

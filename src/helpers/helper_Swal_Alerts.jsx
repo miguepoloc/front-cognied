@@ -159,3 +159,24 @@ export const RetroalimentacionAlert = (
     focusConfirm: true
   })
 }
+
+export const gansoPensandoAlert = (
+  title = '<h5><strong>¡Importante!</strong></h5>',
+  htmlText = '',
+  btnConfirmcolor = colorTheme
+) => {
+  return Swal.fire({
+    title: title,
+    imageUrl: imgGanso.pensando,
+    imageWidth: 250,
+    imageHeight: 250,
+    imageAlt: '¡Importante!',
+    html: htmlText,
+    showCloseButton: false,
+    showCancelButton: false,
+    showConfirmButton: true,
+    confirmButtonColor: btnConfirmcolor,
+    confirmButtonText: 'Aceptar',
+    focusConfirm: true
+  })
+}

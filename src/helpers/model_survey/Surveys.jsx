@@ -1,5 +1,5 @@
 const { Question } = require('./Question');
-const {Survey} = require('./Survey')
+const { Survey } = require('./Survey')
 class Surveys {
   constructor(arrSurvey, build = true) {
     this.arrSurvey = arrSurvey;
@@ -31,12 +31,12 @@ class Surveys {
   selectAllOptionRandom() {
     try {
       this.jsonSurvey.map((survey) => {
-          survey.questions.map((question) => {
-            let repuestaAleatorea = Math.floor(
-              Math.random() * question.answer.length
-            );
-            question.setSelected(question.answer[repuestaAleatorea].id_answer);
-          });
+        survey.questions.map((question) => {
+          let repuestaAleatorea = Math.floor(
+            Math.random() * question.answer.length
+          );
+          question.setSelected(question.answer[repuestaAleatorea].id_answer);
+        });
       });
     } catch (e) {
       console.log(e);
@@ -77,28 +77,26 @@ class Surveys {
     );
   }
 
-  isAllSurveysAnswered(){
-    return this.jsonSurvey.every(survey=>{
-     return survey.questions.every(
-      (objQuestion) => objQuestion.getSelected() != null
-    ) 
+  isAllSurveysAnswered() {
+    return this.jsonSurvey.every(survey => {
+      return survey.questions.every(
+        (objQuestion) => objQuestion.getSelected() != null
+      )
     });
   }
 
-  restultsAnsiedadTest(ansiedadTestId)
-  {
-    let objJson = {"result" : "", "points":0};
+  restultsAnsiedadTest(ansiedadTestId) {
+    let objJson = { "result": "", "points": 0 };
     const ansiedadTest = this.searchSurvey(ansiedadTestId);
     const points = this.sumAllQuestions(ansiedadTest);
 
-    if(points >= 15 && points <= 30)
-    {
-      objJson.result = "Ansiedad baja"
-    }else if(points >= 31 && points <= 45){
-      objJson.result = "Ansiedad media"
-    }else if(points >= 46 && points <= 60){
-      objJson.result = "Ansiedad alta"
-    }else{
+    if (points >= 15 && points <= 30) {
+      objJson.result = "baja"
+    } else if (points >= 31 && points <= 45) {
+      objJson.result = "media"
+    } else if (points >= 46 && points <= 60) {
+      objJson.result = "alta"
+    } else {
       objJson.result = "Disculpa,Algo ha salido mal. Si ves este mensaje, escribenos."
     }
 
@@ -107,21 +105,19 @@ class Surveys {
     return objJson
   }
 
-  restultsDepresionTest(depresionTestId)
-  {
-    let objJson = {"result" : "", "points":0};
+  restultsDepresionTest(depresionTestId) {
+    let objJson = { "result": "", "points": 0 };
     const depresionTest = this.searchSurvey(depresionTestId);
     const points = this.sumAllQuestions(depresionTest);
 
-    if(points >= 0 && points <= 14)
-    {
-      objJson.result = "Sin síntoma depresivo"
-    }else if(points >= 15 && points <= 30){
-      objJson.result = "Síntomas depresivos moderados"
-    }else if(points >= 31){
-      objJson.result = "Síntomas depresivos graves"
+    if (points >= 0 && points <= 14) {
+      objJson.result = "" //Sin sintomas depresivos. lo dejo vacio porque en la plantialla decia lo mismo.
+    } else if (points >= 15 && points <= 30) {
+      objJson.result = "moderados"
+    } else if (points >= 31) {
+      objJson.result = "graves"
     }
-    else{
+    else {
       objJson.result = "Disculpa,Algo ha salido mal. Si ves este mensaje, escribenos."
     }
 
@@ -131,21 +127,19 @@ class Surveys {
   }
 
 
-  restultsEscalaDeEstresPercibidoTest(EscalaDeEstresPercibidoId)
-  {
-    let objJson = {"result" : "", "points":0};
+  restultsEscalaDeEstresPercibidoTest(EscalaDeEstresPercibidoId) {
+    let objJson = { "result": "", "points": 0 };
     const EscalaDeEstresPercibidoIdTest = this.searchSurvey(EscalaDeEstresPercibidoId);
     const points = this.sumAllQuestions(EscalaDeEstresPercibidoIdTest);
 
-    if(points >= 0 && points <= 19)
-    {
-      objJson.result = "Bajo"
-    }else if(points >= 20 && points <= 38){
-      objJson.result = "Medio"
-    }else if(points >= 39){
-      objJson.result = "Alto"
+    if (points >= 0 && points <= 19) {
+      objJson.result = "bajo"
+    } else if (points >= 20 && points <= 38) {
+      objJson.result = "medio"
+    } else if (points >= 39) {
+      objJson.result = "alto"
     }
-    else{
+    else {
       objJson.result = "Disculpa, Algo ha salido mal. Si ves este mensaje, escribenos."
     }
 
@@ -154,68 +148,91 @@ class Surveys {
     return objJson
   }
 
+  restultsInventarioDePensamientosAutomaticosTest(id) {
+    let objJson = { "result": {}, "points": 0 };
 
-  restultsInteligenciaEmocionalTest(inteligenciaEmocionalId,sexo)
-  {
-    let objJson = {"result" : {"atencion":{text:"",points:0},"claridad":{text:"",points:0},"reparacion":{text:"",points:0}}};
+    const clasificacion = (points) => {
+      if (points <= 3)
+        return "bajo";
+      else if (points >= 4 && points <= 6)
+        return "medio";
+      else
+        return "alto";
+    }
+
+    const inventarioDePensamientosAutomaticos = this.searchSurvey(id);
+    let nameItems = ["filtraje_o_abstracción_selectiva", "pensamiento_polarizado", "sobregeneralizacion",
+      "interpretacion_del_pensamiento", "vision_catastrofica", "personalizacion", "falacia_de_control", "falacia_de_justicia",
+      "razonamiento_emocional", "falacia_de_cambio", "etiquetas_globales", "culpabilidad", "los_deberias", "tener_razon",
+      "falacia_de_recompensa_divina"]
+    let points = 0;
+    for (let i = 1; i <= 15; i++) {
+      points = this.sumAnyQuestions(inventarioDePensamientosAutomaticos, [i, (i + 15), (i + 30)])
+      objJson.result[nameItems[i - 1]] = { "text": clasificacion(points), "points": points }
+    }
+    return objJson;
+  }
+
+  restultsInteligenciaEmocionalTest(inteligenciaEmocionalId, sexo) {
+    let objJson = { "result": { "atencion": { text: "", points: 0 }, "claridad": { text: "", points: 0 }, "reparacion": { text: "", points: 0 } } };
     const depresionTest = this.searchSurvey(inteligenciaEmocionalId);
-    
-    const pointsAtencion  = this.sumAnyQuestions(depresionTest,[1,2,3,4,5,6,7,8]);
-    const pointsClaridad = this.sumAnyQuestions(depresionTest,[9,10,11,12,13,14,15,16]);
-    const pointsReparacion =  this.sumAnyQuestions(depresionTest,[17,18,19,20,21,22,23,24]);
-    
-    if(sexo.toLowerCase() == "m"){
-      if(pointsAtencion <= 21){
-        objJson.result.atencion.text = "Debe mejorar su atención: presta poca atención"
+
+    const pointsAtencion = this.sumAnyQuestions(depresionTest, [1, 2, 3, 4, 5, 6, 7, 8]);
+    const pointsClaridad = this.sumAnyQuestions(depresionTest, [9, 10, 11, 12, 13, 14, 15, 16]);
+    const pointsReparacion = this.sumAnyQuestions(depresionTest, [17, 18, 19, 20, 21, 22, 23, 24]);
+
+    if (sexo.toLowerCase() == "m") {
+      if (pointsAtencion <= 21) {
+        objJson.result.atencion.text = "debes mejorar tu atención: prestas poca atención"
       }
-      else if(pointsAtencion >= 22 && pointsAtencion <= 32){
-        objJson.result.atencion.text = "Adecuada atención"
+      else if (pointsAtencion >= 22 && pointsAtencion <= 32) {
+        objJson.result.atencion.text = "tienes una adecuada atención"
       }
-      else{
-        objJson.result.atencion.text = "Debe mejorar su atención: presta demasiada atención. Una atención excesiva sin una comprensión profunda de las emociones podría resultar perjudicial. ¡Conoce más en los módulos!"
+      else {
+        objJson.result.atencion.text = "debes mejorar tu atención: prestas demasiada atención. Una atención excesiva sin una comprensión profunda de las emociones podría resultar perjudicial. ¡Conoce más en los módulos!"
       }
 
-      if(pointsClaridad <= 25){
-        objJson.result.claridad.text = "Debe mejorar su comprensión"
-      }else if(pointsClaridad >= 26 && pointsClaridad <= 35){
-        objJson.result.claridad.text = "Adecuada comprensión"
-      }else{
-        objJson.result.claridad.text= "Excelente comprensión"
+      if (pointsClaridad <= 25) {
+        objJson.result.claridad.text = "debes mejorar tu comprensión"
+      } else if (pointsClaridad >= 26 && pointsClaridad <= 35) {
+        objJson.result.claridad.text = "tienes una adecuada comprensión"
+      } else {
+        objJson.result.claridad.text = "tienes una excelente comprensión"
       }
 
-      if(pointsReparacion <= 23){
-        objJson.result.reparacion.text = "Debe mejorar su regulación"
-      }else if(pointsReparacion >= 24 && pointsReparacion <= 35){
-        objJson.result.reparacion.text = "Adecuada regulación"
-      }else{
-        objJson.result.reparacion.text = "Excelente regulación"
+      if (pointsReparacion <= 23) {
+        objJson.result.reparacion.text = "debes mejorar tu regulación"
+      } else if (pointsReparacion >= 24 && pointsReparacion <= 35) {
+        objJson.result.reparacion.text = "tienes una adecuada regulación"
+      } else {
+        objJson.result.reparacion.text = "tienes una excelente regulación"
       }
     }
-    else if(sexo.toLowerCase() == "f"){
-      if(pointsAtencion <= 24){
-        objJson.result.atencion.text = "Debe mejorar su atención: presta poca atención"
+    else if (sexo.toLowerCase() == "f") {
+      if (pointsAtencion <= 24) {
+        objJson.result.atencion.text = "debes mejorar tu atención: prestas poca atención"
       }
-      else if(pointsAtencion >= 25 && pointsAtencion <= 35){
-        objJson.result.atencion.text = "Adecuada atención"
+      else if (pointsAtencion >= 25 && pointsAtencion <= 35) {
+        objJson.result.atencion.text = "tiene una adecuada atención"
       }
-      else{
-        objJson.result.atencion.text = "Debe mejorar su atención: presta demasiada atención. Una atención excesiva sin una comprensión profunda de las emociones podría resultar perjudicial. ¡Conoce más en los módulos!"
-      }
-
-      if(pointsClaridad <= 23){
-        objJson.result.claridad.text = "Debe mejorar su comprensión"
-      }else if(pointsClaridad >= 24 && pointsClaridad <= 34){
-        objJson.result.claridad.text = "Adecuada comprensión"
-      }else{
-        objJson.result.claridad.text= "Excelente comprensión"
+      else {
+        objJson.result.atencion.text = "debes mejorar tu atención: prestas demasiada atención. Una atención excesiva sin una comprensión profunda de las emociones podría resultar perjudicial. ¡Conoce más en los módulos!"
       }
 
-      if(pointsReparacion <= 23){
-        objJson.result.reparacion.text = "Debe mejorar su regulación"
-      }else if(pointsReparacion >= 24 && pointsReparacion <= 34){
-        objJson.result.reparacion.text = "Adecuada regulación"
-      }else{
-        objJson.result.reparacion.text = "Excelente regulación"
+      if (pointsClaridad <= 23) {
+        objJson.result.claridad.text = "debes mejorar tu comprensión"
+      } else if (pointsClaridad >= 24 && pointsClaridad <= 34) {
+        objJson.result.claridad.text = "tienes una adecuada comprensión"
+      } else {
+        objJson.result.claridad.text = "tienes una excelente comprensión"
+      }
+
+      if (pointsReparacion <= 23) {
+        objJson.result.reparacion.text = "debes mejorar tu regulación"
+      } else if (pointsReparacion >= 24 && pointsReparacion <= 34) {
+        objJson.result.reparacion.text = "tienes una adecuada regulación"
+      } else {
+        objJson.result.reparacion.text = "tienes una excelente regulación"
       }
     }
 
@@ -226,27 +243,34 @@ class Surveys {
     return objJson
   }
 
-  sumAllQuestions(encuesta){
-    return encuesta.questions.reduce((accumulator,question)=>  accumulator + question.getObjSelected().value,0)
+  sumAllQuestions(encuesta) {
+    return encuesta.questions.reduce((accumulator, question) => accumulator + question.getObjSelected().value, 0)
   }
 
-  sumAnyQuestions(encuesta,ArrIdQuestionsToSum){
+  sumAnyQuestions(encuesta, ArrIdQuestionsToSum) {
     return encuesta.questions
-            .filter((question)=>  ArrIdQuestionsToSum.includes(question.getItemId()))
-            .reduce((accumulator,question)=>  accumulator + question.getObjSelected().value, 0)
+      .filter((question) => ArrIdQuestionsToSum.includes(question.getItemId()))
+      .reduce((accumulator, question) => accumulator + question.getObjSelected().value, 0)
   }
 
   results() {
     let objJson = {}
-    const ansiedadTestId = 3;
-    const depresionTestId = 4;
-    const inteligenciaEmocionalId = 5; const sexo = "m"
-    const escalaDeEstresPercibidoId = 6;
-    objJson["ansiedad"] = this.restultsAnsiedadTest(ansiedadTestId);
-    objJson["depresion"] = this.restultsDepresionTest(depresionTestId);
-    objJson["inteligenciaEmocional"] = this.restultsInteligenciaEmocionalTest(inteligenciaEmocionalId,sexo);
-    objJson["escalaDeEstresPercibido"] = this.restultsEscalaDeEstresPercibidoTest(escalaDeEstresPercibidoId)
-    console.log(objJson)
+    let idTest = {
+      ansiedad:3,
+      depresion:4,
+      inteligencia:5,
+      estresPercibido:6,
+      inventarioDePensamientos:7
+    }
+  
+    const sexo = "m"
+
+    objJson["ansiedad"] = this.restultsAnsiedadTest(idTest.ansiedad);
+    objJson["depresion"] = this.restultsDepresionTest(idTest.depresion);
+    objJson["inteligenciaEmocional"] = this.restultsInteligenciaEmocionalTest(idTest.inteligencia, sexo);
+    objJson["escalaDeEstresPercibido"] = this.restultsEscalaDeEstresPercibidoTest(idTest.estresPercibido);
+    objJson["inventarioDePensamientos"] = this.restultsInventarioDePensamientosAutomaticosTest(idTest.inventarioDePensamientos);
+    return objJson
   }
 
   /**
@@ -371,4 +395,4 @@ class Surveys {
   }
 }
 
-module.exports = {Surveys}
+module.exports = { Surveys }
