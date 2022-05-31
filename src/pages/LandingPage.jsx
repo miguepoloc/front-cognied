@@ -13,7 +13,6 @@ import Surveys from '../components/Surveys/Surveys'
 import Part2 from '../components/Act_1.1/Part2'
 import { Vocabulario } from '../components/Act_2.2/Vocabulario'
 import RuletaEmociones from '../components/Act_2.2/RuletaEmociones'
-import Act4 from '../components/Act_4.1/Act4'
 import MisEstrategias from '../components/Act_4.1/MisEstrategias'
 import ManejoSemaforo from '../components/Act_4.1/ManejoSemaforo'
 
@@ -53,11 +52,9 @@ function LandingPage () {
        <RuletaEmociones/>
        <ManejoSemaforo />
 
-      {/* <MisEstrategias /> */}
+      <MisEstrategias />
 
       {/* <Act4 /> */}
-      
-
 
     </>
   )

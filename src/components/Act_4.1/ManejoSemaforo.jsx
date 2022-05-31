@@ -122,38 +122,27 @@ const ManejoSemaforo = () => {
                     {({ errors, values, touched, handleChange }) => (
                         <Form>
                             <div className="row">
-                                <div className="col-sm mb-4">
-                                    <div
-                                        className="card-header d-flex align-items-center mb-4"
-                                        style={{ backgroundColor: ObjetoColor[values.color1] || colorgris, borderRadius: '10px', minHeight: '300px' }}
-                                    >
-                                        <h5 className="my-auto font-weight-normal centrado">
-                                            {section4_2.activities[activityIndex].opcion1}
+                                <div className="col-sm mb-4 card-header d-flex align-items-center"
+                                    style={{ backgroundColor: ObjetoColor[values.color1] || colorgris, borderRadius: '10px' }}
+                                >
+                                    <h5 className="my-auto font-weight-normal centrado mb-2 mt-2">
+                                        {section4_2.activities[activityIndex].opcion1}
 
-                                        </h5>
-
-                                    </div>
-
+                                    </h5>
                                 </div>
-                                <div className="col-sm mb-4">
-                                    <div
-                                        className="card-header d-flex align-items-center mb-4"
-                                        style={{ backgroundColor: ObjetoColor[values.color2] || colorgris, borderRadius: '10px', minHeight: '300px' }}
-                                    >
-                                        <h5 className="my-auto font-weight-normal centrado">
-                                            {section4_2.activities[activityIndex].opcion2}
-                                        </h5>
-                                    </div>
+                                <div className="col-sm mb-4 card-header d-flex align-items-center ml-1"
+                                    style={{ backgroundColor: ObjetoColor[values.color2] || colorgris, borderRadius: '10px', marginLeft: '25px' }}
+                                >
+                                    <h5 className="my-auto font-weight-normal centrado mb-2 mt-2">
+                                        {section4_2.activities[activityIndex].opcion2}
+                                    </h5>
                                 </div>
-                                <div className="col-sm mb-4">
-                                    <div
-                                        className="card-header d-flex align-items-center mb-4"
-                                        style={{ backgroundColor: ObjetoColor[values.color3] || colorgris, borderRadius: '10px', minHeight: '300px' }}
-                                    >
-                                        <h5 className="my-auto font-weight-normal centrado">
-                                            {section4_2.activities[activityIndex].opcion3}
-                                        </h5>
-                                    </div>
+                                <div className="col-sm mb-4 card-header d-flex align-items-center"
+                                    style={{ backgroundColor: ObjetoColor[values.color3] || colorgris, borderRadius: '10px', marginLeft: '25px' }}
+                                >
+                                    <h5 className="my-auto font-weight-normal centrado mb-2 mt-2">
+                                        {section4_2.activities[activityIndex].opcion3}
+                                    </h5>
                                 </div>
                             </div>
                             <div className="row">

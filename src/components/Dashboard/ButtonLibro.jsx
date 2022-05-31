@@ -10,9 +10,9 @@ const ButtonLibro = ({ text, title }) => {
   const handleShow = () => setShow(true)
 
   const styleCenter = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 
   return (
@@ -22,7 +22,7 @@ const ButtonLibro = ({ text, title }) => {
         className="buttonUp topRight text-white"
         onClick={handleShow}
       >
-        <FaBookOpen size="xl" />
+        <FaBookOpen size="2em" />
       </div>
       <Modal show={show} size="lg" onHide={handleClose} aria-labelledby="contained-modal-title-vcenter"
         centered>
@@ -30,7 +30,6 @@ const ButtonLibro = ({ text, title }) => {
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body style={styleCenter} dangerouslySetInnerHTML={{ __html: text }}>
-
 
         </Modal.Body>
         <Modal.Footer style={styleCenter}>
