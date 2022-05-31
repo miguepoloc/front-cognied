@@ -6,8 +6,6 @@ const FetchContext = createContext()
 const { Provider } = FetchContext
 
 const FetchProvider = ({ children }) => {
-  
-  
   const authContext = useContext(AuthContext)
 
   const authAxios = axios.create({
@@ -15,17 +13,14 @@ const FetchProvider = ({ children }) => {
   })
 
   authAxios.interceptors.request.use(
-    (config) => {
-      const { origin } = new URL(config.url)
-      const allowedOrigins = ['http://localhost:3001']
-
-      if (allowedOrigins.includes(origin)) {
-        config.headers.Authorization = `Bearer ${authContext.authState.token}`
+    config=> {
+      const token = authContext.authState?.token
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
       }
-
       return config
     },
-    (error) => Promise.reject(error)
+    error => Promise.reject(error)
   )
 
   authAxios.interceptors.response.use(
