@@ -15,6 +15,7 @@ import { Vocabulario } from '../components/Act_2.2/Vocabulario'
 import RuletaEmociones from '../components/Act_2.2/RuletaEmociones'
 import MisEstrategias from '../components/Act_4.1/MisEstrategias'
 import ManejoSemaforo from '../components/Act_4.1/ManejoSemaforo'
+import { Resultados } from '../components/Surveys/Resultados'
 
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
@@ -44,13 +45,13 @@ function LandingPage () {
       {/* <ContactUs section={secciones.ContactUs} /> */}
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
-
-      {/* <Surveys /> */}
+      <Surveys />
       {/* <Part1 /> */}
         {/* <Part2 />   */}
        {/* <Vocabulario/>  */}
-       <RuletaEmociones/>
-       <ManejoSemaforo />
+       {/* <RuletaEmociones/> */}
+       
+       {/* <ManejoSemaforo /> */}
 
       <MisEstrategias />
 
