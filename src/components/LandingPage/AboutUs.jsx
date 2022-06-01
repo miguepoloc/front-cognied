@@ -4,14 +4,14 @@ import '../../assets/css/AboutUs.scss'
 const AboutUs = ({ section }) => {
     return (
         <>
-            <section id={section.id} className="mt-2">
+            <section id={section.id} className="mt-lg-5 mt-md-2">
                 <div className="aboutUs">
-                    <div className="container pt-5">
+                    <div className="container pt-md-5">
                         <div className="row">
-                            <div className=" col-lg-4 col justify-content-center align-self-center text-center mx-auto">
+                            <div className=" col-lg-4 col-md-12  col-12 justify-content-center align-self-center text-center mx-auto">
                                 <img src={imgGanso.pensando} className="ganso_aboutUs" />
                             </div>
-                            <div className=" col-lg-8 col justify-content-center align-self-center">
+                            <div className=" col-lg-8 col-md-12 mt-md-0 mt-3 col-12 justify-content-center align-self-center">
                                 <h3 className="font-Geomanist display-5 fw-bold text-center titulo_aboutUs mb-4 ">¿Qué es Digitalmente?</h3>
 
                                 <h3 className='text-center'>Somos una estrategia digital de promoción de la salud mental dirigida

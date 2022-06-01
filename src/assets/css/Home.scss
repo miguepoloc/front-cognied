@@ -1,13 +1,13 @@
 
 .logo {
-  width: 900px;
+  width: 660px;
   padding-bottom: 75px;
 }
 
 .ganso_home{
   position: absolute;
-  right: -88px;
-  width: 310px;
+  right: -68px;
+  width: 260px;
   bottom: 50px;
   transform: rotateY(180deg) rotateZ(25deg);
 }
@@ -49,7 +49,7 @@ body .header.bg {
 body .hero {
   overflow: hidden;
   position: relative;
-  height: 700px;
+  height: 500px;
   min-height: 200px;
   background: #63c7d3;
   background: linear-gradient(180deg, #68d6e2b7 0%, #68ddec59 100%);
@@ -160,7 +160,7 @@ body .hero .wave4 {
   .ganso_home{ 
     position: absolute;
     right: -59px;
-    width: 240px;
+    width: 204px;
     bottom: 73px;
     transform: rotateY(180deg) rotateZ(25deg);
    } 
@@ -170,7 +170,7 @@ body .hero .wave4 {
   .ganso_home{ 
     position: absolute;
     right: -39px;
-    width: 164px;
+    width: 130px;
     bottom: 113px;
     transform: rotateY(180deg) rotateZ(25deg);
    } 
