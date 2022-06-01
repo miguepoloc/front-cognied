@@ -8,7 +8,6 @@ import AboutUs from '../components/LandingPage/AboutUs'
 import Scroll from '../helpers/helperScroll'
 import Surveys from '../components/Surveys/Surveys'
 
-
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
@@ -31,7 +30,7 @@ function LandingPage () {
         Secciones={secciones}
         PrimeraSeccion={secciones.Home}
         scroll={scroll} />
-      <Home section={secciones.Home}/>
+      <Home section={secciones.Home} />
       <AboutUs section={secciones.AboutUs} />
       <Objetives section={secciones.Objetivos} />
       <Footer />

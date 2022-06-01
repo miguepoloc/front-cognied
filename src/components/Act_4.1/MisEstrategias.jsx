@@ -90,7 +90,7 @@ const MisEstrategias = () => {
                       resetForm()
                     }}
                 >
-                    {({ errors, touched, isValid, dirty }) => (
+                    {({ errors, touched }) => (
                         <Form>
                             <div className="row">
                                 <div className="col-sm mb-4"
@@ -157,7 +157,6 @@ const MisEstrategias = () => {
                                     <button
                                         type="submit"
                                         className="text-white btn btn-info "
-                                        // disabled={!dirty || !isValid}
                                     >
                                         Siguiente
                                     </button>
