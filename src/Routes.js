@@ -63,13 +63,13 @@ const AppRoutes = () => (
           <SignUp />
         </Route>
 
-        <Route path="/dashboard">
+        <AuthenticatedRoute path="/dashboard">
           <Dashboard />
-        </Route>
+        </AuthenticatedRoute>
 
-        <Route exact path="/emocional:slug">
+        <AuthenticatedRoute exact path="/emocional:slug">
           <ModuloEmocionalCapsula />
-        </Route>
+        </AuthenticatedRoute>
 
         <AuthenticatedRoute path="/auth">
           <PageAuth />

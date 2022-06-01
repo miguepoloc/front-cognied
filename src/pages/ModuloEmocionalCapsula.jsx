@@ -21,7 +21,6 @@ import { linksEmocional } from '../helpers/helper_emocional'
 const ModuloEmocionalCapsula = () => {
   const { slug } = useParams()
 
-  console.log(linksEmocional[slug])
   // Trae los datos del usuario
   const { authState } = useContext(AuthContext)
   // Se guardan en userInfo
@@ -37,15 +36,6 @@ const ModuloEmocionalCapsula = () => {
     })
     return (avance.data)
   }
-
-  // Obtiene el URL donde se encuentra
-  const location = useLocation()
-
-  // desestructurando el nombre de la ruta desde location
-  const { pathname } = location
-
-  // Se divide la localización por /
-  const splitLocation = pathname.split('/')
 
   // Para el control de la ubicación
   const history = useHistory()
@@ -69,72 +59,16 @@ const ModuloEmocionalCapsula = () => {
   const cambioBoton = async () => {
     console.log(userInfo)
     console.log(datauser)
-    // if (datauser.emocional <= ) {
-
-    // }
-
     const jsonx = {
-      emocional: 3,
+      emocional: (parseInt(slug) + 1),
       usuario: userInfo.id
     }
-    setControl(control + 1)
-    PUT_avance_modulos(userInfo.id, jsonx)
+    if (parseInt(slug) === datauser.emocional) {
+      PUT_avance_modulos(userInfo.id, jsonx)
+      setControl(control + 1)
+    }
 
-    // const putAvance = async () => {
-    //   const avance = await Axios({
-    //     method: 'put',
-    //     url: `${process.env.REACT_APP_API_URL}/api/avance_modulos/${userInfo.id}`,
-    //     data: {
-    //       emocional: 3,
-    //       usuario: userInfo.id
-    //     }
-
-    //   })
-    //   console.log(avance)
-    //   return (avance)
-    // }
-
-    // const avanzando = await putAvance()
-
-    // switch (splitLocation[1]) {
-    //   case 'emocionalcap1':
-    //     putData()
-    //     history.push('/emocionalcap2')
-    //     break
-    //   case 'emocionalcap2':
-    //     history.push('/emocionalejer1')
-    //     break
-    //   case 'emocionalejer1':
-    //     history.push('/emocionalcap3')
-    //     break
-    //   case 'emocionalcap3':
-    //     history.push('/emocionalejer2')
-    //     break
-    //   case 'emocionalejer2':
-    //     history.push('/emocionalcap4')
-    //     break
-    //   case 'emocionalcap4':
-    //     history.push('/emocionalejer3')
-    //     break
-    //   case 'emocionalejer3':
-    //     history.push('/emocionalcap5')
-    //     break
-    //   case 'emocionalcap5':
-    //     history.push('/emocionalcap6')
-    //     break
-    //   case 'emocionalcap6':
-    //     history.push('/emocionalejer4')
-    //     break
-    //   case 'emocionalejer4':
-    //     history.push('/emocionalcap7')
-    //     break
-    //   case 'emocionalcap7':
-    //     history.push('/emocionalcap8')
-    //     break
-    //   case 'emocionalcap8':
-    //     history.push('/dashboard')
-    //     break
-    // }
+    history.push(`/emocional${parseInt(slug) + 1}`)
   }
   return (
     <>
@@ -142,20 +76,20 @@ const ModuloEmocionalCapsula = () => {
         <BarraLateral datauser={datauser} />
 
         <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-          <NavBarDashboard section={linksEmocional[slug].nombre} />
+          <NavBarDashboard section={linksEmocional[slug - 1].nombre} />
           <div className="container-fluid py-4">
 
             <div >
-              {linksEmocional[slug].tipoCapsula
-                ? < img src={linksEmocional[slug].imagen} alt="capsula" className='img-capsula' />
-                : linksEmocional[slug].actividad
+              {linksEmocional[slug - 1].tipoCapsula
+                ? < img src={linksEmocional[slug - 1].imagen} alt="capsula" className='img-capsula' />
+                : linksEmocional[slug - 1].actividad
               }
 
             </div>
             <hr />
             <Button
               className='botoncentrado'
-              variant="success"
+              variant="info"
               size="lg"
               onClick={cambioBoton}
             >

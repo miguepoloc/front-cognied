@@ -50,7 +50,7 @@ function LandingPage () {
         {/* <Part2 />   */}
        {/* <Vocabulario/>  */}
        {/* <RuletaEmociones/> */}
-       
+
        {/* <ManejoSemaforo /> */}
 
       <MisEstrategias />
