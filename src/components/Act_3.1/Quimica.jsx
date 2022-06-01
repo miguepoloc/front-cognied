@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Button } from 'react-bootstrap'
 import { Formik, Form, Field } from 'formik'
 import { FaArrowRight, FaClipboardCheck, FaPaperPlane } from 'react-icons/fa'
@@ -14,17 +14,16 @@ import situacion3 from "../../assets/img/situaciones/situacion_3.png"
 
 import ReactSpeedometer from "react-d3-speedometer"
 import * as Yup from 'yup'
+import { FetchContext } from '../../context/FetchContext'
 
 const Quimica = () => {
+  const { authAxios } = useContext(FetchContext)
+
   const [retroPrimera, setRetroPrimera] = useState(null)
   const [retroSegunda, setRetroSegunda] = useState(null)
   const [retroTercera, setRetroTercera] = useState(null)
   const [validate, setValidate] = useState(false);
   const [emociones, setEmociones] = useState(null);
-  const [acciones, setAcciones] = useState(null);
-
-
-
 
   const Schema = Yup.object().shape({
 
@@ -57,22 +56,86 @@ const Quimica = () => {
       .required('Es necesario llenar esta información'),
   })
 
+  const respuestas = {
+    "situacion1": {
+      "emocion1": '2', //optimismo
+      "nivel1": "medio",
+      "emocion2": '8',//miedo
+      "nivel2": "bajo",
+      "no_ambas": "¡Uf! Ya estas casi cerca. Revisa una de las definiciones que colocaste o en el nivel en que lo pusiste. Recuerda las manifestaciones asociadas a la emoción general a la que pertenece.",
+      "ok_ambas": "¡Excelente! Si eres demasiado optimista, puedes terminar pensando que puedes estudiar después o no lo necesitas y luego descubrir luego que no te queda tiempo, causándote estrés. Al mismo tiempo, demasiado miedo podría terminar inmovilizándote, percibiendo el peligro como inmanejable para intentar algo, pero un nivel bajo te permite tener presente lo que debes hacer y mantenerte al tanto."
+    },
+    "situacion2": {
+      "emocion2": '3',//Entusiasmo
+      "nivel2": "medio",
+      "nivel22": "alto",
+      "no_ambas": "¡Uf! Ya estas casi cerca. Revisa la definición que colocaste o en el nivel en que lo pusiste. Recuerda las manifestaciones asociadas a la emoción general a la que pertenece. ",
+      "ok_ambas": "¡Excelente! Las expresiones emocionales asociadas a la alegría pueden potenciar la creatividad y una mayor disposición a resolver problemas. Un buen nivel de entusiasmo puede darte lo necesario para ideas para el regalo de tu amigo/a."
+    },
+    "situacion3": {
+      "emocion3": '4', //frustracion
+      "nivel3": "medio",
+      "accion3": '2',
+      "no_nivel_emocion": "¡Uf! Ya estas casi cerca. Revisa la definición que colocaste o en el nivel en que lo pusiste. Recuerda las manifestaciones asociadas a la emoción general a la que pertenece. ",
+      "no_accion": "¡Uf! Ya estas casi cerca. Revisa esa acción que decidiste. ¿No crees que te traería más impacto para ti o las consecuencias alrededor?",
+      "ok_ambas": "¡Muy bien! Si te frustras demasiado, la activación podría provocarte no solo malestar, sino que, dependiendo de tu carácter, situación y otros factores, puede que llegue la situación a un punto bastante negativo. Un nivel de activación medio, que te permite movilizarte y ser asertivo (expresarte de manera firme y con respeto) terminan siendo factores importantes para ayudarte a manejar esas situaciones sin que termine teniendo un impacto negativo para ti ni para otros."
 
-  const handleBtnClickSend = () => {
-    setValidate(true);
+    }
   }
+
+  const handleBtnClickSend = (name, values) => {
+    console.log(respuestas[name])
+    console.log(values)
+
+    if (name === "situacion1") {
+
+      if (values.Emocion1 === respuestas[name].emocion1 && values.Nivel1 === respuestas[name].nivel1 && values.Emocion12 === respuestas[name].emocion2 && values.Nivel12 === respuestas[name].nivel2) {
+        console.log(respuestas[name].ok_ambas)
+        setRetroPrimera(respuestas[name].ok_ambas)
+      }
+      else if (values.Emocion12 === respuestas[name].emocion1 && values.Nivel12 === respuestas[name].nivel1 && values.Emocion1 === respuestas[name].emocion2 && values.Nivel1 === respuestas[name].nivel2) {
+        setRetroPrimera(respuestas[name].ok_ambas)
+      }
+      else {
+        setRetroPrimera(respuestas[name].no_ambas)
+      }
+    }
+    else if (name === "situacion2") {
+      if (values.Emocion2 === respuestas[name].emocion2 && (values.Nivel2 === respuestas[name].nivel2 || values.Nivel2 === respuestas[name].nivel22)) {
+        setRetroSegunda(respuestas[name].ok_ambas)
+      }
+      else {
+        setRetroSegunda(respuestas[name].no_ambas)
+      }
+    }
+    else if (name === "situacion3") {
+      if (values.Emocion3 === respuestas[name].emocion3 && values.Nivel3 === respuestas[name].nivel3) {
+        if (values.Accion3 === respuestas[name].accion3) {
+          setRetroTercera(respuestas[name].ok_ambas)
+        }
+        else {
+          setRetroTercera(respuestas[name].no_accion)
+        }
+      }
+      else {
+        setRetroTercera(respuestas[name].no_nivel_emocion)
+      }
+    }
+
+
+
+  }
+
   const handleOnChange = () => {
     if (validate)
       setValidate(false);
   }
 
+  const id_usuario = 15
   const getEmociones = async () => {
-    const url = 'http://localhost:8000/api/definiciones/'
-    const response = await fetch(url)
-    const data = await response.json()
-    if (data) {
-      console.log(data)
-      return data
+    const response = await authAxios.get(`/definiciones_usuario/?id_usuario=${id_usuario}`)
+    if (response.data) {
+      return response.data
     } else {
       console.log('No se pudieron traer los datos de las Definiciones...')
       return null
@@ -87,12 +150,15 @@ const Quimica = () => {
   }
 
   useEffect(async () => {
-    // let response = await getEmociones()
-    // console.log(response)
-    // if (response !== null) {
-    //   setEmociones(response)
-    // }
+    let response = await getEmociones()
+    console.log(response)
+    if (response !== null) {
+      setEmociones(response)
+    }
   }, [])
+
+
+
   const color = '#fc8890'
   return (
     <div className="container">
@@ -167,7 +233,7 @@ const Quimica = () => {
 
               <div className="col">
                 <div className="row">
-                  <div className="col-7 my-auto my-auto">
+                  <div className="col-lg-7 col-md-12 col-12 my-auto my-auto">
                     <div className="d-flex align-middle">
                       <img
                         style={{ width: "100%" }}
@@ -189,9 +255,9 @@ const Quimica = () => {
                           >
                             <option value="" disabled>Escoje una emocion</option>
 
-                            {emociones && emociones.map(({ id, emocion }, i) =>
+                            {emociones && emociones.map(({ definicion, definicion_usuario }, i) =>
 
-                              <option key={{ id }} value={{ id }}>{{ emocion }}</option>
+                              <option key={definicion} value={definicion}>{definicion_usuario}</option>
 
                             )}
                           </Field>
@@ -213,9 +279,9 @@ const Quimica = () => {
                           >
                             <option value="" disabled>Escoje una emocion</option>
 
-                            {emociones && emociones.map(({ id, emocion }, i) =>
+                            {emociones && emociones.map(({ definicion, definicion_usuario }, i) =>
 
-                              <option key={{ id }} value={{ id }}>{{ emocion }}</option>
+                              <option key={definicion} value={definicion}>{definicion_usuario}</option>
 
                             )}
                           </Field>
@@ -293,7 +359,7 @@ const Quimica = () => {
                       <Field name="Respuesta1" as="textarea" rows="3" className="form-control" />
                     </div>
                     <div className="row mt-4">
-                      <Button name="situacion1" className="mx-auto btn btn-naranja" onClick={handleBtnClickSend} >Guardar </Button>
+                      <Button name="situacion1" className="mx-auto btn btn-naranja" onClick={(e) => { handleBtnClickSend(e.target.name, values) }} >Guardar </Button>
                     </div>
                   </div>
                 </div>
@@ -310,7 +376,7 @@ const Quimica = () => {
             <div className="row m-4">
               <div className="col">
                 <div className="row">
-                  <div className="col-7 my-auto">
+                  <div className="col-lg-7 col-md-12 col-12 my-auto">
                     <div className="d-flex align-middle">
                       <img
                         style={{ width: "100%" }}
@@ -331,9 +397,9 @@ const Quimica = () => {
                         >
                           <option value="" disabled>Escoje una emocion</option>
 
-                          {emociones && emociones.map(({ id, emocion }, i) =>
+                          {emociones && emociones.map(({ definicion, definicion_usuario }, i) =>
 
-                            <option key={{ id }} value={{ id }}>{{ emocion }}</option>
+                            <option key={definicion} value={definicion}>{definicion_usuario}</option>
 
                           )}
                         </Field>
@@ -383,11 +449,11 @@ const Quimica = () => {
 
                     </div>
                     <div className="row text-center mt-4 align-items-center">
-                      <p>¿Porque considera que estas  emociones te serian de ayuda?</p>
+                      <p>¿Porque considera que estas emocion te seria de ayuda?</p>
                       <Field name="Respuesta2" as="textarea" rows="3" className="form-control" />
                     </div>
                     <div className="row mt-4">
-                      <Button name="situacion2" className="mx-auto btn btn-naranja" onClick={handleBtnClickSend} >Guardar </Button>
+                      <Button name="situacion2" className="mx-auto btn btn-naranja" onClick={(e) => { handleBtnClickSend(e.target.name, values) }}>Guardar </Button>
                     </div>
                   </div>
                 </div>
@@ -408,7 +474,7 @@ const Quimica = () => {
             <div className="row m-4">
               <div className="col">
                 <div className="row">
-                  <div className="col-7 my-auto">
+                  <div className="col-lg-7 col-md-12 col-12 my-auto">
                     <div className="d-flex align-middle">
                       <img
                         style={{ width: "100%" }}
@@ -429,9 +495,9 @@ const Quimica = () => {
                         >
                           <option value="" disabled>Escoje una emocion</option>
 
-                          {emociones && emociones.map(({ id, emocion }, i) =>
+                          {emociones && emociones.map(({ definicion, definicion_usuario }, i) =>
 
-                            <option key={{ id }} value={{ id }}>{{ emocion }}</option>
+                            <option key={definicion} value={definicion}>{definicion_usuario}</option>
 
                           )}
                         </Field>
@@ -485,12 +551,9 @@ const Quimica = () => {
                             onChange={handleChange}
                           >
                             <option value="" disabled>Escoje una accion</option>
-
-                            {acciones && acciones.map(({ id, accion }, i) =>
-
-                              <option key={{ id }} value={{ id }}>{{ accion }}</option>
-
-                            )}
+                            <option value="1" > Tumbar a la persona y sacarla de la fila.</option>
+                            <option value="2" > Expresar tu opinión de manera firme y con respeto.</option>
+                            <option value="3" > No decir nada y esperar que salga de la fila.</option>
                           </Field>
                           {errors.Accion3 && touched.Accion3
                             ? (
@@ -510,7 +573,7 @@ const Quimica = () => {
                       <Field name="Respuesta3" as="textarea" rows="3" className="form-control" />
                     </div>
                     <div className="row mt-4">
-                      <Button name="situacion3" className="mx-auto btn btn-naranja" onClick={handleBtnClickSend} >Guardar </Button>
+                      <Button name="situacion3" className="mx-auto btn btn-naranja" onClick={(e) => { handleBtnClickSend(e.target.name, values) }} >Guardar </Button>
                     </div>
                   </div>
                 </div>

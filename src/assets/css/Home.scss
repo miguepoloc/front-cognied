@@ -1,61 +1,17 @@
-#homeGrid {
-  display: grid;
-  grid-template-columns: 33.33% 33.33% 33.33%;
-  grid-template-rows: 33.33% 33.33% 33.33%;
-}
-
-.logo_home_center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .logo {
-  width: 85%;
+  width: 900px;
+  padding-bottom: 75px;
 }
 
-.use_home_grid {
-  grid-column-start: 2;
-  grid-row: 1 / span 3;
+.ganso_home{
+  position: absolute;
+  right: -88px;
+  width: 310px;
+  bottom: 50px;
+  transform: rotateY(180deg) rotateZ(25deg);
 }
 
-.title_home {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  letter-spacing: 2px;
-  font-size: 5em;
-  color: #fff;
-}
-
-.desc_home {
-  font-family: sans-serif;
-  font-weight: 300;
-  letter-spacing: 2px;
-  font-size: 1.3em;
-  margin-top: -3%;
-  color: #fff;
-}
-
-.image_home {
-  grid-column-start: 3;
-  grid-row: 2 / span2;
-  width: 100;
-}
-
-.animal_home {
-  grid-column-start: 1;
-  grid-row: 1/1;
-  width: 70%;
-  margin-left: 20%;
-}
-
-#logo_home {
-  width: 50%;
-  fill: white;
-  padding-right: 15px;
-  display: inline-block;
-  vertical-align: middle;
-}
 
 body {
   margin: 0;
@@ -93,9 +49,9 @@ body .header.bg {
 body .hero {
   overflow: hidden;
   position: relative;
-  height: calc(90vh + 100px);
+  height: 700px;
   min-height: 200px;
-  background: #ffce54;
+  background: #63c7d3;
   background: linear-gradient(180deg, #68d6e2b7 0%, #68ddec59 100%);
 }
 
@@ -198,4 +154,24 @@ body .hero .wave4 {
   100% {
     opacity: 1;
   }
+}
+
+@media (max-width: 1350px) { 
+  .ganso_home{ 
+    position: absolute;
+    right: -59px;
+    width: 240px;
+    bottom: 73px;
+    transform: rotateY(180deg) rotateZ(25deg);
+   } 
+}
+
+@media (max-width: 900px) { 
+  .ganso_home{ 
+    position: absolute;
+    right: -39px;
+    width: 164px;
+    bottom: 113px;
+    transform: rotateY(180deg) rotateZ(25deg);
+   } 
 }

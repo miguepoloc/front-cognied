@@ -63,7 +63,7 @@ const LoginForm = () => {
               } = props
 
               return (
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="form-login">
 
                   <img src={Logo} id="Icono" alt="" className="avatar" />
                   <h2>Bienvenido</h2>
@@ -125,7 +125,7 @@ const LoginForm = () => {
                         ¿Olvidaste tu contraseña?
                       </small>
                     </Link>
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn-login btn-primary btn-block">
                     Iniciar Sesion
                   </button>{' '}
                 </Form>
