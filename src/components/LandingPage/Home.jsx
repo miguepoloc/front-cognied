@@ -1,22 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-//  import "../helpers/Bubbles"
 import Logo from '../../assets/img/logo.svg'
+import { imgGanso } from '../../helpers/helper_imagen_ganso'
 import '../../assets/css/Home.scss'
 
-const Home = ({ style, section }) => {
+const Home = ({section }) => {
   return (
     <>
       <section id={section.id}>
         <div className="hero justify-content-center  d-flex align-items-center ">
-          <div id="particles-js" className="burbujas_home">
-            {/* <canvas className="particles-js-canvas-el"></canvas> */}
-          </div>
-          <div className="w-75 w-md-50 w-lg-25">
-            {
-              // Esto es temporal mientras se decide cual es la mejor idea para el inicio.
+          <div className="logo">
               <img src={Logo} alt="" />
-            }
+              <img className="ganso" src={imgGanso.celular} alt="" />
             {/* <div className="hero" id="particles-js"> */}
             <div className="w wave"></div>
             <div className="w wave2"></div>
