@@ -1,6 +1,21 @@
 .imageProject{
-    width: 100%;
+    width: 75%;
     border-radius: 25px;
+}
+
+.text-justify{
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.titulo_aboutUs{
+  color:#00659D;
+ 
+}
+
+.ganso_aboutUs{
+  transform:rotateY(180deg);
+  width: 75% !important;
 }
 
 .aboutUs{
@@ -14,3 +29,20 @@
   .bg-otro {
     background-color: #fc8890 !important;
   }
+
+@media (max-width:990px) {
+    .ganso_aboutUs {
+        width: 50% !important;
+    }
+}
+
+@media (min-width: 990px) and (max-width:1400px) {
+  .ganso_aboutUs {
+      width: 105% !important;
+  }
+}
+@media (min-width:1401px) {
+  .ganso_aboutUs {
+      width: 75% !important;
+  }
+}

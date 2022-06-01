@@ -10,8 +10,8 @@ const Home = ({section }) => {
       <section id={section.id}>
         <div className="hero justify-content-center  d-flex align-items-center ">
           <div className="logo">
-              <img src={Logo} alt="" />
-              <img className="ganso" src={imgGanso.celular} alt="" />
+              <img src={Logo} className="" alt="" />
+              <img className="ganso_home" src={imgGanso.celular} alt="" />
             {/* <div className="hero" id="particles-js"> */}
             <div className="w wave"></div>
             <div className="w wave2"></div>
