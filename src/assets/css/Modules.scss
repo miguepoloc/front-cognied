@@ -1,12 +1,30 @@
 
 
+$ColorSection_modules: rgb(0,101,157);
+
 .content-103{
-	background: rgb(0,101,157);
+	background: $ColorSection_modules;
 	padding-bottom:50px;
+}
+
+.backgroundColor_Modules{
+  background: $ColorSection_modules;
+}
+
+.fillColor_Modules{
+  fill: $ColorSection_modules;
 }
 
 .item1{
   background-color: #8ed1fc21;
+}
+
+.imgItem{
+  width: 75%;
+}
+
+.imgItemLarge{
+  width: 40%;
 }
 
 .content-103 .sercies-title{

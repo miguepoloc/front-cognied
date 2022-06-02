@@ -47,6 +47,7 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                                             key={Seccion}
                                             Seccion={Secciones[Seccion]}
                                             Scroll={(id) => {
+                                                console.log(scroll)
                                               scroll.scroll(id)
                                             }}
                                         />

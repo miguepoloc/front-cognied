@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Home from '../components/LandingPage/Home'
 import NavBar from '../components/LandingPage/NavBar'
-import Objetives from '../components/LandingPage/Objetives'
+import Modules from '../components/LandingPage/Modules'
 import ButtonToUp from '../components/LandingPage/ButtonToUp'
 import Footer from '../components/LandingPage/Footer'
 import AboutUs from '../components/LandingPage/AboutUs'
@@ -14,7 +14,7 @@ function LandingPage () {
   const secciones = {
     Home: { id: 'Home', txt: 'Inicio' },
     AboutUs: { id: 'AboutUs', txt: 'Acerca de nosotros' }, // No planeo agregar el footer.
-    Objetivos: { id: 'Objetivos', txt: 'Objetivos' },
+    Modules: { id: 'Modules', txt: 'Módulos' },
     ContactUs: { id: 'ContactUs', txt: 'Contacto' }
   }
 
@@ -32,7 +32,7 @@ function LandingPage () {
         scroll={scroll} />
       <Home section={secciones.Home} />
       <AboutUs section={secciones.AboutUs} />
-      <Objetives section={secciones.Objetivos} />
+      <Modules section={secciones.Modules} />
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
     </>

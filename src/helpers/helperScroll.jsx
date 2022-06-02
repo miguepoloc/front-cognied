@@ -102,7 +102,7 @@ class Scroll {
     }
   }
 
-  static scroll(id,staticAccess = false,navbarId = "navBar") {
+ scroll(id,staticAccess = false,navbarId = "navBar") {
     const element = document.getElementById(id);
     //Si se accede estaticamente sería conveniente mandar el id del navbar
     //de esa forma se hará bien el scroll.
