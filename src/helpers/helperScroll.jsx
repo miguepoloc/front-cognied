@@ -7,6 +7,8 @@ class Scroll {
     this.seccionesJson = secciones;
     this.seccionesArray = this.getSeccionesArray();
     this.offset = 0;
+    this.PreviousSection = {};
+    this.ActualSection = {};
     this.classActiveArray = classActiveArray;
     this.isListenerCreated = false;
     window.addEventListener("scroll", () => {
@@ -57,6 +59,19 @@ class Scroll {
     });
   }
 
+  /* elimina las clases de un elemento */
+  removeClassNameArrayExcept(_sectionNav) {
+    this.seccionesArray.forEach(({ id },index) => {
+      const sectionNav = document.getElementById(`Nav-${id}`);
+      if(sectionNav != _sectionNav){
+        this.classActiveArray.forEach((className) => {
+          sectionNav.classList.remove(className);
+        });
+      }
+    });
+    
+  }
+
   /* agrega las clases de un elemento */
   addClassNameArray(obj) {
     this.classActiveArray.forEach((className) => {
@@ -66,7 +81,7 @@ class Scroll {
 
   /* funciona para hacer algun efecto en los elementos del nav asociados a las secciones (efecto visual) */
   isHover() {
-    this.seccionesArray.forEach(({ id }) => {
+    this.seccionesArray.forEach(({ id },index) => {
       const section = document.getElementById(id);
       const sectionNav = document.getElementById(`Nav-${id}`);
       if (section && sectionNav && this.navBar) {
@@ -76,12 +91,13 @@ class Scroll {
           this.offset >= positionSectionTop &&
           this.offset <= positionSectionTop + sizeSection
         ) {
+          this.ActualSection["section"] = sectionNav;
           this.addClassNameArray(sectionNav);
-        } else {
-          this.removeClassNameArray(sectionNav);
-        }
+        } 
       }
     });
+       this.removeClassNameArrayExcept(this.ActualSection.section);
+
   }
 
   colorNavBar() {

@@ -17,7 +17,6 @@ function LandingPage () {
     Home: { id: 'Home', txt: 'Inicio' },
     AboutUs: { id: 'AboutUs', txt: 'Acerca el proyecto' }, // No planeo agregar el footer.
     Modules: { id: 'Modules', txt: 'Módulos' },
-    ContactUs: { id: 'ContactUs', txt: 'Contacto' },
     Team: { id: 'Team', txt: 'Acerca de nosotros' },
     AboutUsGanso: {id: 'AboutUsGanso', txt: 'Conoce a Cuak'}
   }
