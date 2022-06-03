@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaBookOpen } from 'react-icons/fa'
-import '../../assets/css/ButtonToUp.scss'
+import '../../assets/css/ButtonFixed.scss'
 import { Button, Modal } from 'react-bootstrap'
 
 const ButtonLibro = ({ text, title }) => {
@@ -19,7 +19,7 @@ const ButtonLibro = ({ text, title }) => {
     <div>
 
       <div
-        className="buttonUp topRight text-white"
+        className="buttonFixed topRight text-white"
         onClick={handleShow}
       >
         <FaBookOpen size="2em" />

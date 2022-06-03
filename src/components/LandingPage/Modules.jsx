@@ -1,14 +1,16 @@
 import React from 'react'
 import '../../assets/css/Modules.scss'
+import '../../assets/css/Team.scss'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
 
 const Modules = ({ section }) => {
     return (
         <section
             className="flex-center"
-        // style={{ marginTop: '9%' }}
+         style={{ marginTop: '-3%' }}
         >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path className='fillColor_Modules'  d="M0,256L24,261.3C48,267,96,277,144,288C192,299,240,309,288,282.7C336,256,384,192,432,170.7C480,149,528,171,576,202.7C624,235,672,277,720,288C768,299,816,277,864,250.7C912,224,960,192,1008,186.7C1056,181,1104,203,1152,224C1200,245,1248,267,1296,256C1344,245,1392,203,1416,181.3L1440,160L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path className='fillColor_Modules' d="M0,128L40,128C80,128,160,128,240,138.7C320,149,400,171,480,170.7C560,171,640,149,720,149.3C800,149,880,171,960,176C1040,181,1120,171,1200,160C1280,149,1360,139,1400,133.3L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>             </svg>
             <div className="content-103 backgroundColor_Modules">
                 <div className="container" id={section.id}>
 
@@ -18,8 +20,8 @@ const Modules = ({ section }) => {
                 
                 <div className="row mb-4 align-items-md-stretch">
                         <div className="col-lg-12 ">
-                            <div className="row h-100 p-5 text-white item1 m-1 rounded-3 flex-center ">
-                                <div className="col-lg-8 order-2 order-lg-1 ">
+                            <div className="row h-100 modules_cards card_moduloAutoevaluativo  flex-center ">
+                                <div className="col-lg-8 order-2 order-lg-1 justify-content-center align-self-center ">
                                     <h2 className="font-Geomanist">
                                         Módulo autoevaluativo
 
@@ -52,8 +54,8 @@ const Modules = ({ section }) => {
                     </h4>
                     <div className="row mb-4 align-items-md-stretch ">
                         <div className="col-md-6 mb-md-0 mb-4">
-                            <div className="row h-100 p-5 m-1 text-white item1 rounded-3 flex-center">
-                                <div className="col-lg-8 order-2 order-lg-1 ">
+                            <div className="row h-100  card_relax modules_cards flex-center">
+                                <div className="col-lg-8 order-2 order-lg-1 justify-content-center align-self-center">
                                     <h2 className="font-Geomanist">
                                         Relax
                                     </h2>
@@ -62,7 +64,7 @@ const Modules = ({ section }) => {
                                         niveles de estrés.
                                     </p>
                                 </div>
-                                <div className="col-lg-4 pb-4 pb-lg-0 order-1 order-lg-2 justify-content-center align-self-center">
+                                <div className="col-lg-4 pb-4 pb-lg-0 order-1 order-lg-2 justify-content-center align-self-center text-center">
                                     <img
                                         className="imgItem"
                                         src={imgGanso.meditando}
@@ -71,8 +73,8 @@ const Modules = ({ section }) => {
                             </div>
                         </div>
                         <div className="col-md-6">
-                            <div className="row h-100 m-1 p-5 text-white item1 rounded-3 flex-center ">
-                                <div className="col-lg-8 order-2 order-lg-1 ">
+                            <div className="row h-100  modules_cards card_misEmociones flex-center ">
+                                <div className="col-lg-8 order-2 order-lg-1 justify-content-center align-self-center">
                                     <h2 className="font-Geomanist">
                                         Mis emociones
 
@@ -94,8 +96,8 @@ const Modules = ({ section }) => {
                     </div>
                     <div className="row mb-4 align-items-md-stretch ">
                         <div className="col-md-6 mb-md-0 mb-4">
-                            <div className="row h-100 p-5 text-white item1 m-1 rounded-3 flex-center ">
-                                <div className="col-lg-8 order-2 order-lg-1 ">
+                            <div className="row h-100 card_piensalo modules_cards flex-center ">
+                                <div className="col-lg-8 order-2 order-lg-1 justify-content-center align-self-center ">
                                     <h2 className="font-Geomanist">
                                         Piénsalo
 
@@ -116,8 +118,8 @@ const Modules = ({ section }) => {
                         </div>
 
                         <div className="col-md-6">
-                            <div className="row h-100 p-5 text-white item1 m-1 rounded-3 flex-center ">
-                                <div className="col-lg-8 order-2 order-lg-1 ">
+                            <div className="row h-100  modules_cards card_misHabilidades flex-center ">
+                                <div className="col-lg-8 order-2 order-lg-1 justify-content-center align-self-center">
                                     <h2 className="font-Geomanist">
                                         Mis habilidades
 
@@ -140,11 +142,8 @@ const Modules = ({ section }) => {
                     </div>
                 </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path
-                    className='fillColor_Modules'
-                    d="M0,160L48,170.7C96,181,192,203,288,208C384,213,480,203,576,181.3C672,160,768,128,864,133.3C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
-                ></path>
+            <svg xmlns="http://www.w3.org/2000/svg" className='backgroundColor_Team' viewBox="0 0 1440 320">
+            <path className='fillColor_Modules' d="M0,128L40,128C80,128,160,128,240,138.7C320,149,400,171,480,170.7C560,171,640,149,720,149.3C800,149,880,171,960,176C1040,181,1120,171,1200,160C1280,149,1360,139,1400,133.3L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
             </svg>
         </section>
     )

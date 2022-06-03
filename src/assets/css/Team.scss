@@ -1,0 +1,17 @@
+$ColorSection_team: #D5F5F9;
+$ColorTitle: #00659D;
+$ColorText:#00659D;
+.titulo_Team{
+    color: $ColorTitle !important;
+}
+.text_Team{
+    color: $ColorText !important;
+}
+
+.backgroundColor_Team{
+    background: $ColorSection_team;
+  }
+  
+.fillColor_Team{
+    fill: $ColorSection_team;
+}

@@ -1,6 +1,38 @@
 
 
 $ColorSection_modules: rgb(0,101,157);
+$color_card_relax : #c9e26591;
+$color_card_misEmociones: #b274c19e;
+$color_card_piensalo: #14a0e19e;
+$color_card_misHabilidades: #ffc500a3;
+$color_card_moduloAutoevaluativo: #f4f2ee73;
+
+.modules_cards{
+  padding: 2rem !important;
+  color: white;
+  border-radius: 0.3rem!important;
+  margin: 0.25rem!important;
+}
+
+.card_relax{
+  background-color: $color_card_relax;
+}
+
+.card_misEmociones{
+  background-color: $color_card_misEmociones;
+}
+
+.card_piensalo{
+  background-color:$color_card_piensalo ;
+}
+
+.card_misHabilidades{
+  background-color: $color_card_misHabilidades;
+}
+
+.card_moduloAutoevaluativo{
+  background-color: $color_card_moduloAutoevaluativo ;
+}
 
 .content-103{
 	background: $ColorSection_modules;
@@ -15,12 +47,10 @@ $ColorSection_modules: rgb(0,101,157);
   fill: $ColorSection_modules;
 }
 
-.item1{
-  background-color: #8ed1fc21;
-}
+
 
 .imgItem{
-  width: 75%;
+  width: 100%;
 }
 
 .imgItemLarge{
@@ -116,3 +146,24 @@ $ColorSection_modules: rgb(0,101,157);
 .content-103 .service-post:hover .service-hover {
   height: 100%;
 }
+
+@media (max-width:765px) {
+  .imgItem {
+      width: 40% !important;
+  }
+}
+@media (min-width:765px) and(max-width:990px) {
+  .imgItem {
+      width: 60% !important;
+  }
+}
+
+@media (min-width: 990px) and (max-width:1400px) {
+.imgItem {
+    width: 90% !important;
+}
+}
+@media (min-width:1401px) {
+.imgItem {
+    width: 100% !important;
+}}
