@@ -1,7 +1,13 @@
 
-.logo {
-  width: 660px;
+.container_logo_home {
   padding-bottom: 75px;
+}
+
+.logo_home{
+  width: 935px;
+}
+.logo_home2{
+  display: none;
 }
 
 .ganso_home{
@@ -159,19 +165,56 @@ body .hero .wave4 {
 @media (max-width: 1350px) { 
   .ganso_home{ 
     position: absolute;
-    right: -59px;
-    width: 204px;
+    right: -37px;
+    width: 170px;
     bottom: 73px;
     transform: rotateY(180deg) rotateZ(25deg);
    } 
+
+   .logo_home{
+    width: 832px;
+  }
 }
 
-@media (max-width: 900px) { 
+@media (max-width: 1080px) { 
   .ganso_home{ 
     position: absolute;
-    right: -39px;
-    width: 130px;
+    right: -38px;
+    width: 140px;
     bottom: 113px;
     transform: rotateY(180deg) rotateZ(25deg);
    } 
+   .logo_home{
+    width: 650px;
+  }
+}
+
+@media (max-width: 853px) { 
+  .logo_home {
+    display: block;
+  }
+  .ganso_home{ 
+    display: none;
+   } 
+}
+
+@media (max-width: 600px) { 
+  .logo_home {
+    display: none;
+  }
+.logo_home2 {
+  display: block;
+  width: 140%;
+  margin-left: -18%;
+  margin-top: 2%;
+}
+
+body .hero {
+  overflow: hidden;
+  position: relative;
+  height: 438px;
+  min-height: 200px;
+  background: #63c7d3;
+  background: linear-gradient(180deg, #68d6e2b7 0%, #68ddec59 100%);
+}
 }

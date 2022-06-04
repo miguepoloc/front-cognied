@@ -1,5 +1,5 @@
 import React from 'react'
-import { imgGanso } from '../../helpers/helper_imagen_ganso'
+import logos from '../../assets/img/imgLogos_Quienes_somos[9294].png'
 import '../../assets/css/Team.scss'
 export const Team = ({ section }) => {
     return (
@@ -8,10 +8,10 @@ export const Team = ({ section }) => {
                 <div className="Team backgroundColor_Team">
                     <div className="container pt-md-5">
                         <div className="row">
-                            <div className=" col-lg-5 col-md-12  col-12 justify-content-center align-self-center text-center mx-auto">
-                                <img src={imgGanso.pensando} className="ganso_aboutUs" />
+                            <div className=" col-lg-5  col-12 justify-content-center align-self-center text-center mx-auto">
+                                <img src={logos} className="img_aboutUsGanso" />
                             </div>
-                            <div className=" col-lg-7 col-md-12 mt-md-0 mt-3 col-12 justify-content-center align-self-center" style={{paddingBottom: "9%"}}>
+                            <div className=" col-lg-7 col-12 mt-md-0 mt-3 col-12 justify-content-center align-self-center" style={{paddingBottom: "9%"}}>
                                 <h3 className="font-Geomanist display-5 fw-bold text-center titulo_Team mb-4 ">¿Quíenes somos nosotros?</h3>
 
                                 <h3 className='text-center text_Team'>
