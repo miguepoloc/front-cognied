@@ -6,6 +6,7 @@ $ColorText:#00659D;
 }
 .text_Team{
     color: $ColorText !important;
+    font-size: 1.4em;
 }
 
 .backgroundColor_Team{
@@ -15,3 +16,14 @@ $ColorText:#00659D;
 .fillColor_Team{
     fill: $ColorSection_team;
 }
+
+.img_Team{
+    width: 100% !important;
+}
+
+@media (max-width: 992px) {
+    .img_Team {
+       width:55% !important;
+       margin-bottom: 3%;
+    }
+  }
