@@ -6,7 +6,7 @@ export const Team = ({ section }) => {
         <>
             <section id={section.id} >
                 <div className="Team backgroundColor_Team">
-                    <div className="container py-md-5">
+                    <div className="container pb-md-5">
                         <div className="row gx-5">
                             <div className=" col-lg-5 col-md-12 justify-content-center align-self-center text-center ">
                                 <img src={logos} className="img_Team" />

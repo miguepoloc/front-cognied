@@ -1,0 +1,24 @@
+$color:#00659D !important;
+
+.bg_aboutButtonFixed{
+    background-color: $color;
+}
+.fill_aboutButtonFixed{
+    fill:$color;
+}
+
+.buttonFixed_aboutButtonFixed{
+    width: 120px;
+    height:120px;
+    background-color: #fc8890;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow: hidden;
+    z-index: 12;
+    /*Por la seccion de objetivos.*/
+    -webkit-box-shadow: 4px 4px 37px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: 4px 4px 37px -12px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
