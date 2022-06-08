@@ -7,6 +7,8 @@ $color_card_piensalo: #14a0e19e;
 $color_card_misHabilidades: #ffc500a3;
 $color_card_moduloAutoevaluativo: #f4f2ee73;
 
+
+
 .modules_cards{
   padding: 2rem !important;
   color: white;
@@ -38,16 +40,6 @@ $color_card_moduloAutoevaluativo: #f4f2ee73;
 	background: $ColorSection_modules;
 	padding-bottom:50px;
 }
-
-.backgroundColor_Modules{
-  background: $ColorSection_modules;
-}
-
-.fillColor_Modules{
-  fill: $ColorSection_modules;
-}
-
-
 
 .imgItem{
   width: 100%;

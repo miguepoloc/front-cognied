@@ -12,7 +12,7 @@ const AboutUs = ({ section }) => {
                                 <img src={imgGanso.pensando} className="ganso_aboutUs" />
                             </div>
                             <div className=" col-lg-8 col-md-12 mt-md-0 mt-3 col-12 justify-content-center align-self-center">
-                                <h3 className="font-Geomanist display-5 fw-bold text-center titulo_aboutUs mb-4 ">¿Qué es Digitalmente?</h3>
+                                <h3 className="font-Geomanist display-5 fw-bold text-center text-darkBlue mb-4 ">¿Qué es Digitalmente?</h3>
 
                                 <h3 className='text-center'>Somos una estrategia digital de promoción de la salud mental dirigida
                                     a estudiantes, donde estos son el eje central y contribuyeron en la

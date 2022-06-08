@@ -1,10 +1,23 @@
 .ganso_joinUp{
     position: absolute;
     right: -11px;
-    width: 278px;
-    bottom: -128px;
+    width: 238px;
+    bottom: -158px;
     transform: rotateY(180deg);
 }
+
+.gansoMobil_joinUp{
+    width: 100% !important;
+  }
+
+@media (max-width:990px) {
+    .gansoMobil_joinUp {
+        margin-top: 3%;
+        width: 39% !important;
+        margin-bottom: -8%;
+    }
+}
+
 
 @media (min-width:1750px) {
     .ganso_joinUp{

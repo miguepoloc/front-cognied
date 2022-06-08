@@ -12,7 +12,7 @@ export const AboutGanso = ({ section }) => {
                                 <img src={imgGanso.presentacion_personaje} className="img_aboutUsGanso" />
                             </div>
                             <div className=" col-lg-6 col-md-12 mt-md-0 mt-3 col-12 justify-content-center align-self-center">
-                                <h3 className="font-Geomanist display-5 fw-bold text-center titulo_aboutUs mb-4 ">¿Quíen soy yo?</h3>
+                                <h3 className="font-Geomanist display-5 fw-bold text-center text-darkBlue mb-4 ">¿Quíen soy yo?</h3>
 
                                 <h3 className='text-center'>Mi nombre es Cuack. Soy quien te
                                     estaré guiando en tu plataforma.

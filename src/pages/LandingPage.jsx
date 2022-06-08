@@ -13,6 +13,8 @@ import { AboutButtonFixed } from '../components/LandingPage/AboutButtonFixed'
 import { AboutEstrategy } from '../components/LandingPage/AboutEstrategy'
 import { Unete } from '../components/LandingPage/JoinUp'
 
+import "../components/LandingPage/assets/css/LandingPage.scss"
+
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
@@ -23,8 +25,8 @@ function LandingPage () {
     Team: { id: 'Team', txt: 'Sobre nosotros' },
     AboutUsGanso: {id: 'AboutUsGanso', txt: 'Conoce a Cuak'},
     AboutButtonFixed: {id: 'AboutButtonFixed', txt: 'Botón de ayuda'},
-    AboutEstrategy:{id: 'TeamProyect', txt: 'no sé.'},
-    JoinUp:{id: 'JoinUp', txt: 'únete'}
+    AboutEstrategy:{id: 'TeamProyect', txt: 'CogniEd'},
+    JoinUp:{id: 'JoinUp', txt: 'Únete'}
   }
 
   // Inicializacion del scroll.

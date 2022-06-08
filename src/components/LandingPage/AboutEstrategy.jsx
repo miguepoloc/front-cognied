@@ -10,15 +10,12 @@ import { imgGanso } from '../../helpers/helper_imagen_ganso'
 export const AboutEstrategy = ({ section }) => {
     return (
         <section className="">
-
-
-            <div className="" id={section.id}>
+            <div className="" id={section.id} style={{marginTop: "-3%"}}>
             {/* <img src={prueba1}  className="imgLogo_aboutEstrategy" /> */}
 
-                <div className="container  pb-5">
-                    
+                <div className="container " >
                         <div className="row mb-4" >
-                            <h3 className="font-Geomanist display-6 fw-bold text-center titulo_aboutUs">Somos parte de la estrategia integrada del grupo CogniEd y
+                            <h3 className="font-Geomanist display-6 fw-bold text-center text-darkBlue">Somos parte de la estrategia integrada del grupo CogniEd y
                             UniMagdalena para la promoción de la salud mental</h3>
                         </div>
                     <div className="row">

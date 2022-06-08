@@ -37,7 +37,7 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                         className="justify-content-end"
                         id="responsive-navbar-nav"
                     >
-                        <Nav>
+                        <Nav className="text-center">
                             {
                                 /*
                                 Recorro el json. la idea es obtener las keys para poder acceder el value del json y pasarlo al elemento de navegacion.
@@ -51,6 +51,7 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                                                 console.log(scroll)
                                               scroll.scroll(id)
                                             }}
+                                            
                                         />
                                   )
                                 })

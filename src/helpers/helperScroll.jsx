@@ -106,7 +106,10 @@ class Scroll {
       // Get the offset position of the navbar
       const positionSection =
         this.primeraSeccion.offsetHeight - this.navBar.offsetHeight - 20; // el -20 es para ajustar un poco.
-      if (this.offset > positionSection) {
+        const windowWidth = window.innerWidth;
+
+      if (this.offset > positionSection || windowWidth <= 1400) {
+        console.log("entré")
         this.navBar.classList.remove("bg-transparent");
         this.navBar.classList.add("bg-white");
       } else {
