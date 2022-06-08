@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Surveys as model_surveys } from '../../helpers/model_survey/Surveys'
+import { Surveys as model_surveys } from './assets/js/Surveys'
 import '../../assets/css/Surveys.scss'
 import Survey from './Survey'
 import ganso_pensando from "../../assets/img/ganso/ganso_pensando.png"
