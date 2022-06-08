@@ -16,10 +16,11 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
         <>
             <Navbar
                 collapseOnSelect
-                expand="lg"
+                expand="xxl"
                 fixed="top"
                 bg="transparent"
                 id="navBar"
+                
             >
                 <Container fluid>
                     <Navbar.Brand>

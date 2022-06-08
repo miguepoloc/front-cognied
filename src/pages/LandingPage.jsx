@@ -11,6 +11,7 @@ import { Team } from '../components/LandingPage/Team'
 import { AboutGanso } from '../components/LandingPage/AboutGanso'
 import { AboutButtonFixed } from '../components/LandingPage/AboutButtonFixed'
 import { AboutEstrategy } from '../components/LandingPage/AboutEstrategy'
+import { Unete } from '../components/LandingPage/JoinUp'
 
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
@@ -19,10 +20,11 @@ function LandingPage () {
     Home: { id: 'Home', txt: 'Inicio' },
     AboutUs: { id: 'AboutUs', txt: 'Acerca el proyecto' }, // No planeo agregar el footer.
     Modules: { id: 'Modules', txt: 'Módulos' },
-    Team: { id: 'Team', txt: 'Acerca de nosotros' },
+    Team: { id: 'Team', txt: 'Sobre nosotros' },
     AboutUsGanso: {id: 'AboutUsGanso', txt: 'Conoce a Cuak'},
     AboutButtonFixed: {id: 'AboutButtonFixed', txt: 'Botón de ayuda'},
-    AboutEstrategy:{id: 'TeamProyect', txt: 'no sé.'}
+    AboutEstrategy:{id: 'TeamProyect', txt: 'no sé.'},
+    JoinUp:{id: 'JoinUp', txt: 'únete'}
   }
 
   // Inicializacion del scroll.
@@ -44,6 +46,7 @@ function LandingPage () {
       <AboutGanso section={secciones.AboutUsGanso} />
       <AboutButtonFixed section={secciones.AboutButtonFixed} />
       <AboutEstrategy section={secciones.AboutEstrategy} />
+      <Unete section={secciones.JoinUp} />
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
     </>

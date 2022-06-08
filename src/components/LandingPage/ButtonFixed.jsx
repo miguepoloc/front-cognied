@@ -2,16 +2,16 @@ import React from 'react'
 import '../../assets/css/ButtonFixed.scss'
 import '../../assets/css/Effects/ShakeEffect.scss'
 import { SiWhatsapp } from "react-icons/si";
-import { TbMessageReport  } from "react-icons/tb";
+import { BsFillChatFill } from "react-icons/bs";
 const ButtonToUp = ({ Scroll, seccionToUpId }) => {
   return (
         <a
             // onClick={() => Scroll.scroll('Home')}
-            className="buttonFixed bottomRight"
+            className="buttonFixed_sgr bottomRight"
             href="https://sgrsaludmental.unimagdalena.edu.co/"
             target="_blank"
         >
-            <TbMessageReport  size={40} className="shake" color="white" />
+            <BsFillChatFill  size={25} className="shake" color="white" />
         </a>
   )
 }

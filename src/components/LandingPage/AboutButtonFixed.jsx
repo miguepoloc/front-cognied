@@ -3,7 +3,7 @@ import { imgGanso } from '../../helpers/helper_imagen_ganso'
 import '../../assets/css/AboutButtonFixed.scss'
 import '../../assets/css/ButtonFixed.scss'
 import { ImArrowDownRight } from "react-icons/im";
-import { TbMessageReport } from "react-icons/tb";
+import { BsFillChatFill } from "react-icons/bs";
 export const AboutButtonFixed = ({ section }) => {
     return (
         <section  className="mt-lg-5 mt-md-2">
@@ -28,8 +28,8 @@ export const AboutButtonFixed = ({ section }) => {
                                 ubicado en la parte inferior izquierda de la página.
                             </h5>
                             <div className="d-flex justify-content-center align-items-center mt-5">
-                                <a className='buttonFixed_aboutButtonFixed' href='https://sgrsaludmental.unimagdalena.edu.co/'>
-                                    <TbMessageReport size={110} className="shake" color="white" />
+                                <a className='buttonFixed_aboutButtonFixed' target="_blank" href='https://sgrsaludmental.unimagdalena.edu.co/'>
+                                    <BsFillChatFill size={70} className="shake" color="white" />
                                 </a>
                                 <ImArrowDownRight className='ms-5 mt-4' size={70} color="white" />
                             </div>

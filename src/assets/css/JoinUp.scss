@@ -1,0 +1,27 @@
+.ganso_joinUp{
+    position: absolute;
+    right: -11px;
+    width: 278px;
+    bottom: -128px;
+    transform: rotateY(180deg);
+}
+
+@media (min-width:1750px) {
+    .ganso_joinUp{
+        position: absolute;
+        right: -11px;
+        width: 418px;
+        bottom: -258px;
+        transform: rotateY(180deg);
+    }
+}
+
+@media (min-width:1450px) and (max-width:1750px) {
+    .ganso_joinUp{
+        position: absolute;
+        right: 19px;
+        width: 374px;
+        bottom: -218px;
+        transform: rotateY(180deg);
+    }
+}

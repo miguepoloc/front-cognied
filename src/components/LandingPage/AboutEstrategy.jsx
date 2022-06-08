@@ -47,6 +47,7 @@ export const AboutEstrategy = ({ section }) => {
                 <img src={otrosPersonajes} className="othersPj_aboutEstrategy" />
             </div> 
             </div>
+            
 
         </section>
     )
