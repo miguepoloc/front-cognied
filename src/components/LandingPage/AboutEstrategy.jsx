@@ -5,7 +5,7 @@ import logo_digitalmente from '../../assets/img/logo_digitalmente-cropped.svg'
 import prueba1 from '../../assets/img/prueba1.png'
 import otrosPersonajes from '../../assets/img/personajes_ProyectoSGR.svg'
 import imagenParaCelularesDigitalYSGR from '../../assets/img/Imagen_general_para_celular_Proyecto_DigitalMente_SGR.svg'
-import '../../assets/css/AboutEstrategy.scss'
+import './assets/css/AboutEstrategy.scss'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
 export const AboutEstrategy = ({ section }) => {
     return (

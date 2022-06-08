@@ -1,6 +1,6 @@
 import React from 'react'
 import logos from '../../assets/img/imgLogos_Quienes_somos[9294].png'
-import '../../assets/css/Team.scss'
+import './assets/css/Team.scss'
 export const Team = ({ section }) => {
     return (
         <>

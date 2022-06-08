@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Logo from '../../assets/img/logo_home_conLetras.svg'
 import Logo2 from '../../assets/img/logo_home_conLetras2.svg'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
-import '../../assets/css/Home.scss'
+import './assets/css/Home.scss'
 
 const Home = ({section }) => {
   return (

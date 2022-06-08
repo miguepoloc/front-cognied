@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../assets/css/Footer.scss'
+import './assets/css/Footer.scss'
 import Escudo from '../../assets/img/escudo_monocromatico.png'
 import Escudo2 from '../../assets/img/Escudo_Unimag.svg'
 import Grupo from '../../assets/img/logo_grupo.svg'

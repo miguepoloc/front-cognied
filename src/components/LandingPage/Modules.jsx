@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../assets/css/Modules.scss'
-import '../../assets/css/Team.scss'
+import './assets/css/Modules.scss'
+import './assets/css/Team.scss'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
 
 const Modules = ({ section }) => {

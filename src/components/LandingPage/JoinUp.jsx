@@ -1,6 +1,6 @@
 import React from 'react'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
-import '../../assets/css/JoinUp.scss'
+import './assets/css/JoinUp.scss'
 export const Unete = ({ section }) => {
     return (
         <>

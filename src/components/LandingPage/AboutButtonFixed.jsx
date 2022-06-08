@@ -1,6 +1,6 @@
 import React from 'react'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
-import '../../assets/css/AboutButtonFixed.scss'
+import './assets/css/AboutButtonFixed.scss'
 import '../../assets/css/ButtonFixed.scss'
 import { ImArrowDownRight } from "react-icons/im";
 import { BsFillChatFill } from "react-icons/bs";

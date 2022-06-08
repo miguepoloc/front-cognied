@@ -1,6 +1,6 @@
 import React from 'react'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
-import '../../assets/css/AboutUsGanso.scss'
+import './assets/css/AboutUsGanso.scss'
 export const AboutGanso = ({ section }) => {
     return (
         <>
