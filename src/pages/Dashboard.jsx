@@ -22,7 +22,7 @@ const Dashboard = () => {
   const { userInfo } = authState
 
   const getData = async () => {
-    const url = `http://127.0.0.1:8002/api/avance_modulos/${userInfo.id}`
+    const url = `${process.env.REACT_APP_API_URL}/api/avance_modulos/${userInfo.id}`
 
     const response = await fetch(url)
       .then((datos) => datos.json())

@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useContext } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import { Loading } from './components/Loading'
 import { AuthContext } from './context/AuthContext'
 
 const LandingPage = lazy(() => import('./pages/LandingPage'))
@@ -11,7 +12,7 @@ const SignUp = lazy(() => import('./pages/SignUp'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const ModuloEmocionalCapsula = lazy(() => import('./pages/ModuloEmocionalCapsula'))
 
-const LoadingFallback = () => <div>Loading...</div>
+const LoadingFallback = () => <Loading />
 
 const AuthenticatedRoute = ({ children, ...rest }) => {
   const auth = useContext(AuthContext)

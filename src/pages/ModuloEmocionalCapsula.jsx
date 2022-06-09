@@ -20,7 +20,6 @@ import { linksEmocional } from '../helpers/helper_emocional'
 import ControlUser from '../components/Dashboard/ControlUser'
 
 const ModuloEmocionalCapsula = () => {
-  // console.log(user2)
   const { slug } = useParams()
 
   // Trae los datos del usuario
@@ -44,9 +43,7 @@ const ModuloEmocionalCapsula = () => {
 
   // Estado de control de ubicación, se utiliza para actualizar la barra lateral
   const [control, setControl] = useState(1)
-  const [info2, dax] = ControlUser()
-  console.log(info2)
-  console.log(dax)
+
   useEffect(async function () {
     // Guarda en response el avance que lleva el usuario
     const response = await getAvance()
