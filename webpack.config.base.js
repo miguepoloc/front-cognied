@@ -59,12 +59,8 @@ module.exports = (state) => {
           exclude: /node_modules/,
         },
         {
-          test: /\.css$/,
-          use: ['style-loader',],
-        },
-        {
-          test: /\.s?css$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          test: /\.(scss|css)$/,
+          use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
           test: /\.(png|svg|jp(e*)g|gif)$/,

@@ -8,7 +8,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 module.exports = merge(BaseConfig(state='production'), {
   mode: 'production',
   plugins: [
-    new CompressionWebpackPlugin(),
+    // new CompressionWebpackPlugin(),
     new CleanWebpackPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
