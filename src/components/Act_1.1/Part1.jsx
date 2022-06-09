@@ -18,7 +18,7 @@ const Part1 = () => {
     console.log(section1.activities[activityIndex].correctAnswerIndex)
     if (optionIndex >= 0) {
       if (
-        optionIndex == section1.activities[activityIndex].correctAnswerIndex
+        optionIndex === section1.activities[activityIndex].correctAnswerIndex
       ) {
         console.log(
           section1.activities[activityIndex].correctAnswerIndex
@@ -28,7 +28,7 @@ const Part1 = () => {
           if (activityIndex + 1 < section1.options.length) {
             setActivityIndex(activityIndex + 1)
           } else {
-            //TODO: redireccionar a algun lugar.
+            // TODO: redireccionar a algun lugar.
             console.log('Final.')
           }
         })

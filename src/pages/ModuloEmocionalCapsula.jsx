@@ -12,13 +12,15 @@ import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import FooterDashboard from '../components/Dashboard/FooterDashboard'
 import ButtonLibro from '../components/Dashboard/ButtonLibro'
 
-import { useHistory, useLocation, useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { PUT_avance_modulos } from '../helpers/helperApi'
 import { AuthContext } from '../context/AuthContext'
 import { linksEmocional } from '../helpers/helper_emocional'
+import ControlUser from '../components/Dashboard/ControlUser'
 
 const ModuloEmocionalCapsula = () => {
+  // console.log(user2)
   const { slug } = useParams()
 
   // Trae los datos del usuario
@@ -42,7 +44,9 @@ const ModuloEmocionalCapsula = () => {
 
   // Estado de control de ubicación, se utiliza para actualizar la barra lateral
   const [control, setControl] = useState(1)
-
+  const [info2, dax] = ControlUser()
+  console.log(info2)
+  console.log(dax)
   useEffect(async function () {
     // Guarda en response el avance que lleva el usuario
     const response = await getAvance()

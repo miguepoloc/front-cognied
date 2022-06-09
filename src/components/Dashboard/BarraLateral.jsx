@@ -10,8 +10,6 @@ import BotonFlecha from './BotonFlecha'
 import { linksEmocional } from '../../helpers/helper_emocional'
 
 const BarraLateral = ({ datauser }) => {
-  console.log(datauser)
-
   const history = useHistory()
 
   // assigning location variable
