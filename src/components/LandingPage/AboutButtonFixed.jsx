@@ -2,7 +2,7 @@ import React from 'react'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
 import './assets/css/AboutButtonFixed.scss'
 import '../../assets/css/ButtonFixed.scss'
-import { ImArrowDownRight } from "react-icons/im";
+import { ImArrowRight } from "react-icons/im";
 import { BsFillChatFill } from "react-icons/bs";
 export const AboutButtonFixed = ({ section }) => {
     return (
@@ -25,13 +25,16 @@ export const AboutButtonFixed = ({ section }) => {
                                 a diversas actividades. No estamos enfocados a dar atención clínica u
                                 orientación psicológica. Pero si en algún momento sientes que necesitas
                                 ayuda, puedes presionar este botón y dale click al boton morado de chat
-                                ubicado en la parte inferior izquierda de la página.
+                                ubicado en la parte inferior izquierda de la página del Proyecto Salud Mental SGR.
                             </h5>
                             <div className="d-flex justify-content-center align-items-center mt-5">
-                                <a className='buttonFixed_aboutButtonFixed' target="_blank" href='https://sgrsaludmental.unimagdalena.edu.co/'>
-                                    <BsFillChatFill size={70} className="shake" color="white" />
+                                <a className='buttonFixed_aboutButtonFixed bg-naranja' target="_blank" href='https://sgrsaludmental.unimagdalena.edu.co/'>
+                                    <BsFillChatFill size={40} className="shake" color="white" />
                                 </a>
-                                <ImArrowDownRight className='ms-5 mt-4' size={70} color="white" />
+                                <ImArrowRight className='mx-4 d-flex justify-content-center align-items-center' size={40} color="white" />
+                                <a className='buttonFixed_aboutButtonFixed' target="_blank" href='https://sgrsaludmental.unimagdalena.edu.co/'>
+                                    <BsFillChatFill size={40} className="shake" color="white" />
+                                </a>
                             </div>
 
                             <h5 className='text-center mt-5 mb-5'>A través del chat virtual disponible en esa página,

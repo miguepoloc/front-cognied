@@ -109,7 +109,6 @@ class Scroll {
         const windowWidth = window.innerWidth;
 
       if (this.offset > positionSection || windowWidth <= 1400) {
-        console.log("entré")
         this.navBar.classList.remove("bg-transparent");
         this.navBar.classList.add("bg-white");
       } else {
