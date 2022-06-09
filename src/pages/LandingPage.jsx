@@ -12,7 +12,7 @@ import { AboutButtonFixed } from '../components/LandingPage/AboutButtonFixed'
 import { AboutEstrategy } from '../components/LandingPage/AboutEstrategy'
 import { Unete } from '../components/LandingPage/JoinUp'
 
-import '../assets/css/LandingPage.scss'
+import '../assets/css/Landingpage.scss'
 
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
