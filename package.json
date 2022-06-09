@@ -7,7 +7,7 @@
     "build:prod": "webpack --config webpack.config.production.js",
     "build:dev": "webpack --config webpack.config.dev.js",
     "dev": "webpack-dev-server --config webpack.config.dev.js --history-api-fallback",
-    "serve": "http-server -o /dist -p 8080",
+    "serve": "http-server -o /build -p 8080",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
