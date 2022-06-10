@@ -28,7 +28,7 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                             className="nameNav font-Geomanist"
                             onClick={() => scroll.scroll(PrimeraSeccion.id)}
                         >
-                            Digitalmente
+                            DigitalMente
                         </Nav.Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />

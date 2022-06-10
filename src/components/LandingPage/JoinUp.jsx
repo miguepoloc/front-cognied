@@ -20,7 +20,7 @@ export const Unete = ({ section }) => {
 
                         <div className="row gx-5 text-center">
                             <div className='w-100'>
-                                <button className='w-50 w-md-25 btn-naranja ms-2 me-2 btn btn-primary btn-lg'>Registrate aquí!</button>
+                                <a className='w-50 w-md-25 btn-naranja ms-2 me-2 btn btn-primary btn-lg' href="/sign-up">Registrate aquí!</a>
                             </div>
                         </div>
                         <div className="row" >

@@ -41,3 +41,11 @@ $ColorNaranja: #fc8890;
 .waveBottom{
     margin-top: -4% !important;
 }
+body {
+    width: 100% !important;
+}
+
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
