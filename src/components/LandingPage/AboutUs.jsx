@@ -2,7 +2,7 @@ import React from 'react'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
 import './assets/css/AboutUs.scss'
 const AboutUs = ({ section }) => {
-    return (
+  return (
         <>
             <section id={section.id} className="mt-lg-5 mt-md-2">
                 <div className="aboutUs">
@@ -14,7 +14,7 @@ const AboutUs = ({ section }) => {
                             <div className=" col-lg-8 col-md-12 mt-md-0 mt-3 col-12 justify-content-center align-self-center">
                                 <h3 className="font-Geomanist display-5 fw-bold text-center text-darkBlue mb-4 ">¿Qué es Digitalmente?</h3>
 
-                                <h3 className='text-center'>Somos una estrategia digital de promoción de la salud mental dirigida
+                                <h3 className='text-center'>
                                     a estudiantes, donde estos son el eje central y contribuyeron en la
                                     construcción y elección de cada elemento. Nuestro enfoque se basa
                                     en la psicoeducación y el desarrollo de actividades para fortalecer tus
@@ -30,7 +30,7 @@ const AboutUs = ({ section }) => {
                 </div>
             </section>
         </>
-    )
+  )
 }
 
 export default AboutUs
