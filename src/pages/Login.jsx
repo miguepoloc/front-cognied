@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
-import { useHistory, Link, Redirect } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import Axios from 'axios'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import '../assets/css/Login.scss'
-import Cel from '../assets/img/tortuga.svg'
-import Ola from '../assets/img/wave.png'
+import Cel from '../assets/img/pato.svg'
+import Ola from '../assets/img/wave.svg'
 import Logo from '../assets/img/logo9.svg'
 import { FaUser, FaLock } from 'react-icons/fa'
 
@@ -20,7 +20,7 @@ const LoginForm = () => {
     <>
       <img src={Ola} id="Ola" alt="" className="wave" />
       <div className="container-login">
-        <div className="img">
+        <div className="img-login">
           <img src={Cel} id="Cel" alt="" />
         </div>
         <div className="login-container">
@@ -40,9 +40,11 @@ const LoginForm = () => {
 
                 const { data } = respuesta
                 setAuthState(data)
-                history.push('/')
+                history.push('/dashboard')
               } catch (error) {
+                console.log(error)
                 setMessLogin({ data: { message: error.response.data[0] } })
+                console.log(messLogin)
               }
             }}
             validationSchema={Yup.object().shape({
@@ -73,61 +75,61 @@ const LoginForm = () => {
                       <FaUser></FaUser>
                     </div>
                     <div>
-                    <input
-                      id="document"
-                      type="Text"
-                      value={values.document}
-                      onChange={(e) => {
-                        handleChange(e)
-                        setMessLogin(null)
-                      }}
-                      onBlur={handleBlur}
-                      placeholder="Documento"
-                      className={'input'}
-                    />
+                      <input
+                        id="document"
+                        type="Text"
+                        value={values.document}
+                        onChange={(e) => {
+                          handleChange(e)
+                          setMessLogin(null)
+                        }}
+                        onBlur={handleBlur}
+                        placeholder="Documento de identidad"
+                        className={'input'}
+                      />
 
                     </div>
                   </div>
                   {errors.document && touched.document && (
-                      <div className="input-feedback">{errors.document}</div>
+                    <div className="input-feedback">{errors.document}</div>
                   )}
                   <div className="input-div my-0">
                     <div className="i">
                       <FaLock></FaLock>
                     </div>
                     <div>
-                    <input
-                      id="password"
-                      type="password"
-                      value={values.password}
-                      placeholder="Contraseña"
-                      onChange={(e) => {
-                        handleChange(e)
-                        setMessLogin(null)
-                      }}
-                      onBlur={handleBlur}
-                      className={'input'}
-                    />
+                      <input
+                        id="password"
+                        type="password"
+                        value={values.password}
+                        placeholder="Contraseña"
+                        onChange={(e) => {
+                          handleChange(e)
+                          setMessLogin(null)
+                        }}
+                        onBlur={handleBlur}
+                        className={'input'}
+                      />
 
                     </div>
-                    </div>
+                  </div>
                   {errors.password && touched.password && (
-                      <div className="input-feedback">{errors.password}</div>
+                    <div className="input-feedback">{errors.password}</div>
                   )}
-                    {messLogin?.data && (
-                      <div className="input-feedback">
-                        {messLogin?.data?.message}
-                      </div>
-                    )}
+                  {messLogin?.data && (
+                    <div className="input-feedback">
+                      {messLogin?.data?.message}
+                    </div>
+                  )}
 
-                   <Link to="/forgot">
-                      <small id="emailHelp" className="olvidado form-text text-primary">
-                        ¿Olvidaste tu contraseña?
-                      </small>
-                    </Link>
+                  <Link to="/forgot">
+                    <small id="emailHelp" className="olvidado form-text text-primary">
+                      ¿Olvidaste tu contraseña?
+                    </small>
+                  </Link>
                   <button type="submit" className="btn-login btn-primary btn-block">
-                    Iniciar Sesion
-                  </button>{' '}
+                    Iniciar Sesión
+                  </button>
                 </Form>
               )
             }}

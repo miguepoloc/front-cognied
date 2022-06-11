@@ -5,6 +5,7 @@ import '../../assets/css/NavBarDashboard.scss'
 
 import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
+import { Button } from 'react-bootstrap'
 
 const NavBarDashboard = ({ section }) => {
   const history = useHistory()
@@ -125,15 +126,17 @@ const NavBarDashboard = ({ section }) => {
                             </li>
                             <li className="nav-item d-flex align-items-center">
                                 <a href="#" className="nav-link text-body font-weight-bold px-0">
-                                    {auth && <div>{auth?.authState?.userInfo?.document}</div>}
-                                    <span className="d-sm-inline d-none">Nombre persona&nbsp;&nbsp;&nbsp; </span>
-                                    {/* <i className="fa fa-user me-sm-1"></i> */}
+                                    <span className="d-sm-inline d-none">{auth?.authState?.userInfo?.document}&nbsp;&nbsp;&nbsp; </span>
                                 </a>
                             </li>
 
                             <li className="nav-item d-flex align-items-center">
-                                <a className="btn btn-outline-info btn-sm mb-0 me-3"
-                                    href="#" rel="noreferrer">Cerrar Sesión</a>
+                                {/* <a className="btn btn-outline-info btn-sm mb-0 me-3"
+                                    href="#" rel="noreferrer">Cerrar Sesión
+                                </a> */}
+                                <Button className=" btn-naranja ms-2 btn-sm mb-0 me-3" onClick={() => auth.logout()}>
+                                    Cerrar sesión
+                                </Button>
                             </li>
                         </ul>
                     </div>

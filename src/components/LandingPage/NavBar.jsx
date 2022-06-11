@@ -20,7 +20,7 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                 fixed="top"
                 bg="transparent"
                 id="navBar"
-                
+
             >
                 <Container fluid>
                     <Navbar.Brand>
@@ -48,10 +48,10 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                                             key={Seccion}
                                             Seccion={Secciones[Seccion]}
                                             Scroll={(id) => {
-                                                console.log(scroll)
+                                              console.log(scroll)
                                               scroll.scroll(id)
                                             }}
-                                            
+
                                         />
                                   )
                                 })

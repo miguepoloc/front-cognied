@@ -24,7 +24,22 @@ const AuthenticatedRoute = ({ children, ...rest }) => {
         auth.isAuthenticated()
           ? (children)
           : (
-            <Redirect to="/" />)
+            <Redirect to="/login" />)
+      }
+    />
+  )
+}
+
+const NoLoginRoute = ({ children, ...rest }) => {
+  const auth = useContext(AuthContext)
+  console.log(auth.isAuthenticated())
+  return (
+    <Route
+      {...rest}
+      render={() =>
+        auth.isAuthenticated()
+          ? (<Redirect to="/dashboard" />)
+          : (children)
       }
     />
   )
@@ -56,13 +71,13 @@ const AppRoutes = () => (
           <LandingPage style="onlyLogo" />
         </Route>
 
-        <Route path="/login">
+        <NoLoginRoute path="/login">
           <Login />
-        </Route>
+        </NoLoginRoute>
 
-        <Route path="/sign-up">
+        <NoLoginRoute path="/sign-up">
           <SignUp />
-        </Route>
+        </NoLoginRoute>
 
         <AuthenticatedRoute path="/dashboard">
           <Dashboard />

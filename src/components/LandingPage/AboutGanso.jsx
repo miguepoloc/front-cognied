@@ -2,9 +2,9 @@ import React from 'react'
 import { imgGanso } from '../../helpers/helper_imagen_ganso'
 import './assets/css/AboutUsGanso.scss'
 export const AboutGanso = ({ section }) => {
-    return (
+  return (
         <>
-            <section id={section.id} style={{marginTop: "-5%"}}>
+            <section id={section.id} style={{ marginTop: '-5%' }}>
                 <div className="aboutUs">
                     <div className="container pt-md-5">
                         <div className="row">
@@ -33,5 +33,5 @@ export const AboutGanso = ({ section }) => {
                 </div>
             </section>
         </>
-    )
+  )
 }
