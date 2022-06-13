@@ -14,6 +14,7 @@ import { AboutEstrategy } from '../components/LandingPage/AboutEstrategy'
 import { Unete } from '../components/LandingPage/JoinUp'
 
 import "../components/LandingPage/assets/css/LandingPage.scss"
+import { Modulos_inicio } from '../components/Dashboard/modulos_inicio/Modulos_inicio'
 
 function LandingPage () {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
@@ -51,6 +52,7 @@ function LandingPage () {
       <Unete section={secciones.JoinUp} />
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
+      <Modulos_inicio/>
     </>
   )
 }
