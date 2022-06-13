@@ -2,10 +2,15 @@ $color_card_relax : #c9e26591;
 $color_card_misEmociones: #b274c19e;
 $color_card_piensalo: #14a0e19e;
 $color_card_misHabilidades: #ffc500a3;
-$color_card_moduloAutoevaluativo: #f4f2ee73;
+$color_card_ayuda: rgb(255 0 128 / 51%);;
+$color_card_moduloAutoevaluativo: rgb(235 235 235);
 
 .card_relax{
     background-color: $color_card_relax;
+  }
+
+  .card_ayuda{
+    background-color: $color_card_ayuda;
   }
   
   .card_misEmociones{
@@ -28,8 +33,18 @@ $color_card_moduloAutoevaluativo: #f4f2ee73;
     width: 50% !important;
 }
 
+.img-moduloAutoEvaluativo{
+    width: 13% !important;
+}
+
 .cards_modulos_inicio{
-    padding: 1rem!important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+}
+
+.imgAyuda_modulos_inicio{
+    width: 50% !important;
 }
 
 
@@ -39,7 +54,11 @@ $color_card_moduloAutoevaluativo: #f4f2ee73;
 // }
 
 .modulo_bloqueado{
+    .card_moduloAutoevaluativo{
+        background-color: rgba(235, 235, 235, 0.548); ;
+      }
     filter: brightness(0);
+
 }
 
 
@@ -83,6 +102,16 @@ $color_card_moduloAutoevaluativo: #f4f2ee73;
         top:3px;
         color:white;
     }
+
+    .img-moduloAutoEvaluativo{
+        width: 17% !important;
+    }
+
+    .imgAyuda_modulos_inicio{
+        width: 85% !important;
+        padding-top: 8px;
+    }
+    
     
 }
 

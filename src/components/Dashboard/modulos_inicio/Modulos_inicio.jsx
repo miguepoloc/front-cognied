@@ -1,5 +1,7 @@
 import React from 'react'
+import { InputGroup } from 'react-bootstrap';
 import { imgGanso } from '../../../helpers/helper_imagen_ganso'
+import { gansoPensandoAlert } from '../../../helpers/helper_Swal_Alerts';
 import "./assets/css/Modulos_inicio.scss"
 
 import { Modulos } from './Modulos';
@@ -8,12 +10,12 @@ export const Modulos_inicio = () => {
 
     const modulos = {
         modulo_alternativo: {
-            col: "col-md-9 col-8",
+            col: "col-8",
             img: imgGanso.escribiendo_250x200,
             moduloClass: "card_moduloAutoevaluativo",
             text: "Módulo autoevaluativo",
-            bloqueado: false,
-            href: ""
+            bloqueado:false,
+            href: "https://stackoverflow.com/questions/22429881/how-to-unstyle-anchor-when-using-bootstrap"
         },
         otros_modulos: [
             {
@@ -30,7 +32,7 @@ export const Modulos_inicio = () => {
                 text: "Mis emociones",
                 moduloClass: "card_misEmociones",
                 classImg: "w-50 pt-2",
-                bloqueado: true,
+                bloqueado: false,
                 href: ""
             },
             {
@@ -53,46 +55,31 @@ export const Modulos_inicio = () => {
             }
         ]
     }
-    const modulo_alternativo = {
-        col: "col-md-9 col-8",
-        img: imgGanso.escribiendo_250x200,
-        moduloClass: "card_moduloAutoevaluativo",
-        text: "Módulo autoevaluativo",
-        bloqueado: false,
-        href: ""
-    }
+
 
     const estado = modulos.modulo_alternativo.bloqueado ? "modulo_bloqueado" : "modulo_desbloqueado"
-    const classDiv = `${modulos.modulo_alternativo.col} cards_modulos_inicio ${estado}`
+    const classDiv = `${modulos.modulo_alternativo.col}  rounded-3 justify-content-center cards_modulos_inicio ${estado}`
 
     return (
         <><div className="container">
-            <div className="row justify-content-md-end">
+            <div className="row align-items-md-stretch justify-content-center mt-4 ">
+                {/* <Modulos col={"col-6"} quitarIconoBloqueo={true} classImg={"imgAyuda_modulos_inicio"} img={imgGanso.stop_250x200} text={"¿Necesitas ayuda?"} bloqueado={false} href={"ayuda.com"} moduloClass={"card_ayuda"} /> */}
+                <Modulos col={"col-12"}
+                    img={modulos.modulo_alternativo.img}
+                    text={modulos.modulo_alternativo.text}
+                    bloqueado={modulos.modulo_alternativo.bloqueado}
+                    href={modulos.modulo_alternativo.href}
+                    moduloClass={modulos.modulo_alternativo.moduloClass}
+                    classImg={"img-moduloAutoEvaluativo"} 
+                />
 
-                <div className={classDiv}>
 
-                    <div className="row">
-                        <Modulo_IconoBloqueo bloqueado={modulos.modulo_alternativo.bloqueado} style={{top:"-18px"}} />
-                        <div className="col-4 justify-content-center align-self-center text-center">
-                            <img
-                                className='w-50'
-                                src={modulos.modulo_alternativo.img}
-                            />
-                        </div>
-                        <div className="col-8 justify-content-center align-self-center ">
-                            <h2 className="font-Geomanist text-darkBlue text-center text-break">
-                                {modulos.modulo_alternativo.text}
-                            </h2>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
 
             <div className="row my-1  align-items-md-stretch justify-content-center">
-                {modulos.otros_modulos.map(({ col, img, text, classImg, bloqueado, moduloClass }) => {
-                    return (<Modulos col={col} img={img} text={text} bloqueado={bloqueado} classImg={classImg} moduloClass={moduloClass} />)
+                {modulos.otros_modulos.map(({ col, img, text, classImg, bloqueado, moduloClass, href }) => {
+                    return (<Modulos col={col} img={img} text={text} bloqueado={bloqueado} classImg={classImg} moduloClass={moduloClass} href={href} />)
                 })}
             </div>
         </div>
