@@ -62,7 +62,7 @@ export const Modulos_inicio = () => {
 
     return (
         <><div className="container">
-            <div className="row align-items-md-stretch justify-content-center mt-4 ">
+            <div className="row align-items-md-stretch justify-content-center mt-2 ">
                 {/* <Modulos col={"col-6"} quitarIconoBloqueo={true} classImg={"imgAyuda_modulos_inicio"} img={imgGanso.stop_250x200} text={"¿Necesitas ayuda?"} bloqueado={false} href={"ayuda.com"} moduloClass={"card_ayuda"} /> */}
                 <Modulos col={"col-12"}
                     img={modulos.modulo_alternativo.img}
@@ -77,7 +77,7 @@ export const Modulos_inicio = () => {
             </div>
 
 
-            <div className="row my-1  align-items-md-stretch justify-content-center">
+            <div className="row mb-1  align-items-md-stretch justify-content-center">
                 {modulos.otros_modulos.map(({ col, img, text, classImg, bloqueado, moduloClass, href }) => {
                     return (<Modulos col={col} img={img} text={text} bloqueado={bloqueado} classImg={classImg} moduloClass={moduloClass} href={href} />)
                 })}
