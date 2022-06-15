@@ -57,13 +57,13 @@ const BarraLateral = ({ datauser }) => {
 
             <li className="nav-item">
               <Accordion defaultActiveKey={(splitLocation[1].slice(0, 9) === 'emocional') ? '1' : ''}>
-                <BotonFlecha eventKey="0" >Diagnóstico</BotonFlecha>
+                <BotonFlecha eventKey="0" >Autodiagnóstico</BotonFlecha>
                 <Accordion.Collapse eventKey="0">
                   <ul>
 
                     <ItemCapsula
                       clase={splitLocation[1] === 'diagnostico' ? 'active nav-link' : 'nav-link'}
-                      link={'/diagnostico'}
+                      link={'/autodiagnostico'}
                       titulo={'Encuesta'}
                       habilitado={!(datauser.diagnostico >= 1)}
                       imgsvg={!(datauser.diagnostico >= 1)

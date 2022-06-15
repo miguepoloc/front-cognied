@@ -61,11 +61,8 @@ const LoginForm = () => {
 
             {
               ({
-                values,
                 touched,
                 errors,
-                handleChange,
-                handleBlur,
                 handleSubmit
               }) => (
                 <Form onSubmit={handleSubmit} className="form-login">

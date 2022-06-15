@@ -70,6 +70,7 @@ const SignUpForm = () => {
 
   return (
     <>
+
       <img src={Ola} id="Ola" alt="" className="wave" />
       <div className="container-login">
         <div className="img-login">
@@ -116,7 +117,7 @@ const SignUpForm = () => {
                 const { data } = respuesta
                 console.log(data)
                 setAuthState(data)
-                history.push('/')
+                history.push('/dashboard')
               } catch (error) {
                 console.log(error.response.data)
                 setMessLogin(error.response.data.errors)

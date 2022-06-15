@@ -34,7 +34,7 @@ module.exports = (state) => {
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: "./src/index.html",
-        favicon: "./src/assets/img/logo_digitalmente.svg",
+        favicon: "./src/assets/img/logo_peque.svg",
       }),
       // new CopyWebpackPlugin({
       //   patterns: [{ from: path.resolve(__dirname, "locales"), to: "locales" }],
