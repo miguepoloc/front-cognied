@@ -26,8 +26,7 @@ const NavBarDashboard = ({ datauser }) => {
       <Navbar
         collapseOnSelect
         expand="lg"
-        fixed="top"
-        // sticky="top"
+        sticky="top"
         variant="light"
         className='color-nav'
 

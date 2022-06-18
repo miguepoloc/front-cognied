@@ -4,15 +4,17 @@ import NavBarElement from './NavBarElement'
 import './assets/css/NavBar.scss'
 import { AuthContext } from '../../context/AuthContext'
 import { useHistory } from 'react-router-dom'
+import LogoPeque from '../../assets/img/logo_peque.svg'
+
 // import Scroll from "../assets/js/scrollTemp"
 
 const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
-  useEffect(() => {
-    scroll.eventScroll()
-  })
-  const auth = useContext(AuthContext)
-  const history = useHistory()
-  return (
+    useEffect(() => {
+        scroll.eventScroll()
+    })
+    const auth = useContext(AuthContext)
+    const history = useHistory()
+    return (
         <>
             <Navbar
                 collapseOnSelect
@@ -28,6 +30,14 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                             className="nameNav font-Geomanist"
                             onClick={() => scroll.scroll(PrimeraSeccion.id)}
                         >
+                            <img
+                                src={LogoPeque}
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-top"
+                                alt="React Bootstrap logo"
+                            />
+                            &nbsp;
                             DigitalMente
                         </Nav.Link>
                     </Navbar.Brand>
@@ -43,34 +53,34 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                                 Recorro el json. la idea es obtener las keys para poder acceder el value del json y pasarlo al elemento de navegacion.
                                 */
                                 Object.keys(Secciones).map((Seccion) => {
-                                  return (
+                                    return (
                                         <NavBarElement
                                             key={Seccion}
                                             Seccion={Secciones[Seccion]}
                                             Scroll={(id) => {
-                                              console.log(scroll)
-                                              scroll.scroll(id)
+                                                console.log(scroll)
+                                                scroll.scroll(id)
                                             }}
 
                                         />
-                                  )
+                                    )
                                 })
                             }
                             {auth && <div>{auth?.authState?.userInfo?.document}</div>}
-                            { auth.isAuthenticated()
-                              ? <Button className=" btn-naranja ms-2 me-2" onClick={() => auth.logout() }>
-                                Cerrar sesion
-                            </Button>
-                              : <Button className=" btn-naranja ms-2 me-2" onClick={() => history.push('/login') }>
+                            {auth.isAuthenticated()
+                                ? <Button className=" btn-naranja ms-2 me-2" onClick={() => auth.logout()}>
+                                    Cerrar sesion
+                                </Button>
+                                : <Button className=" btn-naranja ms-2 me-2" onClick={() => history.push('/login')}>
                                     Iniciar sesion
-                            </Button>
+                                </Button>
                             }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
         </>
-  )
+    )
 }
 
 export default NavBar

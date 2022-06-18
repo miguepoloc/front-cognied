@@ -10,6 +10,7 @@ const PageAuth = lazy(() => import('./pages/pageAuth'))
 const PageAdmin = lazy(() => import('./pages/pageAdmin'))
 const PageNotFound = lazy(() => import('./pages/pageNotFound'))
 const SignUp = lazy(() => import('./pages/SignUp'))
+const Login2 = lazy(() => import('./pages/Login2'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const ModuloEmocionalCapsula = lazy(() => import('./pages/ModuloEmocional'))
 
@@ -78,6 +79,10 @@ const AppRoutes = () => (
 
         <LoginRoute path="/sign-up">
           <SignUp />
+        </LoginRoute>
+
+        <LoginRoute path="/login2">
+          <Login2 />
         </LoginRoute>
 
         <AuthenticatedRoute path="/dashboard">

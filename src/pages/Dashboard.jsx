@@ -57,9 +57,8 @@ const Dashboard = () => {
     <>
       <div
         className="g-sidenav-show  bg-gray-100 "
-        style={{ marginTop: '70px' }}
       >
-        <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <main className="main-content position-relative h-100 border-radius-lg ">
           <NavBarDashboard datauser={datauser} />
           <div className="container-fluid py-4">
             <div className="row">

@@ -1,15 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Answer from "./Answer";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Answer from './Answer'
 
 const Question = ({
   question,
   name,
   index,
   color,
-  selectOption,
+  selectOption
 }) => {
-
   return (
     <div className="mb-4  col-12  col-lg-6">
       <div
@@ -29,22 +28,22 @@ const Question = ({
                 _text_answer={answer.answer}
                 _id={`answer_${answer.id_answer}`}
                 key={`${answer.id_answer}`}
-                handleClickAnswer={()=>selectOption(
+                handleClickAnswer={() => selectOption(
                   question.id_question,
                   answer.id_answer
                 )}
               />
-            );
+            )
           })}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Question.propTypes = {
   name: PropTypes.string,
-  question: PropTypes.object,
-};
+  question: PropTypes.object
+}
 
-export default Question;
+export default Question

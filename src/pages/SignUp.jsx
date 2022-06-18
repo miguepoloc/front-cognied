@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { useHistory } from 'react-router-dom'
 import Axios from 'axios'
@@ -10,14 +10,18 @@ import '../assets/css/Login.scss'
 import Cel from '../assets/img/pato.svg'
 import Ola from '../assets/img/wave.svg'
 import Logo from '../assets/img/logo9.svg'
-import { FaUser, FaMedkit, FaUniversity, FaUserFriends, FaRegAddressCard, FaIdCardAlt } from 'react-icons/fa'
-import { GrMail, GrUserWorker } from 'react-icons/gr'
-import { RiLockPasswordFill } from 'react-icons/ri'
-import { GiAges, GiHealing, GiMedicines } from 'react-icons/gi'
-import { IoMaleFemale } from 'react-icons/io5'
-import { MdPlace, MdEngineering, MdHearingDisabled, MdDisabledVisible } from 'react-icons/md'
-import { BsFillCalendarDateFill, BsFillTelephoneFill } from 'react-icons/bs'
-import { AiFillMedicineBox } from 'react-icons/ai'
+import {
+  FaUser, FaVirusSlash, FaUniversity,
+  FaUserFriends, FaRegAddressCard, FaIdCardAlt,
+  FaAccessibleIcon, FaSyringe, FaEnvelopeOpenText,
+  FaUnlockAlt, FaChild, FaVenusMars, FaBlind,
+  FaMapMarkedAlt, FaBirthdayCake, FaTools,
+  FaVirus, FaViruses, FaPhoneAlt, FaToolbox, FaShieldVirus
+} from 'react-icons/fa'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
 
 const DatePickerField = ({ ...props }) => {
   const { setFieldValue } = useFormikContext()
@@ -44,7 +48,8 @@ const Schema = Yup.object().shape({
     .required('Requerido').positive('Debe ser un número positivo').integer('No debe tener puntos'),
   tipo_documento: Yup.string().required('Requerido'),
   sexo: Yup.string().required('Requerido'),
-  lugar_nacimiento: Yup.string().required('Requerido'),
+  departamento_nacimiento: Yup.string().required('Requerido'),
+  ciudad_nacimiento: Yup.string().required('Requerido'),
   fecha_nacimiento: Yup.date().required('Requerido'),
   estado_civil: Yup.string().required('Requerido'),
   programa: Yup.string().required('Requerido'),
@@ -62,16 +67,70 @@ const Schema = Yup.object().shape({
   ocupacion: Yup.string().required('Requerido')
 })
 
+const ValoresIniciales = {
+  document: '1',
+  password: 'Contrasena1!',
+  email: 'prueba@gmail.com',
+  nombre: 'Prueba',
+  edad: '20',
+  tipo_documento: 'CC',
+  sexo: '1',
+  departamento_nacimiento: '',
+  ciudad_nacimiento: '',
+  fecha_nacimiento: '1996-08-20',
+  estado_civil: '1',
+  programa: 'Ing Pruefsadba',
+  semestre: '2',
+  covid_positivo: false,
+  covid_familiar: false,
+  covid_vacuna: false,
+  covid_tipo_vacuna: '',
+  covid_dosis: false,
+  discapacidad: false,
+  discapacidad_tipo: '',
+  telefono: '3003859853',
+  ocupacion: 'Contratista'
+}
+
 const SignUpForm = () => {
   const history = useHistory()
 
   const { setAuthState } = useContext(AuthContext)
   const [messLogin, setMessLogin] = useState('')
+  const [dataColombia, setdataColombia] = useState([])
+
+  const getColombia = async () => {
+    const colombia = await Axios({
+      method: 'get',
+      url: 'https://raw.githubusercontent.com/marcovega/colombia-json/master/colombia.min.json'
+    })
+    return (colombia.data)
+  }
+
+  useEffect(async function () {
+    // Guarda en response el avance que lleva el usuario
+    const response = await getColombia()
+
+    if (response) {
+      console.log(response)
+      // Y lo coloca en el estado de datos del usuario
+      setdataColombia(response)
+    } else {
+      console.log('No se pudieron traer los datos...')
+    }
+  }, []) // Se controla el cambio a partir del estado control
+
+  const [age, setAge] = React.useState('')
+
+  const handleChange = (event) => {
+    setAge(event.target.value)
+  }
 
   return (
     <>
 
       <img src={Ola} id="Ola" alt="" className="wave" />
+
       <div className="container-login">
         <div className="img-login">
           <img src={Cel} id="Cel" alt="" />
@@ -79,29 +138,7 @@ const SignUpForm = () => {
         <div className="login-container">
 
           <Formik
-            initialValues={{
-              document: '1',
-              password: 'Contrasena1!',
-              email: 'prueba@gmail.com',
-              nombre: 'Prueba',
-              edad: '20',
-              tipo_documento: 'CC',
-              sexo: '1',
-              lugar_nacimiento: 'Prueba Santa Marta',
-              fecha_nacimiento: '1996-08-20',
-              estado_civil: '1',
-              programa: 'Ing Prueba',
-              semestre: '2',
-              covid_positivo: false,
-              covid_familiar: false,
-              covid_vacuna: false,
-              covid_tipo_vacuna: '',
-              covid_dosis: false,
-              discapacidad: false,
-              discapacidad_tipo: '',
-              telefono: '3003859853',
-              ocupacion: 'Contratista'
-            }}
+            initialValues={ValoresIniciales}
 
             validationSchema={Schema}
 
@@ -128,12 +165,33 @@ const SignUpForm = () => {
             {({
               touched,
               errors,
-              handleSubmit
+              values,
+              handleSubmit,
+              handleChange,
+              setFieldValue
             }) => (
               <Form onSubmit={handleSubmit} className="form-login">
 
                 <img src={Logo} id="Icono" alt="" className="avatar" />
                 <h2>Bienvenido</h2>
+                {/* <FormControl sx={{ m: 1, minWidth: 80 }}>
+                  <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-autowidth-label"
+                    id="demo-simple-select-autowidth"
+                    value={age}
+                    onChange={handleChange}
+                    autoWidth
+                    label="Age"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Twenty</MenuItem>
+                    <MenuItem value={21}>Twenty one</MenuItem>
+                    <MenuItem value={22}>Twenty one and a half</MenuItem>
+                  </Select>
+                </FormControl> */}
 
                 <div className="input-div my-0">
                   <div className="i">
@@ -198,7 +256,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <GrMail></GrMail>
+                    <FaEnvelopeOpenText></FaEnvelopeOpenText>
                   </div>
                   <div>
                     <Field
@@ -216,7 +274,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <RiLockPasswordFill></RiLockPasswordFill>
+                    <FaUnlockAlt></FaUnlockAlt>
                   </div>
                   <div>
                     <Field
@@ -235,7 +293,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <GiAges></GiAges>
+                    <FaChild></FaChild>
                   </div>
                   <div>
                     <Field
@@ -253,7 +311,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <IoMaleFemale></IoMaleFemale>
+                    <FaVenusMars></FaVenusMars>
                   </div>
                   <div>
                     <Field
@@ -276,25 +334,75 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <MdPlace></MdPlace>
+                    <FaMapMarkedAlt></FaMapMarkedAlt>
                   </div>
                   <div>
                     <Field
-                      name="lugar_nacimiento"
-                      placeholder="Lugar de nacimiento"
-                      className={'input'}
-                    />
+                      name="departamento_nacimiento"
+                      className="form-select"
+                      as="select"
+                      onChange={handleChange}
+                    >
+                      <option value="" disabled>Departamento de nacimiento</option>
+                      {dataColombia.map((answer, i) => {
+                        return (
+                          <option
+                            key={i}
+                            value={answer.id}
+                          >
+                            {answer.departamento}
+                          </option>
+                        )
+                      })}
+                    </Field>
                   </div>
                 </div>
-                {errors.lugar_nacimiento && touched.lugar_nacimiento && (
+                {errors.departamento_nacimiento && touched.departamento_nacimiento && (
                   <div className="input-feedback">
-                    {errors.lugar_nacimiento}
+                    {errors.departamento_nacimiento}
                   </div>
                 )}
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <BsFillCalendarDateFill></BsFillCalendarDateFill>
+                    <FaMapMarkedAlt></FaMapMarkedAlt>
+                  </div>
+                  <div>
+                    <Field
+                      name="ciudad_nacimiento"
+                      className="form-select"
+                      key={`ciudad-${values.departamento_nacimiento}`}
+                      as="select"
+                      onChange={handleChange}
+                    >
+                      <option value="" disabled>Ciudad de nacimiento</option>
+                      {dataColombia[values.departamento_nacimiento]
+                        ? dataColombia[values.departamento_nacimiento].ciudades?.map((answer, i) => {
+                          return (
+                            <option
+                              key={i}
+                              value={answer}
+                            >
+                              {answer}
+                            </option>
+                          )
+                        })
+                        : (<>
+
+                        </>)
+                      }
+                    </Field>
+                  </div>
+                </div>
+                {errors.ciudad_nacimiento && touched.ciudad_nacimiento && (
+                  <div className="input-feedback">
+                    {errors.ciudad_nacimiento}
+                  </div>
+                )}
+
+                <div className="input-div my-0">
+                  <div className="i">
+                    <FaBirthdayCake></FaBirthdayCake>
                   </div>
                   <div>
                     Fecha de nacimiento
@@ -327,7 +435,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <MdEngineering></MdEngineering>
+                    <FaTools></FaTools>
                   </div>
                   <div>
                     <Field
@@ -363,23 +471,27 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <GiHealing />
+                    <FaVirus />
                   </div>
 
                   <div>
-                    <p>Positivo</p>
+                    {values.covid_positivo && (
+                      <p>Hola</p>
+                    )}
                     <Field
                       name="covid_positivo"
                       placeholder="Positivo pa covid"
                       className='input-check'
                       type="checkbox"
+                      onChange={handleChange}
                     />
+
                   </div>
                 </div>
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <GiHealing></GiHealing>
+                    <FaViruses></FaViruses>
                   </div>
                   <div>
                     <p>Familiar Positivo</p>
@@ -394,7 +506,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <AiFillMedicineBox></AiFillMedicineBox>
+                    <FaSyringe></FaSyringe>
                   </div>
                   <div>
                     <p>Vacunado contra covid</p>
@@ -407,18 +519,21 @@ const SignUpForm = () => {
                   </div>
                 </div>
 
-                <div className="input-div my-0">
-                  <div className="i">
-                    <FaMedkit></FaMedkit>
+                {values.covid_vacuna && (
+                  <div className="input-div my-0">
+                    <div className="i">
+                      <FaVirusSlash></FaVirusSlash>
+                    </div>
+                    <div>
+                      <Field
+                        name="covid_tipo_vacuna"
+                        placeholder="Tipo de vacuna covid"
+                        className='input'
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <Field
-                      name="covid_tipo_vacuna"
-                      placeholder="Tipo de vacuna covid"
-                      className='input'
-                    />
-                  </div>
-                </div>
+                )
+                }
                 {errors.covid_tipo_vacuna && touched.covid_tipo_vacuna && (
                   <div className="input-feedback">
                     {errors.covid_tipo_vacuna}
@@ -427,7 +542,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <GiMedicines></GiMedicines>
+                    <FaShieldVirus></FaShieldVirus>
                   </div>
                   <div>
                     <p>Dosis completa covid</p>
@@ -442,7 +557,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <MdHearingDisabled></MdHearingDisabled>
+                    <FaAccessibleIcon></FaAccessibleIcon>
                   </div>
                   <div>
                     <p>Alguna discapacidad</p>
@@ -457,7 +572,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <MdDisabledVisible></MdDisabledVisible>
+                    <FaBlind></FaBlind>
                   </div>
                   <div>
                     <Field
@@ -475,7 +590,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <BsFillTelephoneFill></BsFillTelephoneFill>
+                    <FaPhoneAlt></FaPhoneAlt>
                   </div>
                   <div>
                     <Field
@@ -493,7 +608,7 @@ const SignUpForm = () => {
 
                 <div className="input-div my-0">
                   <div className="i">
-                    <GrUserWorker></GrUserWorker>
+                    <FaToolbox></FaToolbox>
                   </div>
                   <div>
                     <Field

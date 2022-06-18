@@ -73,11 +73,10 @@ const ModuloEmocional = () => {
   return (
     <>
       <div
-        className="g-sidenav-show  bg-gray-100 "
-        style={{ marginTop: '70px' }}
+        className="g-sidenav-show bg-gray-100 "
       >
 
-        <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <main className="main-content position-relative h-100 border-radius-lg ">
           <NavBarDashboard datauser={datauser} />
 
           <div className="container-fluid py-4">
