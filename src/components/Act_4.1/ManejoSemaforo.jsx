@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../assets/css/Act4.scss'
 import ganso_lupa_celular from '../../assets/img/ganso/ganso_lupa_celular.png'
-import { ErrorAlert, RetroalimentacionAlert, Correct_Alert } from '../../helpers/helper_Swal_Alerts'
+import { ErrorAlert, Correct_Alert } from '../../helpers/helper_Swal_Alerts'
 import { section4_2, setColorSelect } from '../../helpers/helper_Reg_Emoc_act_4'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'

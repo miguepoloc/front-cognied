@@ -1,3 +1,7 @@
+$ColorLightBlue: #D5F5F9;
+$ColorDarkBlue: #00659D;
+$ColorNaranja: #fc8890;
+
 .wave {
   position: fixed;
   height: 100%;
@@ -7,7 +11,7 @@
 }
 
 .container-login {
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -15,13 +19,13 @@
   padding: 0 2rem;
 }
 
-.img {
+.img-login {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.img>img {
+.img-login>img {
   width: 500px;
 }
 
@@ -32,7 +36,7 @@
 }
 
 .form-login {
-  width: 360px;
+  // width: 360px;
 }
 
 .avatar {
@@ -43,7 +47,7 @@
   font-size: 2.9rem;
   text-transform: uppercase;
   margin: 15px 0;
-  color: #037971;
+  color: $ColorDarkBlue;
 }
 
 .input-div {
@@ -52,7 +56,7 @@
   grid-template-columns: 7% 93%;
   margin: 25px 0;
   padding: 5px;
-  border-bottom: 2px solid #037971;
+  border-bottom: 2px solid $ColorDarkBlue;
 }
 
 .input-div:after,
@@ -62,14 +66,8 @@
   bottom: -2px;
   width: 0;
   height: 2px;
-  background-color: #38d39f;
+  background-color: $ColorLightBlue;
   transition: 0.3s;
-}
-
-.input-feedback {
-  width: -webkit-fill-available;
-  color: red;
-  margin-top: 0.25rem;
 }
 
 .input-div:after {
@@ -81,13 +79,13 @@
 }
 
 .input-div.focus .i i {
-  color: #38d39f;
+  color: $ColorLightBlue;
 }
 
 .input-div.focus div h5 {
   top: -5px;
   font-size: 15px;
-  color: #38d39f;
+  color: $ColorLightBlue;
 }
 
 .input-div.focus:after,
@@ -103,6 +101,12 @@
   margin-bottom: 4px;
 }
 
+.input-feedback {
+  width: -webkit-fill-available;
+  color: red;
+  margin-top: 0.25rem;
+}
+
 .i {
   display: flex;
   justify-content: center;
@@ -110,7 +114,7 @@
 }
 
 .i i {
-  color: #037971;
+  color: $ColorDarkBlue;
   transition: 0.3s;
 }
 
@@ -124,7 +128,7 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #2b817b;
+  color: $ColorDarkBlue;
   font-size: 18px;
   transition: 0.3s;
 }
@@ -144,6 +148,14 @@
   color: #555;
 }
 
+.input-check {
+  // position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 100px;
+}
+
 .olvidado {
   display: block;
   text-align: right;
@@ -155,7 +167,7 @@
 }
 
 .olvidado:hover {
-  color: #037971;
+  color: $ColorDarkBlue;
 }
 
 .btn-login {
@@ -167,7 +179,7 @@
   font-size: 1.2rem;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  background-image: linear-gradient(to right, $ColorNaranja, $ColorNaranja, $ColorNaranja);
   cursor: pointer;
   color: #fff;
   text-transform: uppercase;
@@ -196,13 +208,13 @@
     margin: 8px;
   }
 
-  .img img {
+  .img-login img {
     width: 400px;
   }
 }
 
 @media screen and (max-width: 900px) {
-  .img {
+  .img-login {
     display: none;
   }
 

@@ -2,19 +2,18 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import '../assets/css/nucleo-icons.scss'
 import '../assets/css/nucleo-svg.scss'
-import '../assets/css/soft-ui-dashboard.scss'
 import '../assets/css/Dashboard.scss'
 import MiniCarta from '../components/Dashboard/MiniCarta'
 import CartaImagen from '../components/Dashboard/CartaImagen'
 import CartaImagenFondo from '../components/Dashboard/CartaImagenFondo'
-import BarraLateral from '../components/Dashboard/BarraLateral'
-import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import FooterDashboard from '../components/Dashboard/FooterDashboard'
 import CartaSeguimiento from '../components/Dashboard/CartaSeguimiento'
 import CartaLineaTiempo from '../components/Dashboard/CartaLineaTiempo'
 import CartaBarras from '../components/Dashboard/CartaBarras'
 import CartaGrafica from '../components/Dashboard/CartaGrafica'
 import { AuthContext } from '../context/AuthContext'
+import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
+import '../assets/css/soft-ui-dashboard.scss'
 
 const Dashboard = () => {
   const { authState } = useContext(AuthContext)
@@ -22,7 +21,7 @@ const Dashboard = () => {
   const { userInfo } = authState
 
   const getData = async () => {
-    const url = `http://127.0.0.1:8002/api/avance_modulos/${userInfo.id}`
+    const url = `${process.env.REACT_APP_API_URL}/api/avance_modulos/${userInfo.id}`
 
     const response = await fetch(url)
       .then((datos) => datos.json())
@@ -56,10 +55,11 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="g-sidenav-show  bg-gray-100">
-        <BarraLateral datauser={datauser} />
-        <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-          <NavBarDashboard />
+      <div
+        className="g-sidenav-show  bg-gray-100 "
+      >
+        <main className="main-content position-relative h-100 border-radius-lg ">
+          <NavBarDashboard datauser={datauser} />
           <div className="container-fluid py-4">
             <div className="row">
               <MiniCarta />
@@ -81,6 +81,7 @@ const Dashboard = () => {
             </div>
             <FooterDashboard />
           </div>
+
         </main>
       </div>
     </>

@@ -7,18 +7,18 @@ import '../assets/css/nucleo-icons.scss'
 import '../assets/css/nucleo-svg.scss'
 import '../assets/css/soft-ui-dashboard.scss'
 import '../assets/css/ModuloEmocional.scss'
-import BarraLateral from '../components/Dashboard/BarraLateral'
-import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import FooterDashboard from '../components/Dashboard/FooterDashboard'
 import ButtonLibro from '../components/Dashboard/ButtonLibro'
 
-import { useHistory, useLocation, useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { PUT_avance_modulos } from '../helpers/helperApi'
 import { AuthContext } from '../context/AuthContext'
 import { linksEmocional } from '../helpers/helper_emocional'
+import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
+// import ControlUser from '../components/Dashboard/ControlUser'
 
-const ModuloEmocionalCapsula = () => {
+const ModuloEmocional = () => {
   const { slug } = useParams()
 
   // Trae los datos del usuario
@@ -72,17 +72,24 @@ const ModuloEmocionalCapsula = () => {
   }
   return (
     <>
-      <div className="g-sidenav-show  bg-gray-100">
-        <BarraLateral datauser={datauser} />
+      <div
+        className="g-sidenav-show bg-gray-100 "
+      >
 
-        <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-          <NavBarDashboard section={linksEmocional[slug - 1].nombre} />
+        <main className="main-content position-relative h-100 border-radius-lg ">
+          <NavBarDashboard datauser={datauser} />
+
           <div className="container-fluid py-4">
 
             <div >
-              {linksEmocional[slug - 1].tipoCapsula
-                ? < img src={linksEmocional[slug - 1].imagen} alt="capsula" className='img-capsula' />
-                : linksEmocional[slug - 1].actividad
+
+              {
+
+                /* Módulo Emocional */
+                (linksEmocional[slug - 1].tipoCapsula
+                  ? < img src={linksEmocional[slug - 1].imagen} alt="capsula" className='img-capsula' />
+                  : linksEmocional[slug - 1].actividad)
+
               }
 
             </div>
@@ -107,4 +114,4 @@ const ModuloEmocionalCapsula = () => {
   )
 }
 
-export default ModuloEmocionalCapsula
+export default ModuloEmocional

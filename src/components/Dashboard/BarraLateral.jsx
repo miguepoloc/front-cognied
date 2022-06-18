@@ -10,8 +10,6 @@ import BotonFlecha from './BotonFlecha'
 import { linksEmocional } from '../../helpers/helper_emocional'
 
 const BarraLateral = ({ datauser }) => {
-  console.log(datauser)
-
   const history = useHistory()
 
   // assigning location variable
@@ -59,13 +57,13 @@ const BarraLateral = ({ datauser }) => {
 
             <li className="nav-item">
               <Accordion defaultActiveKey={(splitLocation[1].slice(0, 9) === 'emocional') ? '1' : ''}>
-                <BotonFlecha eventKey="0" >Diagnóstico</BotonFlecha>
+                <BotonFlecha eventKey="0" >Autodiagnóstico</BotonFlecha>
                 <Accordion.Collapse eventKey="0">
                   <ul>
 
                     <ItemCapsula
                       clase={splitLocation[1] === 'diagnostico' ? 'active nav-link' : 'nav-link'}
-                      link={'/diagnostico'}
+                      link={'/autodiagnostico'}
                       titulo={'Encuesta'}
                       habilitado={!(datauser.diagnostico >= 1)}
                       imgsvg={!(datauser.diagnostico >= 1)

@@ -2,7 +2,7 @@
 /****************************************************************************
  *                   Funciones/constantes más usadas.                       *
  ****************************************************************************/
-export const URL_BASE = 'http://127.0.0.1:8002'
+export const URL_BASE = 'https://digitalmente.herokuapp.com'
 /**
  *
  * @param {String} url
@@ -23,7 +23,7 @@ const createRequest = async (url, myMethod, dataToSend = null) => {
   const response = await fetch(url, requestOptions)
     .then(response => response.json())
     .catch(err => { return { err: 'Ha ocurrido un error con la conexion' } })
-    // console.log(response);
+  // console.log(response);
   return isResponseValid(response)
 }
 
@@ -124,6 +124,6 @@ export const GET_definiciones = async () => {
 }
 
 export const PUT_avance_modulos = async (id, dataToSend) => {
-  const url = `${URL_BASE}/api/avance_modulos/${id}/`
+  const url = `${process.env.REACT_APP_API_URL}/api/avance_modulos/${id}/`
   return createRequest(url, method.put, dataToSend)
 }

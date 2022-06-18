@@ -34,7 +34,7 @@ module.exports = (state) => {
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: "./src/index.html",
-        favicon: "./src/assets/img/logo_digitalmente.svg",
+        favicon: "./src/assets/img/logo_peque.svg",
       }),
       // new CopyWebpackPlugin({
       //   patterns: [{ from: path.resolve(__dirname, "locales"), to: "locales" }],
@@ -59,12 +59,8 @@ module.exports = (state) => {
           exclude: /node_modules/,
         },
         {
-          test: /\.css$/,
-          use: ['style-loader',],
-        },
-        {
-          test: /\.s?css$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          test: /\.(scss|css)$/,
+          use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
           test: /\.(png|svg|jp(e*)g|gif)$/,
