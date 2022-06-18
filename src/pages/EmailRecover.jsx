@@ -1,18 +1,15 @@
-import React, { useContext, useState } from 'react'
-import { AuthContext } from '../context/AuthContext'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Axios from 'axios'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import '../assets/css/Login.scss'
-import Cel from '../assets/img/pato.svg'
-import Ola from '../assets/img/wave.svg'
-import Logo from '../assets/img/logo9.svg'
-import { FaUser, FaLock } from 'react-icons/fa'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import Link from '@mui/material/Link'
@@ -23,31 +20,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-const validationSchema = Yup.object({
-  email: Yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: Yup
-    .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required')
-})
-
 const Schema = Yup.object().shape({
-  document: Yup
-    .number()
-    .typeError('Debe ser un número')
-    .required('Documento requerido')
-    .positive('Debe ser un número positivo')
-    .integer('No debe tener puntos'),
   email: Yup
     .string('Enter your email')
     .email('Enter a valid email')
-    .required('Email is required'),
-  password: Yup
-    .string()
-    .required('No se ha introducido una contraseña')
+    .required('Email is required')
 })
 
 const Copyright = (props) => {
@@ -65,10 +42,9 @@ const Copyright = (props) => {
 
 const theme = createTheme()
 
-const Login2 = () => {
+const EmailRecover = () => {
   const history = useHistory()
 
-  const { setAuthState } = useContext(AuthContext)
   const [messLogin, setMessLogin] = useState('')
 
   return (
@@ -103,33 +79,30 @@ const Login2 = () => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Recuperacion de contraseña
             </Typography>
             <Formik
               initialValues={{
-                document: '1234',
-                password: '',
-                email: 'preueada'
+                email: ''
               }}
 
               validationSchema={Schema}
 
               onSubmit={async (values) => {
-                alert(JSON.stringify(values, null, 2))
-                // try {
-                //   const respuesta = await Axios({
-                //     method: 'post',
-                //     url: `${process.env.REACT_APP_API_URL}/accounts/login`,
-                //     data: values
-                //   })
+                try {
+                  const respuesta = await Axios({
+                    method: 'post',
+                    url: `${process.env.REACT_APP_API_URL}/accounts/recover`,
+                    data: values
+                  })
 
-                //   const { data } = respuesta
-                //   setAuthState(data)
-
-                //   history.push('/dashboard')
-                // } catch (error) {
-                //   setMessLogin({ data: { message: error.response.data.errors } })
-                // }
+                  const { data } = respuesta
+                  console.log('🚀 ~ file: EmailRecover.jsx ~ line 106 ~ onSubmit={ ~ data', data)
+                  history.push('/dashboard')
+                  alert(JSON.stringify(values, null, 2))
+                } catch (error) {
+                  setMessLogin({ data: { message: error.response.data.errors } })
+                }
               }}
             >
 
@@ -142,46 +115,23 @@ const Login2 = () => {
                   handleChange
                 }) => (
                   <Form onSubmit={handleSubmit} className="form-login">
+                    <Card>
+                      <CardContent>Ingresa el correo que registraste para recuperar tu contraseña.
+                        Si es correcto se enviara un correo con la informacion necesaria para hacer el cambio de la contraseña</CardContent>
+                    </Card>
                     <TextField
                       margin="normal"
                       required
                       fullWidth
-                      id="document"
-                      label="Documento"
-                      name="document"
-                      autoComplete="document"
-                      autoFocus
-                      value={values.document}
-                      onChange={handleChange}
-                      error={touched.document && Boolean(errors.document)}
-                      helperText={touched.document && errors.document}
-                    />
-                    <TextField
-                      fullWidth
                       id="email"
+                      label="email"
                       name="email"
-                      label="Email"
+                      autoComplete="email"
+                      autoFocus
                       value={values.email}
                       onChange={handleChange}
                       error={touched.email && Boolean(errors.email)}
                       helperText={touched.email && errors.email}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      value={values.password}
-                      onChange={handleChange}
-                      error={touched.password && Boolean(errors.password)}
-                      helperText={touched.password && errors.password}
-                    />
-                    <FormControlLabel
-                      control={<Checkbox value="remember" color="primary" />}
-                      label="Remember me"
                     />
                     <Button
                       type="submit"
@@ -189,20 +139,8 @@ const Login2 = () => {
                       variant="contained"
                       sx={{ mt: 3, mb: 2 }}
                     >
-                      Iniciar Sesion
+                      Enviar Correo
                     </Button>
-                    <Grid container>
-                      <Grid item xs>
-                        <Link href="/recover" variant="body2">
-                          Olvide mi Contraseña
-                        </Link>
-                      </Grid>
-                      <Grid item>
-                        <Link href="#" variant="body2">
-                          {"Don't have an account? Sign Up"}
-                        </Link>
-                      </Grid>
-                    </Grid>
                     <Copyright sx={{ mt: 5 }} />
                   </Form>
                 )
@@ -216,4 +154,4 @@ const Login2 = () => {
   )
 }
 
-export default Login2
+export default EmailRecover

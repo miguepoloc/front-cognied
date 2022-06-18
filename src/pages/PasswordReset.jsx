@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import Axios from 'axios'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
@@ -35,19 +35,13 @@ const validationSchema = Yup.object({
 })
 
 const Schema = Yup.object().shape({
-  document: Yup
-    .number()
-    .typeError('Debe ser un número')
-    .required('Documento requerido')
-    .positive('Debe ser un número positivo')
-    .integer('No debe tener puntos'),
-  email: Yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
   password: Yup
     .string()
-    .required('No se ha introducido una contraseña')
+    .required('No se ha introducido una contraseña'),
+  password_confirm: Yup
+    .string()
+    .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
+
 })
 
 const Copyright = (props) => {
@@ -65,9 +59,12 @@ const Copyright = (props) => {
 
 const theme = createTheme()
 
-const Login2 = () => {
+const PasswordReset = () => {
   const history = useHistory()
+  const location = useLocation()
+  console.log('🚀 ~ file: PasswordReset.jsx ~ line 65 ~ PasswordReset ~ location', location)
 
+  const token = location.search.split('?token=')[1]
   const { setAuthState } = useContext(AuthContext)
   const [messLogin, setMessLogin] = useState('')
 
@@ -103,33 +100,32 @@ const Login2 = () => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Ingresa tu nueva Contraseña
             </Typography>
             <Formik
               initialValues={{
-                document: '1234',
                 password: '',
-                email: 'preueada'
+                password_confirm: ''
               }}
 
               validationSchema={Schema}
 
               onSubmit={async (values) => {
-                alert(JSON.stringify(values, null, 2))
-                // try {
-                //   const respuesta = await Axios({
-                //     method: 'post',
-                //     url: `${process.env.REACT_APP_API_URL}/accounts/login`,
-                //     data: values
-                //   })
+                try {
+                  const respuesta = await Axios({
+                    method: 'post',
+                    url: `${process.env.REACT_APP_API_URL}/accounts/reset`,
+                    data: { password: values.password, token: token }
+                  })
 
-                //   const { data } = respuesta
-                //   setAuthState(data)
+                  const { data } = respuesta
+                  console.log('🚀 ~ file: PasswordReset.jsx ~ line 126 ~ onSubmit={ ~ data', data)
+                  setAuthState(data)
 
-                //   history.push('/dashboard')
-                // } catch (error) {
-                //   setMessLogin({ data: { message: error.response.data.errors } })
-                // }
+                  history.push('/dashboard')
+                } catch (error) {
+                  setMessLogin({ data: { message: error.response.data.errors } })
+                }
               }}
             >
 
@@ -142,30 +138,7 @@ const Login2 = () => {
                   handleChange
                 }) => (
                   <Form onSubmit={handleSubmit} className="form-login">
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      id="document"
-                      label="Documento"
-                      name="document"
-                      autoComplete="document"
-                      autoFocus
-                      value={values.document}
-                      onChange={handleChange}
-                      error={touched.document && Boolean(errors.document)}
-                      helperText={touched.document && errors.document}
-                    />
-                    <TextField
-                      fullWidth
-                      id="email"
-                      name="email"
-                      label="Email"
-                      value={values.email}
-                      onChange={handleChange}
-                      error={touched.email && Boolean(errors.email)}
-                      helperText={touched.email && errors.email}
-                    />
+
                     <TextField
                       margin="normal"
                       required
@@ -179,30 +152,26 @@ const Login2 = () => {
                       error={touched.password && Boolean(errors.password)}
                       helperText={touched.password && errors.password}
                     />
-                    <FormControlLabel
-                      control={<Checkbox value="remember" color="primary" />}
-                      label="Remember me"
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="password_confirm"
+                      label="Password Confirm"
+                      type="password"
+                      id="password_confirm"
+                      value={values.password_confirm}
+                      onChange={handleChange}
+                      error={touched.password_confirm && Boolean(errors.password_confirm)}
+                      helperText={touched.password_confirm && errors.password_confirm}
                     />
                     <Button
                       type="submit"
                       fullWidth
                       variant="contained"
                       sx={{ mt: 3, mb: 2 }}
-                    >
-                      Iniciar Sesion
+                    > Cambiar contraseña
                     </Button>
-                    <Grid container>
-                      <Grid item xs>
-                        <Link href="/recover" variant="body2">
-                          Olvide mi Contraseña
-                        </Link>
-                      </Grid>
-                      <Grid item>
-                        <Link href="#" variant="body2">
-                          {"Don't have an account? Sign Up"}
-                        </Link>
-                      </Grid>
-                    </Grid>
                     <Copyright sx={{ mt: 5 }} />
                   </Form>
                 )
@@ -216,4 +185,4 @@ const Login2 = () => {
   )
 }
 
-export default Login2
+export default PasswordReset

@@ -13,6 +13,8 @@ const SignUp = lazy(() => import('./pages/SignUp'))
 const Login2 = lazy(() => import('./pages/Login2'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const ModuloEmocionalCapsula = lazy(() => import('./pages/ModuloEmocional'))
+const EmailRecover = lazy(() => import('./pages/EmailRecover'))
+const PasswordReset = lazy(() => import('./pages/PasswordReset'))
 
 const LoadingFallback = () => <Loading />
 
@@ -83,6 +85,14 @@ const AppRoutes = () => (
 
         <LoginRoute path="/login2">
           <Login2 />
+        </LoginRoute>
+
+        <LoginRoute path="/recover">
+          <EmailRecover />
+        </LoginRoute>
+
+        <LoginRoute path="/reset">
+          <PasswordReset />
         </LoginRoute>
 
         <AuthenticatedRoute path="/dashboard">
