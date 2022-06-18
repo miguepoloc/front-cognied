@@ -70,19 +70,19 @@ const NavBarDashboard = ({ datauser }) => {
               <NavDropdown title="Emocional" id="basic-nav-dropdown">
                 {linksEmocional.map((capsula, capsulaIndex) => (
 
-                  <>
-                    <NavDropdown.Item
-                      href={`/${capsula.link}`}
-                      eventKey={`key-${capsulaIndex}`}
-                      disabled={!(datauser.emocional >= capsula.id)}
-                    >
-                      {!(datauser.emocional >= capsula.id)
-                        ? <FaLock />
-                        : <FaRocket color={splitLocation[1] === capsula.link ? 'black' : ''} />}
-                      &nbsp;
-                      {capsula.nombre}
-                    </NavDropdown.Item>
-                  </>
+                  <NavDropdown.Item
+                    href={`/${capsula.link}`}
+                    eventKey={capsulaIndex}
+                    key={`key-${capsulaIndex}`}
+                    disabled={!(datauser.emocional >= capsula.id)}
+                  >
+                    {!(datauser.emocional >= capsula.id)
+                      ? <FaLock />
+                      : <FaRocket color={splitLocation[1] === capsula.link ? 'black' : ''} />}
+                    &nbsp;
+                    {capsula.nombre}
+                  </NavDropdown.Item>
+
                 ))}
               </NavDropdown>
               <Nav.Link>

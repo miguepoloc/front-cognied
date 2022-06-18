@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../assets/css/nucleo-icons.scss'
 import '../assets/css/nucleo-svg.scss'
 import '../assets/css/Dashboard.scss'
-import MiniCarta from '../components/Dashboard/MiniCarta'
+// import MiniCarta from '../components/Dashboard/MiniCarta'
 import CartaImagen from '../components/Dashboard/CartaImagen'
 import CartaImagenFondo from '../components/Dashboard/CartaImagenFondo'
 import FooterDashboard from '../components/Dashboard/FooterDashboard'
@@ -14,6 +14,7 @@ import CartaGrafica from '../components/Dashboard/CartaGrafica'
 import { AuthContext } from '../context/AuthContext'
 import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import '../assets/css/soft-ui-dashboard.scss'
+import { ModulosInicio } from '../components/Dashboard/modulos_inicio/ModulosInicio'
 
 const Dashboard = () => {
   const { authState } = useContext(AuthContext)
@@ -41,7 +42,6 @@ const Dashboard = () => {
 
   // Obtención de datos
   const [datauser, setDatauser] = useState([])
-  const [control, setControl] = useState(1)
 
   useEffect(async function () {
     const response = await getData()
@@ -51,7 +51,7 @@ const Dashboard = () => {
     } else {
       console.log('No se pudieron traer los datos...')
     }
-  }, [control])
+  }, [])
 
   return (
     <>
@@ -62,11 +62,14 @@ const Dashboard = () => {
           <NavBarDashboard datauser={datauser} />
           <div className="container-fluid py-4">
             <div className="row">
-              <MiniCarta />
-              <MiniCarta />
-              <MiniCarta />
-              <MiniCarta />
+              <ModulosInicio />
             </div>
+            {/* <div className="row">
+              <MiniCarta />
+              <MiniCarta />
+              <MiniCarta />
+              <MiniCarta />
+            </div> */}
             <div className="row mt-4">
               <CartaImagen />
               <CartaImagenFondo />
