@@ -8,6 +8,7 @@ const Question = ({
   index,
   color,
   selectOption,
+  answerSelected
 }) => {
 
   return (
@@ -33,6 +34,8 @@ const Question = ({
                   question.id_question,
                   answer.id_answer
                 )}
+                id_answerDB = {answer.id_answer}
+                answerSelected= {answerSelected}
               />
             );
           })}
