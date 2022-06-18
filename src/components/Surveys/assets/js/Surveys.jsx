@@ -9,6 +9,31 @@ class Surveys {
     this.IndiceMaximo = this.jsonSurvey.length - 1;
   }
 
+
+  guardarEnLocalStorage = () => {
+    let datos = {
+      fechaDeInsercion: Date.now(),
+      datosSurveys: this.generateJsonToSend()
+    }
+    localStorage.setItem('data_survey_local', JSON.stringify(datos));
+  }
+  
+
+  loadDataLocalStorage(data){
+    console.log(data)
+    for (let key in data){
+      let value = data[key];
+      let survey = this.searchSurvey(key);
+      survey.questions = survey.questions.map((question, index)=>{
+       question.setSelected(value[index])
+       return question
+      });
+    }
+    //this.jsonSurvey = data;
+    return this;
+    //this.markAllQuestionSelected();
+  }
+
   getLengthJsonSurvey() {
     return this.jsonSurvey.length
   }
@@ -23,6 +48,7 @@ class Surveys {
       this.jsonSurvey[this.indiceActual]
         .searchQuestion(id_pregunta)
         .setSelected(id_answer);
+      this.guardarEnLocalStorage()  
     } catch (e) {
       console.log(e);
     }

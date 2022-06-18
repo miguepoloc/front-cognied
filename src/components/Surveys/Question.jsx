@@ -7,7 +7,8 @@ const Question = ({
   name,
   index,
   color,
-  selectOption
+  selectOption,
+  answerSelected
 }) => {
   return (
     <div className="mb-4  col-12  col-lg-6">
@@ -32,6 +33,8 @@ const Question = ({
                   question.id_question,
                   answer.id_answer
                 )}
+                id_answerDB = {answer.id_answer}
+                answerSelected= {answerSelected}
               />
             )
           })}
