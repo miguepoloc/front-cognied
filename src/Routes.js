@@ -12,7 +12,7 @@ const PageNotFound = lazy(() => import('./pages/pageNotFound'))
 const SignUp = lazy(() => import('./pages/SignUp'))
 const Login2 = lazy(() => import('./pages/Login2'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
-const ModuloEmocionalCapsula = lazy(() => import('./pages/ModuloEmocional'))
+const ModuloEmocional = lazy(() => import('./pages/ModuloEmocional'))
 const EmailRecover = lazy(() => import('./pages/EmailRecover'))
 const PasswordReset = lazy(() => import('./pages/PasswordReset'))
 
@@ -104,7 +104,7 @@ const AppRoutes = () => (
         </AuthenticatedRoute>
 
         <AuthenticatedRoute exact path="/emocional:slug">
-          <ModuloEmocionalCapsula />
+          <ModuloEmocional />
         </AuthenticatedRoute>
 
         <AuthenticatedRoute path="/auth">

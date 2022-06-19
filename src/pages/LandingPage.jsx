@@ -15,10 +15,8 @@ import { Unete } from '../components/LandingPage/JoinUp'
 
 import '../assets/css/Landingpage.scss'
 import '../components/LandingPage/assets/css/LandingPage.scss'
-import { Modulos_inicio } from '../components/Dashboard/modulos_inicio/Modulos_inicio'
-import Surveys from '../components/Surveys/Surveys'
 
-function LandingPage() {
+const LandingPage = () => {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
   const secciones = {
@@ -54,8 +52,6 @@ function LandingPage() {
       <Unete section={secciones.JoinUp} />
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
-      <Modulos_inicio />
-      <Surveys/>
     </>
   )
 }

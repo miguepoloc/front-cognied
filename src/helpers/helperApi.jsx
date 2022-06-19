@@ -2,7 +2,7 @@
 /****************************************************************************
  *                   Funciones/constantes más usadas.                       *
  ****************************************************************************/
-export const URL_BASE = 'http://127.0.0.1:8002'
+export const URL_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8002'
 /**
  *
  * @param {String} url
@@ -22,7 +22,7 @@ const createRequest = async (url, myMethod, dataToSend = null) => {
 
   const response = await fetch(url, requestOptions)
     .then(response => response.json())
-    .catch(err => { return { err: 'Ha ocurrido un error con la conexion' } })
+    .catch(() => { return { err: 'Ha ocurrido un error con la conexion' } })
   // console.log(response);
   return isResponseValid(response)
 }
@@ -55,7 +55,7 @@ const isResponseValid = (response) => {
      */
 const wasSentWithoutError = async (promesas) => {
   const respuestas = await Promise.all(promesas)
-    .catch(err => { return { err: 'Ha ocurrido un error con la conexion' } })
+    .catch(() => { return { err: 'Ha ocurrido un error con la conexion' } })
 
   if (respuestas.err) {
     return false
@@ -77,7 +77,7 @@ const wasSentWithoutError = async (promesas) => {
  * @returns Array<JSON> | null
  */
 export const GET_vista_pregunta_respuesta = async () => {
-  const url = `${URL_BASE}/api/vista_pregunta_respuesta/`
+  const url = `${URL_BASE}/api/vista_pregunta_respuesta`
   return await createRequest(url, method.get)
 }
 
@@ -99,7 +99,7 @@ export const POST_usuario_encuesta = async (arrDataToSend) => {
 }
 
 export const GET_emocion = async () => {
-  const url = `${URL_BASE}/api/emocion/`
+  const url = `${URL_BASE}/api/emocion`
   return await createRequest(url, method.get)
 }
 
@@ -119,7 +119,7 @@ export const POST_definiciones_usuario_bulk_update = async (dataToSend) => {
 }
 
 export const GET_definiciones = async () => {
-  const url = `${URL_BASE}/api/definiciones/`
+  const url = `${URL_BASE}/api/definiciones`
   return await createRequest(url, method.get)
 }
 
