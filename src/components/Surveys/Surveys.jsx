@@ -52,6 +52,7 @@ const Surveys = () => {
       try {
         let data = recuperarDatosLocalStorage();
         if (data) {
+          console.log(data.datosSurveys)
           setSurveys(new model_surveys(response).loadDataLocalStorage(data.datosSurveys))
         } else {
           setSurveys(new model_surveys(response))

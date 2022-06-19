@@ -2,7 +2,7 @@
 /****************************************************************************
  *                   Funciones/constantes más usadas.                       *
  ****************************************************************************/
-export const URL_BASE = 'https://digitalmente.herokuapp.com'
+export const URL_BASE = 'http://127.0.0.1:8002'
 /**
  *
  * @param {String} url
