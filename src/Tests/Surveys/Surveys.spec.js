@@ -6114,8 +6114,60 @@ const ObtenerDatos = [
 ]
 let encuestas;
 let ansiedad = { baja: "baja", media: "media", alta: "alta" }
-let depresion = {sinSintomas : "", moderada: "moderados", grave:"graves"}
-let escInteligenciaEmc = {atencion : {debeMejorar: "debes mejorar tu atención: prestas poca atención", adecuada: "tienes una adecuada atención", demasiada:"debes mejorar tu atención: prestas demasiada atención. Una atención excesiva sin una comprensión profunda de las emociones podría resultar perjudicial. ¡Conoce más en los módulos!"} }
+let depresion = { sinSintomas: "", moderada: "moderados", grave: "graves" }
+let escInteligenciaEmc = { atencion: { debeMejorar: "debes mejorar tu atención: prestas poca atención", adecuada: "tienes una adecuada atención", demasiada: "debes mejorar tu atención: prestas demasiada atención. Una atención excesiva sin una comprensión profunda de las emociones podría resultar perjudicial. ¡Conoce más en los módulos!" } ,
+claridad:{debeMejorar:"debes mejorar tu comprensión", adecuada: "tienes una adecuada comprensión", excelente: "tienes una excelente comprensión" },
+reparacion: {debeMejorar:"debes mejorar tu regulación", adecuada:"tienes una adecuada regulación", excelente: "tienes una excelente regulación"}}
+let escEstresPercibido = {
+    bajo:"bajo",
+    medio:"medio",
+    alto:"alto"
+}
+
+const CheckOrdenAsc = (idEncuesta, datos, valorMinimo = 1)=>{
+    const datosFiltrados = datos.filter(obj => obj.id_survey === idEncuesta);
+    return datosFiltrados.every((obj)=> obj.order_answer == obj.value + valorMinimo==0?1:0) // si el valor minimo es 0, le suma 1.
+}
+
+const CheckOrdenDes = (idEncuesta, datos, valorMinimo, ValorMaximo_id_order_answer)=>{
+    const datosFiltrados = datos.filter(obj => obj.id_survey === idEncuesta);
+    return datosFiltrados.every((obj)=> obj.order_answer == (ValorMaximo_id_order_answer + valorMinimo) - obj.value)
+}
+
+
+const checkOrdenAscYDes = (idEncuesta, datos, arrItemid_question_asc, arrOrder_answer_des, valorMinimo,ValorMaximo_id_order_answer)=>{
+    const datosFiltrados = datos.filter(obj => obj.id_survey === idEncuesta);
+    const obtenerAsc = datosFiltrados.filter((obj)=>{
+        if(arrItemid_question_asc.includes(obj.itemid_question)){
+            return obj
+        }
+    })
+    const obtenerDes = datosFiltrados.filter((obj)=>{
+        if(arrOrder_answer_des.includes(obj.itemid_question)){
+            return obj
+        }
+    })
+    return CheckOrdenAsc(idEncuesta,obtenerAsc,valorMinimo) && CheckOrdenDes(idEncuesta,obtenerDes,valorMinimo,ValorMaximo_id_order_answer)
+}
+
+describe("Test revisar valor de las preguntas", () => {
+    test("Test de ansiedad ", () => {
+        expect(CheckOrdenAsc(3,ObtenerDatos)).toBe(true);
+    })
+    test("Test de depresion ", () => {
+        expect(checkOrdenAscYDes(4,ObtenerDatos,[1,2,3,4,6,8,9,10],[5,7],1,4)).toBe(true);
+    })
+    test("Test Inteligencia emocional ", () => {
+        expect(CheckOrdenAsc(5,ObtenerDatos)).toBe(true);
+    })
+    test("Test estres percibido ", () => {
+        expect(checkOrdenAscYDes(6,ObtenerDatos,[1,2,3,8,11,12,14],[4,5,6,7,9,10,13],0,5)).toBe(true);
+    })
+    test("Test pensamientos automáticos ", () => {
+        expect(CheckOrdenAsc(7, ObtenerDatos,0)).toBe(true);
+    })
+})
+
 describe("Test Ansiedad", () => {
     beforeEach(() => {
         return encuestas = new model_surveys(ObtenerDatos);
@@ -6210,7 +6262,7 @@ describe("Test Depresion", () => {
     })
 
     test("Test moderada limite superior", () => {
-        let resultado = encuestas.loadDataLocalStorage({ 4: [24, 26, 30, 35, 38, 42, 47, 52, 56, 60]}).restultsDepresionTest(4);
+        let resultado = encuestas.loadDataLocalStorage({ 4: [24, 26, 30, 35, 38, 42, 47, 52, 56, 60] }).restultsDepresionTest(4);
         expect(resultado.points).toBe(30);
         expect(resultado.result).toBe(depresion.moderada);
     })
@@ -6232,113 +6284,305 @@ describe("Test Depresion", () => {
 })
 
 describe("Escala de Inteligencia Emocional ", () => {
-    describe("Factor I. Atención a las emociones - hombres", ()=>{
+    describe("Factor I. Atención a las emociones - hombres", () => {
         beforeEach(() => {
             return encuestas = new model_surveys(ObtenerDatos);
         });
-    
+
         test("Test mejorar atención limite inferior", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [121, 126, 131, 136, 141, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'m');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [121, 126, 131, 136, 141, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
             expect(resultado.result.atencion.points).toBe(8);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.debeMejorar);
         })
 
 
         test("Test mejorar atención limite inferior", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 137, 141, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'m');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 137, 141, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
             expect(resultado.result.atencion.points).toBe(21);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.debeMejorar);
         })
 
         test("Test adecuada atención limite inferior", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 137, 142, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'m');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 137, 142, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
             expect(resultado.result.atencion.points).toBe(22);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.adecuada);
         })
         test("Test adecuada atención limite superior", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 140, 141, 148, 155, 158, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'m');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 140, 141, 148, 155, 158, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
             expect(resultado.result.atencion.points).toBe(32);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.adecuada);
         })
 
         test("Test demasiada atención limite inf", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 140, 141, 148, 155, 159, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'m');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 140, 141, 148, 155, 159, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
             expect(resultado.result.atencion.points).toBe(33);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.demasiada);
         })
 
-        
         test("Test demasiada atención limite superior", () => {
             //No hay limite superior, pero igual valido el valor máximo.
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 140, 145, 150, 155, 160, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'m');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 140, 145, 150, 155, 160, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
             expect(resultado.result.atencion.points).toBe(40);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.demasiada);
         })
     })
 
-    // describe("Factor II. Claridad de sentimientos - hombres", ()=>{
-    //     beforeEach(() => {
-    //         return encuestas = new model_surveys(ObtenerDatos);
-    //     });
-    
-    //     test("Test sin sintomas limite inferior", () => {
-    //         let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 138, 142, 147, 151, 156, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'m');
-    //         expect(resultado.result.atencion.points).toBe(8);
-    //         expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.debeMejorar);
-    //     })
-
-
-    //     test("Test sin sintomas limite sup", () => {
-    //         let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 137, 141, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'m');
-    //         expect(resultado.result.atencion.points).toBe(21);
-    //         expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.debeMejorar);
-    //     })
-    // })
-
-    describe("Factor I. Atención a las emociones  - mujeres", ()=>{
+    describe("Factor I. Atención a las emociones  - mujeres", () => {
         beforeEach(() => {
             return encuestas = new model_surveys(ObtenerDatos);
         });
-    
-        test("Test sin sintomas limite inferior", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [121, 126, 131, 136, 141, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'f');
+
+        test("Test mejorar atención limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [121, 126, 131, 136, 141, 146, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
             expect(resultado.result.atencion.points).toBe(8);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.debeMejorar);
         })
 
 
-        test("Test sin sintomas limite sup", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 138, 142, 147, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'f');
+        test("Test mejorar atención limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 138, 142, 147, 151, 156, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
             expect(resultado.result.atencion.points).toBe(24);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.debeMejorar);
         })
 
         test("Test adecuada atención limite inferior", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 137, 142, 146, 151, 159, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'f');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 137, 142, 146, 151, 159, 162, 168, 172, 178, 183, 189, 194, 198, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
             expect(resultado.result.atencion.points).toBe(25);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.adecuada);
         })
 
         test("Test adecuada atención limite superior", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 140, 144, 148, 155, 158, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'f');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 140, 144, 148, 155, 158, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
             expect(resultado.result.atencion.points).toBe(35);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.adecuada);
         })
 
         test("Test demasiada atención limite inferior", () => {
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 140, 144, 148, 155, 159, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'f');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 140, 144, 148, 155, 159, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
             expect(resultado.result.atencion.points).toBe(36);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.demasiada);
         })
 
         test("Test demasiada atención limite superior", () => {
             //No hay limite superior, pero igual valido el valor máximo.
-            let resultado = encuestas.loadDataLocalStorage({ 5:  [125, 130, 135, 140, 145, 150, 155, 160, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5,'f');
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 140, 145, 150, 155, 160, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
             expect(resultado.result.atencion.points).toBe(40);
             expect(resultado.result.atencion.text).toBe(escInteligenciaEmc.atencion.demasiada);
         })
     })
+
+    describe("Factor II. Claridad de sentimientos - hombres", () => {
+        beforeEach(() => {
+            return encuestas = new model_surveys(ObtenerDatos);
+        });
+
+        test("Test mejorar comprension limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 140, 145, 150, 155, 160, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.claridad.points).toBe(8);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.debeMejorar);
+        })
+
+        test("Test sin comprension limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 181, 187, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.claridad.points).toBe(25);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.debeMejorar);
+        })
+
+        test("Test adecuada comprension limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 182, 187, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.claridad.points).toBe(26);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.adecuada);
+        })
+
+        test("Test adecuada comprension limite superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 193, 197, 205, 210, 215, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.claridad.points).toBe(35);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.adecuada);
+        })
+        test("Test excelente comprension limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 193, 198, 205, 210, 215, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.claridad.points).toBe(36);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.excelente);
+        })
+        test("Test excelente comprension limite superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.claridad.points).toBe(40);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.excelente);
+        })
+    })
+
+    describe("Factor II. Claridad de sentimientos - mujeres", () => {
+        beforeEach(() => {
+            return encuestas = new model_surveys(ObtenerDatos);
+        });
+
+        test("Test sin sintomas limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [125, 130, 135, 140, 145, 150, 155, 160, 161, 166, 171, 176, 181, 186, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.claridad.points).toBe(8);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.debeMejorar);
+        })
+
+
+        test("Test sin sintomas limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 178, 181, 187, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.claridad.points).toBe(23);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.debeMejorar);
+        })
+
+        test("Test adecuada comprension limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 178, 181, 188, 191, 196, 203, 210, 212, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.claridad.points).toBe(24);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.adecuada);
+        })
+
+        test("Test adecuada comprension limite superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 192, 197, 205, 210, 215, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.claridad.points).toBe(34);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.adecuada);
+        })
+
+        test("Test excelente comprension limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 193, 197, 205, 210, 215, 220, 224, 227, 232, 240]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.claridad.points).toBe(35);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.excelente);
+        })
+        test("Test excelente comprension limite superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 224, 227, 232, 240] }).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.claridad.points).toBe(40);
+            expect(resultado.result.claridad.text).toBe(escInteligenciaEmc.claridad.excelente);
+        })
+    })
+
+    describe("Factor III. Reparación del estado emocional - hombres ", () => {
+        beforeEach(() => {
+            return encuestas = new model_surveys(ObtenerDatos);
+        });
+
+        test("test debe mejorar reparacion superio inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 201, 206, 211, 216, 221, 226, 231, 236]}).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.reparacion.points).toBe(8);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.debeMejorar);
+        })
+
+        test("test debe mejorar reparacion superior ", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 216, 223, 226, 231, 237]}).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.reparacion.points).toBe(23);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.debeMejorar);
+        })
+
+        test("test adecuada reparacion inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 216, 223, 226, 231, 238]}).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.reparacion.points).toBe(24);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.adecuada);
+        })
+
+        test("test adecuada reparacion superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 227, 235, 238]}).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.reparacion.points).toBe(35);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.adecuada);
+        })
+        test("test adecuada reparacion superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 227, 235, 239]}).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.reparacion.points).toBe(36);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.excelente);
+        })
+
+        test("test excelente reparacion sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 230, 235, 240]}).restultsInteligenciaEmocionalTest(5, 'm');
+            expect(resultado.result.reparacion.points).toBe(40);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.excelente);
+        })
+
+    })
+
+    describe("Factor III. Reparación del estado emocional - mujeres ", () => {
+        beforeEach(() => {
+            return encuestas = new model_surveys(ObtenerDatos);
+        });
+
+        test("test debe mejorar reparacion superio inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 201, 206, 211, 216, 221, 226, 231, 236]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.reparacion.points).toBe(8);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.debeMejorar);
+        })
+
+        test("test debe mejorar reparacion superior ", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 216, 223, 226, 231, 237]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.reparacion.points).toBe(23);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.debeMejorar);
+        })
+        test("test adecuada reparacion inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 216, 223, 226, 231, 238]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.reparacion.points).toBe(24);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.adecuada);
+        })
+        test("test adecuada reparacion superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 227, 235, 237]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.reparacion.points).toBe(34);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.adecuada);
+        })
+        test("test excelente reparacion inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 227, 235, 238]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.reparacion.points).toBe(35);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.excelente);
+        })
+
+        test("test excelente reparacion sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 5: [123, 128, 132, 138, 143, 146, 151, 156, 165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 230, 235, 240]}).restultsInteligenciaEmocionalTest(5, 'f');
+            expect(resultado.result.reparacion.points).toBe(40);
+            expect(resultado.result.reparacion.text).toBe(escInteligenciaEmc.reparacion.excelente);
+        })
+        
+    })
 })
+
+describe("Test Escala de Estrés Percibido ", () => {
+    beforeEach(() => {
+        return encuestas = new model_surveys(ObtenerDatos);
+    });
+    test("Test baja limite inferior", () => {
+        let resultado = encuestas.loadDataLocalStorage({ 6: [241, 246, 251, 260, 265, 270, 275, 276, 285, 290, 291, 296, 305, 306] }).restultsEscalaDeEstresPercibidoTest(6);
+        expect(resultado.points).toBe(0);
+        expect(resultado.result).toBe(escEstresPercibido.bajo);
+    })
+    test("Test baja limite superior", () => {
+        let resultado = encuestas.loadDataLocalStorage({ 6: [244, 247, 254, 258, 263, 270, 273, 277, 284, 288, 291, 296, 304, 307] }).restultsEscalaDeEstresPercibidoTest(6);
+        expect(resultado.points).toBe(19);
+        expect(resultado.result).toBe(escEstresPercibido.bajo);
+    })
+
+    test("Test medio limite inf", () => {
+        let resultado = encuestas.loadDataLocalStorage({ 6: [244, 247, 254, 258, 263, 270, 273, 277, 284, 288, 291, 296, 303, 307] }).restultsEscalaDeEstresPercibidoTest(6);
+        expect(resultado.points).toBe(20);
+        expect(resultado.result).toBe(escEstresPercibido.medio);
+    })
+
+    test("Test medio limite inf", () => {
+        let resultado = encuestas.loadDataLocalStorage({ 6: [244, 247, 254, 258, 263, 270, 273, 277, 284, 288, 291, 296, 303, 307] }).restultsEscalaDeEstresPercibidoTest(6);
+        expect(resultado.points).toBe(20);
+        expect(resultado.result).toBe(escEstresPercibido.medio);
+    })
+
+    test("Test medio limite sup", () => {
+        let resultado = encuestas.loadDataLocalStorage({ 6: [245, 250, 255, 257, 261, 268, 272, 279, 282, 286, 293, 297, 305, 307] }).restultsEscalaDeEstresPercibidoTest(6);
+        expect(resultado.points).toBe(38);
+        expect(resultado.result).toBe(escEstresPercibido.medio);
+    })
+
+    test("Test alto limite inf", () => {
+        let resultado = encuestas.loadDataLocalStorage({ 6: [245, 250, 255, 256, 261, 268, 272, 279, 282, 286, 293, 297, 305, 307] }).restultsEscalaDeEstresPercibidoTest(6);
+        expect(resultado.points).toBe(39);
+        expect(resultado.result).toBe(escEstresPercibido.alto);
+    })
+
+    test("Test alto limite sup", () => {
+        let resultado = encuestas.loadDataLocalStorage({ 6: [245, 250, 255, 256, 261, 266, 271, 280, 281, 286, 295, 300, 301, 310] }).restultsEscalaDeEstresPercibidoTest(6);
+        expect(resultado.points).toBe(56);
+        expect(resultado.result).toBe(escEstresPercibido.alto);
+    })
+
+})
+
 
 
 
