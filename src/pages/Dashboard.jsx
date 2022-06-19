@@ -68,6 +68,14 @@ const Dashboard = () => {
             <div className="row mt-4">
               <ModulosInicio />
             </div>
+            <div className="row my-4">
+              <CartaSeguimiento datauser={datauser} />
+              <CartaLineaTiempo />
+            </div>
+            <div className="row mt-4">
+              <CartaBarras />
+              <CartaGrafica />
+            </div>
             {/* <div className="row">
               <MiniCarta />
               <MiniCarta />
@@ -75,14 +83,6 @@ const Dashboard = () => {
               <MiniCarta />
             </div> */}
 
-            <div className="row mt-4">
-              <CartaBarras />
-              <CartaGrafica />
-            </div>
-            <div className="row my-4">
-              <CartaSeguimiento datauser={datauser} />
-              <CartaLineaTiempo />
-            </div>
             <FooterDashboard />
           </div>
 

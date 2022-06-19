@@ -5,8 +5,9 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import LogoPeque from '../../assets/img/logo_peque.svg'
-import { FaLock, FaRocket } from 'react-icons/fa'
+import { FaLock, FaRocket, FaUserCog, FaTachometerAlt, FaChartBar } from 'react-icons/fa'
 import { linksEmocional } from '../../helpers/helper_emocional'
+import { linksEstres } from '../../helpers/helperEstres'
 
 const NavBarDashboard = ({ datauser }) => {
   const history = useHistory()
@@ -58,14 +59,25 @@ const NavBarDashboard = ({ datauser }) => {
               navbarScroll
               className="text-center"
             >
-              <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-              <Nav.Link href="#link">Gráficas</Nav.Link>
+              <Nav.Link href="/dashboard">
+                <FaTachometerAlt />
+                Dashboard
+              </Nav.Link>
+              <Nav.Link href="#link">
+                <FaChartBar />
+                Gráficas
+              </Nav.Link>
               <NavDropdown title="Autodiagnóstico" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                <NavDropdown.Item href="/autodiagnostico">
+                  <FaRocket />
+                  &nbsp;
+                  Prueba
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#">
+                  <FaRocket />
+                  &nbsp;
+                  Resultados
+                </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Emocional" id="basic-nav-dropdown">
                 {linksEmocional.map((capsula, capsulaIndex) => (
@@ -85,7 +97,26 @@ const NavBarDashboard = ({ datauser }) => {
 
                 ))}
               </NavDropdown>
+              <NavDropdown title="Relax" id="basic-nav-dropdown">
+                {linksEstres.map((capsula, capsulaIndex) => (
+
+                  <NavDropdown.Item
+                    href={`/${capsula.link}`}
+                    eventKey={capsulaIndex}
+                    key={`key-${capsulaIndex}`}
+                    disabled={!(datauser.estres >= capsula.id)}
+                  >
+                    {!(datauser.estres >= capsula.id)
+                      ? <FaLock />
+                      : <FaRocket color={splitLocation[1] === capsula.link ? 'black' : ''} />}
+                    &nbsp;
+                    {capsula.nombre}
+                  </NavDropdown.Item>
+
+                ))}
+              </NavDropdown>
               <Nav.Link>
+                <FaUserCog />
                 {auth && <div>{auth?.authState?.userInfo?.nombre}</div>}
               </Nav.Link>
               <Button className=" btn-naranja ms-2 btn-sm mb-0 me-3" onClick={() => auth.logout()}>
