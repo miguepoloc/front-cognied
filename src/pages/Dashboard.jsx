@@ -61,7 +61,11 @@ const Dashboard = () => {
         <main className="main-content position-relative h-100 border-radius-lg ">
           <NavBarDashboard datauser={datauser} />
           <div className="container-fluid py-4">
-            <div className="row">
+            <div className="row mt-4">
+              <CartaImagen />
+              <CartaImagenFondo userInfo={userInfo} />
+            </div>
+            <div className="row mt-4">
               <ModulosInicio />
             </div>
             {/* <div className="row">
@@ -70,16 +74,13 @@ const Dashboard = () => {
               <MiniCarta />
               <MiniCarta />
             </div> */}
-            <div className="row mt-4">
-              <CartaImagen />
-              <CartaImagenFondo />
-            </div>
+
             <div className="row mt-4">
               <CartaBarras />
               <CartaGrafica />
             </div>
             <div className="row my-4">
-              <CartaSeguimiento />
+              <CartaSeguimiento datauser={datauser} />
               <CartaLineaTiempo />
             </div>
             <FooterDashboard />

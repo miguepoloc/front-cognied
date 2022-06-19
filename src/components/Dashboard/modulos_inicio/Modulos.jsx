@@ -38,7 +38,7 @@ export const Modulos = ({ img, text, bloqueado, col, moduloClass, href, classImg
 
         </div>
       </a>
-    </div >
+    </div>
 
   )
 }

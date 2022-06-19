@@ -5,6 +5,7 @@ import Axios from 'axios'
 
 import '../assets/css/nucleo-icons.scss'
 import '../assets/css/nucleo-svg.scss'
+import '../assets/css/soft-ui-dashboard.scss'
 import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import FooterDashboard from '../components/Dashboard/FooterDashboard'
 

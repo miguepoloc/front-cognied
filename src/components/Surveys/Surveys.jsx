@@ -22,27 +22,25 @@ const Surveys = () => {
   const [isBtnSendDisabled, setIsBtnSendDisabled] = useState(false)
   const [showResults, setShowResults] = useState(null)
 
-
   const recuperarDatosLocalStorage = () => {
-    let respuestasGuardadas = localStorage.getItem('data_survey_local');
-    
+    const respuestasGuardadas = localStorage.getItem('data_survey_local')
+
     if (respuestasGuardadas) {
-      let datosJson = JSON.parse(respuestasGuardadas);
-      const fechaDeInsercion = datosJson.fechaDeInsercion;
-      const fechaActual = Date.now();
-      const diffTime = Math.abs(fechaActual - fechaDeInsercion);
-      const diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
+      const datosJson = JSON.parse(respuestasGuardadas)
+      const fechaDeInsercion = datosJson.fechaDeInsercion
+      const fechaActual = Date.now()
+      const diffTime = Math.abs(fechaActual - fechaDeInsercion)
+      const diffHours = Math.ceil(diffTime / (1000 * 60 * 60))
 
       if (diffHours <= 4) {
-        SendOkAlert("¡En horabuena!", "He podido recuperar tus respuestas",undefined,undefined)
-        return datosJson;
-      }
-      else{
-        console.log("Ya se ha vencido")
-        window.localStorage.removeItem('data_survey_local');
+        SendOkAlert('¡En horabuena!', 'He podido recuperar tus respuestas', undefined, undefined)
+        return datosJson
+      } else {
+        console.log('Ya se ha vencido')
+        window.localStorage.removeItem('data_survey_local')
       }
     }
-    return null;
+    return null
   }
 
   useEffect(async () => {
@@ -50,19 +48,18 @@ const Surveys = () => {
     console.log(response)
     if (response) {
       try {
-        let data = recuperarDatosLocalStorage();
+        const data = recuperarDatosLocalStorage()
         if (data) {
           setSurveys(new model_surveys(response).loadDataLocalStorage(data.datosSurveys))
         } else {
           setSurveys(new model_surveys(response))
         }
-        //setSurveys(surveys.loadDataLocalStorage(recuperarDatosLocalStorage()).clone());
-        setLoading(false);
+        // setSurveys(surveys.loadDataLocalStorage(recuperarDatosLocalStorage()).clone());
+        setLoading(false)
       } catch (e) {
         console.log(e)
-        setLoading(false);
-        setError(true);
-
+        setLoading(false)
+        setError(true)
       }
     } else {
       setLoading(false)
@@ -70,11 +67,10 @@ const Surveys = () => {
     }
   }, [])
 
-
   useEffect(
     function () {
       if (surveys.arrSurvey) {
-        //surveys.markAllQuestionSelected()
+        // surveys.markAllQuestionSelected()
         moveToStart()
       }
     },
@@ -91,7 +87,7 @@ const Surveys = () => {
      */
   const handeButtonNavSurvey = async (isNext = true) => {
     /* bloque de prueba */
-    //surveys.selectAllOptionRandom();
+    // surveys.selectAllOptionRandom();
     /* fin bloque de prueba */
 
     if (!surveys.isAllQuestionsSelected() && isNext) {
@@ -148,8 +144,8 @@ const Surveys = () => {
         // TODO: Redireccionar a un lugar....
         console.log(surveys.jsonSurvey)
 
-        SendOkAlert(undefined, "¡Enhorabuena! ¡Tus respuestas han sido procesadas y <b>he traído los resultados</b>!").then(() => { setShowResults(surveys.results()) })
-        window.localStorage.removeItem('data_survey_local'); //Borrando el local storage...
+        SendOkAlert(undefined, '¡Enhorabuena! ¡Tus respuestas han sido procesadas y <b>he traído los resultados</b>!').then(() => { setShowResults(surveys.results()) })
+        window.localStorage.removeItem('data_survey_local') // Borrando el local storage...
       } else {
         console.log(send)
         SendBadAlert()
@@ -179,14 +175,16 @@ const Surveys = () => {
                 )
                 : (<>
 
-              {
-                showResults !== null ? (<Resultados objResultados={showResults} />) :
-                  surveys.arrSurvey ? (
-                    <>
-                      <Survey
-                        survey={surveys.jsonSurvey[surveys.indiceActual]}
-                        selectOption={selectOption}
-                      />
+                  {
+                    showResults !== null
+                      ? (<Resultados objResultados={showResults} />)
+                      : surveys.arrSurvey
+                        ? (
+                          <>
+                            <Survey
+                              survey={surveys.jsonSurvey[surveys.indiceActual]}
+                              selectOption={selectOption}
+                            />
 
                             <div className="d-flex justify-content-between mx-4">
                               <div id="backSurvey">
