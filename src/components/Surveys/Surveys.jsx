@@ -131,8 +131,9 @@ const Surveys = () => {
   }
 
   const handleButtonSendSurvey = async () => {
+    //TODO: poner el id y sexo del usuario.
     const userId = Math.floor(Math.random() * (29 - 4) + 4)
-
+    const sexo = "m";
     /* Antes de hacer la peticion, rectifica que todas las preguntas
         de las encuestas tengan respuesta.
       */
@@ -145,7 +146,7 @@ const Surveys = () => {
         // TODO: Redireccionar a un lugar....
         console.log(surveys.jsonSurvey)
 
-        SendOkAlert(undefined, '¡Enhorabuena! ¡Tus respuestas han sido procesadas y <b>he traído los resultados</b>!').then(() => { setShowResults(surveys.results()) })
+        SendOkAlert(undefined, '¡Enhorabuena! ¡Tus respuestas han sido procesadas y <b>he traído los resultados</b>!').then(() => { setShowResults(surveys.results(sexo)) })
         window.localStorage.removeItem('data_survey_local') // Borrando el local storage...
       } else {
         console.log(send)
