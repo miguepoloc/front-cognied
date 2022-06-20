@@ -64,6 +64,7 @@ class Surveys {
           question.setSelected(question.answer[repuestaAleatorea].id_answer);
         });
       });
+      this.guardarEnLocalStorage(); 
     } catch (e) {
       console.log(e);
     }
@@ -277,8 +278,8 @@ class Surveys {
   }
 
   sumAnyQuestions(encuesta, ArrIdQuestionsToSum) {
-    return encuesta.questions
-      .filter((question) => ArrIdQuestionsToSum.includes(question.getItemId()))
+   return encuesta.questions
+     .filter((question) => ArrIdQuestionsToSum.includes(question.getItemId()))
       .reduce((accumulator, question) => accumulator + question.getObjSelected().value, 0)
   }
 

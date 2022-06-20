@@ -15,7 +15,7 @@ import { Unete } from '../components/LandingPage/JoinUp'
 
 import '../assets/css/Landingpage.scss'
 import '../components/LandingPage/assets/css/LandingPage.scss'
-import { Modulos_inicio } from '../components/Dashboard/modulos_inicio/Modulos_inicio'
+import { ModulosInicio } from '../components/Dashboard/modulos_inicio/ModulosInicio'
 import Surveys from '../components/Surveys/Surveys'
 
 function LandingPage() {
@@ -54,7 +54,7 @@ function LandingPage() {
       <Unete section={secciones.JoinUp} />
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
-      <Modulos_inicio />
+      <ModulosInicio />
       <Surveys/>
     </>
   )

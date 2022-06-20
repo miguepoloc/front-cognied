@@ -5664,8 +5664,8 @@ const ObtenerDatos = [
         "id_question": 117,
         "itemid_question": 37,
         "question": "Soy una víctima de mis circunstancias",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 456,
         "order_answer": 2
     },
@@ -5677,8 +5677,8 @@ const ObtenerDatos = [
         "id_question": 117,
         "itemid_question": 37,
         "question": "Soy una víctima de mis circunstancias",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 457,
         "order_answer": 3
     },
@@ -5690,8 +5690,8 @@ const ObtenerDatos = [
         "id_question": 117,
         "itemid_question": 37,
         "question": "Soy una víctima de mis circunstancias",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 458,
         "order_answer": 4
     },
@@ -5703,8 +5703,8 @@ const ObtenerDatos = [
         "id_question": 118,
         "itemid_question": 38,
         "question": "No me tratan como deberían hacerlo y me lo merezco",
-        "answer": "Con mucha frecuencia lo pienso",
-        "value": 3,
+        "answer": "Nunca pienso en eso",
+        "value": 0,
         "id_answer": 459,
         "order_answer": 1
     },
@@ -5716,8 +5716,8 @@ const ObtenerDatos = [
         "id_question": 118,
         "itemid_question": 38,
         "question": "No me tratan como deberían hacerlo y me lo merezco",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 460,
         "order_answer": 2
     },
@@ -5729,8 +5729,8 @@ const ObtenerDatos = [
         "id_question": 118,
         "itemid_question": 38,
         "question": "No me tratan como deberían hacerlo y me lo merezco",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 461,
         "order_answer": 3
     },
@@ -5742,8 +5742,8 @@ const ObtenerDatos = [
         "id_question": 118,
         "itemid_question": 38,
         "question": "No me tratan como deberían hacerlo y me lo merezco",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 462,
         "order_answer": 4
     },
@@ -5755,8 +5755,8 @@ const ObtenerDatos = [
         "id_question": 119,
         "itemid_question": 39,
         "question": "Si tengo estos síntomas es porque soy un enfermo",
-        "answer": "Con mucha frecuencia lo pienso",
-        "value": 3,
+        "answer": "Nunca pienso en eso",
+        "value": 0,
         "id_answer": 463,
         "order_answer": 1
     },
@@ -5768,8 +5768,8 @@ const ObtenerDatos = [
         "id_question": 119,
         "itemid_question": 39,
         "question": "Si tengo estos síntomas es porque soy un enfermo",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 464,
         "order_answer": 2
     },
@@ -5781,8 +5781,8 @@ const ObtenerDatos = [
         "id_question": 119,
         "itemid_question": 39,
         "question": "Si tengo estos síntomas es porque soy un enfermo",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 465,
         "order_answer": 3
     },
@@ -5794,8 +5794,8 @@ const ObtenerDatos = [
         "id_question": 119,
         "itemid_question": 39,
         "question": "Si tengo estos síntomas es porque soy un enfermo",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 466,
         "order_answer": 4
     },
@@ -5807,8 +5807,8 @@ const ObtenerDatos = [
         "id_question": 120,
         "itemid_question": 40,
         "question": "Si tuviera mejor situación económica no tendría estos problemas",
-        "answer": "Con mucha frecuencia lo pienso",
-        "value": 3,
+        "answer": "Nunca pienso en eso",
+        "value": 0,
         "id_answer": 467,
         "order_answer": 1
     },
@@ -5820,8 +5820,8 @@ const ObtenerDatos = [
         "id_question": 120,
         "itemid_question": 40,
         "question": "Si tuviera mejor situación económica no tendría estos problemas",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 468,
         "order_answer": 2
     },
@@ -5833,8 +5833,8 @@ const ObtenerDatos = [
         "id_question": 120,
         "itemid_question": 40,
         "question": "Si tuviera mejor situación económica no tendría estos problemas",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 469,
         "order_answer": 3
     },
@@ -5846,8 +5846,8 @@ const ObtenerDatos = [
         "id_question": 120,
         "itemid_question": 40,
         "question": "Si tuviera mejor situación económica no tendría estos problemas",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 470,
         "order_answer": 4
     },
@@ -5859,8 +5859,8 @@ const ObtenerDatos = [
         "id_question": 121,
         "itemid_question": 41,
         "question": "Soy un neurótico",
-        "answer": "Con mucha frecuencia lo pienso",
-        "value": 3,
+        "answer": "Nunca pienso en eso",
+        "value": 0,
         "id_answer": 471,
         "order_answer": 1
     },
@@ -5872,8 +5872,8 @@ const ObtenerDatos = [
         "id_question": 121,
         "itemid_question": 41,
         "question": "Soy un neurótico",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 472,
         "order_answer": 2
     },
@@ -5885,8 +5885,8 @@ const ObtenerDatos = [
         "id_question": 121,
         "itemid_question": 41,
         "question": "Soy un neurótico",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 473,
         "order_answer": 3
     },
@@ -5898,8 +5898,8 @@ const ObtenerDatos = [
         "id_question": 121,
         "itemid_question": 41,
         "question": "Soy un neurótico",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 474,
         "order_answer": 4
     },
@@ -5911,8 +5911,8 @@ const ObtenerDatos = [
         "id_question": 122,
         "itemid_question": 42,
         "question": "Lo que me pasa es un castigo que merezco",
-        "answer": "Con mucha frecuencia lo pienso",
-        "value": 3,
+        "answer": "Nunca pienso en eso",
+        "value": 0,
         "id_answer": 475,
         "order_answer": 1
     },
@@ -5924,8 +5924,8 @@ const ObtenerDatos = [
         "id_question": 122,
         "itemid_question": 42,
         "question": "Lo que me pasa es un castigo que merezco",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 476,
         "order_answer": 2
     },
@@ -5937,8 +5937,8 @@ const ObtenerDatos = [
         "id_question": 122,
         "itemid_question": 42,
         "question": "Lo que me pasa es un castigo que merezco",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 477,
         "order_answer": 3
     },
@@ -5950,8 +5950,8 @@ const ObtenerDatos = [
         "id_question": 122,
         "itemid_question": 42,
         "question": "Lo que me pasa es un castigo que merezco",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 478,
         "order_answer": 4
     },
@@ -5963,8 +5963,8 @@ const ObtenerDatos = [
         "id_question": 123,
         "itemid_question": 43,
         "question": "Debería recibir más atención y cariño de otros",
-        "answer": "Con mucha frecuencia lo pienso",
-        "value": 3,
+        "answer": "Nunca pienso en eso",
+        "value": 0,
         "id_answer": 479,
         "order_answer": 1
     },
@@ -5976,8 +5976,8 @@ const ObtenerDatos = [
         "id_question": 123,
         "itemid_question": 43,
         "question": "Debería recibir más atención y cariño de otros",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 480,
         "order_answer": 2
     },
@@ -5989,8 +5989,8 @@ const ObtenerDatos = [
         "id_question": 123,
         "itemid_question": 43,
         "question": "Debería recibir más atención y cariño de otros",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 481,
         "order_answer": 3
     },
@@ -6002,8 +6002,8 @@ const ObtenerDatos = [
         "id_question": 123,
         "itemid_question": 43,
         "question": "Debería recibir más atención y cariño de otros",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 482,
         "order_answer": 4
     },
@@ -6015,8 +6015,8 @@ const ObtenerDatos = [
         "id_question": 124,
         "itemid_question": 44,
         "question": "Tengo razón y voy a hacer lo que me da la gana",
-        "answer": "Con mucha frecuencia lo pienso",
-        "value": 3,
+        "answer": "Nunca pienso en eso",
+        "value": 0,
         "id_answer": 483,
         "order_answer": 1
     },
@@ -6028,8 +6028,8 @@ const ObtenerDatos = [
         "id_question": 124,
         "itemid_question": 44,
         "question": "Tengo razón y voy a hacer lo que me da la gana",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 484,
         "order_answer": 2
     },
@@ -6041,8 +6041,8 @@ const ObtenerDatos = [
         "id_question": 124,
         "itemid_question": 44,
         "question": "Tengo razón y voy a hacer lo que me da la gana",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 485,
         "order_answer": 3
     },
@@ -6054,8 +6054,8 @@ const ObtenerDatos = [
         "id_question": 124,
         "itemid_question": 44,
         "question": "Tengo razón y voy a hacer lo que me da la gana",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 486,
         "order_answer": 4
     },
@@ -6067,8 +6067,8 @@ const ObtenerDatos = [
         "id_question": 125,
         "itemid_question": 45,
         "question": "Tarde o temprano irán las cosas mejor",
-        "answer": "Con mucha frecuencia lo pienso",
-        "value": 3,
+        "answer": "Nunca pienso en eso",
+        "value": 0,
         "id_answer": 487,
         "order_answer": 1
     },
@@ -6080,8 +6080,8 @@ const ObtenerDatos = [
         "id_question": 125,
         "itemid_question": 45,
         "question": "Tarde o temprano irán las cosas mejor",
-        "answer": "Nunca pienso en eso",
-        "value": 0,
+        "answer": "Algunas veces lo pienso",
+        "value": 1,
         "id_answer": 488,
         "order_answer": 2
     },
@@ -6093,8 +6093,8 @@ const ObtenerDatos = [
         "id_question": 125,
         "itemid_question": 45,
         "question": "Tarde o temprano irán las cosas mejor",
-        "answer": "Algunas veces lo pienso",
-        "value": 1,
+        "answer": "Bastantes veces lo pienso",
+        "value": 2,
         "id_answer": 489,
         "order_answer": 3
     },
@@ -6106,8 +6106,8 @@ const ObtenerDatos = [
         "id_question": 125,
         "itemid_question": 45,
         "question": "Tarde o temprano irán las cosas mejor",
-        "answer": "Bastantes veces lo pienso",
-        "value": 2,
+        "answer": "Con mucha frecuencia lo pienso",
+        "value": 3,
         "id_answer": 490,
         "order_answer": 4
     }
@@ -6119,6 +6119,12 @@ let escInteligenciaEmc = { atencion: { debeMejorar: "debes mejorar tu atención:
 claridad:{debeMejorar:"debes mejorar tu comprensión", adecuada: "tienes una adecuada comprensión", excelente: "tienes una excelente comprensión" },
 reparacion: {debeMejorar:"debes mejorar tu regulación", adecuada:"tienes una adecuada regulación", excelente: "tienes una excelente regulación"}}
 let escEstresPercibido = {
+    bajo:"bajo",
+    medio:"medio",
+    alto:"alto"
+}
+
+let inventarioDePensamientos={
     bajo:"bajo",
     medio:"medio",
     alto:"alto"
@@ -6148,6 +6154,17 @@ const checkOrdenAscYDes = (idEncuesta, datos, arrItemid_question_asc, arrOrder_a
         }
     })
     return CheckOrdenAsc(idEncuesta,obtenerAsc,valorMinimo) && CheckOrdenDes(idEncuesta,obtenerDes,valorMinimo,ValorMaximo_id_order_answer)
+}
+
+const generarArrayModTestPensamientosAutomaticos = (item1,item2,item3,array)=>{
+    let arrayAux =[...array];
+    const modificarArray = (item)=>{
+        arrayAux[item.index - 1] = arrayAux[item.index - 1] + item.sumar;
+    }
+    modificarArray(item1);
+    modificarArray(item2);
+    modificarArray(item3);
+    return arrayAux;
 }
 
 describe("Test revisar valor de las preguntas", () => {
@@ -6581,6 +6598,730 @@ describe("Test Escala de Estrés Percibido ", () => {
         expect(resultado.result).toBe(escEstresPercibido.alto);
     })
 
+})
+
+describe("Test Inventario de Pensamientos Automáticos ", () => {
+    beforeEach(() => {
+        return encuestas = new model_surveys(ObtenerDatos);
+    });
+
+    describe("Filtraje o abstracción selectiva ", () => {
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [311,315,322,325,327,331,336,339,344,349,353,356,360,366,368,371,375,380,386,389,394,397,400,404,410,413,416,422,426,430,431,438,440,444,449,454,457,461,465,470,474,478,482,483,490]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.points).toBe(0);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [312,315,322,324,327,331,337,339,345,349,353,356,360,365,370,372,376,380,386,389,392,395,400,405,409,413,417,422,426,427,432,438,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.points).toBe(3);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.text).toBe(inventarioDePensamientos.bajo);
+        })
+        test("medio limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [313,315,322,324,327,331,337,339,345,349,353,356,360,365,370,372,376,380,386,389,392,395,400,405,409,413,417,422,426,427,432,438,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.points).toBe(4);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.text).toBe(inventarioDePensamientos.medio);
+        })
+        test("medio limite superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [312,315,322,324,327,331,337,339,345,349,353,356,360,365,370,373,376,380,386,389,392,395,400,405,409,413,417,422,426,428,434,438,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.points).toBe(6);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.text).toBe(inventarioDePensamientos.medio);
+        })
+        test("alto limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [313,315,322,324,327,331,337,339,345,349,353,356,360,365,370,373,376,380,386,389,392,395,400,405,409,413,417,422,426,428,434,438,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.points).toBe(7);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.text).toBe(inventarioDePensamientos.alto);
+        })
+        test("alto limite superior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [314,315,322,324,327,331,337,339,345,349,353,356,360,365,370,374,376,380,386,389,392,395,400,405,409,413,417,422,426,428,434,438,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.points).toBe(9);
+            expect(resultado.result.filtraje_o_abstracción_selectiva.text).toBe(inventarioDePensamientos.alto);
+        })
+    })
+
+    describe("Pensamiento polarizado ", () => {
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [314,315,322,324,327,331,337,339,345,349,353,356,360,365,370,374,375,380,386,389,392,395,400,405,409,413,417,422,426,428,434,435,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.pensamiento_polarizado.points).toBe(0);
+            expect(resultado.result.pensamiento_polarizado.text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [314,316,322,324,327,331,337,339,345,349,353,356,360,365,370,374,376,380,386,389,392,395,400,405,409,413,417,422,426,428,434,436,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.pensamiento_polarizado.points).toBe(3);
+            expect(resultado.result.pensamiento_polarizado.text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [314,317,322,324,327,331,337,339,345,349,353,356,360,365,370,374,376,380,386,389,392,395,400,405,409,413,417,422,426,428,434,436,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.pensamiento_polarizado.points).toBe(4);
+            expect(resultado.result.pensamiento_polarizado.text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [311,317,322,325,327,331,337,339,345,349,353,356,360,365,370,374,377,380,386,389,392,395,400,405,409,413,417,422,426,428,434,437,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.pensamiento_polarizado.points).toBe(6);
+            expect(resultado.result.pensamiento_polarizado.text).toBe(inventarioDePensamientos.medio);
+        })
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [311,318,322,325,327,331,337,339,345,349,353,356,360,365,370,374,377,380,386,389,392,395,400,405,409,413,417,422,426,428,434,437,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.pensamiento_polarizado.points).toBe(7);
+            expect(resultado.result.pensamiento_polarizado.text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [311,318,322,325,327,331,337,339,345,349,353,356,360,365,370,374,378,380,386,389,392,395,400,405,409,413,417,422,426,428,434,438,442,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.pensamiento_polarizado.points).toBe(9);
+            expect(resultado.result.pensamiento_polarizado.text).toBe(inventarioDePensamientos.alto);
+        })
+    })
+    describe("Sobregeneralización ", () => {
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [311,318,319,325,327,331,337,339,345,349,353,356,360,365,370,374,378,379,386,389,392,395,400,405,409,413,417,422,426,428,434,438,439,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.sobregeneralizacion.points).toBe(0);
+            expect(resultado.result.sobregeneralizacion.text).toBe(inventarioDePensamientos.bajo);
+        })
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: [311,318,321,325,327,331,337,339,345,349,353,356,360,365,370,374,378,379,386,389,392,395,400,405,409,413,417,422,426,428,434,438,440,446,447,453,457,460,465,470,472,478,479,484,489]}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.sobregeneralizacion.points).toBe(3);
+            expect(resultado.result.sobregeneralizacion.text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos({index:3,sumar:1},{index:18,sumar:2},{index:33,sumar:1},[311,318,319,325,327,331,337,339,345,349,353,356,360,365,370,374,378,379,386,389,392,395,400,405,409,413,417,422,426,428,434,438,439,446,447,453,457,460,465,470,472,478,479,484,489])}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.sobregeneralizacion.points).toBe(4);
+            expect(resultado.result.sobregeneralizacion.text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("meido limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos({index:3,sumar:2},{index:18,sumar:2},{index:33,sumar:2},[311,318,319,325,327,331,337,339,345,349,353,356,360,365,370,374,378,379,386,389,392,395,400,405,409,413,417,422,426,428,434,438,439,446,447,453,457,460,465,470,472,478,479,484,489])}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.sobregeneralizacion.points).toBe(6);
+            expect(resultado.result.sobregeneralizacion.text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos({index:3,sumar:3},{index:18,sumar:2},{index:33,sumar:2},[311,318,319,325,327,331,337,339,345,349,353,356,360,365,370,374,378,379,386,389,392,395,400,405,409,413,417,422,426,428,434,438,439,446,447,453,457,460,465,470,472,478,479,484,489])}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.sobregeneralizacion.points).toBe(7);
+            expect(resultado.result.sobregeneralizacion.text).toBe(inventarioDePensamientos.alto);
+        })
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos({index:3,sumar:3},{index:18,sumar:3},{index:33,sumar:3},[311,318,319,325,327,331,337,339,345,349,353,356,360,365,370,374,378,379,386,389,392,395,400,405,409,413,417,422,426,428,434,438,439,446,447,453,457,460,465,470,472,478,479,484,489])}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result.sobregeneralizacion.points).toBe(9);
+            expect(resultado.result.sobregeneralizacion.text).toBe(inventarioDePensamientos.alto);
+        })
+    })
+
+    describe("Interpretación del pensamiento ", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[311,318,321,323,327,331,337,339,345,349,353,356,360,365,370,374,378,379,383,389,392,395,400,405,409,413,417,422,426,428,434,438,440,443,447,453,457,460,465,470,472,478,479,484,488],
+                elem1: (sumar)=>{ return {index:4,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:19,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:34,sumar:sumar}},
+                nombreEscala : "interpretacion_del_pensamiento"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Visión catastrófica ", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[311,318,321,324,327,331,337,339,345,349,353,356,360,365,370,372,376,379,385,387,392,395,400,405,409,413,417,422,426,428,434,438,440,445,447,453,457,460,465,470,472,478,479,484,488],
+                elem1: (sumar)=>{ return {index:5,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:20,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:35,sumar:sumar}},
+                nombreEscala : "vision_catastrofica"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Personalización ", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[311,318,321,324,329,331,337,339,345,349,353,356,360,365,370,372,376,379,385,390,391,398,400,405,409,413,417,422,426,428,434,438,440,445,450,451,457,460,465,470,472,478,479,484,488],
+                elem1: (sumar)=>{ return {index:6,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:21,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:36,sumar:sumar}},
+                nombreEscala : "personalizacion"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Falacia de control ", () => {
+        let datosDePrueba ;
+        beforeAll(() => {
+           datosDePrueba = {
+                array_en_0 :[311,318,321,324,329,332,335,341,346,350,351,356,360,365,370,372,376,379,385,390,393,395,402,404,410,411,417,422,426,428,434,438,440,445,450,453,455,459,464,469,471,478,479,484,488],
+                elem1: (sumar)=>{ return {index:7,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:22,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:37,sumar:sumar}},
+                nombreEscala : "falacia_de_control"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Falacia de justicia ", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[311,318,321,324,329,332,337,339,345,349,353,356,360,365,370,372,376,379,385,390,393,397,399,405,409,413,417,422,426,428,434,438,440,445,450,453,457,459,465,470,472,478,479,484,488],
+                elem1: (sumar)=>{ return {index:8,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:23,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:38,sumar:sumar}},
+                nombreEscala : "falacia_de_justicia"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Razonamiento emocional ", () => {
+        let datosDePrueba ;
+        beforeAll(() => {
+           return datosDePrueba = {
+                array_en_0 :[313,315,322,326,329,332,337,342,343,350,352,356,361,365,370,373,375,380,386,388,394,397,401,403,409,413,416,419,424,427,431,438,440,444,450,452,458,461,463,469,474,477,481,485,490],
+                elem1: (sumar)=>{ return {index:9,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:24,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:39,sumar:sumar}},
+                nombreEscala : "razonamiento_emocional"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Falacia de cambio ", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[311,318,321,324,329,332,337,341,346,347,353,356,360,365,370,372,376,379,385,390,393,397,402,404,407,413,417,422,426,428,434,438,440,445,450,453,457,459,464,467,472,478,479,484,488],
+                elem1: (sumar)=>{ return {index:10,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:25,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:40,sumar:sumar}},
+                nombreEscala : "falacia_de_cambio"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Etiquetas globales", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[311,318,321,324,329,332,337,341,346,350,351,356,360,365,370,372,376,379,385,390,393,397,402,404,410,411,417,422,426,428,434,438,440,445,450,453,457,459,464,469,471,478,479,484,488],
+                elem1: (sumar)=>{ return {index:11,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:26,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:41,sumar:sumar}},
+                nombreEscala : "etiquetas_globales"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Culpabilidad", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[313,315,322,326,329,332,337,342,343,350,352,355,361,365,370,373,375,380,386,388,394,397,401,403,409,413,415,419,424,427,431,438,440,444,450,452,458,461,465,469,474,475,481,485,490],
+                elem1: (sumar)=>{ return {index:12,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:27,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:42,sumar:sumar}},
+                nombreEscala : "culpabilidad"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Los deberías", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[313,315,322,326,329,332,337,342,343,350,352,357,359,365,370,373,375,380,386,388,394,397,401,403,409,413,417,419,424,427,431,438,440,444,450,452,458,461,465,469,474,478,479,485,490],
+                elem1: (sumar)=>{ return {index:13,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:28,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:43,sumar:sumar}},
+                nombreEscala : "los_deberias"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Tener razón", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[313,315,322,326,329,332,337,342,343,350,352,357,361,363,370,373,375,380,386,388,394,397,401,403,409,413,417,420,423,427,433,438,440,444,450,452,458,461,465,469,473,476,481,483,490],
+                elem1: (sumar)=>{ return {index:14,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:29,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:44,sumar:sumar}},
+                nombreEscala : "tener_razon"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
+
+    describe("Falacia de recompensa divina", () => {
+        let datosDePrueba ;
+        beforeEach(() => {
+           datosDePrueba = {
+                array_en_0 :[313,315,322,326,329,332,337,342,343,350,352,357,362,364,367,373,377,380,386,388,394,397,401,403,409,413,417,420,423,427,433,438,440,444,450,452,458,461,465,469,473,476,481,483,487],
+                elem1: (sumar)=>{ return {index:15,sumar:sumar}},
+                elem2: (sumar)=>{ return {index:30,sumar:sumar}},
+                elem3: (sumar)=>{ return {index:45,sumar:sumar}},
+                nombreEscala : "falacia_de_recompensa_divina"
+            }
+        });
+       
+
+        test("bajo limite inferior", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: datosDePrueba.array_en_0}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(0);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("bajo limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(1),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(3);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.bajo);
+        })
+
+        test("medio limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(1),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(4);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("medio limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(1),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(6);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.medio);
+        })
+
+        test("alto limite inf", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(2),datosDePrueba.elem2(2),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+        test("alto limite sup", () => {
+            let resultado = encuestas.loadDataLocalStorage({ 7: generarArrayModTestPensamientosAutomaticos(datosDePrueba.elem1(3),datosDePrueba.elem2(3),datosDePrueba.elem3(3),datosDePrueba.array_en_0)}).restultsInventarioDePensamientosAutomaticosTest(7);
+            expect(resultado.result[datosDePrueba.nombreEscala].points).toBe(9);
+            expect(resultado.result[datosDePrueba.nombreEscala].text).toBe(inventarioDePensamientos.alto);
+        })
+
+    })
 })
 
 

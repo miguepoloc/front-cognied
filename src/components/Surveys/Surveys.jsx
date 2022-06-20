@@ -24,7 +24,6 @@ const Surveys = () => {
 
   const recuperarDatosLocalStorage = () => {
     const respuestasGuardadas = localStorage.getItem('data_survey_local')
-
     if (respuestasGuardadas) {
       const datosJson = JSON.parse(respuestasGuardadas)
       const fechaDeInsercion = datosJson.fechaDeInsercion
@@ -33,6 +32,7 @@ const Surveys = () => {
       const diffHours = Math.ceil(diffTime / (1000 * 60 * 60))
 
       if (diffHours <= 4) {
+        
         SendOkAlert('¡En horabuena!', 'He podido recuperar tus respuestas', undefined, undefined)
         return datosJson
       } else {
@@ -88,7 +88,7 @@ const Surveys = () => {
      */
   const handeButtonNavSurvey = async (isNext = true) => {
     /* bloque de prueba */
-    // surveys.selectAllOptionRandom();
+    //  surveys.selectAllOptionRandom();
     /* fin bloque de prueba */
 
     if (!surveys.isAllQuestionsSelected() && isNext) {
@@ -142,6 +142,7 @@ const Surveys = () => {
       SendAlert(undefined, 'Tus respuestas estan siendo enviadas y procesadas <b>Espera un momento</b>')
       // Debería esperar una respuesta de todo ok., si la respuesta es negativa el boton vuelve a quedar
       const send = await SendSurveys(buildDataToSend(userId))
+      
       if (send) {
         // TODO: Redireccionar a un lugar....
         console.log(surveys.jsonSurvey)
