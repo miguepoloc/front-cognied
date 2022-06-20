@@ -13,7 +13,7 @@ const CartaImagen = () => {
                   src={imgGanso.celular} alt="ganso" />
               </div>
               <div className="col-lg-9">
-                <div className="d-flex flex-column h-100">
+                <div className="d-flex flex-column h-100 justify-content-center">
                   <h5 className="font-weight-bolder">Bienvenido a tu Dashboard</h5>
                   <p >Este es un espacio para manejar tu
                     información, registrar y evaluar lo que
