@@ -34,7 +34,7 @@ $color_card_moduloAutoevaluativo: rgb(235 235 235);
 }
 
 .img-moduloAutoEvaluativo{
-    width: 13% !important;
+    width: 23% !important;
 }
 
 .cards_modulos_inicio{
@@ -112,6 +112,15 @@ $color_card_moduloAutoevaluativo: rgb(235 235 235);
         padding-top: 8px;
     }
     
+    
+}
+
+@media (min-width:992px) and (max-width:1200px){
+
+    .img-moduloAutoEvaluativo{
+        width: 35% !important;
+    }
+   
     
 }
 

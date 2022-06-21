@@ -3,6 +3,7 @@ import React from 'react'
 import { imgGanso } from '../../../helpers/helper_imagen_ganso'
 // import { gansoPensandoAlert } from '../../../helpers/helper_Swal_Alerts'
 import './assets/css/Modulos_inicio.scss'
+import CartaImagen from '../CartaImagen'
 
 import { Modulos } from './Modulos'
 // import { Modulo_IconoBloqueo } from './Modulo_IconoBloqueo'
@@ -63,7 +64,9 @@ export const ModulosInicio = () => {
       <div className="container">
         <div className="row align-items-md-stretch justify-content-center mt-2 ">
           {/* <Modulos col={"col-6"} quitarIconoBloqueo={true} classImg={"imgAyuda_modulos_inicio"} img={imgGanso.stop_250x200} text={"¿Necesitas ayuda?"} bloqueado={false} href={"ayuda.com"} moduloClass={"card_ayuda"} /> */}
-          <Modulos col={'col-12'}
+          <CartaImagen />
+          
+          <Modulos col={'col-12 col-lg-6'}
             img={modulos.modulo_alternativo.img}
             text={modulos.modulo_alternativo.text}
             bloqueado={modulos.modulo_alternativo.bloqueado}
