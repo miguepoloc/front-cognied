@@ -31,12 +31,11 @@ const Surveys = () => {
       const diffTime = Math.abs(fechaActual - fechaDeInsercion)
       const diffHours = Math.ceil(diffTime / (1000 * 60 * 60))
 
-      if (diffHours <= 4) {
-        
-        SendOkAlert('¡En horabuena!', 'He podido recuperar tus respuestas', undefined, undefined)
+      if (diffHours == 48) {
+        SendOkAlert('¡En horabuena!', "¡He podido recuperar tus respuestas! Intenta terminar de responder las preguntas. Si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente.", undefined, undefined)
         return datosJson
       } else {
-        console.log('Ya se ha vencido')
+        SendBadAlert("Ups...","¡Lo siento! Han pasado mas de 48 horas desde la ultima vez que intentaste responder las preguntas. Inténtalo nuevamente.<br/> Recuerda que si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente",undefined,undefined)
         window.localStorage.removeItem('data_survey_local')
       }
     }
