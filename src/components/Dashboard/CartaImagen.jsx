@@ -4,11 +4,15 @@ import { imgGanso } from '../../helpers/helper_imagen_ganso'
 const CartaImagen = () => {
   return (
     <>
-      <div className="col-12 col-lg-6 mt-2">
+      <div className="col-12 col-lg-6 mt-2 px-1">
         <div className="card items_modulos_inicio" style={{backgroundColor: "antiquewhite"}}>
           <div className="card-body p-3">
             <div className="row justify-content-center align-items-center">
               <div className=" d-none d-lg-block col-3 text-center ">
+                <img className=" w-100  "
+                  src={imgGanso.celular} alt="ganso" />
+              </div>
+              <div className=" d-block d-lg-none col-4 col-sm-3 text-center ">
                 <img className=" w-100  "
                   src={imgGanso.celular} alt="ganso" />
               </div>
