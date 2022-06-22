@@ -12,6 +12,7 @@ export const ModulosInicio = () => {
     modulo_alternativo: {
       col: 'col-8',
       img: imgGanso.escribiendo_250x200,
+      classImg: 'imgGanso-modulos',
       moduloClass: 'card_moduloAutoevaluativo',
       text: 'Módulo autoevaluativo',
       bloqueado: false,
@@ -19,37 +20,38 @@ export const ModulosInicio = () => {
     },
     otros_modulos: [
       {
-        col: 'col-4 col-md-3',
+        col: 'col-3',
         img: imgGanso.meditando,
         text: 'Relax',
+        classImg: 'imgGanso-modulos',
         moduloClass: 'card_relax',
         bloqueado: false,
         href: ''
       },
       {
-        col: 'col-4 col-md-3',
+        col: 'col-3',
         img: imgGanso.feliz_250x200,
         text: 'Mis emociones',
         moduloClass: 'card_misEmociones',
-        classImg: 'w-50 pt-2',
+        classImg: 'imgGanso-modulos',
         bloqueado: false,
         href: '/emocional1'
       },
       {
-        col: 'col-4 col-md-3',
+        col: 'col-3',
         img: imgGanso.pensando,
         text: 'Piénsalo',
         moduloClass: 'card_piensalo',
-        classImg: 'w-50 pt-2',
+        classImg: 'imgGanso-modulos',
         bloqueado: false,
         href: ''
       },
       {
-        col: 'col-12 col-md-3',
+        col: 'col-3',
         img: imgGanso.leyendo,
         text: 'Mis habilidades',
         moduloClass: 'card_misHabilidades',
-        classImg: 'img-misHabilidades_modulos_inicio',
+        classImg: 'imgGanso-modulos',
         bloqueado: false,
         href: ''
       }
