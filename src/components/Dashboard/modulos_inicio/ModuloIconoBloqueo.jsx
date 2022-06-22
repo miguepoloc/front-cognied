@@ -7,7 +7,7 @@ export const ModuloIconoBloqueo = ({
   return (
     <div className="content_blocked_modulos_inicio">
       <span className="icon_blocked_modulo_inicio">
-        {bloqueado ? <TbLock size={30} /> : <TbLockOpen size={30} />}
+        {bloqueado ? <TbLock size={20} /> : <TbLockOpen size={20} />}
       </span>
     </div>
   )
