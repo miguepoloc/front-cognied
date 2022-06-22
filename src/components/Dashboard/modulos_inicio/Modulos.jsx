@@ -30,7 +30,7 @@ export const Modulos = ({ img, text, bloqueado, col, moduloClass, href, classImg
               ? (<h5 className={'font-Geomanist text-break text-darkBlue text-center'}>
                 {text}
               </h5>)
-              : (<h6 className={'font-Geomanist text-break text-center'}>
+              : (<h6 className={'font-Geomanist text-break text-center titleModulo'}>
                 {text}
               </h6>)}
 
