@@ -8,18 +8,15 @@ const CartaImagen = () => {
         <div className="card items_modulos_inicio" style={{backgroundColor: "antiquewhite"}}>
           <div className="card-body p-3">
             <div className="row justify-content-center align-items-center">
-              <div className=" d-none d-lg-block col-3 text-center ">
-                <img className=" w-100  "
-                  src={imgGanso.celular} alt="ganso" />
-              </div>
-              <div className=" d-block d-lg-none col-4 col-sm-3 text-center ">
-                <img className=" w-100  "
+              
+              <div className=" col-4 col-sm-3 text-center ">
+                <img className="imgGanso_Bienvenida"
                   src={imgGanso.celular} alt="ganso" />
               </div>
               <div className="col-12 col-lg-9">
                 <div className="d-flex flex-column pt-2 justify-content-center">
-                  <h5 className="font-weight-bolder">Bienvenido a tu Dashboard</h5>
-                  <p >Este es un espacio para manejar tu
+                  <h5 className=" titleBienvenida font-Geomanist">Bienvenido a tu Dashboard</h5>
+                  <p className='textBienvenida'>Este es un espacio para manejar tu
                     información, registrar y evaluar lo que
                     has realizado y seguir practicando los
                     puntos importantes en los que
