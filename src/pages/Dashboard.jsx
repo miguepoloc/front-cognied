@@ -62,10 +62,6 @@ const Dashboard = () => {
           <NavBarDashboard datauser={datauser} />
           <div className="container-fluid py-4">
             <div className="row mt-4">
-              <CartaImagen />
-              <CartaImagenFondo userInfo={userInfo} />
-            </div>
-            <div className="row mt-4">
               <ModulosInicio />
             </div>
             <div className="row my-4">
