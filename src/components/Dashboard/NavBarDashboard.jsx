@@ -3,7 +3,7 @@ import '../../assets/css/NavBarDashboard.scss'
 
 import { useHistory, useLocation } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
-import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar, NavDropdown, Dropdown } from 'react-bootstrap'
 import LogoPeque from '../../assets/img/logo_peque.svg'
 import { FaLock , FaRocket, FaUserCog, FaTachometerAlt, FaChartBar } from 'react-icons/fa'
 import { linksEmocional } from '../../helpers/helper_emocional'
@@ -60,16 +60,16 @@ const NavBarDashboard = ({ datauser }) => {
               navbarScroll
               className="text-center"
             >
-              <Nav.Link href="/dashboard" className='d-flex'>
+              <Nav.Link href="/dashboard" className='d-flex align-items-center  justify-content-center'>
                 <span className='pe-1 d-flex align-items-center'><FcHome size={20} /></span>
                 Dashboard
               </Nav.Link>
-              <Nav.Link href="#link" className='d-flex'>
+              <Nav.Link href="#link" className='d-flex align-items-center  justify-content-center'>
               <span className='pe-1 d-flex align-items-center'><FcDoughnutChart  size={22}/></span>
                 Gráficas
               </Nav.Link>
-              <NavDropdown title="Autodiagnóstico " id="basic-nav-dropdown">
-                <NavDropdown.Item href="/autodiagnostico" className='d-flex align-items-center'>
+              <NavDropdown title="Autodiagnóstico " id="basic-nav-dropdown" className='d-flex flex-column align-items-center justify-content-center'>
+                <NavDropdown.Item href="/autodiagnostico" className='d-flex'>
                 <span className='pe-2 d-flex align-items-center'><FcApproval size={22}  /></span>
                   Prueba
                 </NavDropdown.Item>
@@ -77,16 +77,18 @@ const NavBarDashboard = ({ datauser }) => {
                 <span className='pe-1 d-flex align-items-center'><FcBiomass size={22} /></span>
                   Resultados
                 </NavDropdown.Item>
+ 
               </NavDropdown>
-              <NavDropdown title="Emocional " id="basic-nav-dropdown">
-                {linksEmocional.map((capsula, capsulaIndex) => (
+              <NavDropdown title="Emocional " id="basic-nav-dropdown" className='d-flex flex-column align-items-center justify-content-center'>
 
+                {linksEmocional.map((capsula, capsulaIndex) => (
+                  
                   <NavDropdown.Item
                     href={`/${capsula.link}`}
                     eventKey={capsulaIndex}
                     key={`key-${capsulaIndex}`}
                     disabled={!(datauser.emocional >= capsula.id)}
-                    className="d-flex align-items-center"
+                    className="  d-flex align-items-center"
                   ><span className='pe-2 d-flex align-items-center'>
                     {!(datauser.emocional >= capsula.id)
                       ? <FcCancel size={22} />
@@ -94,10 +96,11 @@ const NavBarDashboard = ({ datauser }) => {
                    </span>
                     {capsula.nombre}
                   </NavDropdown.Item>
-
+                 
                 ))}
               </NavDropdown>
-              <NavDropdown title="Relax " id="basic-nav-dropdown">
+              <NavDropdown title="Relax " id="basic-nav-dropdown" className='d-flex flex-column align-items-center justify-content-center'>
+                <span className='mt-0'></span>
                 {linksEstres.map((capsula, capsulaIndex) => (
 
                   <NavDropdown.Item
@@ -116,11 +119,11 @@ const NavBarDashboard = ({ datauser }) => {
 
                 ))}
               </NavDropdown>
-              <Nav.Link className='d-flex'>
-              <span className='pe-2 d-flex align-items-center'> <FcServices size={22} /> </span>
+              <Nav.Link className='d-flex justify-content-center'>
+              <span className='pe-2 d-flex flex-column align-items-center'> <FcServices size={22} /> </span>
                 {auth && <div>{auth?.authState?.userInfo?.nombre}</div>}
               </Nav.Link>
-              <Button className=" btn-naranja ms-2 btn-sm mb-0 me-3" onClick={() => auth.logout()}>
+              <Button className=" btn-naranja ms-2 btn-sm mb-0 me-3 " onClick={() => auth.logout()}>
                 Cerrar sesión
               </Button>
             </Nav>
