@@ -72,7 +72,7 @@ const LoginForm = () => {
 
                   <div className="input-div my-0">
                     <div className="i">
-                      <FaUser></FaUser>
+                      <FaUser />
                     </div>
                     <div>
                       <Field
@@ -87,7 +87,7 @@ const LoginForm = () => {
                   )}
                   <div className="input-div my-0">
                     <div className="i">
-                      <FaLock></FaLock>
+                      <FaLock />
                     </div>
                     <div>
                       <Field

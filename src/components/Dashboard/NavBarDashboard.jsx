@@ -5,6 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import LogoPeque from '../../assets/img/logo_peque.svg'
+import LogoAlargado from '../../assets/img/LogoAlargado.svg'
 import { FaLock, FaRocket, FaUserCog, FaTachometerAlt, FaChartBar } from 'react-icons/fa'
 import { linksEmocional } from '../../helpers/helper_emocional'
 import { linksEstres } from '../../helpers/helperEstres'
@@ -30,23 +31,28 @@ const NavBarDashboard = ({ datauser }) => {
         sticky="top"
         variant="light"
         className='color-nav'
+        style={{ paddingTop: 0, paddingBottom: 0 }}
 
       >
         <Container fluid>
-          <Navbar.Brand>
+          <Navbar.Brand
+            style={{ paddingTop: 0, paddingBottom: 0 }}
+          >
             <Nav.Link
               className="nameNav font-Geomanist"
               onClick={() => history.push('/')}
+              style={{ padding: 2 }}
+
             >
               <img
-                src={LogoPeque}
-                width="30"
-                height="30"
+                src={LogoAlargado}
+                // width="130"
+                height="50"
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
               />
-              &nbsp;
-              DigitalMente
+              {/* &nbsp;
+              DigitalMente */}
             </Nav.Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -116,7 +122,6 @@ const NavBarDashboard = ({ datauser }) => {
                 ))}
               </NavDropdown>
               <Nav.Link>
-                <FaUserCog />
                 {auth && <div>{auth?.authState?.userInfo?.nombre}</div>}
               </Nav.Link>
               <Button className=" btn-naranja ms-2 btn-sm mb-0 me-3" onClick={() => auth.logout()}>

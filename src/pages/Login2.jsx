@@ -14,7 +14,6 @@ import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
 import Link from '@mui/material/Link'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
@@ -22,17 +21,7 @@ import Grid from '@mui/material/Grid'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-
-const validationSchema = Yup.object({
-  email: Yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: Yup
-    .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required')
-})
+import LogoPeque from '../assets/img/logo_peque.svg'
 
 const Schema = Yup.object().shape({
   document: Yup
@@ -41,10 +30,6 @@ const Schema = Yup.object().shape({
     .required('Documento requerido')
     .positive('Debe ser un número positivo')
     .integer('No debe tener puntos'),
-  email: Yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
   password: Yup
     .string()
     .required('No se ha introducido una contraseña')
@@ -103,13 +88,12 @@ const Login2 = () => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Bienvenido
             </Typography>
             <Formik
               initialValues={{
-                document: '1234',
-                password: '',
-                email: 'preueada'
+                document: '',
+                password: ''
               }}
 
               validationSchema={Schema}
@@ -142,47 +126,53 @@ const Login2 = () => {
                   handleChange
                 }) => (
                   <Form onSubmit={handleSubmit} className="form-login">
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      id="document"
-                      label="Documento"
-                      name="document"
-                      autoComplete="document"
-                      autoFocus
-                      value={values.document}
-                      onChange={handleChange}
-                      error={touched.document && Boolean(errors.document)}
-                      helperText={touched.document && errors.document}
-                    />
-                    <TextField
-                      fullWidth
-                      id="email"
-                      name="email"
-                      label="Email"
-                      value={values.email}
-                      onChange={handleChange}
-                      error={touched.email && Boolean(errors.email)}
-                      helperText={touched.email && errors.email}
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      value={values.password}
-                      onChange={handleChange}
-                      error={touched.password && Boolean(errors.password)}
-                      helperText={touched.password && errors.password}
-                    />
-                    <FormControlLabel
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                        <FaUser
+                          style={{ color: '#000000', fontSize: '1.3rem', marginRight: '0.5rem', marginBottom: '6px' }}
+                        />
+                        <TextField
+                          color={touched.password && Boolean(errors.password) ? 'error' : 'primary'}
+                          variant="standard"
+                          required
+                          fullWidth
+                          id="document"
+                          label="Documento"
+                          name="document"
+                          autoComplete="document"
+                          value={values.document}
+                          onChange={handleChange}
+                          error={touched.document && Boolean(errors.document)}
+                          helperText={touched.document && errors.document}
+                        />
+                      </Box>
+                    </Box>
+                    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                        <FaLock
+                          style={{ color: '#000000', fontSize: '1.3rem', marginRight: '0.5rem', marginBottom: '6px' }}
+                        />
+                        <TextField
+                          color={touched.password && Boolean(errors.password) ? 'error' : 'primary'}
+                          variant="standard"
+                          required
+                          fullWidth
+                          autoComplete="password"
+                          name="password"
+                          label="Password"
+                          type="password"
+                          id="password"
+                          value={values.password}
+                          onChange={handleChange}
+                          error={touched.password && Boolean(errors.password)}
+                          helperText={touched.password && errors.password}
+                        />
+                      </Box>
+                    </Box>
+                    {/* <FormControlLabel
                       control={<Checkbox value="remember" color="primary" />}
                       label="Remember me"
-                    />
+                    /> */}
                     <Button
                       type="submit"
                       fullWidth
