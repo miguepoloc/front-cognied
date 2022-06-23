@@ -13,13 +13,14 @@ const CartaImagen = (userInfo) => {
             <span className="mask bg-gradient-dark"></span>
             <div className="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
               <Avatar
-                alt={userInfo.userInfo.nombre}
+                // alt={userInfo.userInfo.nombre}
+                alt="Hola"
                 src={LogoPeque}
                 sx={{ width: 80, height: 80 }}
               />
-              <h3 className="text-white font-weight-bolder mb-4 pt-2">{userInfo.userInfo.nombre}</h3>
-              <p className="text-white">{userInfo.userInfo.email}</p>
-              <p className="text-white">{userInfo.userInfo.programa}</p>
+              <h3 className="text-white font-weight-bolder mb-4 pt-2">"Hola"</h3>
+              <p className="text-white">"Hola"</p>
+              <p className="text-white">"Hola"</p>
               <a className="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="#">
                 <FaUserCog size="2em" />
                 Editar perfil

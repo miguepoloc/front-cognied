@@ -5,6 +5,26 @@ $color_card_misHabilidades: #ffc500a3;
 $color_card_ayuda: rgb(255 0 128 / 51%);;
 $color_card_moduloAutoevaluativo: rgb(235 235 235);
 
+.titleModulo{
+    font-size: 1rem;
+    line-height: 1.325;
+}
+
+
+.titleBienvenida{
+    font-size: 1rem;
+    line-height: 1.325;
+}
+
+.textBienvenida{
+    font-size: 1rem;
+    line-height: 1.325;
+}
+
+.imgGanso_Bienvenida{
+    width: 111px;
+}
+
 .card_relax{
     background-color: $color_card_relax;
   }
@@ -29,12 +49,12 @@ $color_card_moduloAutoevaluativo: rgb(235 235 235);
     background-color: $color_card_moduloAutoevaluativo ;
   }
 
-.img-misHabilidades_modulos_inicio{
-    width: 50% !important;
+.imgGanso-modulos{
+    width: 40% !important;
 }
 
 .img-moduloAutoEvaluativo{
-    width: 13% !important;
+    width: 120px !important;
 }
 
 .cards_modulos_inicio{
@@ -90,9 +110,26 @@ $color_card_moduloAutoevaluativo: rgb(235 235 235);
 }
 
 @media (max-width:768px) {
-    .img-misHabilidades_modulos_inicio{
-        width: 17% !important;
+    .titleBienvenida{
+        font-size: 0.8rem;
+        line-height: 1.325;
     }
+    
+    .textBienvenida{
+        font-size: 0.7rem;
+        line-height: 1.325;
+    }
+    .imgGanso_Bienvenida{
+        width: 70px;
+    }
+    .titleModulo{
+        font-size: 0.5rem;
+        line-height: 1.325;
+    }
+
+    .imgGanso-modulos{
+        width: 60px !important;
+    }   
 
     .icon_blocked_modulo_inicio{
         position: absolute;
@@ -113,6 +150,20 @@ $color_card_moduloAutoevaluativo: rgb(235 235 235);
     }
     
     
+}
+
+
+@media (min-width:992px) and (max-width:1200px){
+
+    .img-moduloAutoEvaluativo{
+        width: 26% !important;
+    }
+}
+
+@media (min-width:1400px){
+    .imgGanso-modulos{
+        width: 90px !important;
+    } 
 }
 
 

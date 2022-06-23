@@ -17,7 +17,7 @@ const Question = ({
         style={{ backgroundColor: color }}
       >
         <h5 className="my-0 font-weight-normal text-white  ">
-          {question.question}
+          {(index+1) + ". " + question.question}
         </h5>
       </div>
       <div className="border shadow w-100 card-body float-left pt-0">
@@ -35,6 +35,7 @@ const Question = ({
                 )}
                 id_answerDB = {answer.id_answer}
                 answerSelected= {answerSelected}
+                index = {index}
               />
             )
           })}

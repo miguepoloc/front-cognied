@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useContext } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { Loading } from './components/Loading'
 import { AuthContext } from './context/AuthContext'
-import ModuloAutodiagnostico from './pages/ModuloAutodiagnostico'
+import ModuloAutoevaluativo from './pages/ModuloAutoevaluativo'
 
 const LandingPage = lazy(() => import('./pages/LandingPage'))
 const Login = lazy(() => import('./pages/Login'))
@@ -87,20 +87,20 @@ const AppRoutes = () => (
           <Login2 />
         </LoginRoute>
 
-        <LoginRoute path="/recover">
+        <Route path="/recover">
           <EmailRecover />
-        </LoginRoute>
+        </Route>
 
-        <LoginRoute path="/reset">
+        <Route path="/reset">
           <PasswordReset />
-        </LoginRoute>
+        </Route>
 
         <AuthenticatedRoute path="/dashboard">
           <Dashboard />
         </AuthenticatedRoute>
 
-        <AuthenticatedRoute path="/autodiagnostico">
-          <ModuloAutodiagnostico />
+        <AuthenticatedRoute path="/autoevaluativo">
+          <ModuloAutoevaluativo />
         </AuthenticatedRoute>
 
         <AuthenticatedRoute exact path="/emocional:slug">
