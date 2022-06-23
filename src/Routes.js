@@ -95,9 +95,9 @@ const AppRoutes = () => (
           <PasswordReset />
         </LoginRoute>
 
-        <AuthenticatedRoute path="/dashboard">
+        <LoginRoute path="/dashboard">
           <Dashboard />
-        </AuthenticatedRoute>
+        </LoginRoute>
 
         <AuthenticatedRoute path="/autodiagnostico">
           <ModuloAutodiagnostico />

@@ -31,7 +31,7 @@ const Surveys = () => {
       const diffTime = Math.abs(fechaActual - fechaDeInsercion)
       const diffHours = Math.ceil(diffTime / (1000 * 60 * 60))
 
-      if (diffHours == 48) {
+      if (diffHours <= 48) {
         SendOkAlert('¡En horabuena!', "¡He podido recuperar tus respuestas! Intenta terminar de responder las preguntas. Si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente.", undefined, undefined)
         return datosJson
       } else {
@@ -40,6 +40,11 @@ const Surveys = () => {
       }
     }
     return null
+  }
+
+  const llenarEncuesta = ()=>{
+    surveys.selectAllOptionRandom()
+    surveys.markAllQuestionSelected()
   }
 
   useEffect(async () => {
@@ -70,7 +75,6 @@ const Surveys = () => {
   useEffect(
     function () {
       if (surveys.arrSurvey) {
-        // surveys.markAllQuestionSelected()
         moveToStart()
       }
     },
@@ -78,6 +82,7 @@ const Surveys = () => {
   )
 
   const moveToStart = () => {
+    //TODO: activar esto.
     // Scroll.scroll("startSurvey",true);
   }
   /**
@@ -228,6 +233,17 @@ const Surveys = () => {
                                     </button>
                                   </div>
                                 )}
+                            </div>
+                            <div className="d-flex justify-content-center mx-4">
+                              <div>
+                                <button
+                                  type="button"
+                                  className="btn btn-danger text-center"
+                                  onClick={() => llenarEncuesta()}
+                                >
+                                  Test: llenar encuesta
+                                </button>
+                              </div>
                             </div>
                           </>
 

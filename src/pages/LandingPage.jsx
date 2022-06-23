@@ -17,7 +17,8 @@ import '../assets/css/Landingpage.scss'
 import '../components/LandingPage/assets/css/LandingPage.scss'
 import { ModulosInicio } from '../components/Dashboard/modulos_inicio/ModulosInicio'
 import Surveys from '../components/Surveys/Surveys'
-
+import CartaImagen from '../components/Dashboard/CartaImagen'
+import CartaImagenFondo from '../components/Dashboard/CartaImagenFondo'
 function LandingPage() {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
@@ -54,7 +55,7 @@ function LandingPage() {
       <Unete section={secciones.JoinUp} />
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
-      <ModulosInicio />
+      {/* <ModulosInicio /> */}
       <Surveys/>
     </>
   )
