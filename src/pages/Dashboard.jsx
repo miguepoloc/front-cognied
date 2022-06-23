@@ -15,6 +15,7 @@ import { AuthContext } from '../context/AuthContext'
 import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import '../assets/css/soft-ui-dashboard.scss'
 import { ModulosInicio } from '../components/Dashboard/modulos_inicio/ModulosInicio'
+import { SeccionInicial } from '../components/Dashboard/mod_estres/SeccionInicial'
 
 const Dashboard = () => {
   const { authState } = useContext(AuthContext)
@@ -71,6 +72,9 @@ const Dashboard = () => {
             <div className="row mt-4">
               <CartaBarras />
               <CartaGrafica />
+            </div>
+            <div className="row mt-4">
+              <SeccionInicial />
             </div>
             {/* <div className="row">
               <MiniCarta />
