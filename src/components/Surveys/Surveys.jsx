@@ -1,20 +1,27 @@
-import React, { useEffect, useState, useRef } from 'react'
+/* eslint-disable new-cap */
+/* eslint-disable camelcase */
+import React, { useContext, useEffect, useState } from 'react'
 import { Surveys as model_surveys } from './assets/js/Surveys'
 import '../../assets/css/Surveys.scss'
 import Survey from './Survey'
 import ganso_pensando from '../../assets/img/ganso/ganso_pensando.png'
-import Scroll from '../../helpers/helperScroll'
 import { ErrorAlert, SendAlert, SendOkAlert, SendBadAlert } from '../../helpers/helper_Swal_Alerts'
 import { GET_vista_pregunta_respuesta as getSurveys, POST_usuario_encuesta as SendSurveys } from '../../helpers/helperApi'
 import { ErrorGanso } from '../ErrorGanso'
 import { Loading } from '../Loading'
 import { Resultados } from './Resultados'
+import { AuthContext } from '../../context/AuthContext'
 
 const errorFaltaPorResponder = () => {
   ErrorAlert('Ups...', 'Parece que alguna pregunta de esta encuesta ha quedado sin responder. por favor, asegurate de que <b> todas </b> las preguntas tengan respuesta')
 }
 
 const Surveys = () => {
+  const { authState } = useContext(AuthContext)
+
+  const { userInfo } = authState
+  console.log(userInfo)
+
   const [surveys, setSurveys] = useState(new model_surveys(null, false))
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -31,11 +38,11 @@ const Surveys = () => {
       const diffTime = Math.abs(fechaActual - fechaDeInsercion)
       const diffHours = Math.ceil(diffTime / (1000 * 60 * 60))
 
-      if (diffHours == 48) {
-        SendOkAlert('¡En horabuena!', "¡He podido recuperar tus respuestas! Intenta terminar de responder las preguntas. Si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente.", undefined, undefined)
+      if (diffHours === 48) {
+        SendOkAlert('¡En horabuena!', '¡He podido recuperar tus respuestas! Intenta terminar de responder las preguntas. Si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente.', undefined, undefined)
         return datosJson
       } else {
-        SendBadAlert("Ups...","¡Lo siento! Han pasado mas de 48 horas desde la ultima vez que intentaste responder las preguntas. Inténtalo nuevamente.<br/> Recuerda que si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente",undefined,undefined)
+        SendBadAlert('Ups...', '¡Lo siento! Han pasado mas de 48 horas desde la ultima vez que intentaste responder las preguntas. Inténtalo nuevamente.<br/> Recuerda que si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente', undefined, undefined)
         window.localStorage.removeItem('data_survey_local')
       }
     }
@@ -130,9 +137,9 @@ const Surveys = () => {
   }
 
   const handleButtonSendSurvey = async () => {
-    //TODO: poner el id y sexo del usuario.
-    const userId = Math.floor(Math.random() * (29 - 4) + 4)
-    const sexo = "m";
+    const userId = userInfo.id
+
+    const sexo = userInfo.sexo.id === 1 ? 'm' : 'f'
     /* Antes de hacer la peticion, rectifica que todas las preguntas
         de las encuestas tengan respuesta.
       */
@@ -141,7 +148,7 @@ const Surveys = () => {
       SendAlert(undefined, 'Tus respuestas estan siendo enviadas y procesadas <b>Espera un momento</b>')
       // Debería esperar una respuesta de todo ok., si la respuesta es negativa el boton vuelve a quedar
       const send = await SendSurveys(buildDataToSend(userId))
-      
+
       if (send) {
         // TODO: Redireccionar a un lugar....
         console.log(surveys.jsonSurvey)
@@ -167,14 +174,10 @@ const Surveys = () => {
       <section id="startSurvey" className="container">
         {
           loading
-            ? (
-              <Loading />
-            )
+            ? (<Loading />)
             : (<>
               {error
-                ? (
-                  <ErrorGanso text={'Uhm... Parece que ha ocurrido un error al obtener las pruebas diagnósticas.'} />
-                )
+                ? (<ErrorGanso text={'Uhm... Parece que ha ocurrido un error al obtener las pruebas diagnósticas.'} />)
                 : (<>
 
                   {
@@ -182,6 +185,7 @@ const Surveys = () => {
                       ? (<Resultados objResultados={showResults} />)
                       : surveys.arrSurvey
                         ? (
+
                           <>
                             <Survey
                               survey={surveys.jsonSurvey[surveys.indiceActual]}
@@ -204,42 +208,35 @@ const Surveys = () => {
                                 </p>
                               </div>
                               {surveys.indiceActual < surveys.IndiceMaximo
-                                ? (
-                                  <div id="nextSurvey">
-                                    <button
-                                      type="button"
-                                      className="btn btn-outline-primary"
-                                      onClick={handeButtonNavSurvey}
-                                    >
-                                      Siguiente
-                                    </button>
-                                  </div>
-                                )
-                                : (
-                                  <div id="SendSurvey">
-                                    <button
-                                      id="btnSendSurvey"
-                                      type="button"
-                                      className="btn btn-info text-white"
-                                      onClick={handleButtonSendSurvey}
-                                      disabled={isBtnSendDisabled}
-                                    >
-                                      Enviar
-                                    </button>
-                                  </div>
-                                )}
+                                ? (<div id="nextSurvey">
+                                  <button
+                                    type="button"
+                                    className="btn btn-outline-primary"
+                                    onClick={handeButtonNavSurvey}
+                                  >
+                                    Siguiente
+                                  </button>
+                                </div>)
+                                : (<div id="SendSurvey">
+                                  <button
+                                    id="btnSendSurvey"
+                                    type="button"
+                                    className="btn btn-info text-white"
+                                    onClick={handleButtonSendSurvey}
+                                    disabled={isBtnSendDisabled}
+                                  >
+                                    Enviar
+                                  </button>
+                                </div>)}
                             </div>
-                          </>
-
-                        )
+                          </>)
                         : (
                           <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: '80vh' }}>
                             <div className="d-flex flex-column justify-content-center align-items-center" >
                               <img src={ganso_pensando} width="307" height="307"></img>
                               <h5 className='my-4 text-center'>Uhm... Parece que no tengo pruebas diagnósticas.</h5>
                             </div>
-                          </div>
-                        )}
+                          </div>)}
 
                 </>)}
             </>)

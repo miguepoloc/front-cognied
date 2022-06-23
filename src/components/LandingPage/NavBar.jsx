@@ -4,10 +4,7 @@ import NavBarElement from './NavBarElement'
 import './assets/css/NavBar.scss'
 import { AuthContext } from '../../context/AuthContext'
 import { useHistory } from 'react-router-dom'
-import LogoPeque from '../../assets/img/logo_peque.svg'
 import LogoAlargado from '../../assets/img/LogoAlargado.svg'
-
-// import Scroll from "../assets/js/scrollTemp"
 
 const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
   useEffect(() => {
@@ -38,13 +35,10 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
             >
               <img
                 src={LogoAlargado}
-                // width="130"
                 height="50"
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
               />
-              {/* &nbsp;
-              DigitalMente */}
             </Nav.Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
