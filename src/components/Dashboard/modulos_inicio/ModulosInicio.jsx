@@ -16,7 +16,7 @@ export const ModulosInicio = () => {
       moduloClass: 'card_moduloAutoevaluativo',
       text: 'Módulo autoevaluativo',
       bloqueado: false,
-      href: '/autodiagnostico'
+      href: '/autoevaluativo'
     },
     otros_modulos: [
       {
@@ -67,7 +67,7 @@ export const ModulosInicio = () => {
         <div className="row align-items-md-stretch justify-content-center mt-2 ">
           {/* <Modulos col={"col-6"} quitarIconoBloqueo={true} classImg={"imgAyuda_modulos_inicio"} img={imgGanso.stop_250x200} text={"¿Necesitas ayuda?"} bloqueado={false} href={"ayuda.com"} moduloClass={"card_ayuda"} /> */}
           <CartaImagen />
-          
+
           <Modulos col={'col-12 col-lg-6'}
             img={modulos.modulo_alternativo.img}
             text={modulos.modulo_alternativo.text}

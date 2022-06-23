@@ -16,7 +16,7 @@ const CartaSeguimiento = ({ datauser }) => {
   const pHabilidades = '0'
   return (
     <>
-      <div className="col-lg-5 mb-md-0 mb-4">
+      <div className="col mb-md-0 mb-4">
         <div className="card">
           <div className="card-header text-center pb-0">
             <h3>Progreso de módulos</h3>

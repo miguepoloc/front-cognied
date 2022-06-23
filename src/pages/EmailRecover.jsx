@@ -4,68 +4,36 @@ import Axios from 'axios'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import '../assets/css/Login.scss'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
-import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import Typography from '@mui/material/Typography'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import Logo from '../assets/img/logo9.svg'
+import Ola from '../assets/img/wave.svg'
+import Cel from '../assets/img/pato.svg'
 
 const Schema = Yup.object().shape({
   email: Yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required')
+    .string('Ingresa tu correo')
+    .email('Ingresa un correo valido')
+    .required('Email es requerido')
 })
-
-const Copyright = (props) => {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
-
-const theme = createTheme()
 
 const EmailRecover = () => {
   const history = useHistory()
 
   const [messLogin, setMessLogin] = useState('')
+  const [carga, setCarga] = useState('Enviar Correo')
 
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+    <>
+      <img src={Ola} id="Ola" alt="" className="wave" />
+      <div className="container-login">
+        <div className="img-login">
+          <img src={Cel} id="Cel" alt="" />
+        </div>
+        <Grid item xs={12} sm={8} md={5} elevation={6}>
           <Box
             sx={{
               my: 8,
@@ -75,12 +43,16 @@ const EmailRecover = () => {
               alignItems: 'center'
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Recuperacion de contraseña
-            </Typography>
+            <img
+              src={Logo}
+              style={{ height: '150px' }}
+              alt="Logo" />
+
+            <h2
+              style={{ color: '#00659D', textAlign: 'center' }}
+            >
+              Recuperación de contraseña
+            </h2>
             <Formik
               initialValues={{
                 email: ''
@@ -89,19 +61,20 @@ const EmailRecover = () => {
               validationSchema={Schema}
 
               onSubmit={async (values) => {
+                setCarga('Enviando correo...')
                 try {
                   const respuesta = await Axios({
                     method: 'post',
                     url: `${process.env.REACT_APP_API_URL}/accounts/recover`,
                     data: values
                   })
-
                   const { data } = respuesta
+                  alert(data.message)
                   console.log('🚀 ~ file: EmailRecover.jsx ~ line 106 ~ onSubmit={ ~ data', data)
                   history.push('/dashboard')
-                  alert(JSON.stringify(values, null, 2))
                 } catch (error) {
-                  setMessLogin({ data: { message: error.response.data.errors } })
+                  console.log(error.response.data.message)
+                  setMessLogin({ data: { message: error.response.data.message } })
                 }
               }}
             >
@@ -116,15 +89,19 @@ const EmailRecover = () => {
                 }) => (
                   <Form onSubmit={handleSubmit} className="form-login">
                     <Card>
-                      <CardContent>Ingresa el correo que registraste para recuperar tu contraseña.
-                        Si es correcto se enviara un correo con la informacion necesaria para hacer el cambio de la contraseña</CardContent>
+                      <CardContent
+                        style={{ textAlign: 'justify' }}
+                      >
+                        Ingresa el correo que registraste para recuperar o cambiar tu contraseña.
+                        Si es correcto se enviara un correo con la informacion necesaria para hacer el cambio de la contraseña
+                      </CardContent>
                     </Card>
                     <TextField
                       margin="normal"
                       required
                       fullWidth
                       id="email"
-                      label="email"
+                      label="Correo"
                       name="email"
                       autoComplete="email"
                       autoFocus
@@ -133,15 +110,19 @@ const EmailRecover = () => {
                       error={touched.email && Boolean(errors.email)}
                       helperText={touched.email && errors.email}
                     />
-                    <Button
+                    {messLogin?.data && (
+                      <div className="input-feedback">
+                        {messLogin?.data?.message}
+                      </div>
+                    )}
+                    <button
                       type="submit"
-                      fullWidth
                       variant="contained"
                       sx={{ mt: 3, mb: 2 }}
+                      className="btn-login btn-primary btn-block"
                     >
-                      Enviar Correo
-                    </Button>
-                    <Copyright sx={{ mt: 5 }} />
+                      {carga}
+                    </button>
                   </Form>
                 )
               }
@@ -149,8 +130,8 @@ const EmailRecover = () => {
             </Formik>
           </Box>
         </Grid>
-      </Grid>
-    </ThemeProvider>
+      </div>
+    </>
   )
 }
 

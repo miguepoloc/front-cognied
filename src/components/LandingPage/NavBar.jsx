@@ -5,82 +5,88 @@ import './assets/css/NavBar.scss'
 import { AuthContext } from '../../context/AuthContext'
 import { useHistory } from 'react-router-dom'
 import LogoPeque from '../../assets/img/logo_peque.svg'
+import LogoAlargado from '../../assets/img/LogoAlargado.svg'
 
 // import Scroll from "../assets/js/scrollTemp"
 
 const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
-    useEffect(() => {
-        scroll.eventScroll()
-    })
-    const auth = useContext(AuthContext)
-    const history = useHistory()
-    return (
-        <>
-            <Navbar
-                collapseOnSelect
-                expand="xxl"
-                fixed="top"
-                bg="transparent"
-                id="navBar"
+  useEffect(() => {
+    scroll.eventScroll()
+  })
+  const auth = useContext(AuthContext)
+  const history = useHistory()
+  return (
+    <>
+      <Navbar
+        collapseOnSelect
+        expand="xxl"
+        fixed="top"
+        bg="transparent"
+        id="navBar"
+
+      >
+        <Container fluid>
+          <Navbar.Brand
+            style={{ paddingTop: 0, paddingBottom: 0 }}
+
+          >
+            <Nav.Link
+              className="nameNav font-Geomanist"
+              onClick={() => scroll.scroll(PrimeraSeccion.id)}
+              style={{ padding: 2 }}
 
             >
-                <Container fluid>
-                    <Navbar.Brand>
-                        <Nav.Link
-                            className="nameNav font-Geomanist"
-                            onClick={() => scroll.scroll(PrimeraSeccion.id)}
-                        >
-                            <img
-                                src={LogoPeque}
-                                width="30"
-                                height="30"
-                                className="d-inline-block align-top"
-                                alt="React Bootstrap logo"
-                            />
-                            &nbsp;
-                            DigitalMente
-                        </Nav.Link>
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <img
+                src={LogoAlargado}
+                // width="130"
+                height="50"
+                className="d-inline-block align-top"
+                alt="React Bootstrap logo"
+              />
+              {/* &nbsp;
+              DigitalMente */}
+            </Nav.Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-                    <Navbar.Collapse
-                        className="justify-content-end"
-                        id="responsive-navbar-nav"
-                    >
-                        <Nav className="text-center">
-                            {
-                                /*
-                                Recorro el json. la idea es obtener las keys para poder acceder el value del json y pasarlo al elemento de navegacion.
-                                */
-                                Object.keys(Secciones).map((Seccion) => {
-                                    return (
-                                        <NavBarElement
-                                            key={Seccion}
-                                            Seccion={Secciones[Seccion]}
-                                            Scroll={(id) => {
-                                                console.log(scroll)
-                                                scroll.scroll(id)
-                                            }}
+          <Navbar.Collapse
+            className="justify-content-end"
+            id="responsive-navbar-nav"
+          >
+            <Nav className="text-center">
+              {
+                /*
+                Recorro el json. la idea es obtener las keys para poder acceder el value del json y pasarlo al elemento de navegacion.
+                */
+                Object.keys(Secciones).map((Seccion) => {
+                  return (
+                    <NavBarElement
+                      key={Seccion}
+                      Seccion={Secciones[Seccion]}
+                      Scroll={(id) => {
+                        console.log(scroll)
+                        scroll.scroll(id)
+                      }}
 
-                                        />
-                                    )
-                                })
-                            }
-                            {auth && <div>{auth?.authState?.userInfo?.document}</div>}
-                            {auth.isAuthenticated()
-                                ? <Button className=" btn-naranja ms-2 me-2" onClick={() => auth.logout()}>
-                                    Cerrar sesion
-                                </Button>
-                                : <Button className=" btn-naranja ms-2 me-2" onClick={() => history.push('/login')}>
-                                    Iniciar sesion
-                                </Button>
-                            }
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </>
-    )
+                    />
+                  )
+                })
+              }
+              {auth && <div>{auth?.authState?.userInfo?.nombre}</div>}
+              {auth.isAuthenticated()
+                ? <Button className=" btn-naranja ms-2 me-2" onClick={() => history.push('/dashboard')}>
+                  Dashboard
+                </Button>
+                : <Button className=" btn-naranja ms-2 me-2" onClick={() => history.push('/login')}>
+                  Iniciar sesion
+                </Button>
+              }
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
+  )
 }
 
 export default NavBar

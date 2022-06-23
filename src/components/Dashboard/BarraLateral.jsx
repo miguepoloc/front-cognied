@@ -63,7 +63,7 @@ const BarraLateral = ({ datauser }) => {
 
                     <ItemCapsula
                       clase={splitLocation[1] === 'diagnostico' ? 'active nav-link' : 'nav-link'}
-                      link={'/autodiagnostico'}
+                      link={'/autoevaluativo'}
                       titulo={'Encuesta'}
                       habilitado={!(datauser.diagnostico >= 1)}
                       imgsvg={!(datauser.diagnostico >= 1)

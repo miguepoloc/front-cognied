@@ -5,10 +5,10 @@ const CartaImagen = () => {
   return (
     <>
       <div className="col-12 col-lg-6 mt-2 px-1">
-        <div className="card items_modulos_inicio" style={{backgroundColor: "antiquewhite"}}>
+        <div className="card items_modulos_inicio" style={{ backgroundColor: 'antiquewhite' }}>
           <div className="card-body p-3">
             <div className="row justify-content-center align-items-center">
-              
+
               <div className=" col-4 col-sm-3 text-center ">
                 <img className="imgGanso_Bienvenida"
                   src={imgGanso.celular} alt="ganso" />

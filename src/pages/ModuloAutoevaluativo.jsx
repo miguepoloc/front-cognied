@@ -12,7 +12,7 @@ import FooterDashboard from '../components/Dashboard/FooterDashboard'
 import { AuthContext } from '../context/AuthContext'
 import Surveys from '../components/Surveys/Surveys'
 
-const ModuloAutodiagnostico = () => {
+const ModuloAutoevaluativo = () => {
   // Trae los datos del usuario
   const { authState } = useContext(AuthContext)
   // Se guardan en userInfo
@@ -67,4 +67,4 @@ const ModuloAutodiagnostico = () => {
   )
 }
 
-export default ModuloAutodiagnostico
+export default ModuloAutoevaluativo

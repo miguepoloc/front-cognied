@@ -2,15 +2,14 @@ import React, { lazy, Suspense, useContext } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { Loading } from './components/Loading'
 import { AuthContext } from './context/AuthContext'
-import ModuloAutodiagnostico from './pages/ModuloAutodiagnostico'
+import ModuloAutoevaluativo from './pages/ModuloAutoevaluativo'
 
 const LandingPage = lazy(() => import('./pages/LandingPage'))
-const Login = lazy(() => import('./pages/Login'))
 const PageAuth = lazy(() => import('./pages/pageAuth'))
 const PageAdmin = lazy(() => import('./pages/pageAdmin'))
 const PageNotFound = lazy(() => import('./pages/pageNotFound'))
 const SignUp = lazy(() => import('./pages/SignUp'))
-const Login2 = lazy(() => import('./pages/Login2'))
+const Login = lazy(() => import('./pages/Login'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const ModuloEmocional = lazy(() => import('./pages/ModuloEmocional'))
 const EmailRecover = lazy(() => import('./pages/EmailRecover'))
@@ -83,24 +82,20 @@ const AppRoutes = () => (
           <SignUp />
         </LoginRoute>
 
-        <LoginRoute path="/login2">
-          <Login2 />
-        </LoginRoute>
-
-        <LoginRoute path="/recover">
+        <Route path="/recover">
           <EmailRecover />
-        </LoginRoute>
+        </Route>
 
-        <LoginRoute path="/reset">
+        <Route path="/reset">
           <PasswordReset />
-        </LoginRoute>
+        </Route>
 
         <LoginRoute path="/dashboard">
           <Dashboard />
         </LoginRoute>
 
-        <AuthenticatedRoute path="/autodiagnostico">
-          <ModuloAutodiagnostico />
+        <AuthenticatedRoute path="/autoevaluativo">
+          <ModuloAutoevaluativo />
         </AuthenticatedRoute>
 
         <AuthenticatedRoute exact path="/emocional:slug">

@@ -2,37 +2,15 @@ import React, { useContext, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { useHistory, useLocation } from 'react-router-dom'
 import Axios from 'axios'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import '../assets/css/Login.scss'
 import Cel from '../assets/img/pato.svg'
 import Ola from '../assets/img/wave.svg'
 import Logo from '../assets/img/logo9.svg'
-import { FaUser, FaLock } from 'react-icons/fa'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
-import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import Typography from '@mui/material/Typography'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-
-const validationSchema = Yup.object({
-  email: Yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: Yup
-    .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required')
-})
 
 const Schema = Yup.object().shape({
   password: Yup
@@ -40,24 +18,9 @@ const Schema = Yup.object().shape({
     .required('No se ha introducido una contraseña'),
   password_confirm: Yup
     .string()
-    .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
+    .oneOf([Yup.ref('password'), null], 'Las contraseñas deben ser iguales')
 
 })
-
-const Copyright = (props) => {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
-
-const theme = createTheme()
 
 const PasswordReset = () => {
   const history = useHistory()
@@ -69,24 +32,13 @@ const PasswordReset = () => {
   const [messLogin, setMessLogin] = useState('')
 
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+    <>
+      <img src={Ola} id="Ola" alt="" className="wave" />
+      <div className="container-login">
+        <div className="img-login">
+          <img src={Cel} id="Cel" alt="" />
+        </div>
+        <Grid item xs={12} sm={8} md={5} elevation={6}>
           <Box
             sx={{
               my: 8,
@@ -96,12 +48,16 @@ const PasswordReset = () => {
               alignItems: 'center'
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Ingresa tu nueva Contraseña
-            </Typography>
+            <img
+              src={Logo}
+              style={{ height: '150px' }}
+              alt="Logo" />
+
+            <h2
+              style={{ color: '#00659D', textAlign: 'center' }}
+            >
+              Ingresa tu nueva contraseña
+            </h2>
             <Formik
               initialValues={{
                 password: '',
@@ -144,7 +100,7 @@ const PasswordReset = () => {
                       required
                       fullWidth
                       name="password"
-                      label="Password"
+                      label="Contraseña"
                       type="password"
                       id="password"
                       value={values.password}
@@ -157,7 +113,7 @@ const PasswordReset = () => {
                       required
                       fullWidth
                       name="password_confirm"
-                      label="Password Confirm"
+                      label="Confirmar Contraseña"
                       type="password"
                       id="password_confirm"
                       value={values.password_confirm}
@@ -165,14 +121,14 @@ const PasswordReset = () => {
                       error={touched.password_confirm && Boolean(errors.password_confirm)}
                       helperText={touched.password_confirm && errors.password_confirm}
                     />
-                    <Button
+                    <button
                       type="submit"
-                      fullWidth
                       variant="contained"
                       sx={{ mt: 3, mb: 2 }}
-                    > Cambiar contraseña
-                    </Button>
-                    <Copyright sx={{ mt: 5 }} />
+                      className="btn-login btn-primary btn-block"
+                    >
+                      Cambiar contraseña
+                    </button>
                   </Form>
                 )
               }
@@ -180,8 +136,8 @@ const PasswordReset = () => {
             </Formik>
           </Box>
         </Grid>
-      </Grid>
-    </ThemeProvider>
+      </div>
+    </>
   )
 }
 
