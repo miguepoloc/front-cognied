@@ -5,12 +5,11 @@ import { AuthContext } from './context/AuthContext'
 import ModuloAutoevaluativo from './pages/ModuloAutoevaluativo'
 
 const LandingPage = lazy(() => import('./pages/LandingPage'))
-const Login = lazy(() => import('./pages/Login'))
 const PageAuth = lazy(() => import('./pages/pageAuth'))
 const PageAdmin = lazy(() => import('./pages/pageAdmin'))
 const PageNotFound = lazy(() => import('./pages/pageNotFound'))
 const SignUp = lazy(() => import('./pages/SignUp'))
-const Login2 = lazy(() => import('./pages/Login2'))
+const Login = lazy(() => import('./pages/Login'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const ModuloEmocional = lazy(() => import('./pages/ModuloEmocional'))
 const EmailRecover = lazy(() => import('./pages/EmailRecover'))
@@ -81,10 +80,6 @@ const AppRoutes = () => (
 
         <LoginRoute path="/sign-up">
           <SignUp />
-        </LoginRoute>
-
-        <LoginRoute path="/login2">
-          <Login2 />
         </LoginRoute>
 
         <Route path="/recover">
