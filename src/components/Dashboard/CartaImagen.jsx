@@ -4,23 +4,18 @@ import { imgGanso } from '../../helpers/helper_imagen_ganso'
 const CartaImagen = () => {
   return (
     <>
-      <div className="col-12 col-lg-6 mt-2 px-1">
-        <div className="card items_modulos_inicio" style={{ backgroundColor: 'antiquewhite' }}>
-          <div className="card-body p-3">
+      <div className="col-6 col-lg-6 mt-2 px-1">
+        <div className="card items_modulos_inicio" style={{ backgroundColor: "#9FE5ED" }}>
+          <div className="card-body p-1 p-md-3">
             <div className="row justify-content-center align-items-center">
 
-              <div className=" col-4 col-sm-3 text-center ">
+              <div className=" col-4   col-lg-3 text-center ">
                 <img className="imgGanso_Bienvenida"
-                  src={imgGanso.celular} alt="ganso" />
+                  src={imgGanso.explicando} alt="ganso" />
               </div>
-              <div className="col-12 col-lg-9">
+              <div className="col-7 col-lg-9">
                 <div className="d-flex flex-column pt-2 justify-content-center">
-                  <h5 className=" titleBienvenida font-Geomanist">Bienvenido a tu Dashboard</h5>
-                  <p className='textBienvenida'>Este es un espacio para manejar tu
-                    información, registrar y evaluar lo que
-                    has realizado y seguir practicando los
-                    puntos importantes en los que
-                    DigitalMente te quiere apoyar</p>
+                  <p className='text-break titleModulo font-Geomanist ' >Estudiante, sigue el camino para fortalecer tu bienestar en estos módulos</p>
                 </div>
               </div>
             </div>

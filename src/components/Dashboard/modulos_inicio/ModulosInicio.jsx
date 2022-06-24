@@ -68,7 +68,7 @@ export const ModulosInicio = () => {
           {/* <Modulos col={"col-6"} quitarIconoBloqueo={true} classImg={"imgAyuda_modulos_inicio"} img={imgGanso.stop_250x200} text={"¿Necesitas ayuda?"} bloqueado={false} href={"ayuda.com"} moduloClass={"card_ayuda"} /> */}
           <CartaImagen />
 
-          <Modulos col={'col-12 col-lg-6'}
+          <Modulos col={'col-6 col-lg-6'}
             img={modulos.modulo_alternativo.img}
             text={modulos.modulo_alternativo.text}
             bloqueado={modulos.modulo_alternativo.bloqueado}
