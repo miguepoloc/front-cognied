@@ -25,6 +25,11 @@ $color_card_moduloAutoevaluativo: rgb(235 235 235);
     width: 117px;
 }
 
+
+.imgGanso_caminoFortaleza{
+    width: 117px;
+}
+
 .card_relax{
     background-color: $color_card_relax;
   }
@@ -122,6 +127,9 @@ $color_card_moduloAutoevaluativo: rgb(235 235 235);
     .imgGanso_Bienvenida{
         width: 50px;
     }
+    .imgGanso_caminoFortaleza{
+        width: 70px;
+    }
     .titleModulo{
         font-size: 0.5rem;
         line-height: 1.325;
@@ -141,7 +149,7 @@ $color_card_moduloAutoevaluativo: rgb(235 235 235);
     }
 
     .img-moduloAutoEvaluativo{
-        width: 41px !important;
+        width:58px !important;
     }
 
     .imgAyuda_modulos_inicio{
