@@ -21,8 +21,8 @@ const Surveys = () => {
 
   const { userInfo } = authState
 
-  const id_user = 17;
-  const id_sexo_user = 1;
+  const id_user = userInfo.id;
+  const id_sexo_user = userInfo.sexo.id === 1 ? 'm' : 'f';
 
   const [surveys, setSurveys] = useState(new model_surveys(null,id_user,id_sexo_user,false))
   const [loading, setLoading] = useState(true)
@@ -110,12 +110,12 @@ const Surveys = () => {
     }
   }
 
-  const buildDataToSend = (userId) => {
+  const buildDataToSend = () => {
     const sizeDataSurveys = surveys.getLengthJsonSurvey()
-    const dataSurveys = surveys.generateJsonToSend(userId)
+    const dataSurveys = surveys.generateJsonToSend()
     const arrDataToSend = []
     for (let i = 0; i < sizeDataSurveys; i++) {
-      arrDataToSend.push(createDataToSend(dataSurveys, userId, i))
+      arrDataToSend.push(createDataToSend(dataSurveys, i))
     }
     return arrDataToSend
   }
@@ -127,11 +127,11 @@ const Surveys = () => {
     * @param {Number} index
     * @returns JSON
     */
-  const createDataToSend = (answers, userId, index) => {
+  const createDataToSend = (answers, index) => {
     const key = Object.keys(answers)[index]
 
     const row = {
-      id_usuario: '' + userId,
+      id_usuario: '' + id_user,
       id_encuesta: key,
       respuestas: answers[key]
     }
@@ -139,9 +139,6 @@ const Surveys = () => {
   }
 
   const handleButtonSendSurvey = async () => {
-    const userId = userInfo.id
-
-    const sexo = userInfo.sexo.id === 1 ? 'm' : 'f'
     /* Antes de hacer la peticion, rectifica que todas las preguntas
         de las encuestas tengan respuesta.
       */

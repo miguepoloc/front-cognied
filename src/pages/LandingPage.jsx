@@ -13,7 +13,6 @@ import { AboutGanso } from '../components/LandingPage/AboutGanso'
 import { AboutButtonFixed } from '../components/LandingPage/AboutButtonFixed'
 import { AboutEstrategy } from '../components/LandingPage/AboutEstrategy'
 import { Unete } from '../components/LandingPage/JoinUp'
-
 import '../assets/css/Landingpage.scss'
 import '../components/LandingPage/assets/css/LandingPage.scss'
 function LandingPage() {

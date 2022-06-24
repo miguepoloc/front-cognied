@@ -1,21 +1,22 @@
 const { Question } = require('./Question');
 const { Survey } = require('./Survey')
+const { SurveysLocalStorage } = require('./Surveys_localStorage')
 class Surveys {
-  constructor(arrSurvey, build = true) {
+
+static id_user;
+
+  constructor(arrSurvey, id_user, id_sexo ,build = true) {
     this.arrSurvey = arrSurvey;
     this.jsonSurvey = [];
     build ? this.buildSurveys() : null;
     this.indiceActual = 0;
     this.IndiceMaximo = this.jsonSurvey.length - 1;
+    this.id_user = id_user;
+    this.id_sexo = id_sexo;
   }
 
-
-  guardarEnLocalStorage = () => {
-    let datos = {
-      fechaDeInsercion: Date.now(),
-      datosSurveys: this.generateJsonToSend()
-    }
-    localStorage.setItem('data_survey_local', JSON.stringify(datos));
+  guardarEnLocalStorage() {
+    SurveysLocalStorage.guardarEnLocalStorage(this.id_user,this.generateJsonToSend())
   }
 
 
@@ -283,7 +284,8 @@ class Surveys {
       .reduce((accumulator, question) => accumulator + question.getObjSelected().value, 0)
   }
 
-  results(sexo) {
+  results() {
+    //TODO: traer el sexo desde el constructor...
     let objJson = {}
     let idTest = {
       ansiedad: 3,
@@ -407,11 +409,11 @@ class Surveys {
    * @param {Number} id_usuario 
    * @returns JSON
    */
-  generateJsonToSend(id_usuario) {
+  generateJsonToSend() {
     //Una vez todo se haya respondido
     //Id usuario
     let json = {};
-    json["id_usuario"] = id_usuario;
+    json["id_usuario"] = this.id_user;
     this.jsonSurvey.map((survey) => {
       json[survey.id_survey] = [];
       survey.questions.map((question) => {
