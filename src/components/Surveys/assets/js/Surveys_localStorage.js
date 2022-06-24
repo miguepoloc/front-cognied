@@ -45,6 +45,7 @@ export class SurveysLocalStorage {
                 }
             }
         }
+
         throw "No se encontró información";
     }
 
@@ -68,10 +69,9 @@ export class SurveysLocalStorage {
             id_user: id_user
         }
         let datosLocalStorage = this.leerLocalStorage();
-        console.log(datosLocalStorage)
         if (!datosLocalStorage) {
             datosLocalStorage = []
-            datosLocalStorage.unshift(datos); //Lo agrego al inicio del array para hacer más rápida su busqueda.
+            datosLocalStorage.push(datos); //Lo agrego al inicio del array para hacer más rápida su busqueda.
         }
         else {
             let idx = this.buscarRespuestasUsuario(datosLocalStorage, id_user);
