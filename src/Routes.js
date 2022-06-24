@@ -19,7 +19,7 @@ const LoadingFallback = () => <Loading />
 
 const AuthenticatedRoute = ({ children, ...rest }) => {
   const auth = useContext(AuthContext)
-  console.log(auth.isAuthenticated())
+  // console.log(auth.isAuthenticated())
   return (
     <Route
       {...rest}
@@ -90,9 +90,9 @@ const AppRoutes = () => (
           <PasswordReset />
         </Route>
 
-        <LoginRoute path="/dashboard">
+        <AuthenticatedRoute path="/dashboard">
           <Dashboard />
-        </LoginRoute>
+        </AuthenticatedRoute>
 
         <AuthenticatedRoute path="/autoevaluativo">
           <ModuloAutoevaluativo />

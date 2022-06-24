@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Axios from 'axios'
@@ -12,6 +13,7 @@ import Grid from '@mui/material/Grid'
 import Logo from '../assets/img/logo9.svg'
 import Ola from '../assets/img/wave.svg'
 import Cel from '../assets/img/pato.svg'
+import { Correct_Alert } from '../helpers/helper_Swal_Alerts'
 
 const Schema = Yup.object().shape({
   email: Yup
@@ -69,7 +71,7 @@ const EmailRecover = () => {
                     data: values
                   })
                   const { data } = respuesta
-                  alert(data.message)
+                  Correct_Alert(undefined, data.message)
                   console.log('🚀 ~ file: EmailRecover.jsx ~ line 106 ~ onSubmit={ ~ data', data)
                   history.push('/dashboard')
                 } catch (error) {

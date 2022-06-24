@@ -234,17 +234,19 @@ const Surveys = () => {
                                   </button>
                                 </div>)}
                             </div>
-                            <div className="d-flex justify-content-center mx-4">
-                              <div>
-                                <button
-                                  type="button"
-                                  className="btn btn-danger text-center"
-                                  onClick={() => llenarEncuesta()}
-                                >
-                                  Test: llenar encuesta
-                                </button>
+                            {userInfo.is_staff
+                              ? <div className="d-flex justify-content-center mx-4">
+                                <div>
+                                  <button
+                                    type="button"
+                                    className="btn btn-danger text-center"
+                                    onClick={() => llenarEncuesta()}
+                                  >
+                                    Test: llenar encuesta
+                                  </button>
+                                </div>
                               </div>
-                            </div>
+                              : null}
                           </>)
                         : (
                           <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: '80vh' }}>

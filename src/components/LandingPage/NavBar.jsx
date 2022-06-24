@@ -1,10 +1,11 @@
 import React, { useEffect, useContext } from 'react'
-import { Navbar, Container, Nav, Button } from 'react-bootstrap'
+import { Navbar, Container, Nav, Button, NavDropdown } from 'react-bootstrap'
 import NavBarElement from './NavBarElement'
 import './assets/css/NavBar.scss'
 import { AuthContext } from '../../context/AuthContext'
 import { useHistory } from 'react-router-dom'
 import LogoAlargado from '../../assets/img/LogoAlargado.svg'
+import { FcCancel, FcUnlock } from 'react-icons/fc'
 
 const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
   useEffect(() => {
@@ -20,6 +21,7 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
         fixed="top"
         bg="transparent"
         id="navBar"
+        style={{ paddingTop: 0, paddingBottom: 0 }}
 
       >
         <Container fluid>
@@ -31,7 +33,6 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
               className="nameNav font-Geomanist"
               onClick={() => scroll.scroll(PrimeraSeccion.id)}
               style={{ padding: 2 }}
-
             >
               <img
                 src={LogoAlargado}
@@ -66,12 +67,27 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                   )
                 })
               }
-              {auth && <div>{auth?.authState?.userInfo?.nombre}</div>}
+
               {auth.isAuthenticated()
-                ? <Button className=" btn-naranja ms-2 me-2" onClick={() => history.push('/dashboard')}>
-                  Dashboard
-                </Button>
-                : <Button className=" btn-naranja ms-2 me-2" onClick={() => history.push('/login')}>
+                ? <>
+                  <NavDropdown title={auth && <b>{auth?.authState?.userInfo?.nombre}</b>} id="basic-nav-dropdown"
+                    className='d-flex flex-column align-items-center justify-content-center'
+                  >
+                    <NavDropdown.Item href="/recover" className='d-flex'>
+                      <span className='pe-2 d-flex align-items-center'><FcUnlock size={22} /></span>
+                      Cambiar Contraseña
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#" className='d-flex align-items-center' onClick={() => auth.logout()}>
+                      <span className='pe-1 d-flex align-items-center'><FcCancel size={22} /></span>
+                      Cerrar Sesión
+                    </NavDropdown.Item>
+                  </NavDropdown>
+
+                  <Button className=" btn-naranja ms-2 btn-sm mb-0 me-3 " onClick={() => history.push('/dashboard')}>
+                    Dashboard
+                  </Button>
+                </>
+                : <Button className=" btn-naranja ms-2 btn-sm mb-0 me-3 " onClick={() => history.push('/login')}>
                   Iniciar sesion
                 </Button>
               }

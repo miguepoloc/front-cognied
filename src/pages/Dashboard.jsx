@@ -56,7 +56,7 @@ const Dashboard = () => {
         className="g-sidenav-show  bg-gray-100 "
       >
         <main className="main-content position-relative h-100 border-radius-lg ">
-          <NavBarDashboard datauser={datauser} />
+          <NavBarDashboard datauser={datauser} userInfo={userInfo} />
           <div className="container-fluid py-4">
             <div className="row my-1">
               <CartaImagen />
