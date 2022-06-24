@@ -11,7 +11,7 @@ import { ErrorGanso } from '../ErrorGanso'
 import { Loading } from '../Loading'
 import { Resultados } from './Resultados'
 import { AuthContext } from '../../context/AuthContext'
-
+import { SurveysLocalStorage } from './assets/js/Surveys_localStorage'
 const errorFaltaPorResponder = () => {
   ErrorAlert('Ups...', 'Parece que alguna pregunta de esta encuesta ha quedado sin responder. por favor, asegurate de que <b> todas </b> las preguntas tengan respuesta')
 }
@@ -20,9 +20,11 @@ const Surveys = () => {
   const { authState } = useContext(AuthContext)
 
   const { userInfo } = authState
-  console.log(userInfo)
 
-  const [surveys, setSurveys] = useState(new model_surveys(null, false))
+  const id_user = 17;
+  const id_sexo_user = 1;
+
+  const [surveys, setSurveys] = useState(new model_surveys(null,id_user,id_sexo_user,false))
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [nextOrPrev, setNextOrPrev] = useState(false) // lo uso para cargar las preguntas si da back.
@@ -30,23 +32,18 @@ const Surveys = () => {
   const [showResults, setShowResults] = useState(null)
 
   const recuperarDatosLocalStorage = () => {
-    const respuestasGuardadas = localStorage.getItem('data_survey_local')
-    if (respuestasGuardadas) {
-      const datosJson = JSON.parse(respuestasGuardadas)
-      const fechaDeInsercion = datosJson.fechaDeInsercion
-      const fechaActual = Date.now()
-      const diffTime = Math.abs(fechaActual - fechaDeInsercion)
-      const diffHours = Math.ceil(diffTime / (1000 * 60 * 60))
-
-      if (diffHours <= 48) {
+    try {
+      let datos = SurveysLocalStorage.recuperarDatosLocalStorage(id_user);
+      if (datos) {
+        //Si los datos fueron recuperados.
         SendOkAlert('¡En horabuena!', '¡He podido recuperar tus respuestas! Intenta terminar de responder las preguntas. Si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente.', undefined, undefined)
-        return datosJson
       } else {
         SendBadAlert('Ups...', '¡Lo siento! Han pasado mas de 48 horas desde la ultima vez que intentaste responder las preguntas. Inténtalo nuevamente.<br/> Recuerda que si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente', undefined, undefined)
-        window.localStorage.removeItem('data_survey_local')
       }
+      return datos;
+    } catch (error) {
+      return null; //no se encontraron datos.
     }
-    return null
   }
 
   const llenarEncuesta = () => {
@@ -62,9 +59,9 @@ const Surveys = () => {
         const data = recuperarDatosLocalStorage()
         if (data) {
           console.log(data.datosSurveys)
-          setSurveys(new model_surveys(response).loadDataLocalStorage(data.datosSurveys))
+          setSurveys(new model_surveys(response,id_user,id_sexo_user).loadDataLocalStorage(data.datosSurveys))
         } else {
-          setSurveys(new model_surveys(response))
+          setSurveys(new model_surveys(response,id_user,id_sexo_user))
         }
         // setSurveys(surveys.loadDataLocalStorage(recuperarDatosLocalStorage()).clone());
         setLoading(false)
@@ -159,6 +156,7 @@ const Surveys = () => {
         console.log(surveys.jsonSurvey)
 
         SendOkAlert(undefined, '¡Enhorabuena! ¡Tus respuestas han sido procesadas y <b>he traído los resultados</b>!').then(() => { setShowResults(surveys.results(sexo)) })
+        SurveysLocalStorage.eliminarDatos(id_user)
         window.localStorage.removeItem('data_survey_local') // Borrando el local storage...
       } else {
         console.log(send)
