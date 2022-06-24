@@ -8,3 +8,9 @@ $ColorFondo: #f8f9fa;
     background-color: $ColorFondo  !important;
     box-shadow: none;
 }
+
+@media (min-width: 990px) {
+    .cambio-nav {
+        padding-right: 60px;
+    }
+}

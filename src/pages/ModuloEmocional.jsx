@@ -77,7 +77,7 @@ const ModuloEmocional = () => {
       >
 
         <main className="main-content position-relative h-100 border-radius-lg ">
-          <NavBarDashboard datauser={datauser} />
+          <NavBarDashboard datauser={datauser} userInfo={userInfo} />
 
           <div className="container-fluid py-4">
 
@@ -85,7 +85,6 @@ const ModuloEmocional = () => {
 
               {
 
-                /* Módulo Emocional */
                 (linksEmocional[slug - 1].tipoCapsula
                   ? < img src={linksEmocional[slug - 1].imagen} alt="capsula" className='img-capsula' />
                   : linksEmocional[slug - 1].actividad)

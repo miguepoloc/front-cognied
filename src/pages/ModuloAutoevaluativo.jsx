@@ -48,7 +48,7 @@ const ModuloAutoevaluativo = () => {
       >
 
         <main className="main-content position-relative h-100 border-radius-lg ">
-          <NavBarDashboard datauser={datauser} />
+          <NavBarDashboard datauser={datauser} userInfo={userInfo} />
 
           <div className="container-fluid py-4">
 

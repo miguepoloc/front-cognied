@@ -1,15 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Nav } from 'react-bootstrap'
-function NavBarElement ({ Seccion, Scroll }) {
+const NavBarElement = ({ Seccion, Scroll }) => {
   return (
-      <Nav.Link
-          // className="text-black font-weight-bold"
-          id={`Nav-${Seccion.id}`}
-          onClick={() => Scroll(Seccion.id)}
-      >
-          {Seccion.txt}
-      </Nav.Link>
+    <Nav.Link
+      // className="text-black font-weight-bold"
+      id={`Nav-${Seccion.id}`}
+      onClick={() => Scroll(Seccion.id)}
+      className='d-flex align-items-center justify-content-center'
+    >
+      {Seccion.txt}
+    </Nav.Link>
   )
 }
 NavBarElement.propTypes = {

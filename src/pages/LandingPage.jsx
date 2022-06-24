@@ -1,3 +1,4 @@
+/* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 import React, { useEffect } from 'react'
 import Home from '../components/LandingPage/Home'
@@ -15,10 +16,6 @@ import { Unete } from '../components/LandingPage/JoinUp'
 
 import '../assets/css/Landingpage.scss'
 import '../components/LandingPage/assets/css/LandingPage.scss'
-import { ModulosInicio } from '../components/Dashboard/modulos_inicio/ModulosInicio'
-import Surveys from '../components/Surveys/Surveys'
-import CartaImagen from '../components/Dashboard/CartaImagen'
-import CartaImagenFondo from '../components/Dashboard/CartaImagenFondo'
 function LandingPage() {
   // El id servirá para nombrar los identificadores y el txt para colocar el nombre (por ejemplo en la barra de navegacion.)
   // Adicional a eso permitirá hacer pocas modificaciones en el codigo
@@ -56,7 +53,7 @@ function LandingPage() {
       <Footer />
       <ButtonToUp Scroll={scroll} seccionToUp={secciones.Home.id} />
       {/* <ModulosInicio /> */}
-      <Surveys/>
+      {/* <Surveys/> */}
     </>
   )
 }

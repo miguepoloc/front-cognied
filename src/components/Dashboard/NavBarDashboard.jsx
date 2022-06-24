@@ -7,9 +7,9 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import LogoAlargado from '../../assets/img/LogoAlargado.svg'
 import { linksEmocional } from '../../helpers/helper_emocional'
 import { linksEstres } from '../../helpers/helperEstres'
-import { FcApproval, FcCancel, FcBiomass, FcDoughnutChart, FcHome, FcServices } from 'react-icons/fc'
+import { FcApproval, FcCancel, FcBiomass, FcHome, FcScatterPlot, FcUnlock } from 'react-icons/fc'
 
-const NavBarDashboard = ({ datauser }) => {
+const NavBarDashboard = ({ datauser, userInfo }) => {
   const history = useHistory()
   const auth = useContext(AuthContext)
 
@@ -50,8 +50,6 @@ const NavBarDashboard = ({ datauser }) => {
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
               />
-              {/* &nbsp;
-              DigitalMente */}
             </Nav.Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -62,17 +60,27 @@ const NavBarDashboard = ({ datauser }) => {
           >
             <Nav
               navbarScroll
-              className="text-center"
+              className="text-center cambio-nav"
             >
-              <Nav.Link href="/dashboard" className='d-flex align-items-center  justify-content-center'>
+              <Nav.Link href="/dashboard"
+                className='d-flex align-items-center justify-content-center'>
                 <span className='pe-1 d-flex align-items-center'><FcHome size={20} /></span>
                 Dashboard
               </Nav.Link>
-              <Nav.Link href="#link" className='d-flex align-items-center  justify-content-center'>
-                <span className='pe-1 d-flex align-items-center'><FcDoughnutChart size={22} /></span>
-                Gráficas
-              </Nav.Link>
-              <NavDropdown title="Autoevaluativo " id="basic-nav-dropdown" className='d-flex flex-column align-items-center justify-content-center'>
+              {userInfo.is_staff
+                ? <Nav.Link href="#link" className='d-flex align-items-center  justify-content-center'>
+                  <span className='pe-1 d-flex align-items-center'><FcScatterPlot size={22} /></span>
+                  Gráficas
+                </Nav.Link>
+                : null
+              }
+              <NavDropdown
+                title="Autoevaluativo "
+                id="basic-nav-dropdown"
+                className='d-flex flex-column align-items-center justify-content-center'
+                autoClose="outside"
+
+              >
                 <NavDropdown.Item href="/autoevaluativo" className='d-flex'>
                   <span className='pe-2 d-flex align-items-center'><FcApproval size={22} /></span>
                   Prueba
@@ -103,7 +111,13 @@ const NavBarDashboard = ({ datauser }) => {
 
                 ))}
               </NavDropdown>
-              <NavDropdown title="Relax " id="basic-nav-dropdown" className='d-flex flex-column align-items-center justify-content-center'>
+              <NavDropdown
+                title="Relax "
+                id="basic-nav-dropdown"
+                className='d-flex flex-column align-items-center justify-content-center'
+                // drop='start'
+                align="start"
+              >
                 <span className='mt-0'></span>
                 {linksEstres.map((capsula, capsulaIndex) => (
 
@@ -125,12 +139,12 @@ const NavBarDashboard = ({ datauser }) => {
               </NavDropdown>
               <NavDropdown title={auth && <b>{auth?.authState?.userInfo?.nombre}</b>} id="basic-nav-dropdown" className='d-flex flex-column align-items-center justify-content-center'>
 
-                <NavDropdown.Item href="/autoevaluativo" className='d-flex'>
-                  <span className='pe-2 d-flex align-items-center'><FcServices size={22} /></span>
-                  Editar perfil
+                <NavDropdown.Item href="/recover" className='d-flex'>
+                  <span className='pe-2 d-flex align-items-center'><FcUnlock size={22} /></span>
+                  Cambiar Contraseña
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#" className='d-flex align-items-center' onClick={() => auth.logout()}>
-                  <span className='pe-1 d-flex align-items-center'><FcBiomass size={22} /></span>
+                  <span className='pe-1 d-flex align-items-center'><FcCancel size={22} /></span>
                   Cerrar Sesión
                 </NavDropdown.Item>
               </NavDropdown>

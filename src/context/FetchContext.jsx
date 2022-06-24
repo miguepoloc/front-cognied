@@ -13,7 +13,7 @@ const FetchProvider = ({ children }) => {
   })
 
   authAxios.interceptors.request.use(
-    config=> {
+    config => {
       const token = authContext.authState?.token
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
