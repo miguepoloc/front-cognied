@@ -63,6 +63,7 @@ export class SurveysLocalStorage {
 
 
   static guardarEnLocalStorage(id_user, datos_surveys) {
+   // let _datos_surveys = 
         let datos = {
             fechaDeInsercion: Date.now(),
             datosSurveys: datos_surveys,//this.generateJsonToSend(),

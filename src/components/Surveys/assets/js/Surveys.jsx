@@ -3,7 +3,7 @@ const { Survey } = require('./Survey')
 const { SurveysLocalStorage } = require('./Surveys_localStorage')
 class Surveys {
 
-static id_user;
+static id_user
 
   constructor(arrSurvey, id_user, id_sexo ,build = true) {
     this.arrSurvey = arrSurvey;
@@ -21,10 +21,11 @@ static id_user;
 
 
   loadDataLocalStorage(data) {
+    delete data['id_usuario']
     for (let key in data) {
       let value = data[key];
       let survey = this.searchSurvey(key);
-
+      console.log(survey.questions)
       survey.questions = survey.questions.map((question, index) => {
         question.setSelected(value[index])
         return question
@@ -294,6 +295,7 @@ static id_user;
       estresPercibido: 6,
       inventarioDePensamientos: 7
     }
+    let sexo = this.id_sexo === 1 ? 'm' : 'f';
     objJson["ansiedad"] = this.restultsAnsiedadTest(idTest.ansiedad);
     objJson["depresion"] = this.restultsDepresionTest(idTest.depresion);
     objJson["inteligenciaEmocional"] = this.restultsInteligenciaEmocionalTest(idTest.inteligencia, sexo);

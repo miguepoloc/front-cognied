@@ -21,10 +21,10 @@ const Surveys = () => {
 
   const { userInfo } = authState
 
-  const id_user = userInfo.id;
-  const id_sexo_user = userInfo.sexo.id === 1 ? 'm' : 'f';
+  const id_user = userInfo.id
+  const id_sexo_user = userInfo.sexo.id
 
-  const [surveys, setSurveys] = useState(new model_surveys(null,id_user,id_sexo_user,false))
+  const [surveys, setSurveys] = useState(new model_surveys(null, id_user, id_sexo_user, false))
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [nextOrPrev, setNextOrPrev] = useState(false) // lo uso para cargar las preguntas si da back.
@@ -32,17 +32,18 @@ const Surveys = () => {
   const [showResults, setShowResults] = useState(null)
 
   const recuperarDatosLocalStorage = () => {
+    let datos
     try {
-      let datos = SurveysLocalStorage.recuperarDatosLocalStorage(id_user);
+      datos = SurveysLocalStorage.recuperarDatosLocalStorage(id_user)
       if (datos) {
-        //Si los datos fueron recuperados.
+        //  Si los datos fueron recuperados.
         SendOkAlert('¡En horabuena!', '¡He podido recuperar tus respuestas! Intenta terminar de responder las preguntas. Si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente.', undefined, undefined)
       } else {
         SendBadAlert('Ups...', '¡Lo siento! Han pasado mas de 48 horas desde la ultima vez que intentaste responder las preguntas. Inténtalo nuevamente.<br/> Recuerda que si tienes alguna falla de conexión, solo podre mantenerlas guardadas temporalmente hasta 48 horas. Una vez termines el módulo y envíes tus respuestas completas, se guardaran definitivamente', undefined, undefined)
       }
-      return datos;
+      return datos
     } catch (error) {
-      return null; //no se encontraron datos.
+      return null //  no se encontraron datos.
     }
   }
 
@@ -57,11 +58,12 @@ const Surveys = () => {
     if (response) {
       try {
         const data = recuperarDatosLocalStorage()
+        console.log(data)
         if (data) {
           console.log(data.datosSurveys)
-          setSurveys(new model_surveys(response,id_user,id_sexo_user).loadDataLocalStorage(data.datosSurveys))
+          setSurveys(new model_surveys(response, id_user, id_sexo_user).loadDataLocalStorage(data.datosSurveys))
         } else {
-          setSurveys(new model_surveys(response,id_user,id_sexo_user))
+          setSurveys(new model_surveys(response, id_user, id_sexo_user))
         }
         // setSurveys(surveys.loadDataLocalStorage(recuperarDatosLocalStorage()).clone());
         setLoading(false)
@@ -146,13 +148,13 @@ const Surveys = () => {
       setIsBtnSendDisabled(() => true)
       SendAlert(undefined, 'Tus respuestas estan siendo enviadas y procesadas <b>Espera un momento</b>')
       // Debería esperar una respuesta de todo ok., si la respuesta es negativa el boton vuelve a quedar
-      const send = await SendSurveys(buildDataToSend(userId))
+      const send = await SendSurveys(buildDataToSend())
 
       if (send) {
         // TODO: Redireccionar a un lugar....
         console.log(surveys.jsonSurvey)
 
-        SendOkAlert(undefined, '¡Enhorabuena! ¡Tus respuestas han sido procesadas y <b>he traído los resultados</b>!').then(() => { setShowResults(surveys.results(sexo)) })
+        SendOkAlert(undefined, '¡Enhorabuena! ¡Tus respuestas han sido procesadas y <b>he traído los resultados</b>!').then(() => { setShowResults(surveys.results()) })
         SurveysLocalStorage.eliminarDatos(id_user)
         window.localStorage.removeItem('data_survey_local') // Borrando el local storage...
       } else {
