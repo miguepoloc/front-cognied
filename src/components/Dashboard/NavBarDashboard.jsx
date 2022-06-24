@@ -7,7 +7,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import LogoAlargado from '../../assets/img/LogoAlargado.svg'
 import { linksEmocional } from '../../helpers/helper_emocional'
 import { linksEstres } from '../../helpers/helperEstres'
-import { FcApproval, FcCancel, FcBiomass, FcHome, FcScatterPlot, FcUnlock } from 'react-icons/fc'
+import { FcApproval, FcCancel, FcBiomass, FcHome, FcScatterPlot, FcUnlock, FcImport } from 'react-icons/fc'
 
 const NavBarDashboard = ({ datauser, userInfo }) => {
   const history = useHistory()
@@ -60,7 +60,7 @@ const NavBarDashboard = ({ datauser, userInfo }) => {
           >
             <Nav
               navbarScroll
-              className="text-center cambio-nav"
+              className="text-center"
             >
               <Nav.Link href="/dashboard"
                 className='d-flex align-items-center justify-content-center'>
@@ -137,14 +137,20 @@ const NavBarDashboard = ({ datauser, userInfo }) => {
 
                 ))}
               </NavDropdown>
-              <NavDropdown title={auth && <b>{auth?.authState?.userInfo?.nombre}</b>} id="basic-nav-dropdown" className='d-flex flex-column align-items-center justify-content-center'>
+              <NavDropdown
+                title={auth && <b>{auth?.authState?.userInfo?.nombre}</b>}
+                id="basic-nav-dropdown"
+                className='d-flex flex-column align-items-center justify-content-center'
+                // drop='start'
+                align="end"
+              >
 
                 <NavDropdown.Item href="/recover" className='d-flex'>
                   <span className='pe-2 d-flex align-items-center'><FcUnlock size={22} /></span>
                   Cambiar Contraseña
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#" className='d-flex align-items-center' onClick={() => auth.logout()}>
-                  <span className='pe-1 d-flex align-items-center'><FcCancel size={22} /></span>
+                  <span className='pe-1 d-flex align-items-center'><FcImport size={22} /></span>
                   Cerrar Sesión
                 </NavDropdown.Item>
               </NavDropdown>
