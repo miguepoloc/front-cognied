@@ -12,6 +12,7 @@ import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import '../assets/css/soft-ui-dashboard.scss'
 import { ModulosInicio } from '../components/Dashboard/modulos_inicio/ModulosInicio'
 import { SeccionInicial } from '../components/Dashboard/mod_estres/SeccionInicial'
+import CartaBienvenido from '../components/Dashboard/CartaBienvenido'
 
 const Dashboard = () => {
   const { authState } = useContext(AuthContext)
@@ -59,7 +60,7 @@ const Dashboard = () => {
           <NavBarDashboard datauser={datauser} userInfo={userInfo} />
           <div className="container-fluid py-4">
             <div className="row my-1">
-              <CartaImagen />
+              <CartaBienvenido />
             </div>
             <div className="row mt-1">
               <ModulosInicio />
