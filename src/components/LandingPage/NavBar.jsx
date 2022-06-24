@@ -5,7 +5,7 @@ import './assets/css/NavBar.scss'
 import { AuthContext } from '../../context/AuthContext'
 import { useHistory } from 'react-router-dom'
 import LogoAlargado from '../../assets/img/LogoAlargado.svg'
-import { FcCancel, FcUnlock } from 'react-icons/fc'
+import { FcImport, FcUnlock } from 'react-icons/fc'
 
 const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
   useEffect(() => {
@@ -78,7 +78,7 @@ const NavBar = ({ Secciones, PrimeraSeccion, scroll }) => {
                       Cambiar Contraseña
                     </NavDropdown.Item>
                     <NavDropdown.Item href="#" className='d-flex align-items-center' onClick={() => auth.logout()}>
-                      <span className='pe-1 d-flex align-items-center'><FcCancel size={22} /></span>
+                      <span className='pe-1 d-flex align-items-center'><FcImport size={22} /></span>
                       Cerrar Sesión
                     </NavDropdown.Item>
                   </NavDropdown>
