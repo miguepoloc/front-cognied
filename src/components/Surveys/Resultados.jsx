@@ -5,6 +5,7 @@ import { imgGanso } from '../../helpers/helper_imagen_ganso'
 import { gansoPensandoAlert, SendAlert } from '../../helpers/helper_Swal_Alerts'
 
 export const Resultados = ({ objResultados }) => {
+  console.log(objResultados)
 
   const text_justify = {
     textAlign: "justify",

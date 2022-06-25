@@ -21,7 +21,7 @@ const Questions = ({
               color={color}
               key={question.id_question}
               selectOption={selectOption}
-              
+              answerSelected = {question.selected}
             />
           );
         })}

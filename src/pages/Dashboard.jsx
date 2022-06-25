@@ -3,17 +3,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../assets/css/nucleo-icons.scss'
 import '../assets/css/nucleo-svg.scss'
 import '../assets/css/Dashboard.scss'
-import MiniCarta from '../components/Dashboard/MiniCarta'
+// import MiniCarta from '../components/Dashboard/MiniCarta'
 import CartaImagen from '../components/Dashboard/CartaImagen'
-import CartaImagenFondo from '../components/Dashboard/CartaImagenFondo'
 import FooterDashboard from '../components/Dashboard/FooterDashboard'
 import CartaSeguimiento from '../components/Dashboard/CartaSeguimiento'
-import CartaLineaTiempo from '../components/Dashboard/CartaLineaTiempo'
-import CartaBarras from '../components/Dashboard/CartaBarras'
-import CartaGrafica from '../components/Dashboard/CartaGrafica'
 import { AuthContext } from '../context/AuthContext'
 import NavBarDashboard from '../components/Dashboard/NavBarDashboard'
 import '../assets/css/soft-ui-dashboard.scss'
+import { ModulosInicio } from '../components/Dashboard/modulos_inicio/ModulosInicio'
+import { SeccionInicial } from '../components/Dashboard/mod_estres/SeccionInicial'
+import CartaBienvenido from '../components/Dashboard/CartaBienvenido'
 
 const Dashboard = () => {
   const { authState } = useContext(AuthContext)
@@ -41,7 +40,6 @@ const Dashboard = () => {
 
   // Obtención de datos
   const [datauser, setDatauser] = useState([])
-  const [control, setControl] = useState(1)
 
   useEffect(async function () {
     const response = await getData()
@@ -51,7 +49,7 @@ const Dashboard = () => {
     } else {
       console.log('No se pudieron traer los datos...')
     }
-  }, [control])
+  }, [])
 
   return (
     <>
@@ -59,26 +57,28 @@ const Dashboard = () => {
         className="g-sidenav-show  bg-gray-100 "
       >
         <main className="main-content position-relative h-100 border-radius-lg ">
-          <NavBarDashboard datauser={datauser} />
+          <NavBarDashboard datauser={datauser} userInfo={userInfo} />
           <div className="container-fluid py-4">
-            <div className="row">
-              <MiniCarta />
-              <MiniCarta />
-              <MiniCarta />
-              <MiniCarta />
+            <div className="row my-1">
+              <CartaBienvenido />
             </div>
-            <div className="row mt-4">
-              <CartaImagen />
-              <CartaImagenFondo />
-            </div>
-            <div className="row mt-4">
-              <CartaBarras />
-              <CartaGrafica />
+            <div className="row mt-1">
+              <ModulosInicio />
             </div>
             <div className="row my-4">
-              <CartaSeguimiento />
-              <CartaLineaTiempo />
+              <CartaSeguimiento datauser={datauser} />
+              {/* <CartaLineaTiempo /> */}
             </div>
+            <div className="row mt-4">
+              <SeccionInicial />
+            </div>
+            {/* <div className="row">
+              <MiniCarta />
+              <MiniCarta />
+              <MiniCarta />
+              <MiniCarta />
+            </div> */}
+
             <FooterDashboard />
           </div>
 

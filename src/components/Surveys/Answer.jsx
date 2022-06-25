@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Answer = ({ _name,_text_answer, _id ,_value ,handleClickAnswer }) => {
+const Answer = ({ _name,_text_answer, _id ,_value ,handleClickAnswer,answerSelected,id_answerDB }) => {
 
   return (
     <label>
@@ -11,6 +11,7 @@ const Answer = ({ _name,_text_answer, _id ,_value ,handleClickAnswer }) => {
         name={_name}
         // value={_value}
         onClick={handleClickAnswer}
+        defaultChecked={answerSelected == id_answerDB}
         id={_id}
       />
       {_text_answer}

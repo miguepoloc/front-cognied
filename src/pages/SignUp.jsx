@@ -348,7 +348,7 @@ const SignUpForm = () => {
                         return (
                           <option
                             key={i}
-                            value={answer.id}
+                            value={answer.departamento}
                           >
                             {answer.departamento}
                           </option>
@@ -376,20 +376,16 @@ const SignUpForm = () => {
                       onChange={handleChange}
                     >
                       <option value="" disabled>Ciudad de nacimiento</option>
-                      {dataColombia[values.departamento_nacimiento]
-                        ? dataColombia[values.departamento_nacimiento].ciudades?.map((answer, i) => {
-                          return (
-                            <option
-                              key={i}
-                              value={answer}
-                            >
-                              {answer}
-                            </option>
-                          )
-                        })
-                        : (<>
-
-                        </>)
+                      {dataColombia.find((dept) => { return dept.departamento === values.departamento_nacimiento })?.ciudades?.map((answer, i) => {
+                        return (
+                          <option
+                            key={i}
+                            value={answer}
+                          >
+                            {answer}
+                          </option>
+                        )
+                      })
                       }
                     </Field>
                   </div>

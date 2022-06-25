@@ -6,7 +6,6 @@ const AuthContext = createContext()
 const { Provider } = AuthContext
 
 const AuthProvider = ({ children }) => {
-  
   const history = useHistory()
 
   // Cookies Names
@@ -48,7 +47,7 @@ const AuthProvider = ({ children }) => {
 
   const isAuthenticated = () => {
     const fecha = new Date().getTime() / 1000 < authState.expiresAt
-    console.log(authState.token && authState.expiresAt && fecha)
+    // console.log(authState.token && authState.expiresAt && fecha)
     return authState.token && authState.expiresAt && fecha
   }
 

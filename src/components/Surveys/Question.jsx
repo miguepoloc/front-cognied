@@ -7,7 +7,8 @@ const Question = ({
   name,
   index,
   color,
-  selectOption
+  selectOption,
+  answerSelected
 }) => {
   return (
     <div className="mb-4  col-12  col-lg-6">
@@ -16,7 +17,7 @@ const Question = ({
         style={{ backgroundColor: color }}
       >
         <h5 className="my-0 font-weight-normal text-white  ">
-          {question.question}
+          {(index+1) + ". " + question.question}
         </h5>
       </div>
       <div className="border shadow w-100 card-body float-left pt-0">
@@ -32,6 +33,9 @@ const Question = ({
                   question.id_question,
                   answer.id_answer
                 )}
+                id_answerDB = {answer.id_answer}
+                answerSelected= {answerSelected}
+                index = {index}
               />
             )
           })}

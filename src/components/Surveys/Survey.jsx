@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import Questions from "./Questions";
+import React from 'react'
+import Questions from './Questions'
 
-
-const Survey = ({ survey, selectOption}) => {
-  const root = document.documentElement;
-  root.style.setProperty("--colorCheck", survey.color); //Sirve para cambiar el color del check.
+const Survey = ({ survey, selectOption }) => {
+  const root = document.documentElement
+  root.style.setProperty('--colorCheck', survey.color) // Sirve para cambiar el color del check.
 
   return (
     <>
@@ -22,10 +20,10 @@ const Survey = ({ survey, selectOption}) => {
         selectOption={selectOption}
       />
     </>
-  );
-};
+  )
+}
 
 Survey.propTypes = {
-};
+}
 
-export default Survey;
+export default Survey
