@@ -13,7 +13,9 @@ import '../assets/css/soft-ui-dashboard.scss'
 import { ModulosInicio } from '../components/Dashboard/modulos_inicio/ModulosInicio'
 import { SeccionInicial } from '../components/Dashboard/mod_estres/SeccionInicial'
 import CartaBienvenido from '../components/Dashboard/CartaBienvenido'
-
+import { CartaResultados } from '../components/Dashboard/CartaResultados'
+import { CartaActividadesFomento } from '../components/Dashboard/CartaActividadesFomento'
+import '../assets/css/index.scss'
 const Dashboard = () => {
   const { authState } = useContext(AuthContext)
 
@@ -66,7 +68,10 @@ const Dashboard = () => {
               <ModulosInicio />
             </div>
             <div className="row my-4">
+
               <CartaSeguimiento datauser={datauser} />
+              <CartaResultados />
+              <CartaActividadesFomento />
               {/* <CartaLineaTiempo /> */}
             </div>
             <div className="row mt-4">

@@ -9,7 +9,7 @@ const CartaImagen = () => {
           <div className="card-body p-1 p-md-3">
             <div className="row justify-content-center align-items-center">
 
-              <div className=" col-4   col-lg-3 text-center ">
+              <div className=" col-4  px-0 col-lg-3 text-center ">
                 <img className="imgGanso_caminoFortaleza"
                   src={imgGanso.explicando} alt="ganso" />
               </div>
