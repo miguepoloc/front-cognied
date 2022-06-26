@@ -5,7 +5,7 @@ import { imgGanso } from '../../helpers/helper_imagen_ganso'
 
 const Modules = ({ section }) => {
     return (
-        <section
+         <section
             className="flex-center"
             style={{ marginTop: '-3%' }}
         >
