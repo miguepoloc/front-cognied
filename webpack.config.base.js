@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const webpack = require("webpack");
 const dotenv = require("dotenv");
-const options = { publicPath: ""};
+const options = { publicPath: "" };
 const libraryName = "cognied-front";
 
 module.exports = (state) => {
@@ -70,7 +70,7 @@ module.exports = (state) => {
           test: /\.(eot|svg|ttf|woff|woff2)$/,
           type: "asset/resource",
         },
-        
+
       ],
     },
   };
